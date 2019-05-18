@@ -46,11 +46,30 @@ class TestVariable2 {
         // ## 强制类型转换
         /*
         :>容量大的转换为容量小的，要使用强制类型转换符：(类型)变量
+        :>强制类型转换导致的问题：可能损失精度，它的算是方式就是直接把高位截掉。
         * */
 
         long long2 = 123456L;
         int i52 = (int) long2;
-        System.out.printf("i52: " + i52);
+        System.out.println("i52: " + i52);
+
+        byte b56 = (byte)long2;
+        System.out.printf("b56: " + b56);
+
+        // String字符串与基本数据之间的运算，只能是连接运算：+，得到的结果为一个字符串
+        String str62 = "abc";
+        String str63 = str62 + i52; // 结果为：abc123456
+        System.out.println("str63: " + str63);
+
+        // 示例
+        String s65 = "Daydayup";
+        int i66 = 21;
+        char c67 = 'c'; // 99
+        // System.out.println((short)c67);
+        System.out.println(s65 + i66 + c67); // Daydayup21c
+        System.out.println( c67 + i66 + s65); // 120Daydayup
+        System.out.println(i66 + s65 + c67); // 21Daydayupc
+
     }
 
 }
