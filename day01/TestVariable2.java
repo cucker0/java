@@ -57,6 +57,9 @@ class TestVariable2 {
         System.out.printf("b56: " + b56);
 
         // String字符串与基本数据之间的运算，只能是连接运算：+，得到的结果为一个字符串
+        /*String类是一个典型的不可变类，String对象创建出来就不可被改变。创建出来的字符串
+        将存放在数据区，保证每个字符串常量只有一个，不会产生多个副本。
+        */
         String str62 = "abc";
         String str63 = str62 + i52; // 结果为：abc123456
         System.out.println("str63: " + str63);
@@ -69,6 +72,12 @@ class TestVariable2 {
         System.out.println(s65 + i66 + c67); // Daydayup21c
         System.out.println( c67 + i66 + s65); // 120Daydayup
         System.out.println(i66 + s65 + c67); // 21Daydayupc
+
+        String sss0 = "hello";
+        String sss1 = "hello";
+        String sss2 = "he" + "llo";
+        System.out.println(sss0 == sss1); // true
+        System.out.println(sss0 == sss2); // true
 
     }
 
