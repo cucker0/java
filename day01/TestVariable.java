@@ -27,5 +27,20 @@ public class TestVariable {
         float f1 = 5.03F;
         System.out.println("f1: " + f1);
 
+        // 字符类型： char，用''括起来
+        // <1>世界上所有书面上的任意一个字符
+        char c1 = 'a';
+        System.out.println("c1: " + c1);
+        char c2 = '$';
+        System.out.println("c2: " + c2);
+        char c3 = '字';
+        System.out.println("c3: " + c3);
+        // <2>转义字符
+        char c4 = '\n';
+        System.out.println("c4: " + c4);
+        // <3>Unicode值
+        char c5 = '\u1234';
+        System.out.printf("c5: " + c5);
+
     }
 }
