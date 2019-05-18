@@ -30,6 +30,7 @@ public class TestVariable {
         // 字符类型： char，用''括起来
         // <1>世界上所有书面上的任意一个字符
         char c1 = 'a';
+        // char c11 = "ab"; // 不行
         System.out.println("c1: " + c1);
         char c2 = '$';
         System.out.println("c2: " + c2);
@@ -40,7 +41,21 @@ public class TestVariable {
         System.out.println("c4: " + c4);
         // <3>Unicode值
         char c5 = '\u1234';
-        System.out.printf("c5: " + c5);
+        System.out.printf("c5: %s %s", c5, "\n");
 
+        // 布尔类型：boolean，只能取值 true和false,不能取值null
+        boolean bool1 = true;
+        if (bool1) {
+            System.out.println("京东货真好！！");
+        } else {
+            System.out.println("操，假货一大堆！！");
+        }
+
+    }
+
+    public int method1() {
+        int age = 18;
+        System.out.println(age);
+        return age;
     }
 }
