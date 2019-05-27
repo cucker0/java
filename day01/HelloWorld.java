@@ -11,6 +11,7 @@ class MyHelloWorld {
 
 /*
  * javac HelloWord.java //当有中文且在windows平台时，javac -encoding utf-8 HelloWorld.java
+ * 或javac -encoding utf8 HelloWorld.java
  * javac 编译时后生成的文件名 类名.class => MyHelloWorld.class
  * java MyHelloWorld
  * java MyHelloWorld.class会报错，错误: 无效的标记: MyHelloWorld.class
