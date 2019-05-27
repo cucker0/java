@@ -7,6 +7,7 @@
 && 短路与
 ||
 
+运行：javac -encoding utf-8 TestLogic.java &&  java TestLogic
 * */
 
 class TestLogic {
