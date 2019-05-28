@@ -13,18 +13,23 @@ import java.util.Scanner;
 
 class Score {
     public static void main(String[] args){
-        System.out.println("请输入你的成绩(分)：");
+        System.out.println("输入小明的期末成绩(分)：");
         Scanner sc = new Scanner(System.in);
         int score = sc.nextInt();
 
-        if (score == 100) {
-            System.out.println("奖励一辆BMW");
-        } else if (score > 80 && score <= 99) {
-            System.out.println("奖励一个台iphone xs");
-        } else if (score >= 60 && score <= 80 ) {
-            System.out.println("奖励一本参考书");
+        if (score > 100 || score < 0) {
+            System.out.println("输入的成绩有误!");
         } else {
-            System.out.println("什么奖励也没有");
+            if (score == 100) {
+                System.out.println("奖励一辆BMW");
+            } else if (score > 80 && score <= 99) {
+                System.out.println("奖励一个台iphone xs");
+            } else if (score >= 60 && score <= 80 ) {
+                System.out.println("奖励一本参考书");
+            } else {
+                System.out.println("什么奖励也没有");
+            }
         }
+
     }
 }
