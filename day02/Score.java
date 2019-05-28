@@ -17,6 +17,8 @@ class Score {
         Scanner sc = new Scanner(System.in);
         int score = sc.nextInt();
 
+        // if-else语句可以嵌套
+
         if (score > 100 || score < 0) {
             System.out.println("输入的成绩有误!");
         } else {
