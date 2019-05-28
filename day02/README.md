@@ -273,7 +273,7 @@ class DecToHexOutput {
 
 >注：JDK1.5 提供了foreach循环，方便遍历集合、数组元素
 
-## if - else分支语句格式
+## if - else
 >从上往下找，匹配到一个条件后跳出判断。
 
 * 格式1
@@ -312,7 +312,34 @@ else {
 >执行代码块只有一行语句时可省略这个代码块的{}  
 建议任意时候都保留{}
 
+## switch-case
+格式：
+```text
+switch (变量) {
+    case 常量1:
+        语句1;
+        break;
+    case 常量2;
+        语句2;
+        break;
+    ... ...
+    case 常量N:
+        语句N;
+        break;
+    default:
+        语句;
+        break;
+}
 
+```
+
+### switch-case规则
+* 变量的值只有是下列数据类型：byte, short, char, 枚举, String(jdk1.7)
+* case子句中的值必须是常量，不能取范围，且所有case子句中的值应是不同的
+* default子句是可选选的，位置也是灵活的，不一定放到最后。但建议放到最后。  
+当没有匹配的case时，执行default子句
+* break语句用来执行完成一个case分支后使程序跳出switch语句块;  
+如果没有break，程序会顺序执行到switch结尾。
 
 
 

@@ -5,7 +5,7 @@
 如果三个条件有为真的情况，则：“嫁吧，比上不足，比下有余。”
 如果三个条件都不满足，则：“不嫁！”
 
-
+运行：javac -encoding utf8 WetherToMarry.java && java WetherToMarry
 * */
 
 import java.util.Scanner;
@@ -20,7 +20,7 @@ class WetherToMarry {
         System.out.println("帅否(是/否)：");
         String is_handsome = sc.next();
 
-        boolean h = (high >= 180);
+        boolean h = high >= 180;
         boolean w = (wealth >= 1000);
         boolean y = is_handsome.equals("是");
         if (h && w && y) {
