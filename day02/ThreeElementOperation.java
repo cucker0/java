@@ -10,10 +10,23 @@ class ThreeElementOperation {
         int i = 10;
         int j = 20;
         int max = (i > j) ? i : j;
-        System.out.println(i + "," + j + " 大的数为：" + max);
+        System.out.println("两个数：i=" + i + "  j=" + j);
+        System.out.println("大的数为：" + max);
 
         String msg = (i > j) ? "i大" : "j大";
         System.out.println(msg);
+
+        String str1 = (i > j) ? "i大" : (i == j) ? "i与j相等" : "j大";
+        System.out.println(str1);
+
+        // 用三元运算符输入三个数中最大的数
+        int x = 33;
+        int y = 40;
+        int z = 50;
+        int m = (x > y) ? x : (y > z) ? y : z;
+        System.out.println("x、y、z分别为："+ x + y + z + "其中最大的数为");
+        System.out.println(m);
+
 
     }
 }

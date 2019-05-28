@@ -92,6 +92,18 @@ false || true 结果为true
 
 注意：没有<<<
 
+## 位运算符细节
+|位运算符 |说明 |
+|:--- |:--- |
+|<< |空位补0，被移除的高位丢弃，空缺位补0 |
+|\>> |被移位的二进制高高位补0，右移后，空缺位补0 |
+|\>>> |被移位二进制最高位无论是0或者是1，空缺位都用0补 |
+|& |二进制位进行与运算，1当成true,0当false做逻辑与运算，只有1&1结果为1，否则为0 |
+|&#124; |二进制位进行或运算，1当true,0当false做逻辑或运算，只有0&#124;0结果为0，否则为1 |
+|^ |二进制位进行异或运算， 1当true,0当false做逻辑异或运算，1^1 = 0, 0^0 = 0<br> 1^0 = 1, 0^1 = 1 |
+|~ |按二进制补码位取反，注意正数原码、反码、补码、都相同 |
+
+
 ```text
 数字进行位与运算、或运算、异或运算时，  
 0 当false,  
@@ -122,18 +134,121 @@ false || true 结果为true
 条件表达式为false，则三元运算结果为表达式2
 
 ```
-* 表达式1 和 表达式2 为同种数据类型
+* 表达式1 和 表达式2 为同种数据类型，三元运算的结果与表达式1/表达式2的数据类型相同
 * 三元运算与if-else的联系与区别
 ```text
-* 三元运算可简化为if-else语句  
+* 三元运算可简化为if-else语句,反之则不成立
 * 三元运算要求必须返回一个结果  
 * if后的代码块可以有多个语句
 
 ```
 
+## 10进制数转以16进制格式打印出来
+```java
+class DecToHexOutput {
+    public static void main(String[] args) {
+        int i = 60; // 3c
+        System.out.println("i = " + i + "转成十六进制数并打印");
+        // 方法1：调用Integer类现成的方法
+        String binary = Integer.toBinaryString(i);
+        String hex = Integer.toHexString(i);
+        System.out.println(binary);
+        System.out.println(hex);
+
+        // 手动实现
+
+/*
+        char c = 'a';
+        char c1 = (char)(c + 2);
+        System.out.println(c1); // c
+*/
+
+        int x = i & 15; // 为什么是与15做与运算，因为4位二进制数每位数都为1的数转10进制值为15。这一步的主要目的是取出i的最后4位数2进制值
+        String v1 = (x <= 9) ? x + "": (char)( x - 10 + 'a') + ""; // 判断是否小于=9
+
+        i = i >> 4; // 把i右移的位，相当于，把上面这步的后面4位截掉了
+        int y = i & 15;
+        String v2 = (y <= 9) ? y + "" : (char)(y - 10 + 'a') + "";
+
+        System.out.println(v2 + v1);
+
+    }
+}
+
+```
+
+>理解原理
+![60以16进制格式打印出来](./images/60以16进制格式打印出来.png)
 
 
+<table>
+    <tr>
+        <td></td>
+        <td>. () ; ,</td>
+        <td rowspan="16">高</td>
+    </tr>
+    <tr>
+        <td>R -> L</td>
+        <td>++ -- ~ !(data type)</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>* / %</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>+ -</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td><< >> >>></td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>< > <= >= instanceof</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>== !=</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>&</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>^</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>|</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>&&</td>
+    </tr>
+    <tr>
+        <td>L -> R</td>
+        <td>||</td>
+    </tr>
+    <tr>
+        <td>R -> L</td>
+        <td>? :</td>
+    </tr>
+    <tr>
+        <td>R -> L</td>
+        <td>= *= /= %=</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>+= -= <<= >>=</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>>>> = &= ^= |=</td>
+    </tr>
 
+</table>
 
 
 
