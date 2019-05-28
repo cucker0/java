@@ -185,7 +185,7 @@ class DecToHexOutput {
     <tr>
         <td></td>
         <td>. () ; ,</td>
-        <td rowspan="16">高</td>
+        <td rowspan="16">高<br><br><br><br>低</td>
     </tr>
     <tr>
         <td>R -> L</td>
