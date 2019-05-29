@@ -10,7 +10,7 @@
     2）可以被400整除
     3) 大于等于3200的年份能被3200和172800同时整除
 
-运行：
+运行：javac -encoding utf8 DateEstimationDays2.java && java DateEstimationDays2
 * */
 
 import java.util.Scanner;
