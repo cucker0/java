@@ -37,7 +37,7 @@ class DateEstimationDays2 {
             System.exit(0);
         }
 
-        if (y < 0) {
+        if (y < 0) { // 处理公元前的年份
             y = y*(-1) -1;
         }
 
