@@ -7,7 +7,7 @@ score>=90        等级：A
 60=<score<70     等级: C
 score<60         等级：D
 
-
+运行：javac -encoding utf8 Score2.java && java Score2
 * */
 
 import java.util.Scanner;
