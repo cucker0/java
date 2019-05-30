@@ -1,7 +1,7 @@
 /*
 循环嵌套
 
-运行：
+运行：javac -encoding utf8 LoopNest.java && java LoopNest
 * */
 
 class LoopNest {
@@ -77,14 +77,14 @@ class LoopNest {
  *
 
          */
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 4; ++i) { // 上部分(上面4行)
             for (int j = 0; j <= i; ++j) {
                 System.out.print('*');
             }
             System.out.println();
         }
 
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5; ++i) { // 下部分(下面5行)
             for (int j = 0; j < 5 - i; ++j) {
                 System.out.print('*');
             }
