@@ -22,7 +22,7 @@ class Score2 {
             System.out.println("Score input erro!!");
         } else {
             score /= 10;
-            char level = 'D';
+            char level;
             switch (score) {
                 case 10:
                 case 9:
