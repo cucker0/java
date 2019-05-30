@@ -15,17 +15,18 @@ class ClassStatistics {
         int negative_count = 0; // 负数个数
         int temp;
         for (; ; ) {
+            System.out.println("输入一个整数：");
             temp = sc.nextInt();
             if (temp > 0) {
                 positive_count += 1;
             } else if (temp < 0) {
                 negative_count += 1;
             } else {
-                System.out.println("正数个数：" + positive_count);
-                System.out.println("负数个数：" + negative_count);
                 break;
                 //return;
             }
         }
+        System.out.println("正数个数：" + positive_count);
+        System.out.println("负数个数：" + negative_count);
     }
 }
