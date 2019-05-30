@@ -17,9 +17,9 @@ class ClassStatistics2 {
         while (true) {
             temp = sc.nextInt();
             if (temp > 0) {
-                positive_count += 1;
+                ++positive_count;
             } else if (temp < 0) {
-                negative_count += 1;
+                ++negative_count;
             } else {
                 System.out.println("正数个数：" + positive_count);
                 System.out.println("负数个数：" + negative_count);
