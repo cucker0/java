@@ -1,7 +1,7 @@
 /*
-break 跳转指定层
+continue 跳转指定层
 
-运行：javac -encoding utf8 TestBreak.java && java TestBreak
+运行：javac -encoding utf8 TestContinue.java && java TestContinue
 * */
 
 class TestContinue {
