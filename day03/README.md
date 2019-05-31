@@ -85,3 +85,59 @@ do {
 } while (布尔测试表达式);
 
 ```
+
+## 特殊流程控制break
+```text
+* break语句用于终止某个语句块的执行
+{
+    ... ...
+    break;
+}
+
+* break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
+lable1:    for (int i = 0; i < 4; ++i) {
+lable2:        for (int j = 0; j < 4; ++j) {
+lable3:            for (int k = 0; k < 4; ++k) {
+                    if (k == 2) {
+                        break lable2;
+                    }
+                    System.out.println("k layer: " + k);
+                }
+                System.out.println("j layer: " + j);
+            }
+            System.out.println("i layer: " + i);
+        }
+        
+        
+```
+
+## continue特殊控制
+```text
+lable1:    for (int i = 0; i < 4; ++i) {
+lable2:        for (int j = 0; j < 4; ++j) {
+lable3:            for (int k = 0; k < 4; ++k) {
+                    if (k == 2) {
+                        continue lable1;
+                    }
+                    System.out.println("k layer: " + k);
+                }
+                System.out.println("j layer: " + j);
+            }
+            System.out.println("i layer: " + i);
+        }
+
+```
+
+## return
+```text
+* return并非专门用于结束循环的，它的功能是结束当前整个方法。执行return语句时，这个方法将被结束
+* 与break、continue不同的是，return直接结束整个方法，不管这个return处于多少层循环之内
+
+```
+
+## break, continue, return特殊流程控制说明
+* return 返回值，结束当前整个方法
+* break 终止本层循环，只能用于 switch-case语句和for、while、do-while循环语句中
+* continue 终止本次循环，只能用于循环语句（for、while、do-while）
+* break、continue之后不能有其他的语句，因为程序永远不会执行其后的语句
+* 标号语句必须紧接在循环的头部。标号语句不能用在非循环语句的前面。
