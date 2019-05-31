@@ -17,7 +17,7 @@
 所以m必有一个小于或等于其平方根的因数，那么验证素数时就只需要验证到其平方根就可以了。
 即一个合数一定含有小于它平方根的质因子。
 
-运行：javac -encoding utf8 PrimeNumber.java && java PrimeNumber
+运行：javac -encoding utf8 PrimeNumberOptimal.java && java PrimeNumberOptimal
 * */
 
 
