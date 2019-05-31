@@ -95,9 +95,12 @@ do {
 }
 
 * break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
-lable1:    for (int i = 0; i < 4; ++i) {
-lable2:        for (int j = 0; j < 4; ++j) {
-lable3:            for (int k = 0; k < 4; ++k) {
+        lable1:
+        for (int i = 0; i < 4; ++i) {
+            lable2:
+            for (int j = 0; j < 4; ++j) {
+                lable3:
+                for (int k = 0; k < 4; ++k) {
                     if (k == 2) {
                         break lable2;
                     }
@@ -113,9 +116,12 @@ lable3:            for (int k = 0; k < 4; ++k) {
 
 ## continue特殊控制
 ```text
-lable1:    for (int i = 0; i < 4; ++i) {
-lable2:        for (int j = 0; j < 4; ++j) {
-lable3:            for (int k = 0; k < 4; ++k) {
+        lable1:
+        for (int i = 0; i < 4; ++i) {
+            lable2:
+            for (int j = 0; j < 4; ++j) {
+                lable3:
+                for (int k = 0; k < 4; ++k) {
                     if (k == 2) {
                         continue lable1;
                     }
