@@ -13,7 +13,7 @@ class MaxDivisorAndMaxMultiple {
         int num1 = sc.nextInt();
         int num2 = sc.nextInt();
         int max, min, max_divisor = 0, min_multiple = 0;
-        max = (num1 > num2) ? num1 : num2;
+        max = num1 > num2 ? num1 : num2;
         min = num1 ^ num2 ^ max; // 通过位异或交换值
 
         // 最大公约数
