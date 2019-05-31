@@ -1,4 +1,5 @@
 /*
+查找质数优化版
 题目：
     打印1-100内的所有质数
 
@@ -21,17 +22,16 @@
 
 
 
-class PrimeNumber {
+class PrimeNumberOptimal {
     public static void main(String[] args) {
         System.out.println("1-100内的所有质数：");
         long start_time = System.currentTimeMillis(); // 获取系统当前时间的毫秒数（时间戳）
-        boolean is_prime = true;
-        for (int i = 1; i <= 100000; ++i) {
-//            boolean is_prime = true;
+        for (int i = 2; i <= 100000; ++i) {
+            boolean is_prime = true;
             if (i == 1) { // 跳过1，因为1即不是质数也不是合数
                 continue;
             }
-            for (int j = 2; j < i; ++j) { // 这里的循环条件也可设置为j <= Math.sqrt(i)，效率更高
+            for (int j = 2; j <= Math.sqrt(i); ++j) {
                 if (i % j == 0) {
                     is_prime = false;
                     break;
@@ -40,10 +40,9 @@ class PrimeNumber {
             if (is_prime) {
                 // System.out.println(i);
             }
-            is_prime = true;
         }
         long end_time = System.currentTimeMillis();
-        System.out.println("运行耗时(ms)：" + (end_time - start_time)); // 3874
+        System.out.println("运行耗时(ms)：" + (end_time - start_time)); // 15
 
     }
 }
