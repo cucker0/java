@@ -14,8 +14,8 @@ class MultiplicationTable99 {
 
         * */
 
-        for (int i = 1; i <= 9; ++i) { // 9行
-            for (int j = 1; j <= i; ++j) {
+        for (int i = 1; i <= 9; ++i) { // 外层循环控制行数(9行)
+            for (int j = 1; j <= i; ++j) { // 内层循环控制列数(找出列数与行数的关系：j = i)
                 System.out.print(j + " * " + i + " = " + (j * i) + '\t');
             }
             System.out.println();
