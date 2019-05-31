@@ -9,3 +9,31 @@ day04
 
 ```
 
+## 数组声明与初始化
+* 静态初始化
+```java
+int[] ii;
+ii = new int[]{12, 2, 4, 5};
+
+short[] ss = new short[]{3, 999, 7};
+
+byte[] bb = byte[]{127, 1, 5};
+
+```
+
+* 动态初始化
+```java
+String[] strs = new String[4];
+strs[0] = "AA";
+strs[2] = "CC";
+
+int[] ii = new int[3];
+
+```
+
+## 数组元素的默认值
+* byte, short, int, long 数组元素默认值：0
+* float, double数组元素默认值：0.0
+* char 数组元素默认值：空白(即不输出任何东西) '\0'
+* boolean数组元素默认值：false
+* 引用类型数组元素默认值：null
