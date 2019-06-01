@@ -30,14 +30,15 @@ public class Score2 {
         }
 
         // 遍历数组，给成绩判断等级
+        System.out.println("最高成绩：" + max);
         for (int i = 0; i < info.length; ++i) {
             char grade = 'D';
-            int difference = max - info[i];
-            if (difference <= 10) {
+            int difference = info[i] - max;
+            if (difference >= -10) {
                 grade = 'A';
-            } else if (difference <= 20) {
+            } else if (difference >= -20) {
                 grade = 'B';
-            } else if (difference <= 30) {
+            } else if (difference >= -30) {
                 grade = 'C';
             }
             System.out.println("student " + i + " socre is " + info[i] + ", grade is " + grade);
