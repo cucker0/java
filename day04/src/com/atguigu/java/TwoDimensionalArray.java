@@ -12,7 +12,7 @@ public class TwoDimensionalArray {
     public static void main(String[] args) {
         int[] score1 = new int[6];
 
-        // 二位数
+        // 二维数组
         // # 声明二维数组(可以先声明二维数组变量，后初始化； 也可以声明并初始二维数组)
         int[][] score2;
         String[][] names; // 也可以写成 String[] names[];
@@ -28,8 +28,8 @@ public class TwoDimensionalArray {
         int[][] num3 = {{3, 5, 7}, {2}, {33, 11}}; // 省略格式。
 
         // # 动态初始化
-        names = new String[6][5]; // 动态初始化一
-        names2 = new String[6][]; // 动态初始化二，这表示第一层的长度
+        names = new String[6][5]; // 动态初始化一，6表示第一层数组的长度，5表示第二层数组的长度，即每个二层数组长度都为5
+        names2 = new String[6][]; // 动态初始化二，6表示第一层的长度
         String[][] names3 = new String[8][3];
         names[0][0] = "s00";
         names[3][1] = "狗子";

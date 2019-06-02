@@ -48,3 +48,60 @@ int[] ii = new int[3];
 
 数组在内存的结构
 ![数组内存结构](./images/数组在内存中的结构.png)
+
+
+# 多维数组
+```java
+        // 二维数组
+        // # 声明二维数组(可以先声明二维数组变量，后初始化； 也可以声明并初始二维数组)
+        int[][] score2;
+        String[][] names; // 也可以写成 String[] names[];
+                            // 或 String names[][];
+                            // 但不建议这两种方式
+
+        String[][] names2;
+
+        // #.静态初始化
+        score2 = new int[][]{{3, 5, 7}, {2, 9}, {33, 11}};
+        // 同时声明和静态初始化
+        int[][] nums = new int[][]{{11, 22}, {1}, {44, 3,}};
+        int[][] num3 = {{3, 5, 7}, {2}, {33, 11}}; // 省略格式。
+
+        // # 动态初始化
+        names = new String[6][5]; // 动态初始化一
+        names2 = new String[6][]; // 动态初始化二，这表示第一层的长度
+        String[][] names3 = new String[8][3];
+        names[0][0] = "s00";
+        names[3][1] = "狗子";
+
+//        names2[0] = new String[3];
+//        names2[1] = new String[5];
+//        names2[3] = new String[2];
+
+
+        String[][] obj = names2;
+        // 每一层的数组都有length属性
+        for (int i = 0; i < obj.length; ++i) {
+            if (obj[i] != null) { // 避免报错：Exception in thread "main" java.lang.NullPointerException
+                for (int j = 0; j < obj[i].length; ++j) {
+                    System.out.println(obj[i][j]);
+                }
+            }
+            System.out.println();
+        }
+```
+
+## 不同格式
+```text
+// 声明数组变量（一维数组、二维数组），建议把数组的维度都写类型这
+
+// 一维数组
+int[] x; // 建议使用这种
+int x[];
+
+// 二维数组
+int[][] y; // 建议使用这种
+int[] y[];
+int y[][];
+
+```
