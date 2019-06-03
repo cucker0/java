@@ -90,7 +90,7 @@ public class TestArray2 {
             System.out.print(arr[i] + "\t");
         }
 
-        // 排序
+        // 选择排序
         int tmp;
         for (int i = 0; i < arr.length - 1; ++i) {
             for (int j = i + 1; j < arr.length; ++j) {
