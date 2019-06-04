@@ -31,7 +31,7 @@ class Circle {
     public double calculateArea() {
         double area;
         area = Math.PI * radius * radius;
-//        area = Math.PI * Math.pow(radius, 2); // 次方
+//        area = Math.PI * Math.pow(radius, 2.0); // 次方
         return area;
     }
 
