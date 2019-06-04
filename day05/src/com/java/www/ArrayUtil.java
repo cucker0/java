@@ -57,7 +57,7 @@ public class ArrayUtil {
         int temp;
         for (int i = 0, j = arr.length - 1; i < j; ++i, --j) {
             temp = arr[i];
-            arr[i] = arr[i];
+            arr[i] = arr[j];
             arr[j] = temp;
         }
         return arr;
@@ -66,12 +66,25 @@ public class ArrayUtil {
     public int[] sort(int[] arr) {
         // sort array
         int start = 0, end = arr.length - 1;
-        arr = arraySortOps(arr, start, end);
+        arraySortOps(arr, start, end);
         return arr;
     }
 
+    public void printArr(int[] arr) {
+        System.out.print("[ ");
+        for (int i = 0; i < arr.length; ++i) {
+            System.out.print(arr[i] + ", ");
+        }
+        System.out.print(" ]");
+        System.out.println();
+    }
+
     public int[] arraySortOps(int[] arr, int start, int end) {
-        // array quick sort operations
+        // array quick sort operations 快速排列
+        if (arr.length <= 1) {
+            return arr;
+        }
+
         if (start < end) {
             int i = start, j = end;
             int base = arr[i]; // 选择一个比较基准数，此时腾出下标为i的坑位
@@ -81,20 +94,24 @@ public class ArrayUtil {
 
                 // 后区，从最后一个开始往前逐个与基准数比较，直到有一个比基准数小的
                 while (i < j && arr[j] >= base) {
-                    j -= 1;
+                    --j;
                 }
-                arr[i] = arr[j];
-
+                if (i < j) { // 右边有比基准数小的
+                    arr[i] = arr[j]; // 把前面腾出的下标i坑位填上，挖下坑位下标j的坑位
+                    ++i; //
+                }
                 // 前区，从下标为start的开始往后逐个与基准数比较，直到有一个比基准数大的
                 while (i < j && arr[i] <= base) {
-                    i += 1;
+                    ++i;
                 }
-                arr[j] = arr[i];
+                if (i < j) {
+                    arr[j] = arr[i]; //
+                    --j;
+                }
             }
 
             // 此时i = j，i与j是此消彼长的关系，i加少了，j就会减多些
-            arr[i] = base; // 把基准数填到找到
-
+            arr[i] = base; // 把基准数填到找到的前后区中间，此时已经把比基准数小的放在左边，比基准数大的放在右边
             arraySortOps(arr, start, i - 1); // 前区递归
             arraySortOps(arr,i + 1, end); // 后区递归
 
