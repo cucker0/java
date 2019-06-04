@@ -22,6 +22,8 @@ public class TestPerson {
         p2.addAge();
         p2.showAge();
         p2.showInfo();
+
+        p1.showInfo();
     }
 }
 
