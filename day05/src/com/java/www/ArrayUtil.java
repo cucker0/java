@@ -66,7 +66,8 @@ public class ArrayUtil {
     public int[] sort(int[] arr) {
         // sort array
         int start = 0, end = arr.length - 1;
-        arraySortOps(arr, start, end);
+//        arraySortOps(arr, start, end);
+        arraySortOps2(arr, start, end);
         return arr;
     }
 
@@ -97,16 +98,16 @@ public class ArrayUtil {
                     --j;
                 }
                 if (i < j) { // 右边有比基准数小的
-                    arr[i] = arr[j]; // 把前面腾出的下标i坑位填上，挖下坑位下标j的坑位
-                    ++i; //
+                    arr[i] = arr[j]; // 把前面腾出的下标i坑位填上，挖下下标j的坑位
+                    ++i; // 此时，刚刚填好的坑位i明显比基准数小了，所以前区这个位就不用再比较了
                 }
                 // 前区，从下标为start的开始往后逐个与基准数比较，直到有一个比基准数大的
                 while (i < j && arr[i] <= base) {
                     ++i;
                 }
-                if (i < j) {
-                    arr[j] = arr[i]; //
-                    --j;
+                if (i < j) { // 左边有比基准数大的
+                    arr[j] = arr[i]; // 把前面腾出的下标j坑位填上，挖下下标i的坑位
+                    --j; // 此时，刚刚填好的坑位j明显比基准数大了，所以后区这个位就不用再比较了
                 }
             }
 
@@ -116,6 +117,53 @@ public class ArrayUtil {
             arraySortOps(arr,i + 1, end); // 后区递归
 
         }
+        return arr;
+    }
+
+    public int[] arraySortOps2(int[] arr, int start, int end) {
+        // 快速排序
+        if (arr.length <= 1) {
+            return arr;
+        }
+
+        if (start < end) {
+            int i = start, j = end;
+            int base = arr[i]; // 腾出下标为i的位置
+
+            while (i < j) {
+                // 后区，从最后一个开始往前逐个与基准数比较，直到有一个比基准数小的
+                while (i < j) {
+                    if (arr[j] < base) {
+                        arr[i] = arr[j]; // 填上前面的下标i坑，挖下下标j的坑位
+                        ++i; // 此时前区的下标i位不用再比较了，已经确定比基准数小
+                        printArr(arr);
+                        break;
+                    }
+                    --j;
+                }
+
+
+                // 前区，从下标为start的开始往后逐个与基准数比较，直到有一个比基准数大的
+                while (i < j) {
+                    if (arr[i] > base) {
+                        arr[j] = arr[i]; // 填上上面的下标j坑位，挖下下标为i的坑位
+                        --j; // 此时前区的下标j位不用再比较了，已经确定比基准数大
+                        printArr(arr);
+                        break;
+                    }
+                    ++i;
+                }
+
+            }
+
+            // 此时小于基准数的移到了前区，大于的移到了后区，且i == j
+            arr[i] = base;
+            printArr(arr);
+            arraySortOps2(arr, start, i - 1);
+            arraySortOps2(arr,i + 1, end);
+
+        }
+
         return arr;
     }
 }
