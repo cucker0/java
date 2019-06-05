@@ -13,6 +13,8 @@ public class VariableParameter {
         vp.showBooks();
         vp.showBooks("侠客行");
         vp.showBooks("神雕侠侣", "射雕英雄传", "倚天屠龙记");
+        vp.showBooks(new String[]{"演员的自我修养", "独步天下"});
+
     }
 
     public void showMessage(String[] msg) {
