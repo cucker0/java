@@ -28,7 +28,7 @@ public class VariableParameter {
         System.out.println("与可变形参方法构成重载的showBooks\n " + book);
     }
 
-    public void showBooks(String...books) {
+    public void showBooks(String... books) {
         System.out.println("形参个数可变方法showBooks");
         for (int i = 0; i < books.length; ++i) {
             System.out.print(books[i] + " ");

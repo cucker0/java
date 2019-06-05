@@ -314,13 +314,13 @@ public static void test(int a, String[] books) {
 ```
 * 可变个数形参定义方法
 ```java
-public void test(int a, String...books) {
+public void test(int a, String... books) {
     
 }
 ```
 >说明  
 . 可变参数：方法参数个数可变  
-. 声明方式：方法名(参数类型...参数名)  
+. 声明方式：方法名(参数类型... 参数名)  
 . 可变参数方法的使用与数组参数是一致的  
 . 方法的参数部分有可变参数时，必须放在形参中的最后一个  
 
