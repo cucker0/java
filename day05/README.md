@@ -174,7 +174,7 @@ public class Person {
     
 说明：
 * 修饰符
-    public, private, protected等
+    public, private, protected, 缺省
     
 * 返回值类型
     return语句返回传递返回值。没有返回值：void
@@ -304,3 +304,15 @@ new Person().showInfo();
 
 
 ```
+
+## 内存划分的结构
+* 栈(stack)
+    局部变量，对象的引用名，数组的引用名
+* 堆(heap)
+    new 出来的对象实例，（对象实体，数组的实体），成员变量
+* 方法去
+    含字符串变量
+* 静态域
+    声明为static的变量
+    
+    
