@@ -128,7 +128,34 @@ public class ArrayUtil {
 
         if (start < end) {
             int i = start, j = end;
-            int base = arr[i]; // 腾出下标为i的位置
+            int base;
+
+            // [] arr[start] [] arr[end] []
+            // [] arr[end] [] arr[start] []
+//            int base = arr[i]; // 腾出下标为i的位置
+
+            // 长度3及以上的数组使用中间位置的数做基准数，一更好应对原本数组基本排好顺序的情况。
+            if ((end - start) >= 2) {
+                int middle_index = (start + end) / 2;
+                base = arr[middle_index]; // 取中间的数为基准数，此时腾出一个坑位 middle_index
+
+                if (arr[start] > arr[end]) { // 使arr[start] <= arr[end]
+                    int temp;
+                    temp = arr[start];
+                    arr[start] = arr[end];
+                    arr[end] = temp;
+                }
+
+                if (arr[middle_index] >= arr[start]) {
+                    arr[middle_index] = arr[start + 1]; // arr[start + 1] 移到前面的坑位middle_index，腾出坑位 start + 1
+                    i = start + 1; // arr[start] 这个数不用比了
+                } else {
+                    arr[middle_index] = arr[start]; // arr[start]移到前面的坑位middle_index，腾出坑位 start
+                }
+            } else {
+                base = arr[start];
+            }
+
 
             while (i < j) {
                 // 后区，从最后一个开始往前逐个与基准数比较，直到有一个比基准数小的
