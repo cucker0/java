@@ -351,7 +351,97 @@ public void test(int a, String... books) {
  * 形参是基本数据类型：将实参的值传递给形参的基本数据类型的变量  
  * 形参是引用数据类型（类，数组、String）：将实参的引用类型变量的值（对应的堆空间的对象实体的内存首地址）传递给形参的引用类型变量  
  这里主要是跟引用数据类型变量保存的值为堆内存首地址有关系。效果相当于传的是堆对象实体的指针
- 
- 
+
+```java
+package com.java.www;
+
+public class Test {
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.first();
+    }
+
+    public void first() {
+        int i = 5;
+        Value v = new Value();
+        v.i = 25;
+        second(v, i);
+        System.out.println(v.i);
+    }
+
+    public void second(Value v, int i) {
+        i = 0;
+        v.i = 20;
+        Value val = new Value();
+        v = val;
+        System.out.println(v.i + " " + i);
+    }
+
+}
+
+class Value {
+    int i = 15;
+}
+
+``` 
+![java值传递](./images/java值传递.png) 
+
+# 面向对象特征之一：封装和隐藏
+使用者对类内部的属性(对象的成员变量)直接操作会导致数据的错误、混乱或安全性问题
+![属性需要隐藏](./images/属性需要隐藏.png)
+
+## 信息的封装和隐藏
+java中通过将数据声明为私有的(private)，再提供公共的(public)方法:getter()和
+setter()实现对该属性的操作，以实现下面的目的：
+* 隐藏一个类中不需要对外提供实现的细节
+* 使用者只能通过事先定制好的方法来访问数据，可以方便地加入控制逻辑，限制对
+属性的不合理操作
+* 便于修改，增强代码的可维护性
+
+ ```java
+// 示例
+
+package com.java.www;
+
+public class EncapsulationAndHiding {
+    public static void main(String[] args) {
+        Animal dog1 = new Animal();
+        dog1.setLegs(4);
+        dog1.setLegs(-100); // 不合法的数字
+        System.out.println(dog1.getLegs());
+    }
+
+}
+
+class Animal {
+    private int legs;
+    public void setLegs(int i) {
+        if (i < 0 || i > 100) {
+            System.out.println("输入的数字不合法");
+        } else {
+            legs = i;
+        }
+    }
+
+    public int getLegs() {
+        return legs;
+    }
+}
+```
+
+## 四种访问权限修饰符
+
+|修饰符 |类内部 |同一个包 |子类 |任何地址 |使用对象 |
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|private |yes | | | |方法 |
+|缺省(即无修饰符) |yes |yes | | |方法、类 |
+|protected |yes |yes |yes | |方法 |
+|public |yes |yes |yes |yes |方法、类 |
+
+* 对于class的权限修饰只能用public或不写(default缺省)
+* public类可以在任何地方被访问
+* default类只可以被同一个包内部的类访问
+
+
 
 
