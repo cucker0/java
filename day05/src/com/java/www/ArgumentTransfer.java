@@ -34,7 +34,9 @@ public class ArgumentTransfer {
 
         String aa = "aa";
         String bb = aa;
-        System.out.println(aa);
+        System.out.println("aa.hashCode(内存地址): " + aa.hashCode()); // 3104
+        System.out.println("bb.hashCode(内存地址): " + bb.hashCode()); // 3104   说明String型的变量保存的是对象实体的内存首地址，是引用类型
+
 
     }
 
