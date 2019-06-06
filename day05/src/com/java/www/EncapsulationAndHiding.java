@@ -11,7 +11,7 @@ public class EncapsulationAndHiding {
         dog1.setLegs(4);
         dog1.setLegs(-100); // 不合法的数字
         System.out.println(dog1.getLegs());
-        
+
     }
 
 }
