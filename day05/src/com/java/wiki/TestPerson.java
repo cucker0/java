@@ -30,7 +30,8 @@ class Person {
         if (n > 0 && n <= 130) {
             age = n;
         } else {
-            System.out.println("输入的年龄不合法，年龄范围(0 - 130]");
+//            System.out.println("输入的年龄不合法，年龄范围(0 - 130]");
+            throw new RuntimeException("输入的年龄不合法，年龄范围(0 - 130]");
         }
     }
 
