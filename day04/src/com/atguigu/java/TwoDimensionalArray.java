@@ -49,6 +49,18 @@ public class TwoDimensionalArray {
             }
             System.out.println();
         }
+        
+        Object[][]  aa = new Object[][]{{1, "china", 5}, {"aa", "bb", "bb"}, {2.3, 3,14}};
+
+        System.out.print("{ ");
+        for (int i = 0; i < aa.length; ++i) {
+            System.out.print("{ ");
+            for (int j = 0; j < aa[i].length; ++j) {
+                System.out.print(aa[i][j] + ", ");
+            }
+            System.out.print(" }");
+        }
+        System.out.print(" }");
 
     }
 }

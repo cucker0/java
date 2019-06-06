@@ -108,3 +108,19 @@ int y[][];
 
 * 声明数组是就需要确定长度（显式或隐式）
 * 多维数组所有的元素类型必须为制定的类型，且只能有一种数据类型
+
+## 混合数据类型数据
+```java
+        Object[][]  aa = new Object[][]{{1, "china", 5}, {"aa", "bb", "bb"}, {2.3, 3,14}};
+
+        System.out.print("{ ");
+        for (int i = 0; i < aa.length; ++i) {
+            System.out.print("{ ");
+            for (int j = 0; j < aa[i].length; ++j) {
+                System.out.print(aa[i][j] + ", ");
+            }
+            System.out.print(" }");
+        }
+        System.out.print(" }");
+
+```
