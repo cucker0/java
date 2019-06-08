@@ -437,10 +437,10 @@ class Animal {
 
 |修饰符 |类内部 |同一个包 |子类 |任何地址 |使用对象 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|private |yes | | | |方法 |
-|缺省(即无修饰符) |yes |yes | | |方法、类 |
-|protected |yes |yes |yes | |方法 |
-|public |yes |yes |yes |yes |方法、类 |
+|private |yes | | | |属性、方法、构造器 |
+|缺省(即无修饰符) |yes |yes | | |属性、方法、构造器、类 |
+|protected |yes |yes |yes | |属性、方法、构造器 |
+|public |yes |yes |yes |yes |属性、方法、构造器、类 |
 
 * 对于class的权限修饰只能用public或不写(default缺省)
 * public类可以在任何地方被访问
