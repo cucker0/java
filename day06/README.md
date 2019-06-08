@@ -22,6 +22,19 @@ day06
 Person p = new Person(Peter, 15);
 
 ```
+与python类中的__init__(self):   作用一样，python还有析构器(也叫析构函数)
+```python
+# python class
+class Student(Object):
+	__init__(self): # 构造器（构造函数）
+		name = self.name
+		age = self.age
+		
+	__del__(self): # 析构器（析构函数，在销毁该实例时执行，可用del 实例对象来手动销毁）
+		print("del this instance")
+	
+
+```
 
 ## 构造器语法格式
 ```text
