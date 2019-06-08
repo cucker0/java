@@ -17,6 +17,8 @@ python中的析构函数(销毁类实体): __del__(self):
 
 package com.java.www;
 
+import java.util.Date;
+
 public class TestPerson {
     public static void main(String[] args) {
         Person p = new Person(); // 为什么可以执行这个方法。因为默认已经提供了一个空参的构造器。
@@ -31,6 +33,7 @@ public class TestPerson {
         System.out.println(p3.getName() + ", " + p3.getAge() + "岁");
     }
 }
+
 
 class Person {
     // 属性
@@ -68,3 +71,4 @@ class Person {
         return age;
     }
 }
+
