@@ -1,6 +1,7 @@
 package banking;
 
 public class Account {
+	// 账户
     private double balance;
 
     // 构造器
