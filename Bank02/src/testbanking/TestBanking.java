@@ -8,36 +8,36 @@ import banking.*;
 
 public class TestBanking {
 
-  public static void main(String[] args) {
-    Customer customer;
-    Account  account;
+    public static void main(String[] args) {
+        Customer customer;
+        Account account;
 
-    // Create an account that can has a 500.00 balance.
-    System.out.println("Creating the customer Jane Smith.");
-    //code
-    customer = new Customer("Jane", "Smith");
+        // Create an account that can has a 500.00 balance.
+        System.out.println("Creating the customer Jane Smith.");
+        //code
+        customer = new Customer("Jane", "Smith");
 
-    System.out.println("Creating her account with a 500.00 balance.");
-    //code
-    account = new Account(500.00);
-    customer.setAccount(account);
-    account = customer.getAccount();
+        System.out.println("Creating her account with a 500.00 balance.");
+        //code
+        account = new Account(500.00);
+        customer.setAccount(account);
+        account = customer.getAccount();
 
-    System.out.println("Withdraw 150.00");
-	//code
-    customer.getAccount().withdraw(150.00);
+        System.out.println("Withdraw 150.00");
+        //code
+        customer.getAccount().withdraw(150.00);
 
-    System.out.println("Deposit 22.50");
-  	//code
-    customer.getAccount().deposit(22.50);
+        System.out.println("Deposit 22.50");
+        //code
+        customer.getAccount().deposit(22.50);
 
-    System.out.println("Withdraw 47.62");
-   	//code
-    customer.getAccount().withdraw(47.62);
+        System.out.println("Withdraw 47.62");
+        //code
+        customer.getAccount().withdraw(47.62);
 
-    // Print out the final account balance
-    System.out.println("Customer [" + customer.getLastName()
-		       + ", " + customer.getFirstName()
-		       + "] has a balance of " + account.getBalance());
-  }
+        // Print out the final account balance
+        System.out.println("Customer [" + customer.getLastName()
+                + ", " + customer.getFirstName()
+                + "] has a balance of " + account.getBalance());
+    }
 }
