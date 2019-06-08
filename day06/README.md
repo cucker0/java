@@ -62,3 +62,76 @@ public class Animal {
 . 一个类可以创建多个重载的构造器  
 . 父类的构造器不可被子类继承
 
+# 构造器重载
+* 构造器重载一般用来创建对象的同时初始化对象
+
+```java
+class Person {
+    String name;
+    int age;
+    
+    public Person(Strin n, int a) {
+        name = n;
+        age = a;
+    }
+}
+
+```
+
+* 构造器重载使得对象的创建更加灵活，方便创建各种不同的对象
+```java
+public class Person {
+    public Person(String name, int age, Data d) {
+        this(name, age);
+        ... ...
+    }
+    
+    public Person(String name, int age) {
+        ...
+    }
+    
+    public Person(String name, Date d) {
+        ...
+    }
+    
+    public Person() {
+        ...
+    }
+}
+
+```
+* 构造器重载，参数列表必须不同
+
+```java
+public class Person {
+    private String name;
+    private int age;
+    private Date birthDate;
+    
+    // 构造器
+    public Person(Stringt name, int age, Date d) {
+        this.name = name;
+        this.age = age;
+        this.birthDate = d;
+    }
+    public Person(String name, int age) {
+        this(name, age);
+        // 等同于
+        // this.name = name;
+        // this.age = age;
+    }
+    public Person(String name, Date d) {
+        this(name, 30, d);
+        // 等同于
+        // this.name = name;
+        // this.age = 30;
+        // this.birthDate = d;
+    }
+    public Person(String name) {        
+        this(name, 30);
+    }
+}
+
+```
+
+
