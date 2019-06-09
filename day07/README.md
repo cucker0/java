@@ -11,6 +11,7 @@ day07
     * 当在方法内需要调用该方法的对象时，就用this
     
 * 使用this调用属性、方法
+this理解为当前对象或当前正在创建的对象
 ```java
 class Person {
     private String name;
@@ -101,7 +102,7 @@ public class TestPerson {
 ```
 
 ## this关键字使用注意事项
-* 使用this()必须放在构造器的首行
+* 使用this(形参)必须放在构造器的首行
 * 使用this调用本类中其他的构造器，保证至少有一个构造器不是使用this，避免形成死循环
 
 # JavaBean
