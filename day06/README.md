@@ -128,23 +128,16 @@ public class Person {
     private Date birthDate;
     
     // 构造器
-    public Person(Stringt name, int age, Date d) {
+    public Person(Stringt name, int age, Date d) { // 构造器1
         this.name = name;
         this.age = age;
         this.birthDate = d;
     }
     public Person(String name, int age) {
-        this(name, age);
-        // 等同于
-        // this.name = name;
-        // this.age = age;
+        this(name, age); // 这里调用了构成重载的 构造器1
     }
     public Person(String name, Date d) {
-        this(name, 30, d);
-        // 等同于
-        // this.name = name;
-        // this.age = 30;
-        // this.birthDate = d;
+        this(name, 30, d); // 调用构造器1
     }
     public Person(String name) {        
         this(name, 30);
