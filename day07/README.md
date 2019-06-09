@@ -204,6 +204,7 @@ public class TestPackage {
 }
 
 ```
+* 目前不支持 import ... as 语法
 
 ## import语句使用注意事项
 * 若引入的包为:java.lang,则编译器默认可获取此包下的类，不需要再显式声明。
