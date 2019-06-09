@@ -36,3 +36,7 @@ Customer [4] is Soley,Maria
 ```
 
 [Back To TOC](#Table-of-contents)
+
+类的UML图
+
+![类的UML图](./images/UML.jpg "类的UML图")
