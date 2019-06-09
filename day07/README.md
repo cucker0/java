@@ -215,6 +215,7 @@ public class TestPackage {
 若要导入sub下的类:import lee.sub.*;
 * import 语句还是必须的，可在类里使用类的命名。如java.util.Scanner
 * JDK 1.5加入import static语句
+>import static 表示导入指定类的static的属性或方法
 
 # JDK主要的包介绍
 1. java.lang
