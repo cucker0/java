@@ -102,7 +102,7 @@ public class TestPerson {
 
 ## this关键字使用注意事项
 * 使用this()必须放在构造器的首行
-* 使用this调用本类中其他的构造器，保证至少有一个构造器不是使用this，必须形成死循环
+* 使用this调用本类中其他的构造器，保证至少有一个构造器不是使用this，避免形成死循环
 
 # JavaBean
 * JavaBean是一种java语言写成的可重用组件
