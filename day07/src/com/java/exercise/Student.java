@@ -10,7 +10,7 @@ public class Student extends Person {
     private int english;
     private int computer;
 
-    // 构造器，当父类定义了public 构造器时，必须在子类中重新定义构造器，不再提供默认的构造器了。
+    // 构造器，当父类定义了public 构造器时，必须在子类中重新定义构造器，不再提供默认的构造器了。当你类的构造器为缺省的，则子类中依然有默认的构造器。
     public Student(String n, char s, int a, long k, int m, int e, int c) {
         super(n, s, a);
         this.number = k;
