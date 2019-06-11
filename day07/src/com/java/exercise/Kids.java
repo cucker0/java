@@ -46,4 +46,8 @@ public class Kids extends Mankind {
     public void printAge() {
         System.out.println(yearsOld);
     }
+
+    void employeed() {
+        System.out.println("Kids should study and no job.");
+    }
 }

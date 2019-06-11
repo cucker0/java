@@ -27,4 +27,8 @@ public class Person {
     public void speek() {
         System.out.println(name + "说话");
     }
+
+    public void showInfo() {
+        System.out.printf("name: [%s], age: %s years old\n", name, age);
+    }
 }

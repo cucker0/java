@@ -24,6 +24,11 @@ public class TestStudentTeacher {
         t2.setName("熊爸");
         t2.setAge(10);
         t2.walk();
+        t2.showInfo();
+
+        // 方法重写测试
+        System.out.println();
+        s2.showInfo();
 
     }
 }
