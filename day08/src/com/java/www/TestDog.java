@@ -10,6 +10,7 @@ public class TestDog {
         dd.setMaster("朱茵");
 
         dd.showInfo();
+        System.out.println(dd.toString()); // print heap object momery address
     }
 
 }
