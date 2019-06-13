@@ -31,6 +31,7 @@ public class TestAnimal {
 
     }
 
+    // 利用instanceof判断实例所属类，再强制转换
     void call(Animal animal) {
         if (animal instanceof Dog) {
             Dog an = (Dog)animal;
