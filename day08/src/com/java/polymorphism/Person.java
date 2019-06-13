@@ -1,4 +1,4 @@
-package com.java.polymorphic;
+package com.java.polymorphism;
 
 public class Person {
     protected String name;

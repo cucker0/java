@@ -19,9 +19,7 @@
 
 * */
 
-package com.java.polymorphic;
-
-import java.lang.management.MemoryNotificationInfo;
+package com.java.polymorphism;
 
 public class TestPerson {
     public static void main(String[] args) {

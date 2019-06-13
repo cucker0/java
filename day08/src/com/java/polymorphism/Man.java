@@ -1,4 +1,4 @@
-package com.java.polymorphic;
+package com.java.polymorphism;
 
 public class Man extends Person {
     private String moustacheType; // 胡子类型：8字须，山羊胡，络腮胡

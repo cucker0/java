@@ -1,4 +1,4 @@
-package com.java.polymorphic;
+package com.java.polymorphism;
 
 public class Woman extends Person{
     private String hairStyle; // 发型：空气刘海，长发披肩，假男型

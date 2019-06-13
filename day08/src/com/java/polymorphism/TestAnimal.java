@@ -4,9 +4,7 @@
 * */
 
 
-package com.java.polymorphic;
-
-import java.util.concurrent.TimeoutException;
+package com.java.polymorphism;
 
 public class TestAnimal {
     public static void main(String[] args) {
@@ -29,9 +27,11 @@ public class TestAnimal {
 
 
 
+
     }
 
     // 利用instanceof判断实例所属类，再强制转换
+    // 正是有了类的多态才能写一个方法就能适应多个不种的子类
     void call(Animal animal) {
         if (animal instanceof Dog) {
             Dog an = (Dog)animal;
