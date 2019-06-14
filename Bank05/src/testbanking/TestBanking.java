@@ -26,8 +26,8 @@ public class TestBanking {
 
         System.out.println("Creating her Savings Account with a 500.00 balance and 3% interest.");
         //code
-        SavingAccount sacc = new SavingAccount(500.00, 3.0 / 100);
-        bank.getCustomer(0).setAccount(sacc);
+        account = new SavingAccount(500.00, 3.0 / 100);
+        bank.getCustomer(0).setAccount(account);
 
         System.out.println("Creating the customer Owen Bryant.");
         //code
@@ -36,8 +36,8 @@ public class TestBanking {
         customer = bank.getCustomer(1);
         System.out.println("Creating his Checking Account with a 500.00 balance and no overdraft protection.");
         //code
-        CheckingAccount cacc = new CheckingAccount(500.00);
-        customer.setAccount(cacc);
+        account = new CheckingAccount(500.00);
+        customer.setAccount(account);
 
         System.out.println("Creating the customer Tim Soley.");
         bank.addCustomer("Tim", "Soley");
