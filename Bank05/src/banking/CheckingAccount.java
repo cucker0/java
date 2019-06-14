@@ -29,7 +29,7 @@ public class CheckingAccount extends Account {
             balance = 0; // 余额先去完了
             return true;
         } else {
-            System.out.println("以超过您的投资额度");
+            System.out.println("已超过您的投资额度，取款失败!");
             return false;
         }
     }
