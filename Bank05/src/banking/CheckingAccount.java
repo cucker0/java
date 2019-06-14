@@ -1,3 +1,8 @@
+/*
+信用卡
+
+* */
+
 package banking;
 
 public class CheckingAccount extends Account {
