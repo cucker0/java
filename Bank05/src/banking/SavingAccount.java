@@ -15,6 +15,11 @@ public class SavingAccount extends Account {
     }
 
     // 方法
+    public double getInterestRate() {
+        return interestRate;
+    }
 
-
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
 }

@@ -34,5 +34,11 @@ public class CheckingAccount extends Account {
         }
     }
 
+    public double getOverdraftProtection() {
+        return overdraftProtection;
+    }
 
+    public void setOverdraftProtection(double overdraftProtection) {
+        this.overdraftProtection = overdraftProtection;
+    }
 }
