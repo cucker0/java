@@ -282,3 +282,73 @@ x instanceof A
     
 类的造型(类强制转换)
 ![类强制转换](./images/造型(类强制转换).png)
+
+
+# Object类
+* Object类是所有java类的根父类
+* 如果在类的声明中未使用extends关键字指明其父类，则默认父类为Object类
+```text
+    public class Person {
+        ... ...
+    }
+    
+    等价于
+    public class Person extends Object {
+        ... ...
+    }
+
+```
+* 例子
+```text
+class Person {
+    method(Object obj) { // 可接受任何类型的数据作为参数
+        ... ...
+    }
+}
+    
+    Person o = new Person();
+    o.method(333);
+    o.method("aaa");
+
+```
+
+## Object类中的主要方法
+方法名称 |类型 |描述
+:--- |--- | ---
+public Object() |构造 | 构造方法
+public boolean equals(Object obj) |普通 |对象比较
+public int hashCode() |普通 |取得hash吗
+public String toString() |普通 | 对象打印时调用
+
+
+# == 操作符与equals方法
+* ==
+    * 基本类型比较值：只要两个变量的值相等，返回true
+    ```
+    int a = 5;
+    if (a == 6) {
+        ...
+    }
+    ```
+    * 引用类型比较引用的地址值(是否指向同一个对象)：只有指向同一个对象时，==才返回 true
+    ```text
+    Person p1 = new Person();
+    Person p2 = new Person();
+    if (p1 == p2) {
+        ...
+    }
+  
+    ```
+    *用 "==" 进行比较时，符号两边的数据类型必须兼容（可自动转换的基本数据类型除外），
+    否则编译出错
+* equals()
+    * 所有类都继承了Object，也就获得了equals()方法。还可以重写
+    * 只能比较引用类型，其作用于"=="相同，比较是否指向同一个对象
+    * 格式
+    >obj1.equals(obj2)
+    * 特例
+    >当用equals()方法比较时，对类File、String、Date、包装类(Wrapper class),
+    是比较类型及内容，而不仅考虑引用的是否为同一个对象  
+    原因：在这些类中重写了Object类中的equals()方法
+    
+    
