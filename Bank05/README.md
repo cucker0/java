@@ -111,6 +111,8 @@ Savings Account: current balance is ￥150.00
 ```
 
 # 实验题目 5_3
+实现更为复杂的透支保护机制  
+
 一个客户Customer可以有储蓄卡(SavingAccount)、信用卡(CheckingAccount)，  
 这两种卡可二选一，也可同时拥有两种卡，  
 信用卡可以绑定到储蓄主卡  
@@ -125,7 +127,47 @@ Savings Account: current balance is ￥150.00
 ```
 
 ## 实验目的
+继承、多态、方法的重写。
 
+## 说明
+```text
+说 明：
+修改 SavingAccount 类
+1.仿照练习 1“Account 类的两个子类”一节实现 SavingAccount 类。
+2.SavingAccount 类必须扩展 Account 类。
+3.该类必须包含一个类型为 double 的 interestRate 属性
+4.该类必须包括一个带有两个参数（balance和interest_rate）的公有构造器。
+该构造器必须通过调用 super（balance）来将 balance 参数传递给父类构造
+器
+修改 CheckingAccount 类
+注释-这是练习 1 的选择练习。它包括了更为复杂的透支保护机制模型。它使用
+客户储蓄。它使用客户储蓄账户完成透支保护。本练习必须在完成上述两个练
+习后进行。
+1.仿照练习 1“Account 类的两个子类”一节实现 CheckingAccount 类。
+2.CheckingAccount 类必须扩展 Account 类
+3.该类必须包括一个关联属性，称作 protectedBy，表示透支保护。该属性的
+类型为 SavingAccount，缺省值必须是 null。除此之外该类没有其他的数据属
+性。
+4.该类必须包括一个带有参数（balance）的公有构造器，该构造器必须通过调
+用 super(balance)将 balance 参数传递到父类构造器。
+5. 修 改 构 造 器 为 CheckingAccount(double balance,SavingAccount 
+protect)构造器。该构造器必须通过调用 super（balance）将 balance 参数
+传递给父类构造器。
+6. CheckingAccount 类必须覆盖 withdraw 方法。该类必须执行下面的检查：
+如果当前余额足够弥补取款 amount，则正常进行。如果不够弥补但是存在透支
+保护则尝试用储蓄账户来弥补这个差值（balance-amount）。如果后一个交易
+失败，则整个交易一定失败，但余额未受影响。
+修改 Customer 类，使其拥有两个账户：一个储蓄账户和一个支票账户：两个
+都是可选的。
+1.在练习 5_续 1 修改，原来的 Customer 类包含一个称作 account 的关联属
+性，可用该属性控制一个 Account 对象。重写这个类，使其包含两个关联属性：
+savingAccount 和 checkingAccount，这两个属性的缺省值是 null
+2.包含两个访问方法：getSaving 和 getChecking，这两个方法分别返回储蓄
+和支票总数。
+3. 包含两个相反的方法：SetSaving 和 setChecking，这两个方法分别为
+savingAccount 和 checkingAccount 这两个关联属性赋值。
+完成 TestBanking 程序
+```
 
 ## 测试结果
 ```text
