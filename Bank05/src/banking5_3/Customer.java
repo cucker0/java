@@ -5,8 +5,8 @@ public class Customer {
     private String firstName;
     private String lastName;
 //    private Account[] accounts; // 假定 accounts[0]: SavingAccount  accounts[1]: CheckignAccount
-    private Account savingAccount;
-    private Account checkingAccount;
+    private SavingAccount savingAccount;
+    private CheckingAccount checkingAccount;
 
     // 构造器
     public Customer(String f, String l) {
@@ -23,27 +23,27 @@ public class Customer {
         return lastName;
     }
 
-    public void addAccount(Account account) {
-        if (account instanceof SavingAccount) {
-            savingAccount = account;
-        } else if (account instanceof CheckingAccount) {
-            checkingAccount = account;
-        }
-    }
+//    public void addAccount(Account account) {
+//        if (account instanceof SavingAccount) {
+//            savingAccount = account;
+//        } else if (account instanceof CheckingAccount) {
+//            checkingAccount = account;
+//        }
+//    }
 
-    public Account getSaving() {
+    public SavingAccount getSaving() {
         return savingAccount;
     }
 
-    public Account getChecking() {
+    public CheckingAccount getChecking() {
         return checkingAccount;
     }
 
-    public void setSaving(Account account) {
+    public void setSaving(SavingAccount account) {
         savingAccount = account;
     }
 
-    public void setChecking(Account account) {
+    public void setChecking(CheckingAccount account) {
         checkingAccount = account;
     }
 

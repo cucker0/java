@@ -6,7 +6,7 @@
 实验目的：
 继承、多态、方法的重写。
 
-# 提示
+## 提示
 ```text
 创建 Account 类的两个子类：SavingAccount 和 CheckingAccount 子类
 a. 修改 Account 类；将 balance 属性的访问方式改为 protected
@@ -69,6 +69,76 @@ Withdraw 750.00: false
 Customer [Soley, Maria] has a balance of 150.0
 ```
 
-# URM图
+## URM图
 ![图1](./images/UML.gif)
 ![图2](./images/关系图.JPG)
+
+
+# 实验题目 5_2
+创建客户账户  
+![](./images/bank05_2.png)
+
+## 实验目的
+instanceof 运算符的应用
+
+## 提示
+```text
+修改 Customer 类
+1．修改 Customer 类来处理具有多种类型的联合账户。
+（例如用数组表示多重性一节所作的，该类必须包括以下的公有方法：
+addAccount(Account)，getAccount(int)和 getNumOfAccounts()。
+每个 Customer 可以有多个 Account。（声明至少有 5 个）
+2．完成 TestBanking 程序
+该程序创建一个客户和账户的集合，并生成这些客户及其账户余额的报告。在
+TestBanking.Java 文件中，你会发现注释块以/***…***/来开头和结尾。这
+些注释只是必须提供的代码的位置。
+3．使用 instanceof 操作符测试拥有的账户类型，并且将 account_type 设置
+为适当的值，例如：“SavingsAccount”或“CheckingAccount”。
+4．编译并运行该程序，将看到下列结果
+ CUSTOMERS REPORT
+ ================
+Customer: Simms, Jane
+ Savings Account: current balance is ￥500.00
+ Checking Account: current balance is ￥200.00
+Customer: Bryant, Owen
+ Checking Account: current balance is ￥200.00
+Customer: Soley, Tim
+ Savings Account: current balance is ￥1,500.00
+ Checking Account: current balance is ￥200.00
+Customer: Soley, Maria
+ Checking Account: current balance is ￥200.00
+Savings Account: current balance is ￥150.00
+```
+
+# 实验题目 5_3
+一个客户Customer可以有储蓄卡(SavingAccount)、信用卡(CheckingAccount)，  
+这两种卡可二选一，也可同时拥有两种卡，  
+信用卡可以绑定到储蓄主卡  
+
+
+```text
+信用卡取钱规则：
+    1 先用信用卡上的现金
+    2 用完了信用卡现金再使用信用卡透支额度
+    3 使用完信用卡透支额度后，再使用主卡现金
+
+```
+
+## 实验目的
+
+
+## 测试结果
+```text
+Customer [Simms, Jane] has a checking balance of 200.0 and a savings balance of 500.0
+Checking Acct [Jane Simms] : withdraw 150.00 succeeds? true
+Checking Acct [Jane Simms] : deposit 22.50 succeeds? true
+Checking Acct [Jane Simms] : withdraw 147.62 succeeds? true
+Customer [Simms, Jane] has a checking balance of 72.5 and a savings balance of 424.88
+
+Customer [Bryant, Owen] has a checking balance of 200.0
+Checking Acct [Owen Bryant] : withdraw 100.00 succeeds? true
+Checking Acct [Owen Bryant] : deposit 25.00 succeeds? true
+Checking Acct [Owen Bryant] : withdraw 175.00 succeeds? false
+Customer [Bryant, Owen] has a checking balance of 125.0
+
+```

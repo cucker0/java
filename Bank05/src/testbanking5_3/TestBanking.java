@@ -17,9 +17,10 @@ public class TestBanking {
         // Create two customers and their accounts
         bank.addCustomer("Jane", "Simms");
         customer = bank.getCustomer(0);
-        account = customer.getChecking();
+//        account = customer.getChecking();
         customer.setSaving(new SavingAccount(500.00, 0.05));
         customer.setChecking(new CheckingAccount(200.00, customer.getSaving()));
+        account = customer.getChecking();
 
         bank.addCustomer("Owen", "Bryant");
         customer = bank.getCustomer(1);

@@ -1,28 +1,23 @@
 /*
 信用卡
+信用卡可以使用主卡的钱
+信用卡属性：余额，透支额度，绑定的储蓄主卡
+取钱规则：
+    1 先用信用卡上的现金
+    2 用完了信用卡现金再使用信用卡透支额度
+    3 使用完信用卡透支额度后，再使用主卡现金
 
 * */
 
 package banking5_3;
 
 public class CheckingAccount extends Account {
-    private double overdraftProtection;
-    private SavingAccount protectedBy;
+    private double overdraftProtection; // 可透支额度
+    private SavingAccount protectedBy; // 绑定的主卡（储蓄卡）
 
     // 构造器
     public CheckingAccount(double init_balance) {
         super(init_balance);
-    }
-
-    public CheckingAccount(double init_balance, double overdraftProtection) {
-        super(init_balance);
-        this.overdraftProtection = overdraftProtection;
-    }
-
-    public CheckingAccount(double init_balance, double overdraftProtection, SavingAccount protectedBy) {
-        super(init_balance);
-        this.overdraftProtection = overdraftProtection;
-        this.protectedBy = protectedBy;
     }
 
     public CheckingAccount(double init_balance, SavingAccount protectedBy) {
@@ -33,15 +28,28 @@ public class CheckingAccount extends Account {
     // 方法
     public boolean withdraw(double amount) {
         // 取钱
-        if (amount <= balance) {
+        /*
+        1 先用信用卡上的现金
+        2 用完了信用卡现金再使用信用卡透支额度
+        3 使用完信用卡透支额度后，再使用主卡现金
+        * */
+        if (amount < 0) {
+            System.out.println("取钱不能取负数！！！，你是黑客吧。");
+            return false;
+        } else if (amount <= balance) {
             balance -= amount;
             return true;
         } else if (amount <= balance + overdraftProtection) {
-            overdraftProtection = balance + overdraftProtection - amount;
-            balance = 0; // 余额先去完了
+            overdraftProtection = overdraftProtection + balance - amount;
+            balance = 0;
             return true;
         } else {
-            System.out.println("已超过您的投资额度，取款失败!");
+            if (protectedBy instanceof SavingAccount) { // 判断本信用卡是绑定了储蓄主卡
+                double difference = 0;
+                difference = amount - balance - overdraftProtection;
+                boolean status = protectedBy.withdraw(difference);
+                return status;
+            }
             return false;
         }
     }
