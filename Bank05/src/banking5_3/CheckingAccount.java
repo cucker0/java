@@ -25,6 +25,12 @@ public class CheckingAccount extends Account {
         this.protectedBy = protectedBy;
     }
 
+    public CheckingAccount(double init_balance, SavingAccount protectedBy, double overdraftProtection) {
+        super(init_balance);
+        this.protectedBy = protectedBy;
+        this.overdraftProtection = overdraftProtection;
+    }
+
     // 方法
     public boolean withdraw(double amount) {
         // 取钱
