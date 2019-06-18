@@ -16,16 +16,24 @@ File > Project Structrue > Global Libraries > 点击上面的 +
 如:
 C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\junit-4.12.jar
 
-
 ```
+如图：  
+![add junit library](./images/JUnit/junit.png)
 
-* 用同上面的方法添加hamcrest-core  
-主要目的是在Project的Modules添加上该依赖(Dependencies) 如果已经添加则不需要添加了
+* 添加hamcrest-core库  
+添加方法同上,主要目的是在Project的Modules添加上该依赖(Dependencies) 如果已经添加则不需要添加了
 ```text
 如:
 C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\hamcrest-core-1.3.jar
 
 ```
+
+如图：  
+![add hamcrest library](./images/JUnit/hamcrest-core.png)
+
+modules自动关联：  
+![modules](./images/JUnit/modules.png)
+
 
 * 使用JUnit插件
 >在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4
