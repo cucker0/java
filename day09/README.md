@@ -61,12 +61,23 @@ double |Double |
     System.out.println(b3);
     ```
 * 获得包装类对象中包装的基本类型变量，叫做 拆箱
-    * 调用包装类的.xxValue()方法
+    * 调用包装类对象的.xxValue()方法
     ```java
     Boolean obj = new Boolean(true);
     boolean b = obj.booleanValue();
     ```
 * JDK 1.5之后，支持自动装箱，自动拆箱。但类型必须匹配
+```java
+        // JDK 1.5后，自动装箱、拆箱
+        int i61 = 18;
+        Integer i62 = i61; // 自动装箱
+        System.out.println(i62.toString());
+        Boolean b63 = false;
+
+        Integer i66 = new Integer(15);
+        int i67 = i66; // 自动拆箱
+        System.out.println(i66);
+```
 
 * 字符串转换成基本数据类型
     * 通过包装类的构造器实现
