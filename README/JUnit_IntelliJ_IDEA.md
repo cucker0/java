@@ -36,11 +36,13 @@ modules自动关联：
 
 
 * 使用JUnit插件
->在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4
+>在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4  
 选择@Test的方法块内，右击选择运行(Ctrl +  Shift + F10)
 
 # 单元测试
 ```java
+import org.junit.Test;
+
     @Test
     public void testAdd() {
         assetEquals(1, new UserDao().add(1, 1));
