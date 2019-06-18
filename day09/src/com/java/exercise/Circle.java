@@ -12,7 +12,13 @@ public class Circle extends GeometricObject{
     }
 
     public Circle(double radius) {
+        super();
         setRadius(radius);
+    }
+
+    public Circle(String color, double weight, double radius) {
+        super(color, weight);
+        this.radius = radius;
     }
 
     // 方法
@@ -47,7 +53,6 @@ public class Circle extends GeometricObject{
     }
 
     public String toString() {
-        // override toString()
-        return radius + "";
+        return "Circle{radius=" + radius + "}";
     }
 }
