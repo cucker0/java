@@ -4,12 +4,12 @@ package com.java.www;
 import org.junit.Test;
 
 public class TestJUnit {
-    public static void main(String[] args) {
-        String s1 = "AA";
-        String s2 = "BB";
-
-        System.out.println(s1.toString());
-    }
+//    public static void main(String[] args) {
+//        String s1 = "AA";
+//        String s2 = "BB";
+//
+//        System.out.println(s1.toString());
+//    }
 
     @Test
     public void test1() {

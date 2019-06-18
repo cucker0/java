@@ -25,7 +25,7 @@ System.out.println(s1); // 相当于System.out.println(s1.toString());
 
     
 # 包装类(Wrapper)
-* 针对八种基本定义相应的引用类型（包装类，或叫封装类）
+* 针对8种基本定义相应的引用类型（包装类，或叫封装类）
 * 有了类的特点，就可以调用类中的方法
 
 基本数据类型 |包装类 |备注
@@ -52,7 +52,13 @@ double |Double |
     Float f = new Float("4.56");
     Float f2 = new Float(3.14);
     Long l = new Long("abc") // 编译时报NumberFormatException
-    
+  
+    Boolean b1 = new Boolean("true"); // true
+    System.out.println(b1);
+    Boolean b2 = new Boolean(false);
+    System.out.println(b2);
+    Boolean b3 = new Boolean("true100"); // false，只要写的不是true，则都是false,能正常编译和运行
+    System.out.println(b3);
     ```
 * 获得包装类对象中包装的基本类型变量，叫做 拆箱
     * 调用包装类的.xxValue()方法
