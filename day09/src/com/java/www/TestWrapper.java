@@ -91,6 +91,8 @@ public class TestWrapper {
         System.out.println(b90);
         boolean b92 = Boolean.parseBoolean("true");
         System.out.println(b92);
+        float f94 = Float.parseFloat("22.2F");
+        System.out.println(f94);
     }
 
 }

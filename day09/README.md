@@ -105,3 +105,7 @@ int x Integer.parseInt(str1); // 将字符串转变为int型
 float f = Float.parseFloat(str2); // 将字符串转变为float型
 
 ```
+
+## 基本数据类型、包装类、String类三者之间的互转
+![](./images/基本数据类型、包装类、String类互转.png)
+
