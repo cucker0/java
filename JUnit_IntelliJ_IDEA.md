@@ -7,6 +7,16 @@ JUnit单元测试 -- InterliJ IDEA
 搜索框中输入 JUnit，  
 在搜索结果中选择JUnitGenerator V2.0 点击进行安装
 
+* 添加junit Library
+```text
+File > Project Structrue > Global Libraries > 点击上面的 + 
+类型选择Java
+路径选择：在InterliJ IDEA安装的根目录下lib目录找junit-4.12.jar
+如:
+C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\junit-4.12.jar
+
+```
+
 * 使用JUnit插件
 >在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4
 
