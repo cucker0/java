@@ -7,7 +7,7 @@ JUnit单元测试 -- InterliJ IDEA
 搜索框中输入 JUnit，  
 在搜索结果中选择JUnitGenerator V2.0 点击进行安装
 
-* 添加junit Library
+* 添加junit Library  
 主要目的是在Project的Modules添加上该依赖(Dependencies) 如果已经添加则不需要添加了
 ```text
 File > Project Structrue > Global Libraries > 点击上面的 + 
@@ -19,7 +19,7 @@ C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\junit-4.12.jar
 
 ```
 
-* * 用同上面的方法添加hamcrest-core
+* 用同上面的方法添加hamcrest-core  
 主要目的是在Project的Modules添加上该依赖(Dependencies) 如果已经添加则不需要添加了
 ```text
 如:
