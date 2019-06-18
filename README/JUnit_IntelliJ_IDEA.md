@@ -1,6 +1,9 @@
 JUnit单元测试 -- InterliJ IDEA
 ==
 
+# 为什么要用JUnit
+一个@Test装饰方法就像main方法一样，这样就不写太多的main()方法也能像在main()方法中操作一样，提供了一个方便入口
+
 # 环境配置
 * 安装JUnit插件
 >File > Settings > Plugins  
