@@ -63,6 +63,28 @@ import org.junit.Test;
 * 测试类使用Test做为类名的后缀（非必须）
 * 测试方法使用test作为访求名的前缀（非必须）
 
+* JUnit测试方法使用与Scanner相关的要输入时停止不动解决方法
+```test
+https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000556544-Why-can-t-I-input-anything-from-console-when-i-run-unit-test-with-JUNIT
+编辑 .vmoptions配置文件，选择相应位数的文件
+位置：{IntelliJ IDEA根目录}/bin/idea64.exe.vmoptions
+加上下面最后这行配置，然后重启 IntelliJ IDEA
+-Xms512m
+-Xmx1500m
+-XX:ReservedCodeCacheSize=480m
+-XX:+UseConcMarkSweepGC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-ea
+-Dsun.io.useCanonCaches=false
+-Djava.net.preferIPv4Stack=true
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-javaagent:C:\Program Files\JetBrains\patch\jetbrains-agent.jar
+-Deditable.java.test.console=true
+
+```
+
 ## 错误解析
 * Failure 一般是单元测试使用的断言方法判断失败引起，说明预期结果和程序运行结果不一致。
 * error 是有代码异常引起的，他产生于测试代码本身中的Bug。
