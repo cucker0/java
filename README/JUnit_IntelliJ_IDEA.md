@@ -7,6 +7,7 @@ JUnit单元测试 -- InterliJ IDEA
 # 环境配置
 * 安装JUnit插件
 >File > Settings > Plugins  
+要求安装JUnit（默认已经安装）、JUnitGenerator V2.0
 搜索框中输入 JUnit，  
 在搜索结果中选择JUnitGenerator V2.0 点击进行安装
 
@@ -34,9 +35,10 @@ C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\hamcrest-core-1.3.jar
 如图：  
 ![add hamcrest library](./images/JUnit/hamcrest-core.png)
 
-modules自动关联：  
+添加上面连个库到modules  
 ![modules](./images/JUnit/modules.png)
-
+![](./images/JUnit/add_to_modules.png)
+![](./images/JUnit/add_to_modules2.png)
 
 * 使用JUnit插件
 >在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4  
