@@ -109,3 +109,7 @@ float f = Float.parseFloat(str2); // 将字符串转变为float型
 ## 基本数据类型、包装类、String类三者之间的互转
 ![](./images/基本数据类型、包装类、String类互转.png)
 
+String相关的变量在内存的结构  
+![String相关的变量在内存的结构](./images/new_String.png)
+
+000
