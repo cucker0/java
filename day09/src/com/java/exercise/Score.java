@@ -56,7 +56,9 @@ public class Score {
             if (max < score) {
                 max = score;
             }
-            addAScore(score);
+//            Integer score1 = new Integer(score); // 装箱
+//            addAScore(score1);
+            addAScore(score); // 自动装箱，因为这里是要传一个Object 类型的对象
         }
 /*
         for (; ; ) {
@@ -87,7 +89,7 @@ public class Score {
         for (int i = 0; i < v.size(); ++i) {
             char level = 'D';
 //            Integer ss = (Integer) v.elementAt(i);
-//            int score = ss.intValue();
+//            int score = ss.intValue(); //
             int score = (Integer) v.elementAt(i); // 自动拆箱
             if (max - score <= 10) {
                 level = 'A';
