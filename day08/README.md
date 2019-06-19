@@ -319,6 +319,14 @@ public Object() |构造 | 构造方法
 public boolean equals(Object obj) |普通 |对象比较
 public int hashCode() |普通 |取得hash吗
 public String toString() |普通 | 对象打印时调用
+public final native Class<?> getClass() |普通 |
+protected native Object clone() throws CloneNotSupportedException; |普通 |
+public final native void notify() |普通 |
+public final native void notifyAll() |普通 |
+public final void wait() throws InterruptedException |普通 |
+public final native void wait(long timeoutMillis) throws InterruptedException |普通 |
+public final void wait(long timeoutMillis, int nanos) throws InterruptedException |普通 |
+protected void finalize() throws Throwable |普通 |
 
 
 # == 操作符与equals方法
