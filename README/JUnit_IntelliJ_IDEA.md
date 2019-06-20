@@ -35,14 +35,121 @@ C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.1\lib\hamcrest-core-1.3.jar
 如图：  
 ![add hamcrest library](./images/JUnit/hamcrest-core.png)
 
-添加上面连个库到modules  
+添加上面两个库到modules  
 ![modules](./images/JUnit/modules.png)
 ![](./images/JUnit/add_to_modules.png)
 ![](./images/JUnit/add_to_modules2.png)
 
+* 修改JUnit Generator模板  
+建议把生成的文件字符集转成UTF-8
+```text
+主要是因为字符的问题，一般设置项目的文件字符集为UTF-8，而JUnit Generator生成文件字符集为GBK,且$date值在windows下含中文
+
+把
+* @since <pre>$date</pre>
+修改为
+* @since <pre>$today</pre> 
+
+```
+
+![](./images/JUnit/junit_modify_template.png)
+
+
+修改退格，如下
+```text
+######################################################################################## 
+## 
+## Available variables: 
+##         $entryList.methodList - List of method composites 
+##         $entryList.privateMethodList - List of private method composites 
+##         $entryList.fieldList - ArrayList of class scope field names 
+##         $entryList.className - class name 
+##         $entryList.packageName - package name 
+##         $today - Todays date in MM/dd/yyyy format 
+## 
+##            MethodComposite variables: 
+##                $method.name - Method Name 
+##                $method.signature - Full method signature in String form 
+##                $method.reflectionCode - list of strings representing commented out reflection code to access method (Private Methods) 
+##                $method.paramNames - List of Strings representing the method's parameters' names 
+##                $method.paramClasses - List of Strings representing the method's parameters' classes 
+## 
+## You can configure the output class name using "testClass" variable below. 
+## Here are some examples: 
+## Test${entry.ClassName} - will produce TestSomeClass 
+## ${entry.className}Test - will produce SomeClassTest 
+## 
+######################################################################################## 
+## 
+#macro (cap $strIn)$strIn.valueOf($strIn.charAt(0)).toUpperCase()$strIn.substring(1)#end 
+## Iterate through the list and generate testcase for every entry. 
+#foreach ($entry in $entryList) 
+#set( $testClass="${entry.className}Test") 
+## 
+package test.$entry.packageName; 
+
+import org.junit.Test; 
+import org.junit.Before; 
+import org.junit.After; 
+
+/** 
+* ${entry.className} Tester. 
+* 
+* @author <Authors name> 
+* @since <pre>$today</pre> 
+* @version 1.0 
+*/ 
+public class $testClass { 
+
+    @Before
+    public void before() throws Exception { 
+    } 
+    
+    @After
+    public void after() throws Exception { 
+    } 
+
+#foreach($method in $entry.methodList) 
+    /** 
+    * 
+    * Method: $method.signature 
+    * 
+    */ 
+    @Test
+    public void test#cap(${method.name})() throws Exception { 
+    //TODO: Test goes here... 
+    } 
+
+#end 
+
+#foreach($method in $entry.privateMethodList) 
+    /** 
+    * 
+    * Method: $method.signature 
+    * 
+    */ 
+    @Test
+    public void test#cap(${method.name})() throws Exception { 
+    //TODO: Test goes here... 
+    #foreach($string in $method.reflectionCode) 
+        $string 
+    #end 
+    } 
+
+#end 
+} 
+#end
+```
+
 * 使用JUnit插件
 >在需要进行单元测试的类中，使用快捷键 Alt + Insert，选择JUnit test，选择JUnit 4  
 选择@Test的方法块内，右击选择运行(Ctrl +  Shift + F10)
+
+![](./images/JUnit/add_junit_test.png)  
+
+生成的JUnit test
+![](./images/JUnit/test_class_file.png)  
+
 
 # 单元测试
 ```java
