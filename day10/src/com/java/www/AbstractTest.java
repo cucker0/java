@@ -42,11 +42,20 @@ public class AbstractTest {
 abstract class Person {
     private String name;
     protected int age;
+//    protected abstract double height; // 不能修饰属性
 
     // 构造器
     public Person() {
         super();
     }
+
+    /*
+    // 不能修饰构造器
+    public abstract Person(String name) {
+        super();
+        this.name = name;
+    }
+    */
 
     public Person(String name, int age) {
         this.name = name;
@@ -59,6 +68,10 @@ abstract class Person {
     }
 
     public abstract void walk();
+
+//    public static abstract void sleep(); // abstract不能与static一起
+
+//    private abstract void see(); // abstract不能与 private一起
 
     public String getName() {
         return name;
