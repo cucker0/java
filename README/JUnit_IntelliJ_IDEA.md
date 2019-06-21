@@ -117,7 +117,7 @@ public class $testClass {
     */ 
     @Test
     public void test#cap(${method.name})() throws Exception { 
-		//TODO: Test goes here... 
+        //TODO: Test goes here... 
     } 
 
 #end 
@@ -130,7 +130,7 @@ public class $testClass {
     */ 
     @Test
     public void test#cap(${method.name})() throws Exception { 
-		//TODO: Test goes here... 
+        //TODO: Test goes here... 
     #foreach($string in $method.reflectionCode) 
         $string 
     #end 
