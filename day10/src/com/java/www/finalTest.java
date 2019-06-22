@@ -10,9 +10,9 @@ final  （最终的）
     功能确定不变的，就定义为final方法，如Object类中的getClass
     final于访问权限修饰符顺序可先可后，建议先权限修饰符，再final。如：public static void walk() { }
 * final修饰的属性
-    此属性就是常量。建议常量名字码全大写
+    此属性就是常量。建议常量名字母全大写
     常量一旦初始化，就不能修改
-    怎么赋值：可以显示的赋值、代码块、构造器，不能使用默认值。
+    怎么赋值：可以显示的赋值、代码块、构造器，没有默认值。且必须先赋值再能使用
 * static final修饰的变量：全局常量
     Math.PI
 * final于finally、finalize()没有联系
