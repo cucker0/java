@@ -12,6 +12,7 @@ interface 接口
 * 类可以同时实现多个接口。相当于多重继承。类的继承是单个多层继承的
 * 接口可以被接口继承，接口允许多重多层继承，如：interface GG extends AA, DD { }
 * 一个类可以同时承继父类、实现接口，必须先写extends，后写implements，如：class EE extends FF implements AA, DD { }
+* 与继承关系类似，接口与实现类之间存在多态性
 
 * */
 
