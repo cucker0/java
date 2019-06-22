@@ -666,3 +666,69 @@ class Audi implements ChinaCar{
     }
 }
 ```
+
+多态示例
+```java
+public class InterfacePolymorphicTest {
+    public static void main(String[] args) {
+
+        Duck d1 = new Duck();
+        InterfacePolymorphicTest.ru(d1); // 相当于 runner r = new Duck();
+        InterfacePolymorphicTest.sw(d1); // 相当于 swimer r = new Duck();
+        System.out.println(InterfacePolymorphicTest.fl(d1)); // 相当于 flier r = new Duck();
+
+    }
+
+    // 多态
+    public static void ru(runner r) {
+        r.run();
+    }
+
+    public static void sw(swimer s) {
+        s.swim();
+    }
+
+    public static String fl(flier f) {
+        return f.fly();
+    }
+}
+
+interface runner {
+    void run();
+}
+
+interface swimer {
+    public abstract void swim();
+}
+
+interface flier {
+    String fly();
+}
+
+class Duck implements runner, swimer, flier {
+
+    // 构造器
+    public Duck() {
+        super();
+    }
+
+    // 方法
+    public void run() {
+        System.out.println("两脚掌跑路");
+    }
+
+    public void swim() {
+        System.out.println("河水里游");
+    }
+
+    public String fly() {
+        return "展翅飞翔";
+    }
+}
+```
+
+## 接口用法总结
+* 通过接口可以实现不相关类的相同行为，而不需要考虑这些类之间的层次关系
+* 通过接口可以指明多个类需要实现的方法，一般用于定义对象的扩张功能
+* 接口主要用来定义规范。解除耦合关系
+
