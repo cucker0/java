@@ -1,7 +1,7 @@
 /*
 final  （最终的）
 可以修饰类、属性、方法。不能修饰构造器
-目的：禁止被修改
+目的：禁止被修改、被继承
 
 * final修饰的类
     这个类不能被继承。如String、StringBuffer、System类
