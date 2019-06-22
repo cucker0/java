@@ -31,7 +31,7 @@ interface AA {
     // 接口里所有的常量都是被  public static final 修饰。不写也会默认加上
     public static final int I = 99;
     boolean FLAG = false;
-//    int age; // 不能有变量，此处会的报错
+//    int age; // 不能有变量，此处会报错
 
     // 方法
     // 抽象方法：所有的方法都是被 public abstract 修饰。不写默认也会加上
