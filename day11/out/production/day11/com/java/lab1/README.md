@@ -25,12 +25,8 @@
 
 # 提示
 ```java
-    //定义People类型的数组
-    People c1[]=new People[10];
-    //数组元素赋值
-    c1[0]=new People("John","0001",20);
-    c1[1]=new People("Bob","0002",19);
-    //若People有两个子类Student和Officer，则数组元素赋值时，可以使父类类型的数组元素指向子类。
-    c1[0]=new Student("John","0001",20,85.0);
-    c1[1]=new Officer("Bob","0002",19,90.5);
+        Employee[] ems = new Employee[3];
+        ems[0] = new SalariedEmployee("步惊云", 201, new MyDate(2000, 6, 24), 9000);
+        ems[1] = new HourlyEmployee("雄霸", 202, new MyDate(1990, 1, 1), 3001, 192);
+        ems[2] = new SalariedEmployee("步惊云", 201, new MyDate(1992, 7, 19), 16000);
 ```
