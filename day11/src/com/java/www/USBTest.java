@@ -1,6 +1,8 @@
 /*
 面向接口编程思想
 
+* 接口匿名类对象
+
 * */
 package com.java.www;
 
@@ -11,6 +13,36 @@ public class USBTest {
         Printer p1 = new Printer();
         c1.doWork(f1);
         c1.doWork(p1);
+
+
+        // 接口的匿名类对象
+        USB phone = new USB() {
+            @Override
+            public void start() {
+                System.out.println("手机USB接口初始化");
+            }
+
+            @Override
+            public void stop() {
+                System.out.println("手机断开USB连接");
+            }
+        }; // 这里要写; ，这里就是创建对象，跟 new USB(); 类似
+
+        System.out.println();
+        c1.doWork(phone);
+
+        c1.doWork(new USB() {
+            @Override
+            public void start() {
+                System.out.println("移动硬盘USB接口初始化");
+            }
+
+            @Override
+            public void stop() {
+                System.out.println("移动硬盘USB接口断开");
+            }
+        });
+
     }
 }
 
@@ -50,7 +82,7 @@ class Computer{
 
     // 方法
     public void doWork(USB obj) {
-        System.out.println("连接USB设备...");
+        System.out.println("电脑连接USB设备...");
         obj.start();
         obj.stop();
     }
