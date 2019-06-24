@@ -11,10 +11,18 @@
         - 可以指定为 abstract类
         - 可以在其内部定义属性、方法、构造器
 * 局部内部类
+    常用方法：使其返回值为局部内部类或接口的对象。这个类或接口在方法内部创建
 
 * 内部类重点
     * 如何创建成员内部类的对象
-    * 如何区分调用外部类、内部类的变量，尤其是重名时，this.xx, 外部类.this.xx
+        - 静态成员内部类创建对象
+            Person p1 = new Person("钟侃扎", 24);
+            Person.Bird b1 = p1.new Bird("Polly", 500);
+        - 静态成员内部类创建对象
+            Person.Dog d1 = new Person.Dog("皮卡丘", "yello");
+    * 如何区分调用外部类、内部类的变量，尤其是重名时
+        - 内部类的变量：this.xx,
+        - 外部类的变量：外部类.this.xx
     * 局部内部类的使用
 
 
@@ -97,7 +105,6 @@ class Person {
         }
 
         // 方法
-
         @Override
         public String toString() {
             return "Person.Bird{" +
@@ -107,10 +114,13 @@ class Person {
                     '}';
         }
 
+        // 同名变量的访问
         public void showInfo() {
             System.out.println(name);
             System.out.println(this.name);
             System.out.println(Person.this.name);
+            System.out.println(Person.this);
+            show();
         }
 
     }
@@ -141,4 +151,41 @@ class Person {
     }
 }
 
+
+//
+class OutClass {
+    /*
+    局部内部类
+    * */
+
+    // 下面这种方式使用较少
+    public void method1() {
+        class InnerClass {
+
+        }
+    }
+
+    // 常用方法：使其返回值为某个类或接口的对象。这个类或接口在方法内部创建
+    public Comparable getComparable() {
+        // 1.创建一个实现Comparable接口的类（局部内部类）
+         class MyComparable implements Comparable {
+            @Override
+            public int compareTo(Object o) {
+                return 0;
+            }
+        }
+        // 2.返回一个实现类的对象
+        return new MyComparable();
+    }
+
+    public Comparable getComparable2() {
+        // 匿名方式的接口实现类对象
+        return new Comparable() {
+            @Override
+            public int compareTo(Object o) {
+                return 1;
+            }
+        };
+    }
+}
 
