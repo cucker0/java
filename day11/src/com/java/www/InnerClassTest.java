@@ -48,6 +48,10 @@ public class InnerClassTest {
 }
 
 class Person {
+    /*
+    成员内部类
+    * */
+
     private String name;
     private int age;
 
