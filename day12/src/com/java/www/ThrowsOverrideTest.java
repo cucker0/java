@@ -31,7 +31,11 @@ class AA {
 }
 
 class BB extends AA {
-    public void method() throws IOException {
+//    public void method() throws IOException { // 这里的错误类型比父类的大，编译时报错
+//
+//    }
+
+    public void method() throws FileNotFoundException {
 
     }
 }
