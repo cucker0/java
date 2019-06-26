@@ -13,6 +13,8 @@ JAVA Study
 * [day08](./day08/README.md "day08")
 * [day09_高级类特性1](./day09/README.md "day09")
 * [day10_高级类特性2](./day10/README.md "day10")
+* [day11_异常处理](./day11/README.md "day11")
+* [day12_异常处理](./day12/README.md "day12")
 * other
     * [安装JDK](./README/install_JDK.md "安装JDK")  
     * [clone或一个新的Interlij IDE项目到本地如何正常运行](./README/Interlij_IDE_open_new_clone_project.md "clone或一个新的Interlij IDE项目到本地如何正常运行")
@@ -20,3 +22,4 @@ JAVA Study
     * [JUnit单元测试--IntelliJ IDEA](./README/JUnit_IntelliJ_IDEA.md)
     * [如何编译和运行包含package的java源文件](./README/Compile_and_run_a_contain_package.md)
     * [jdk 1.8 api document](./README/java_resources.md)
+    * [java方法区以及static的内存分配图](./README/java方法区以及static的内存分配图.md)
