@@ -1,5 +1,5 @@
 /*
-异常处理方式二：手动抛出异常
+异常处理方式二：声明抛出异常
 在方法的声明处，显式的抛出该异常对象的类型
 * 格式：public void readFile() throws FileNotFoundException, IOException { }
 * 当在此方法内部出现异常时，会抛出一个异常类的对象，抛给方法的调用者

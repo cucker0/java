@@ -30,6 +30,7 @@ public class EcmDef {
             System.out.println("缺少命令行参数");
         } catch (ArithmeticException e) {
             System.out.println(e.getMessage());
+            System.out.println("除数不能为0");
         } catch (EcDef e) {
             System.out.println(e.getMessage());
         }
@@ -37,9 +38,6 @@ public class EcmDef {
     }
 
     public static double ecm(int a, int b) throws EcDef {
-        if (b == 0) {
-            throw new EcDef("除数不能为0");
-        }
         if (a < 0 || b < 0) {
             throw new EcDef("输入的数不能为负数");
         }
@@ -50,7 +48,7 @@ public class EcmDef {
 //
 class EcDef extends Exception {
     /*
-    自定义错误类型
+    自定义异常类型
     * */
     static final long serialVersionUID = -3387516993124229999L;
 
