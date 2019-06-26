@@ -26,10 +26,10 @@ public class CheckingAccount extends Account {
             return true;
         } else if (amount <= balance + overdraftProtection) {
             overdraftProtection = balance + overdraftProtection - amount;
-            balance = 0; // 余额先去完了
+            balance = 0; // 余额先去用完了
             return true;
         } else {
-            System.out.println("已超过您的投资额度，取款失败!");
+            System.out.println("已超过您的透支额度，取款失败!");
             return false;
         }
     }
