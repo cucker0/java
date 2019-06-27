@@ -1,6 +1,19 @@
 /*
 Collection
 
++ 存储对象可以考虑：数组、集合
++ 数组存储对象特点
+    - 一旦创建，其长度不可变
+    - 真实的数组存放的对象个数不可知
+
++ 集合
+    - Collection接口
+        |--List接口，存储有序的、可以重复的元素
+            |--ArrayList、LinkedList、Vector(比较古老、线程安全)
+        |--Set接口，存储无序、不可重复的元素
+            |--HashSet、LinkedHashSet、TreeSet
+    - Map接口，存储"键-值"对数据
+        |--HashMap、LinkedHashMap、TreeMap、Hashtable(子类：Properties)
 
 * */
 
