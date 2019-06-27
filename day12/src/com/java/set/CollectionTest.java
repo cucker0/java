@@ -4,15 +4,12 @@ Collection
 
 * */
 
-package com.java.www;
+package com.java.set;
 
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 public class CollectionTest {
     @Test
@@ -61,7 +58,7 @@ public class CollectionTest {
         c1.add(new Dog("赛驹", "佳源"));
 
         // contains(Object obj) 判断集合中是否包含指定的元素obj，如果包含返回true，否则false。
-        // 判断方法：用到了类中的equals(Object o)方法
+        // 判断方法：用到了类中的equals(Object o)方法。若使用了自定义类要重写equals()方法
         boolean b60 = c1.contains(123);
         System.out.println(b60);
         System.out.println(c1.contains("AA"));
@@ -70,6 +67,99 @@ public class CollectionTest {
         System.out.println(c1.contains(new Dog("赛驹", "佳源"))); // true，Dog 已重写了equal(Object o) 方法
         System.out.println(c1.contains("BB"));
 
+        // containsAll(Collection coll) 判断当前集合是否包含coll集合中所有的元素。即判断一个集合是否为当前集合的子集
+//        Collection c2 = Arrays.asList(123, "AA");
+        Collection c2 = new ArrayList();
+        c2.add(123);
+        c2.add("AA");
+        System.out.println(c1.containsAll(c2)); // true
+
+        // retainAll(Collectoin coll) 保留一个集合coll与当前集合的交集给当前集合，会覆盖当前集合
+        Collection c3 = Arrays.asList("AA", 123, "other"); // 这种方式的集合元素不能被删除
+        c1.retainAll(c3);
+        System.out.println(c1);
+
+        // remove(Object obj) 删除集合中的obj元素。若删除成功返回true,否则返回false
+        System.out.println(c2.remove(123)); // true
+        System.out.println(c2); // 打印：[AA]
+
+    }
+
+    @Test
+    public void test3() {
+        Collection c1 = new ArrayList();
+        c1.add(123);
+        c1.add("AA");
+        c1.add(new Date());
+        c1.add("BB");
+        System.out.println(c1);
+
+        Collection c2 = new ArrayList();
+        c2.add(123);
+        c2.add("AA");
+        c2.add(3.14);
+
+        // removeAll(Collection coll) 从当前集合中删除与另外一个集合coll的交集所有元素。即 当前集合 - coll集体的差集。
+        c1.removeAll(c2);
+        System.out.println(c2);
+        System.out.println(c1);
+
+        // equals(Object obj) 判断一个集合obj与当前集合两者所有的元素是否都相等。
+        Collection c111 = new ArrayList();
+        Collection c112 = new ArrayList();
+        c111.add(108);
+        c111.add("aux");
+
+        c112.add(108);
+        c112.add("aux");
+
+        System.out.println(c111.equals(c112));
+
+        // hashCode() 获取当前集合的hash值
+        System.out.println(c111.hashCode());
+        System.out.println(c112.hashCode());
+
+        // toArray() 将集合转化成数组
+        Collection c126 = new ArrayList();
+        c126.add(new Person("王大仙", 12));
+        c126.add(33);
+        c126.add("haha");
+        System.out.println(c126);
+
+        Object[] obj = c126.toArray();
+        for (int i = 0; i < obj.length; ++i) {
+            System.out.println(obj[i]);
+        }
+
+        // iterator() 返回一个Iterator接口实现类对象，可用于遍历集合
+        System.out.println();
+
+        // 方式1，
+        System.out.println("集合遍历方式1");
+        Iterator iter = c126.iterator();
+        System.out.println(iter.next());
+        System.out.println(iter.next());
+        System.out.println(iter.next());
+
+        // 方式2
+        System.out.println("集合遍历方式2");
+        Iterator iter2 = c126.iterator();
+        for (int i = 0; i < c126.size(); ++i) {
+            System.out.println(iter2.next());
+        }
+
+        // 方式3
+        System.out.println("集合遍历方式3");
+        Iterator ite3 = c126.iterator();
+/*
+        while (ite3.hasNext()) {
+            System.out.println(ite3.next());
+        }
+        */
+
+        for (; ite3.hasNext(); ) {
+            System.out.println(ite3.next());
+        }
     }
 
 }
