@@ -9,7 +9,7 @@ Object remove(int index) // 移除指定下标的元素
 Object set(int index, Object ele) // 重置指定下标元素值(更新)
 int indexOf(Object obj) // 给定对象首次出现的下标位置，没有则返回 -1
 int lastIndexOf(Object obj) // 给定对象最后一次出现的下标位置，没有则返回 -1
-List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下标，结束下标)为新的List，注意是左闭右开
+List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下标，结束下标)为新的List，注意是左闭右开，相当于取一个子集
 
 * List常用方法
     - 增 add(Object obj)
