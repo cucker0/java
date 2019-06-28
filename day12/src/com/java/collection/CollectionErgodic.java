@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 
-public class SetErgodic {
+public class CollectionErgodic {
     Collection c1 = new ArrayList();
 
     {

@@ -194,7 +194,7 @@ void remove() |从集合中移除迭代器返回的最后一个元素（可选�
 ## for增强版遍历集合元素-- foreach
 * java 5提供了foreach迭代访问集合，同时也可用遍历数组
 示例
-[遍历集合](./src/com/java/collection/SetErgodic.java)
+[遍历集合](./src/com/java/collection/CollectionErgodic.java)
 
 
 ## List接口
