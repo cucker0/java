@@ -21,7 +21,7 @@ List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下�
 
 * */
 
-package com.java.set;
+package com.java.collection;
 
 import org.junit.Test;
 

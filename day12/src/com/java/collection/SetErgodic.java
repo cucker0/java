@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.set;
+package com.java.collection;
 
 import org.junit.Test;
 

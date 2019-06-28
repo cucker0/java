@@ -17,7 +17,7 @@ Collection
 
 * */
 
-package com.java.set;
+package com.java.collection;
 
 
 import org.junit.Test;
@@ -112,7 +112,7 @@ public class CollectionTest {
         c2.add("AA");
         c2.add(3.14);
 
-        // removeAll(Collection coll) 从当前集合中删除与另外一个集合coll的交集所有元素。即 当前集合 - coll集体的差集。
+        // removeAll(Collection coll) 从当前集合中删除与另外一个集合coll的交集所有元素。即 当前集合 - coll集合的差集。
         c1.removeAll(c2);
         System.out.println(c2);
         System.out.println(c1);
