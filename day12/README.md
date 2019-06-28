@@ -171,3 +171,54 @@ class MyException extends Exception {
 实例  
 [Collection Test](./src/com/java/collection/CollectionTest.java)
 
+
+## 使用Iterator接口遍历集合元素
+* Iterator对象称为迭代器（设计模式的一种），主要用于遍历Collection集合元素
+* 所有实现了Collection接口的集合类都有一个iterator()方法，用以返回一个实现了Iterator接口的对象，该对象有boolean hasNext()，E next()、void remove()方法，E格式泛型
+* Iterator仅用于遍历集合，Iterator本身并没有提供承装对象的能力。如果需要创建Iterator对象，
+必须有一个别迭代的集合
+
+示例  
+[用Iterator对象遍历集合](./src/com/java/collection/SetErgodic.java)
+
+## Iterator接口方法
+
+方法|方法描述
+:---|---
+boolean hasNext() |iteration迭代器中还有元素则返回true,否则false
+E next() |返回iteration迭代器中的下一个元素
+void remove() |从集合中移除迭代器返回的最后一个元素（可选操作）
+
+* 在调用it.next()方法之前必须要调用it.hasNext()进行检测。若不调用，且下一条记录无效，直接调用it.next()会抛出NoSuchElementException异常
+
+## for增强版遍历集合元素-- foreach
+* java 5提供了foreach迭代访问集合，同时也可用遍历数组
+示例
+[遍历集合](./src/com/java/collection/SetErgodic.java)
+
+
+## List接口
+* 用数组存储数据有局限性，数组长度不可变，存放数据个数不确定
+* List集合类中元素 有序、不可重复，集合中的每个 元素都有一个对应的顺序索引
+* List容器中的元素都有一个整数的索引记录在容器中的位置，可根据索引获取该元素
+* JDK API中List接口的实现类常用的有：ArrayList、LinkedList、Vector
+
+* 在集合Collection类的基础上添加下面的方法
+    * Object get(int index) // 获取指定下标元素
+    * void add(int index, Object ele) // 指定下标插入一个元素
+    * boolean addAll(int index, Collection eles) // 把一个集合所有元素插入指定下标处
+    * Object remove(int index) // 移除指定下标的元素
+    * Object set(int index, Object ele) // 重置指定下标元素值(更新)
+    * int indexOf(Object obj) // 给定对象首次出现的下标位置，没有则返回 -1
+    * int lastIndexOf(Object obj) // 给定对象最后一次出现的下标位置，没有则返回 -1
+    * List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下标，结束下标)为新的List，注意是左闭右开，相当于取一个子集
+
+示例  
+[List接口方法测试](./src/com/java/collection/ListTest.java)
+
+## List接口实现类之一：ArrayList
+* ArrayList时List接口的典型事项类
+* ArrayList本质上是对象引用的一个边长数组
+* ArrayList时线程不安全的，Vector时线程安全的（不推荐使用，效率低）
+* Arrays.asList(Object...) 方法返回的List集合既不是ArrayList实例也不是Vector实例。  
+Arrays.asList(Object...) 返回值是一个固定长度的List集合

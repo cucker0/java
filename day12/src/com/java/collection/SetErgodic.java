@@ -26,6 +26,7 @@ public class SetErgodic {
     public void ergodic1() {
         Iterator it = c1.iterator();
         while (it.hasNext()) {
+            it.remove();
             System.out.println(it.next());
         }
     }
@@ -34,7 +35,7 @@ public class SetErgodic {
     public void test2() {
         // 增强for循环，类似 python中的for i in obj:
         System.out.println("增强for循环遍历集合");
-        for (Object o: c1) { // 这里的o为局部变量
+        for (Object o : c1) { // 这里的o为局部变量
             System.out.println(o);
         }
 
@@ -57,6 +58,15 @@ public class SetErgodic {
         for (int i : ia) {
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void test5() {
+        // 从集合中移除迭代器返回的最后一个元素（可选操作）
+        Iterator it = c1.iterator();
+        it.next();
+        it.remove();
+        System.out.println(c1);
     }
 
 }
