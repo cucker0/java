@@ -1,6 +1,6 @@
 /*
 LinkedHashSet
-* LinkedHashSet使用了链表维护元素添加进集合的顺序.这样就能按照添加的顺序遍历集合
+* LinkedHashSet使用了链表维护元素添加进集合的顺序.顺序遍历集合元素时按照添加顺序的
 * LinkedHashSet插入性能略低于HashSet,但在迭代集合的全部元素时有很好的性能.
 * addAll(Set obj) 在当前集合最后添加obj集合中的元素,添加顺序按照obj集合的顺序
 
