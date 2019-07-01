@@ -13,7 +13,7 @@ TreeSet
         这通情况下该元素就添加不进来
     * int compareTo(Object o)、int hashCode()、boolean equals()三个方法取值方向要求同时一致,
 * 定制排序(使用与不能更改类的场景)
-    * set1:创建一个实现了Comparator接口的对象
+    * set1:创建一个实现了Comparator接口的对象,重写int compare(Object o1, Object o2)方法
     * set2:把set1中创建的comparator对象以形参传入TreeSet构造器
 
 
@@ -73,7 +73,7 @@ public class TreeSetTest {
         TreeSet定制排序
         * */
 
-        // set1:创建一个实现了Comparator接口的对象
+        // set1:创建一个实现了Comparator接口的对象,重写int compare(Object o1, Object o2)方法
         Comparator comparator = new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
