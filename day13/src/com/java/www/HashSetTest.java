@@ -35,6 +35,7 @@ package com.java.www;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class HashSetTest {
@@ -48,6 +49,7 @@ public class HashSetTest {
         hset1.add(new String("AA"));
         hset1.add("BB");
         hset1.add("BB");
+        hset1.add(null);
         Dog d1 = new Dog("Lizaza", 2);
         Dog d2 = new Dog("Binli", 1);
         Dog d3 = new Dog("Binli", 1); //  在未重写Dog类的hashCode()方法时,可以添加进去
@@ -58,6 +60,18 @@ public class HashSetTest {
         System.out.println(hset1.size());
         System.out.println(hset1);
 
+        Iterator ite = hset1.iterator();
+        while (ite.hasNext()) {
+            System.out.println(ite.next());
+        }
+
+        HashSet hset2 = new HashSet();
+        hset2.add(66);
+        hset2.add(77);
+        hset1.addAll(hset2);
+        System.out.println(hset1);
+
+        System.out.println(hset1.equals(hset2));
     }
 
 }
@@ -65,6 +79,7 @@ public class HashSetTest {
 class Dog {
     private String name;
     private int age;
+    static private int init = 100;
 
     // 构造器
     public Dog() {
@@ -118,6 +133,11 @@ class Dog {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + age;
         return result;
+
+//        return ++init;
+
+//        return 3;
+
     }
 
 }
