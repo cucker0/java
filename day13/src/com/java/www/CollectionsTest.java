@@ -125,6 +125,13 @@ public class CollectionsTest {
             System.out.println("更新失败");
         }
 
+        HashMap hmap1 = new HashMap();
+        hmap1.put("k1", 11);
+        hmap1.put("k2", 13);
+        hmap1.put("k3", 12);
+        hmap1.put("k4", 11);
+        System.out.println(Collections.frequency(hmap1.values(), 11));
+
     }
 
 }
