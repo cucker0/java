@@ -1,6 +1,9 @@
 /*
 Hashtable 子类: Properties
 
+Properties处理属性文件
+
+
 * */
 
 package com.java.www;
