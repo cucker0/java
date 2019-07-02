@@ -6,8 +6,9 @@ Map接口
     |-- HashMap: Map接口的主要实现类，存储顺序由key的hash值决定
     |-- LinkedHashMap: 使用链表维护entry添加进map顺序，遍历map时按此顺序
     |-- TreeMap: 按照添加进Map中元素的key指定属性进行排序。所有元素key的对象必须是同一个类，key对象为自定义类对象时要求实现Comparable接口并重写int compareTo(Object obj)方法
-    |-- Hashtable
-        |-- Properties:
+    |-- Hashtable：古老的实现类，线程安全的，不建议使用
+        |-- Properties: 常用来处理属性文件。健和值都为String类型
+
 
 
 Map常用方法
