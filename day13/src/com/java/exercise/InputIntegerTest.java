@@ -12,8 +12,8 @@ public class InputIntegerTest {
     private static List box = new ArrayList();
 
     public static void main(String[] args) {
-//        input();
-        input2();
+        input();
+//        input2();
         showBox();
     }
 
