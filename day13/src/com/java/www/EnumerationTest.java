@@ -14,9 +14,9 @@ import java.util.StringTokenizer;
 public class EnumerationTest {
     @Test
     public void test1() {
-        Enumeration ss = new StringTokenizer("69576acf-b466-4d9d-a7ee-1b817acf5540","-");
-        while (ss.hasMoreElements()) {
-            System.out.println(ss.nextElement());
+        Enumeration enumeration = new StringTokenizer("69576acf-b466-4d9d-a7ee-1b817acf5540","-");
+        while (enumeration.hasMoreElements()) {
+            System.out.println(enumeration.nextElement());
         }
 
     }
