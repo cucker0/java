@@ -18,7 +18,7 @@ Collections：操作集合的工具类
 * void copy(List dest, List src) 将List src中的元素复制到 List dest中，dest的长度必须>= src的长度
 * boolean replaceAll(List l, Object oldVal, Object newVal) 使用新值newVal替换List l中所旧值oldVal
 
-## 同步控制
+## 同步控制，可以解决多线程并发访问集合时的线程安全问题
 * static<T> Collection<> synchronizedList(Collection<T> c)
 * static<T> List<> synchronizedList(List<T> l)
 * static<T> Map<K,V> synchronizedList(Map<K,V> m)
@@ -106,6 +106,7 @@ public class CollectionsTest {
 
         // void copy(List dest, List src) 将List src中的元素复制到 List dest中
         List lis3 = Arrays.asList(new Object[lis1.size()]);
+//        List lis3 = new ArrayList(); // 复制到此List中时报IndexOutOfBoundsException
         Collections.copy(lis3, lis1);
         System.out.println("lis3: " + lis3);
 
@@ -131,6 +132,31 @@ public class CollectionsTest {
         hmap1.put("k3", 12);
         hmap1.put("k4", 11);
         System.out.println(Collections.frequency(hmap1.values(), 11));
+
+    }
+
+    @Test
+    public void test3() {
+        // 同步控制
+        // synchronizedXxx() 方法，线程安全
+        HashMap hmap1 = new HashMap();
+        hmap1.put("k1", 11);
+        hmap1.put("k2", 13);
+        hmap1.put("k3", 12);
+        hmap1.put("k4", 11);
+
+        Map hmap2 = Collections.synchronizedMap(hmap1);
+
+        TreeSet set1 = new TreeSet();
+        set1.add(11);
+        set1.add(22);
+        set1.add(44);
+        set1.add(33);
+
+        System.out.println(set1);
+        Set set2 = Collections.synchronizedSet(set1);
+        System.out.println(set2);
+
 
     }
 
