@@ -104,7 +104,9 @@ class Scoretor {
                 }
             };
 
-            Collections.sort(lis, comparator);
+//            Collections.sort(lis, comparator); // 使用Collections.sort 排序
+            List lis2 = MySort.sort(lis); // 使用自定义的List排序方法
+            lis = lis2;
             System.out.println("=== 前三名学生 ===");
             System.out.println("姓名\t\t成绩");
 
@@ -115,5 +117,55 @@ class Scoretor {
             }
         }
     }
+
+    public Map getTmap() {
+        return  tmap;
+    }
 }
 
+class MySort {
+    // List中元素为对象，通过对象中的指定属性进行排序
+    public static List sort(List L) {
+        if (L.size() <= 1) {
+            return L;
+        }
+
+        for (int i = 0; i < L.size(); ++i) {
+            int max_index = i;
+            for (int j = i + 1; j < L.size(); ++j) {
+                Map.Entry entry_max = (Map.Entry) L.get(max_index);
+                Integer max = (Integer) entry_max.getValue();
+                Map.Entry entry_compare = (Map.Entry) L.get(j);
+                Integer compare = (Integer) entry_compare.getValue();
+                if (max < compare) {
+                    max_index = j;
+                }
+            }
+            if (max_index != i) {
+                Object temp = L.get(i);
+                L.set(i, L.get(max_index));
+                L.set(max_index, temp);
+            }
+
+        }
+
+        return L;
+    }
+
+    public static List sort(List L, String T) {
+        if (L.size() <= 1) {
+            return L;
+        }
+
+        if (T == "des") {
+            List L2 = sort(L);
+            Object temp;
+            for (int i = 0, j = L.size() - 1; i < j; ++i, --j ) {
+               temp = L.get(i);
+               L.set(i, L.get(j));
+               L.set(j, temp);
+            }
+        }
+        return L;
+    }
+}
