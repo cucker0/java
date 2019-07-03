@@ -27,7 +27,7 @@ public class InputIntegerTest {
                 box.add(r);
             } catch (InputMismatchException e) {
                  --i;
-                 sc.next(); // Finds and returns the next complete token from this scanner.会清除Scanner内存缓存
+                 sc.next(); // Finds and returns the next complete token from this scanner.会清除Scanner内存缓存，不做这步处理会死循环
             }
         }
     }
