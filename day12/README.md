@@ -86,12 +86,12 @@ class MyException extends Exception {
 * java集合框架
 * Collection接口API
 * Iterator接口API
-* Collection子接口之一：Set接口
+* Collection子接口之一：List接口
     * HashSet
     * LinkedList
     * Vector
     
-* Collection子接口之二：List接口
+* Collection子接口之二：Set接口
 * Map接口
     * HashMap
     * TreeMap
@@ -120,15 +120,26 @@ class MyException extends Exception {
             ListIterator
     
     - 实现接口子类
-        * List
-            * ArrayList
-            * LinkedList
-            * Vector
-        * Set
-            * HashSet
-                * LinkedHashSet
-            * SortedSet
-                * TreeSet
+        * List 元素有序（遍历顺序为添加顺序），可重复
+            * ArrayList 元素在内存中连续存储，  
+                        读取性能好，  
+                        线程不安全
+            * LinkedList 元素在内存中不连续，通过链表维护元素的插入顺序，  
+                            写删性能好，  
+                            读取性能不错，线程不安全
+            * Vector 线程安全，使用方法大体与ArrayList相同，效率低，不建议使用
+        * Set 元素无序，不可重复
+            * HashSet 元素对象的hashCode()值决定改元素存储的位置，遍历顺序与插入顺序不同，  
+                        判断两个对象是否相同：先通过元素对象的hashCode是否想等、不等不相同，若hashCode值相等，再通过equals比较  
+                        线程不安全，
+                * LinkedHashSet 使用链表维护元素插入顺序，遍历顺序为插入顺序。  
+                                元素存储位置、比较两个元素是否相同的方法同HashSet，  
+                                线程不安全
+            * SortedSet 
+                * TreeSet 元素必须为同一个类的，自然排序：有对象的int compareTo(Object o)决定；  
+                            定制排序：创建一个实现了Comparator接口的对象,重写int compare(Object o1, Object o2)方法，把该对象传入TreeSet构造器；  
+                            比较两个元素是否相同的方法同HashSet，   
+                            线程不安全
 
 * 集合API都位于java.util包内
   
@@ -139,13 +150,19 @@ class MyException extends Exception {
 ## Map接口继承树
 ![](./images/Map接口继承树.png)
 
-+ Map
-    - HashMap
-        * LinkedHaspMap
-    - Hashtable
-        * Properties
++ Map key-value键值对，或叫entry，key不能重复，value可以重复  
+    Set keySet();  
+    Collection values();  
+    Set entrySet();
+    
+    - HashMap entry顺序由key的int hashCode()决定，遍历顺序与插入顺序不同，与存储顺序相同，  
+                    
+        * LinkedHaspMap 使用链表维护entry插入顺序，遍历顺序为entry插入顺序。
+    - Hashtable 线程安全，比较老
+        * Properties 处理属性文件
     - SortedMap
-        * TreeMap
+        * TreeMap key必须为同一个类的，  
+                    entry存储顺序由Set keySet()决定，同与TreeSet。其实TreeSet可用看成所有value为空的特殊TreeMap
 
 ## Collection接口
 * Collection是List、Set、Queue接口的父类，该接口定义的方法可以操作List、Set、Queue集合
