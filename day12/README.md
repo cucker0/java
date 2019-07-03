@@ -112,6 +112,8 @@ class MyException extends Exception {
     
 
 ## Collection几口继承树
+![](./images/Collectoin接口继承树.png)
+
 + Collection
     - 方法iterator()
         返回对象类型为Iterator
@@ -135,6 +137,8 @@ class MyException extends Exception {
     * Comparator
     
 ## Map接口继承树
+![](./images/Map接口继承树.png)
+
 + Map
     - HashMap
         * LinkedHaspMap
