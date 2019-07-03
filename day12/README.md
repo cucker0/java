@@ -142,6 +142,7 @@ class MyException extends Exception {
                             线程不安全
 
 * 集合API都位于java.util包内
+* List、Set元素在添加、修改是都会把类型转为Object，所以获取出来的类型也是Object，如果要操作获取出来的数据，需要进行一次类型强
   
 * 对象排序接口
     * Comparable
@@ -163,6 +164,8 @@ class MyException extends Exception {
     - SortedMap
         * TreeMap key必须为同一个类的，  
                     entry存储顺序由Set keySet()决定，同与TreeSet。其实TreeSet可用看成所有value为空的特殊TreeMap
+					
+* Map中的key、value在添加、修改是都会把类型转为Object，所以获取出来的类型也是Object，如果要操作获取出来的数据，需要进行一次类型强转
 
 ## Collection接口
 * Collection是List、Set、Queue接口的父类，该接口定义的方法可以操作List、Set、Queue集合
