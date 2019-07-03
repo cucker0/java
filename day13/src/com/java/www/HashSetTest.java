@@ -19,9 +19,9 @@
 
 ### Set要求(包括HashSet、LinkedHashSet、TreeSet)
 * 添加到Set中的元素所在类,一定要重写equals()、hashCode()方法
-* 当响Set添加元素时,首先调用此对象所在类的hashCode()方法,计算此对象的哈希值,此哈希值决定了此对象在Set中的存储位置.
+* 当向HashSet添加元素时,首先调用此对象所在类的int hashCode()方法,计算此对象的哈希值,此哈希值决定了此对象在HashSet中的存储位置.
 若此位置还没有存储对象,则此对象直接存储到这个位置.
-若这个位置有存储了对象,那么在通脱调用该对象的equals()方法比较这两个对象是否相同,如果equals()返回false则添加后面这个元素到Set中,否则不添加
+若这个位置有存储了对象,那么在通过调用该对象的boolean equals()方法比较这两个对象是否相同,如果equals()返回false则添加后面这个元素到HashSet中,否则不添加
 * hashCode()方法与equals()方法返回值方向要求一致.即返回表示相同或是不相同
 
 

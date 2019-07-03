@@ -2,7 +2,7 @@
 LinkedHashMap
 
 ### 特点
-* 使用链表维护Map中元素的put添加顺序，遍历LinkedHashMap时的顺序就是元素的添加顺序
+* 使用链表维护Map中元素的put添加顺序，遍历LinkedHashMap时的顺序就是entry的添加顺序
 
 * */
 

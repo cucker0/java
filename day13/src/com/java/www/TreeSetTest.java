@@ -2,7 +2,7 @@
 TreeSet
 
 * 向TreeSet集合中添加的元素必须是同一种类型的数据,不包含自动转换的过来的数据
-* String、int、float、long等已经重写int compareTo(Object o)方法,这些类型数据组成的TreeSet默认从小到大排序遍历
+* String、int、float、long等已经重写int compareTo(Object o)方法,这些类型数据组成的TreeSet默认从小到大排序
 * 向TreeSet集合添加元素时有两种排序方法:
     * 自然排序
     * 定制排序

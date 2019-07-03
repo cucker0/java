@@ -3,7 +3,7 @@ TreeMap
 
 * 按照添加进Map中元素的key指定属性进行排序。所有元素key的对象必须是同一个类，key对象为自定义类对象时要求实现Comparable接口并重写int compareTo(Object obj)方法
     * 自然排序，用对象中的int compareTo(Object obj)方法进行比较排序
-    * 定制排序，TreeMap中传入Comparator接口实现对象，要求重写Comparator接口中的int compare(Object o1, Object o2)
+    * 定制排序，TreeMap中传入Comparator接口实现实例，要求重写Comparator接口中的int compare(Object o1, Object o2)
 
 
 * */

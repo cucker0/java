@@ -3,28 +3,28 @@ Collections：操作集合的工具类
 可以操作List、Set、Map等的工具类
 
 ## 排序操作
-* reverse(List l) 反转List l中元素的顺序
-* shuffle(List l) 对List l集合元素进行随机排序
-* sort(List l) 根据元素的自然顺序对指定List l集合元素按升序排序
-* sort(List l, Comparator c) 根据指定的Comparator c生产的顺序对List l集合元素进行排序
-* swap(List l, int i, int j) 将指定List l集合中i与j处的元素进行交换
+reverse(List l) 反转List l中元素的顺序
+shuffle(List l) 对List l集合元素进行随机排序
+sort(List l) 根据元素的自然顺序对指定List l集合元素按升序排序
+sort(List l, Comparator c) 根据指定的Comparator c生产的顺序对List l集合元素进行排序
+swap(List l, int i, int j) 将指定List l集合中i与j处的元素进行交换
 
 ## 查找、替换
-* Object max(Collection c) 根据元素的自然顺序，返回给定集合中位置最大的元素
-* Object max(Collection c, Comparator com) 根据Comparator com指定的顺序，返回给定集合中位置最大的元素
-* Object min(Collection) 根据元素的自然顺序返，回给定集合中位置最小的元素
-* Object min(Collection c, Comparator com) 根据Comparator com指定的顺序，返回给定集合中位置最小的元素
-* int frequency(Collection c, Object o) 返回指定命令中指定元素出现的次数
-* void copy(List dest, List src) 将List src中的元素复制到 List dest中，dest的长度必须>= src的长度
-* boolean replaceAll(List l, Object oldVal, Object newVal) 使用新值newVal替换List l中所旧值oldVal
+Object max(Collection c) 根据元素的自然顺序，返回给定集合中位置最大的元素
+Object max(Collection c, Comparator com) 根据Comparator com指定的顺序，返回给定集合中位置最大的元素
+Object min(Collection) 根据元素的自然顺序返，回给定集合中位置最小的元素
+Object min(Collection c, Comparator com) 根据Comparator com指定的顺序，返回给定集合中位置最小的元素
+int frequency(Collection c, Object o) 返回指定命令中指定元素出现的次数
+void copy(List dest, List src) 将List src中的元素复制到 List dest中，dest的长度必须>= src的长度
+boolean replaceAll(List l, Object oldVal, Object newVal) 使用新值newVal替换List l中所旧值oldVal
 
 ## 同步控制，可以解决多线程并发访问集合时的线程安全问题
-* static<T> Collection<> synchronizedList(Collection<T> c)
-* static<T> List<> synchronizedList(List<T> l)
-* static<T> Map<K,V> synchronizedList(Map<K,V> m)
-* static<T> Set<T> synchronizedList(Set<T> s)
-* static<T> SortedMap<K,V> synchronizedList(SortedMap<K,V> m)
-* static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
+static<T> Collection<> synchronizedList(Collection<T> c)
+static<T> List<> synchronizedList(List<T> l)
+static<T> Map<K,V> synchronizedList(Map<K,V> m)
+static<T> Set<T> synchronizedList(Set<T> s)
+static<T> SortedMap<K,V> synchronizedList(SortedMap<K,V> m)
+static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
 
 * */
 
@@ -139,24 +139,19 @@ public class CollectionsTest {
     public void test3() {
         // 同步控制
         // synchronizedXxx() 方法，线程安全
-        HashMap hmap1 = new HashMap();
+        Map hmap1 = Collections.synchronizedMap(new HashMap());
         hmap1.put("k1", 11);
         hmap1.put("k2", 13);
         hmap1.put("k3", 12);
         hmap1.put("k4", 11);
 
-        Map hmap2 = Collections.synchronizedMap(hmap1);
-
-        TreeSet set1 = new TreeSet();
+        Set set1 = Collections.synchronizedSet(new TreeSet());
         set1.add(11);
         set1.add(22);
         set1.add(44);
         set1.add(33);
 
         System.out.println(set1);
-        Set set2 = Collections.synchronizedSet(set1);
-        System.out.println(set2);
-
 
     }
 

@@ -40,6 +40,7 @@ public class LinkedListTest {
         lis1.add("BB");
         lis1.add(true);
         lis1.add(new Date());
+        lis1.addLast(null);
 
         System.out.println(lis1);
 
