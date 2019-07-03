@@ -95,6 +95,7 @@ day13
 
 
 ## Set实现类之二：LinkedHashSet
+适用场景：频繁的遍历，较少的插入、删除
 * LinkedHashSet是HashSet的子类
 * LinkedHashSet 根据元素的 hashCode 值来决定元素的存储位置，但它同时使用链表维护元素的次序，这使得元素看起来是以插入顺序保存的
 * LinkedHashSet插入性能略低于 HashSet，但在迭代访问 Set 里的全部元素时有很好的性能
@@ -130,6 +131,7 @@ day13
 * 定制排序(使用与不能更改类的场景)
     * set1:创建一个实现了Comparator接口的对象,重写int compare(Object o1, Object o2)方法
     * 利用int compare(T o1,T o2)方法，比较o1和o2的大小：如果方法返回正整数，则表示o1大于o2；如果返回0，表示相等；返回负整数，表示o1小于o2。
+    * int compare(Object o1, Object o2)、int hashCode()、boolean equals()三个方法取值方向要求同时一致
     * set2:把set1中创建的comparator实例以形参传入TreeSet构造器
     * 此时，仍然只能向TreeSet中添加类型相同的对象。否则发生ClassCastException异常
     * 使用定制排序是不需要实现自定义类的Comparable接口,如果有实现,则定制排序优先
@@ -150,7 +152,7 @@ day13
 Map常用方法
 ### 添加、删除操作方法
 ```text
-Object put(Object key, Object value)  添加一个元素到HashMap中
+Object put(Object key, Object value)  添加、或更新一个元素到HashMap中
 Object remove(Object key) 删除指定key的元素
 void putAll(Map t) 把Map t中所有元素添加到当前Map中
 void clear() 清除当前map中所有元素
