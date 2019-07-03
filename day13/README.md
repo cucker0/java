@@ -270,3 +270,6 @@ static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
 示例  
 [InputInteger save to List Test](./src/com/java/exercise/InputIntegerTest.java)
 
+## List中元素为对象，通过对象中的指定属性进行排序
+示例  
+[姓名、成绩保存到Map，并按成绩排序](./src/com/java/exercise/ScoreMapTest.java)
