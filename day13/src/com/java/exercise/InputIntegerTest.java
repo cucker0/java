@@ -2,6 +2,8 @@
 题目：
 请从键盘随机输入10个整数保存到List中，并按倒序、从大到小的顺序显示出来
 
+Scanner 在循环中异常的处理
+
 * */
 
 package com.java.exercise;
@@ -10,17 +12,37 @@ import java.util.*;
 
 public class InputIntegerTest {
     private static List box = new ArrayList();
+    private int count = 10;
 
-    public static void main(String[] args) {
-        input();
-//        input2();
-        showBox();
+    // 构造器
+    public InputIntegerTest() {
+        super();
     }
 
-    public static void input() {
+    public InputIntegerTest(int count) {
+        setCount(count);
+    }
+
+    // 方法
+    public static void main(String[] args) {
+        InputIntegerTest t1 = new InputIntegerTest();
+        t1.input();
+//        t1.input2();
+        t1.showBox();
+    }
+
+    public void setCount(int count) throws RuntimeException {
+        if (count > 0) {
+            this.count = count;
+        } else {
+            throw new RuntimeException("count必须大于0");
+        }
+    }
+
+    public void input() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("请随机输入10个整数：");
-        for (int i = 1; i <= 10; ++i) {
+        System.out.printf("请随机输入%d个整数：\n", count);
+        for (int i = 1; i <= count; ++i) {
             System.out.printf("输入第%d个数：\n", i);
             try {
                 int r = sc.nextInt();
@@ -32,9 +54,9 @@ public class InputIntegerTest {
         }
     }
 
-    public static void input2() {
+    public void input2() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("请随机输入10个整数：");
+        System.out.printf("请随机输入%d个整数：\n", count);
         for (int i = 1; i <= 10; ++i) {
             System.out.printf("输入第%d个数：\n", i);
             String line = sc.nextLine();
