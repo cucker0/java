@@ -6,7 +6,6 @@
 
 package com.java.exercise;
 
-import javax.sound.midi.Soundbank;
 import java.util.*;
 
 public class ScoreMapTest {
@@ -20,7 +19,7 @@ public class ScoreMapTest {
 }
 
 class Scoretor {
-    private TreeMap tmap = new TreeMap();
+    private Map tmap = Collections.synchronizedMap(new TreeMap()); // 同步控制，使用线程安全的
 
     // 构造器
     public Scoretor() {
@@ -50,7 +49,7 @@ class Scoretor {
                 }
                 aStudent.add(line);
             } else {
-                System.out.printf("第%d个学生成绩：", tmap.size() + 1);
+                System.out.printf("第%d个学生成绩（满分150）：", tmap.size() + 1);
                 line = sc.nextLine();
                 int score;
                 try {
@@ -58,6 +57,11 @@ class Scoretor {
                 } catch (NumberFormatException e) {
                     continue;
                 }
+
+                if (score < 0 || score > 150) {
+                    continue;
+                }
+
                 aStudent.add(score);
             }
             if (aStudent.size() == 2) {
