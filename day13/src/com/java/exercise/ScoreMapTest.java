@@ -158,13 +158,15 @@ class MySort {
         }
 
         if (T == "des") {
-            List L2 = sort(L);
+            sort(L);
             Object temp;
             for (int i = 0, j = L.size() - 1; i < j; ++i, --j ) {
                temp = L.get(i);
                L.set(i, L.get(j));
                L.set(j, temp);
             }
+        } else {
+            sort(L);
         }
         return L;
     }
