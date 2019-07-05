@@ -87,13 +87,17 @@ class MyException extends Exception {
 * Collection接口API
 * Iterator接口API
 * Collection子接口之一：List接口
-    * HashSet
+    * ArrayList
     * LinkedList
     * Vector
     
 * Collection子接口之二：Set接口
+    * HashSet
+    * LinkedHashSet
+    * TreeSet
 * Map接口
     * HashMap
+    * LinkedHashMap
     * TreeMap
     * Hashtable
 
