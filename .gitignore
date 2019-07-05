@@ -1,6 +1,6 @@
 # InterliJ IDEA
 .idea/
-META-INF/
+out/
 
 # Compiled class file
 *.class
