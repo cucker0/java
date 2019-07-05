@@ -16,7 +16,8 @@
 ## 自定义泛型类、泛型接口、泛型方法
 * 当实例化泛型类的对象时，指明泛型类的类型，指明后，对应的类中所有使用泛型类的位置，都变为实例中指定的泛型类型
 * 如果定义了泛型类，在实例化时没有指定泛型，默认类型为Object
-
+* 静态方法中不能使用类的泛型，因为静态方法在类加载时就确定了
+* catch的异常类型不能为泛型
 
 ## 泛型与继承的关系
 * 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> {}
@@ -139,4 +140,25 @@ public class GenericTest {
         System.out.println(subc1);
     }
 
+    @Test
+    public void test6() {
+        /*
+        DAO模拟测试
+        * */
+        DAO<Student> dao = new DAO<>();
+        Student s1 = new Student("Mary", "mary@gmail.com", new MyDate(1999, 2, 1));
+        Student s2 = new Student("Rucy", "rucy@gmail.com", new MyDate(2008, 10, 1));
+        Student s3 = new Student("Nacy", "nacy@gmail.com", new MyDate(2002, 12, 25));
+        Student s4 = new Student("Farrency", "farrency@gmail.com", new MyDate(2014, 11, 3));
+        dao.add(s1);
+        dao.add(s2);
+        dao.add(s3);
+        dao.add(s4);
+
+        List<Student> list = dao.getList();
+        System.out.println(list);
+
+        Student ss = list.get(2);
+        System.out.println(ss);
+    }
 }

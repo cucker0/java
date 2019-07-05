@@ -67,6 +67,16 @@ public class Customer<T> {
     }
 
     public void setName(String name) {
+/*
+        泛型错误用法
+
+        try {
+            System.out.println("test");
+        } catch (T e) { // 泛型不能用在catch中
+
+        }
+*/
+
         this.name = name;
     }
 
@@ -80,7 +90,7 @@ public class Customer<T> {
                 '}';
     }
 
-    // 泛型方法
+    // 声明泛型方法
     public <E> List<E> arrayToList(@NotNull E[] e) { // e不能为null
         /*
         数组转换成List并返回
