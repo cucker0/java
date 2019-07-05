@@ -79,7 +79,12 @@ public class Customer<T> {
 
         this.name = name;
     }
+   /*
+   静态方法中不能使用泛型
+    public static void show(T t) {
 
+    }
+*/
     @Override
     public String toString() {
         return "Customer{" +

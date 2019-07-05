@@ -1,6 +1,14 @@
 /*
 学生
 
+假设其中的一张表
+字段有：
+long id,
+String name,
+String email,
+Date birthday,
+URI photo
+
 * */
 
 package com.java.www;

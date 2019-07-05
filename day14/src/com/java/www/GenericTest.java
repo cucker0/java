@@ -2,7 +2,7 @@
 泛型
 
 作用：限制为指定的数据类型，但未使用之前(实例化之前)又不能确定是哪种数据类型，在实例化时指定数据类型。
-
+* 符号：<>
 * 格式：<类型列表>, 如<Boolean>, <String, Integer>，可以写多个数据类型
 
 
@@ -20,10 +20,18 @@
 * catch的异常类型不能为泛型
 
 ## 泛型与继承的关系
-* 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> {}
-* 子类仍为泛型类：继承时继承使用泛型，例如class SubCustomer2<T> extends Customer<T> {}
+* 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> { }
+* 子类仍为泛型类：继承时子类使用泛型，例如class SubCustomer2<T> extends Customer<T> { }
+* 若类A时类B的子类，那么List<A>不是List<B>的子类，List<A>与List<B>类型不一样
 
 ## 通配符
+作用：兼容多种泛型类型
+* 符号：<?>
+* List<A>、List<B> ... ... 都是List<?>的子类
+* <? extends A> 只能存放A及其子类，元素可以增查改删
+* <? super A> 只能存放A及其父类
+* 不能向声明为通配符的集合中添加、修改元素(当元素为null除外)，但可以获取、删除元素
+
 
 
 
@@ -138,6 +146,18 @@ public class GenericTest {
 //        subc1.add(33);
 
         System.out.println(subc1);
+        System.out.println();
+
+        Object[] arr1 = null;
+        String[] arr2 = new String[]{"AA", "BB", "CC"};
+        arr1 = arr2;
+        System.out.println(arr1);
+
+        List<Object> list = null;
+        List<String> list2 = new ArrayList<>();
+//        list = list2; // 报错
+
+
     }
 
     @Test
@@ -161,4 +181,71 @@ public class GenericTest {
         Student ss = list.get(2);
         System.out.println(ss);
     }
+
+    @Test
+    public void test7() {
+        // 泛型接口 测试
+        PhoneUSB<Integer> pusb = new PhoneUSB<>();
+        pusb.start(99);
+        pusb.start(98);
+    }
+
+    @Test
+    public void test8() {
+        // 通配符
+        List<?> list = null;
+        List<Object> list1= new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        list = list1;
+        list = list2;
+
+        show1(list1);
+//        show1(list2); // 不兼容的类型
+        show2(list1);
+        show2(list2);
+
+        // Number 是Integer父类
+        List<? extends Number> list3 = null;
+        List<Integer> list4 = new ArrayList<>();
+        list3 = list4;
+//        list3 = list1; // 类型不兼容
+//        list3.add(33)
+
+        List<? super Integer> list5 = null;
+        list5 = list1;
+        list5.add(2);
+
+        System.out.println();
+        List<String> list6 = new ArrayList<>();
+        list6.add("AA");
+        list6.add("BB");
+        list6.add("CC");
+
+        List<?> list7 = list6;
+        Iterator<?> ite = list7.iterator();
+        while (ite.hasNext()) {
+            Object obj = ite.next(); // 获取的值类型为Object
+            System.out.println(obj);
+        }
+
+        // 不能向声明为通配符的集合中添加、修改元素(当元素为null除外)，但可以获取、删除元素
+//        list7.add("GG");
+//        list7.add(true);
+//        list7.set(0, "MM");
+        list7.set(0, null);
+        list7.add(null);
+
+        list7.remove(0);
+        System.out.println(list7);
+        list7.get(0);
+    }
+
+    public void show1(List<Object> list) {
+
+    }
+
+    public void show2(List<?> list) {
+        // List<?> list可以兼容多种泛型的List
+    }
+
 }
