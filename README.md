@@ -16,6 +16,9 @@ JAVA Study
 * [day11_异常处理](./day11/README.md "day11")
 * [day12_异常处理](./day12/README.md "day12")
 * [day13_java 集合](./day13/README.md "day13")
+
+* [enmu枚举类](./README/枚举类.md "enmu枚举类")
+
 * other
     * [安装JDK](./README/install_JDK.md "安装JDK")  
     * [clone或一个新的Interlij IDE项目到本地如何正常运行](./README/Interlij_IDE_open_new_clone_project.md "clone或一个新的Interlij IDE项目到本地如何正常运行")
