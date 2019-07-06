@@ -1,5 +1,6 @@
 /*
 枚举类
+枚举类特点：类的对象个数是有限个数确定，一般个数都很少
 
 * 枚举类要求
     * 格式 enum ClassName { }
@@ -17,8 +18,6 @@
 * */
 
 package com.java.enumerate;
-
-import javax.sound.sampled.Line;
 
 public class EnumTest {
     public static void main(String[] args) {
