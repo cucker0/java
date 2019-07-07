@@ -22,7 +22,7 @@
 ## 泛型与继承的关系
 * 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> { }
 * 子类仍为泛型类：继承时子类使用泛型，例如class SubCustomer2<T> extends Customer<T> { }
-* 若类A时类B的子类，那么List<A>不是List<B>的子类，List<A>与List<B>类型不一样
+* 若类A是类B的子类，那么List<A>不是List<B>的子类，List<A>与List<B>类型不一样
 
 ## 通配符
 作用：兼容多种泛型类型
