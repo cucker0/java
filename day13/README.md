@@ -115,7 +115,7 @@ day13
     * Object last() 获取最后一个元素
     * Object lower(Object e) 返回此 set 中严格小于给定元素的最大元素；如果不存在这样的元素，则返回null。 
     * Object higher(Object e) 返回此 set 中严格大于给定元素的最小元素；如果不存在这样的元素，则返回null
-    * SortedSet subSet(fromElement, toElement) 返回此 set 的部分视图，其元素从fromElement（包括）到toElement（不包括）
+    * SortedSet subSet(fromElement, toElement) 返回此 set 的部分视图，其元素从fromElement（包括）到toElement（不包括），范围：[fromElement, toElement)
     * SortedSet headSet(toElement) 返回此 set 的部分视图，其元素严格小于toElement
     * SortedSet tailSet(fromElement) 返回此 set 的部分视图，其元素大于等于fromElement
 * TreeSet 两种排序方法：自然排序和定制排序。默认情况下，TreeSet 采用自然排序
