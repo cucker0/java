@@ -1,6 +1,7 @@
 # InterliJ IDEA
 .idea/
 out/
+*.iml
 
 # Compiled class file
 *.class
