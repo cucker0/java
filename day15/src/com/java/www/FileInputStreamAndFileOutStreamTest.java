@@ -1,7 +1,7 @@
 /*
 FileInputStream, FileOutputStream
 
-## 英文字符一个字节，中文字符两个字节
+## 英文字符一个字节，中文字符两个字节，UTF-8编码的字符有1-3个字节，第一个字节会标识长度
 
 ## IO流的分类
 按操作数据单位分类：字节流bytes stream(8 bit)、字符流character stream(16 bit)
@@ -9,11 +9,11 @@ FileInputStream, FileOutputStream
 按流的角色分类：节点流、处理流
 
 ## IO的类体系
-抽象基类                    节点流(文件流)实现类                  缓冲流(处理流的一种)
-InputStream                 FileInputStream (字节)                 BufferedInputStream
-OutputStream                FileOutputStream (字节)               BufferedOutputStream
-Reader                      FileReader (字符)                     BufferedReader
-Writer                      FileWriter (字符)                     BufferedWriter
+流方向           抽象基类                    节点流(文件流)实现类                缓冲流(处理流的一种，可以提升效率)      其他
+字节流.输入       InputStream                 FileInputStream(read()是阻塞的)    BufferedInputStream (read()非阻塞的)
+字节流.输出       OutputStream                FileOutputStream                   BufferedOutputStream                    Buffered.OutputStream.flush()在动作最后执行一次，保证最后的缓冲内容也被写入
+字符流.输入       Reader                      FileReader                         BufferedReader                          BufferedReader.readLine() 读取的内容不包括行尾的换行符
+字符流.输出       Writer                      FileWriter                         BufferedWriter                          BufferedWriter.flush()在动作最后执行一次，保证最后的缓冲内容也被写入
 
 
 FileInputStream 从硬盘读取文件到程序(内存)

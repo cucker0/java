@@ -28,7 +28,7 @@ public class BufferedInputStreamAndBufferedOutputTest {
             byte[] b = new byte[1024]; // 一次读取1024个字节
             int len;
             // 4. 读取、写入
-            while ((len = bis.read(b)) != -1) {
+            while ((len = bis.read(b)) != -1) { // 这里也可以不传，BufferedInputStream.read()有一个默认长度的字节数组来接受，默认大小为8192
                 bos.write(b, 0, len);
                 bos.flush(); // 刷新输出缓冲流，防止有未写的
             }

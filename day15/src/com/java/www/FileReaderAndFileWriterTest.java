@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import java.io.*;
 
-public class ReaderWriterTest {
+public class FileReaderAndFileWriterTest {
     @Test
     public void test0() {
         /*
