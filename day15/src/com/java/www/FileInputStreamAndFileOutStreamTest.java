@@ -17,8 +17,12 @@ FileInputStream, FileOutputStream
 
 
 FileInputStream 从硬盘读取文件到程序(内存)
-FileInputStream.read() 是阻塞的，
+FileInputStream.read() 是阻塞的， int read(byte[] b)
 BufferedInputStream.read() 非阻塞的
+
+FileOutputStream：void write(byte[], int startIndex, int endIndex);
+FileReader: int read(char[] c)
+FileWriter: void write(char[], int startIndex, int endIndex)
 
 
 * */
