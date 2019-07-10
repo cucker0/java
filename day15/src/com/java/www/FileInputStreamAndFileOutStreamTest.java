@@ -36,7 +36,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FileInputStreamAndFileOutStreamTest {
+public class
+FileInputStreamAndFileOutStreamTest {
     @Test
     public void test1() {
         /*
