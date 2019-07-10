@@ -10,7 +10,7 @@
 
 2、用程序读取 quanxue.txt文件内容，并在控制台打印
 
-3、用程序赋值 quanxue.txt 为 quanxue.txt
+3、用程序复制 quanxue.txt 为 quanxue.txt
 
 
 * */
@@ -108,13 +108,123 @@ public class byteStreamAndCharStream {
 
     }
 
+    public void fileToConsole3(String filePath) {
+        BufferedReader br = null;
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            // 字节流 转 字符流
+            InputStreamReader isr = new InputStreamReader(fis);
+            br = new BufferedReader(isr);
+            String s = null;
+            while ((s = br.readLine()) != null) {
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     // 2.2 字符流 读取文件到控制台
+    public void fileToConsole2(String filePath) {
+        BufferedReader br = null;
+        try {
+            FileReader fr = new FileReader(filePath);
+            br = new BufferedReader(fr);
+            String s = null;
+            while ((s = br.readLine()) != null) {
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     @Test
     public void test2() {
-        String f1 = "E:\\dev\\java_2019\\day15\\testLab\\lab1\\quanxue.txt";
+        String f1 = "./testLab/lab1/quanxue.txt";
         fileToConsole1(f1);
+        System.out.println("===");
+        fileToConsole2(f1);
+        System.out.println("===");
+        fileToConsole3(f1);
 
+    }
+
+    // 3.1 字节流复制文件
+    public void copyFile1(String src, String dest) {
+        BufferedInputStream bis = null;
+        BufferedOutputStream bos = null;
+
+        try {
+            FileInputStream fis = new FileInputStream(src);
+            FileOutputStream fos = new FileOutputStream(dest);
+            bis = new BufferedInputStream(fis);
+            bos = new BufferedOutputStream(fos);
+
+            byte[] b = new byte[1024];
+            int len;
+            while ((len = bis.read(b)) != -1) {
+                bos.write(b, 0, len);
+                bos.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bos.close();
+                bis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // 3.2 字符流复制文件
+    public void copyFile2(String src, String dest) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        try {
+            FileReader fr = new FileReader(src);
+            FileWriter fw = new FileWriter(dest);
+            br = new BufferedReader(fr);
+            bw = new BufferedWriter(fw);
+            String s = null;
+            while ((s = br.readLine()) != null) {
+                bw.write(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Test
+    public void test3() {
+        String f1 = "./testLab/lab1/quanxue.txt";
+        String f2 = "./testLab/lab1/quanxue_3.txt";
+        String f3 = "./testLab/lab1/quanxue_4.txt";
+        copyFile1(f1, f2);
+        copyFile2(f1, f3);
     }
 
 }
