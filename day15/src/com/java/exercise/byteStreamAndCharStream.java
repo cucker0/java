@@ -86,13 +86,17 @@ public class byteStreamAndCharStream {
             FileInputStream fis = new FileInputStream(new File(filePath));
             br = new BufferedInputStream(fis);
 
-            // byte[] 转 char[] 方法
+            // byte[] 转 char[] 方法一
+//            byte[] b = br.readAllBytes();
+//            Charset cs = Charset.forName("UTF-8");
+//            ByteBuffer bb = ByteBuffer.allocate(b.length);
+//            bb.put(b).flip();
+//            CharBuffer cb = cs.decode(bb);
+//            char[] c = cb.array();
+
+            // byte[] 转 char[] 方法二
             byte[] b = br.readAllBytes();
-            Charset cs = Charset.forName("UTF-8");
-            ByteBuffer bb = ByteBuffer.allocate(b.length);
-            bb.put(b).flip();
-            CharBuffer cb = cs.decode(bb);
-            char[] c = cb.array();
+            String c = new String(b);
 
             System.out.println(c);
 
