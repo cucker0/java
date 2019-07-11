@@ -12,9 +12,9 @@ package com.java.www;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.util.LinkedList;
 
 public class RandomAccessFileTest {
 
@@ -80,6 +80,86 @@ public class RandomAccessFileTest {
 
     }
 
-    //
+
+    @Test
+    public void test3() {
+        // 实现插入效果，在3后插入"--"，适合单行情况
+        RandomAccessFile raf = null;
+        try {
+            String filePath = "E:\\dev\\java_2019\\day15\\testLab\\lab8\\random.txt";
+            raf = new RandomAccessFile(filePath, "rw");
+            System.out.println("默认文件指针: "  + raf.getFilePointer());
+            raf.seek(4);
+            // 把要插入位置后面的内容先保存起来，这时候调用raf.readLine()后，文件指针移到最后去了。
+            System.out.println("文件指针：" + raf.getFilePointer());
+            String s = raf.readLine();
+//            System.out.println("操作后文件指针" + raf.getFilePointer());
+            // 再把文件指针移动到要插入的位置
+            raf.seek(4);
+            raf.write("--".getBytes());
+            raf.write(s.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                raf.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void fileInsert(String filePath, String s, long lon) {
+        // 在指定位置插入内容
+        RandomAccessFile raf = null;
+        try {
+            raf = new RandomAccessFile(filePath, "rw");
+            raf.seek(lon);
+
+            // 方法1
+//            byte[] b = new byte[1024];
+//            int len;
+//            StringBuffer sb = new StringBuffer();
+//            while ((len = raf.read(b)) != -1) {
+//                sb.append(new String(b, 0, len));
+//            }
+//            raf.seek(lon);
+//            raf.write(s.getBytes());
+//            raf.write(sb.toString().getBytes());
+
+            // 方法2
+            byte[] b = new byte[1024];
+            int len;
+            LinkedList<Byte> list = new LinkedList<>();
+            while ((len = raf.read(b)) != -1) {
+                for (int i = 0; i < len; ++i) {
+                    list.add(b[i]);
+                }
+            }
+            raf.seek(lon);
+            raf.write(s.getBytes());
+            for (Byte by : list) {
+                raf.write(by);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                raf.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void test5() {
+        String filePath = "E:\\dev\\java_2019\\day15\\testLab\\lab8\\random2.txt";
+        String s = "我是插入的内容";
+        fileInsert(filePath, s, 4);
+    }
+
+
 
 }
