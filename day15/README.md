@@ -193,12 +193,20 @@ File类的方法示例
 * 缓冲流要"套接"在相应有节点流上，对读写的数据提供了缓冲的功能，提高了读写的效率，同时增加了一些新的方法
 * 对于输出的缓冲流，写出的数据会先在内存中缓存，使用flush()会使内存中的数据立刻写出
 
-## 处理流之二：转换流
+示例  
+[BufferedInputStream、BufferedOutput Test](./src/com/java/www/BufferedInputStreamAndBufferedOutputTest.java)  
+[BufferedReader、BufferedWriter Test](./src/com/java/www/BufferedReaderAndBufferedWriterTest.java)  
+
+
+# 处理流之二：转换流
 * 转换流提供了在字节流和字符流之间的转换
 * Java API提供一两个转换流
     * InputStreamReader 字节流 转换成 字符流，解码过程
     * OutputStreamWriter 字符流 转换成 字节流，编码过程
 * 字节流中的数据都是字符时，转换成字符流操作更高效
+
+示例  
+[InputStreamReader、OutputStreamWriter Test](./src/com/java/www/InputStreamReaderAndOutputStreamWriterTest.java)
 
 ### InputStreamReader
 * 用于将字节流中读取到的字节按指定字符集解码成字符。需要和InputStream“套接”
@@ -215,7 +223,7 @@ File类的方法示例
     * public OutputStreamWriter(OutputStream out, String charsetName)
     
 
-# 字符集编码
+# 字符集
 常见的编码表
 * ASCII：美国标准信息交换码  
 用一个字节的7位可以表示。
@@ -228,3 +236,72 @@ File类的方法示例
 * UTF-8：最多用三个字节来表示一个字符。
 
 
+## 字符编码
+* 解码：字节数组 -> 字符串
+* 编码：字符串 -> 字节数组
+* 转换流的编码应用 
+    * 可以将字符按指定编码格式存储
+    * 可以对文本数据按指定编码格式来解读
+    * 指定编码表的动作由构造器完成
+
+
+# 处理之三：标准输入输出流
+* System.in和System.out分别代表了系统标准的输入和输出设备
+* 默认输入设备是键盘，输出设备是显示器
+* System.in的类型是InputStream
+* System.out的是类型是PrintStream，它是OutputStream子类FileOutputStream子类
+* 通过System类的setIn，setOut方法对默认设备进行改变。
+    * public static void setIn(InputStream in)
+    * public static void setOut(PrintStream out)
+    
+
+示例  
+[StandardInput、StandardOutput Test](./src/com/java/www/StandardInputAndStandardOutputTest.java)
+
+# 处理流之四：打印流
+* 在整个IO包中，打印流是输出信息最方便的类
+* PrintStream（字节打印流）和PrintWriter（字符打印流）
+    * 提供了一系列重载的print和println方法，用于多种数据类型的输出
+    * PrintStream和PrintWriter的输出不会抛出异常
+    * PrintStream和PrintWriter有自动flush功能
+    * System.out返回的是PrintStream的实例
+    
+示例  
+[PrintStream、PrintWriter Test](./src/com/java/www/PrintStreamAndPrintWriterTest.java)    
+
+
+# 处理流之五：数据流
+* 为了方便操作java语言的基本数据类型的数据，可以使用数据流
+* 数据流有两个类
+    * DataInputStream 数据输入流，套接在InputStream 节点流上
+    * DataOutputStream 数据输出流，套接在OutputStream 节点流上
+* DataInputStream 方法
+    * boolean readBoolean()
+    * char readChar()
+    * double readDouble()
+    * long readLong()
+    * String readUTF()
+    * byte readByte()
+    * float readFloat()
+    * short readShort()
+    * int readInt()
+    * void readFully(byte[] b)
+* DataOutputStream方法
+    * void writeBoolean(boolean v)
+    * void writeChar(int v)
+    * void writeDouble(double v)
+    * void writeLong(long v)
+    * void writeUTF(String str)
+    * int writeUTF(String str, DataOutput out)
+    * void writeByte(int v)
+    * void writeFloat(float v)
+    * void wirteInt(int v)
+    * void writeBytes(String s)
+    * void writeChars(String s)
+    * void write(byte b[], int off, int len)
+    * void write(int b)
+    * void flush()
+    
+    
+# 处理流之六：对象流
+* 
