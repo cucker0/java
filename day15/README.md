@@ -301,7 +301,8 @@ File类的方法示例
     * void write(byte b[], int off, int len)
     * void write(int b)
     * void flush()
-    
+示例  
+[DataInputStream、DataOutputStream Test](./src/com/java/www/DataInputStreamAndDataOutputStreamTest.java)    
     
 # 处理流之六：对象流
 * ObjectInputStream、ObjectOutputStream
@@ -311,6 +312,9 @@ File类的方法示例
 * 反序列化(Deserialize):用ObjectInputStream类从IO流中恢复对象
     >ObjectOutputStream、ObjectInputStream不能序列化static和transient修饰的成员变量  
     读出来是null
+
+示例  
+[ObjectInputStream、ObjectOutputSteam Test](./src/com/java/www/ObjectInputStreamAndObjectOutputSteamTest.java)
 
 ## 对象的序列化
 * 对象序列化机制
@@ -330,3 +334,57 @@ File类的方法示例
     * 希望类的不同版本对序列化兼容，因此需确保类的不同版本具有相同的serialVersionUID
     * 不希望类的不同版本对序列化兼容，因此需确保类的不同版本具有不同的serialVersionUID
 
+## 使用对象流序列化对象
+* 若某个类实现了Serializable就扣，该类的实例对象就是可以序列化的
+    * 创建一个ObjectOutputStream对象
+    * 调用ObjectOutputStream对象的wirteObject(T 对象)方法输出可序列化对象。没写一次，执行以下flush()
+* 反序列化
+    * 创建一个ObjectInputStream对象
+    * 调用readObject()方法读取流中的对象
+* 注意，如果某个类的变量不是基本数据类型或String类型，而是另一个引用类型，这个引用类型必须是可序列化的，
+否者使用了该类的Field的类也不能序列化
+
+
+# RandomAccessFile类
+这里的随机指：可任意位置读写文件
+
+* RandomAccessFile类支持"随机访问"的方式，程序可以直接跳到文件的任意位置读、写文件
+    * 支持值访问部分文件内容
+    * 可以向已存在的文件后追加内容
+* RandomAccessFile对象包含一个文件指针，用以标示当前读写出的位置，
+RandomAccessFile类对象可以移动文件指针
+    * long getFilePointer() 获取文件指针的位置
+    * void seek(long pos) 将文件指针定位到pos位置
+* RandomAccessFile类的构造器
+    * public RandomAccessFile(File file, String mode)    
+    * public RandomAccessFile(String fileName, String mode)
+* 创建RandomAccessFile类实例需要制定mode访问模式，mode有以下4种
+    * r 以只读模式打开
+    * rw 以读写模式打开文件
+    * rwd 以读写模式打开文件,同步文件内容的更新
+    * rws 以读写模式打开文件,同步文件内容和元数据的更新
+
+示例  
+[RandomAccessFile Test](./src/com/java/www/RandomAccessFileTest.java)
+
+# 流的基本应用小总结
+* 流是用来处理数据的
+* 处理数据时，一定要先明确数据源、数据目的地
+    * 数据源可以是文件，可以是键盘
+    * 数据目的地可以是文件、显示器及其他设备
+* 流只是帮助数据进行传输，并对传输的数据进行处理，如过滤处理、转换处理
+* 字节流-缓冲流
+    * 输入流 InputStream - FileInputStream - BufferedInputStream
+    * 输出流 OutputStream - FileOutputStream - BufferedOutputStream
+* 字符流-缓冲流
+    * 输入流 Reader - FileReader - BufferedReader
+    * 输出流 Writer - FileWriter - BufferedWriter
+* 转换流
+    * InputStreamReader 字节流 转 字符流
+    * OutputStreamWriter 字符流 转 字节流
+* 对象流
+    * ObjectInputStream
+    * ObjectOutputStream
+    * 序列化、反序列化
+* RandomAccessFile随机存取文件
+    
