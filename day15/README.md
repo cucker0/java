@@ -116,8 +116,8 @@ File类的方法示例
 输出流 |OutputStream |Writer
 
 ##　IO流体系
-分类 |字节输入流(byte) |字节输出流(byte) |字符输入流(char) |字符输出流(char)
-:--- |--- |--- |--- |---
+分类 |字节输入流(byte) |字节输出流(byte) |字符输入流(char) |字符输出流(char) 
+:--- |--- |--- |--- |--- 
 抽象基类 |InputStream |OutputStream |Reader |Writer
 访问文件 |FileInputStream <br>int read()是阻塞的 |FileOutputStream |FileReader |FileWriter
 访问数组 |ByteArrayInputStream |ByteArrayOutputStream |CharArrayReader |CharArrayWriter
@@ -125,10 +125,10 @@ File类的方法示例
 访问字符串 | | |StringReader |StringWriter
 缓冲流 |BufferedInputStream <br>int read()非阻塞的 |BufferedOutputStream <br>flush() 每次写入后执行一次，保证最后的缓冲内容也被写入 |BufferedReader <br>String readLine() 读取的内容不包括行尾的换行符 |BufferedWriter <br> flush() 每次写入后执行一次，保证最后的缓冲内容也被写入
 转换流 | | |InputStreamReader |OutputStreamWriter
-对象流 |ObjectInputStream |ObjectOutputStream | |
+对象流 |ObjectInputStream |ObjectOutputStream | | 
 打印流(输出) | |PrintStream | |PrintWriter
-推回输入流 |PushbackInputStream | |PushbackReader |
-数据流(特殊流) |DataInputStream |DataOutputStream | |
+推回输入流 |PushbackInputStream | |PushbackReader | 
+数据流(特殊流) |DataInputStream |DataOutputStream | | 
 
 ## 节点流和处理流
 * 节点流可以从一个特定的数据源读写数据
