@@ -304,4 +304,12 @@ File类的方法示例
     
     
 # 处理流之六：对象流
-* 
+* ObjectInputStream、ObjectOutputStream
+    >用于存储和读取对象的处理流，它的强大之处是可以把对象写入到存储设备中，也能把对象从
+    外部设备中读取出来
+* 序列化(Serialize):用ObjectOutputStream类将对象写入IO流中
+* 反序列化(Deserialize):用ObjectInputStream类从IO流中恢复对象
+    >ObjectOutputStream、ObjectInputStream不能序列化static和transient修饰的成员变量  
+    读出来是null
+
+## 
