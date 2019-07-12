@@ -312,4 +312,21 @@ File类的方法示例
     >ObjectOutputStream、ObjectInputStream不能序列化static和transient修饰的成员变量  
     读出来是null
 
-## 
+## 对象的序列化
+* 对象序列化机制
+    >允许把内存中的java对象换成与平台无关的二进制流，从而允许把这种二进制流持久地保存到
+    硬盘上，或通过网络将这种二进制流传输到另一个网络节点
+* 当其他程序获取了这种二进制流，就可以恢复成原来的java对象
+* 序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据，使其在保存和传输时可被还原
+* 序列化是 RMI（Remote Method Invoke – 远程方法调用）过程的参数和返回值都必须实现的机制，而 RMI 是 JavaEE 的基础。因此序列化机制是 JavaEE 平台的基础
+* 如果需要让某个对象支持序列化机制，则必须让其类是可序列化的，为了让某个类是可序列化的，该类必须实现如下两个接口之一：
+    * Serializable
+    * Externalizable
+* 凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量
+    * private static final long serialVersionUID;
+    * serialVersionUID用来表明类的不同版本间的兼容性
+    * 如果类没有显示定义这个静态变量，它的值是Java运行时环境根据类的内部细节自动生成的。若类的源代码作了修改，serialVersionUID 可能发生变化。故建议，显示声明
+* 显示定义serialVersionUID的用途
+    * 希望类的不同版本对序列化兼容，因此需确保类的不同版本具有相同的serialVersionUID
+    * 不希望类的不同版本对序列化兼容，因此需确保类的不同版本具有不同的serialVersionUID
+
