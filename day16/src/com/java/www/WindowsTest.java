@@ -11,9 +11,9 @@ public class WindowsTest {
         Windows w2 = new Windows();
         Windows w3 = new Windows();
 
-        w1.setName("w1");
-        w2.setName("w2");
-        w3.setName("w3");
+        w1.setName("1号");
+        w2.setName("2号");
+        w3.setName("3号");
 
         w1.start();
         w2.start();
