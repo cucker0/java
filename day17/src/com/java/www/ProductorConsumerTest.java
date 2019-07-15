@@ -19,15 +19,22 @@ import java.util.Properties;
 
 public class ProductorConsumerTest {
     public static void main(String[] args) {
-        Clerk clerk = new Clerk(20);
+        Clerk clerk = new Clerk();
         Productor p1 = new Productor(clerk);
         Customer c1 = new Customer(clerk);
 
         Thread t1 = new Thread(p1);
         Thread t2 = new Thread(c1);
+        Thread t3 = new Thread(c1);
+        Thread t4 = new Thread(c1);
+        t1.setName("生产者1");
+        t2.setName("消费者1");
+        t3.setName("消费者2");
+        t4.setName("消费者3");
 
         t1.start();
         t2.start();
+        t3.start();
 
     }
 }
@@ -36,9 +43,8 @@ class Clerk {
     private int num;
 
     // 构造器
-    public Clerk(int num) {
+    public Clerk() {
         super();
-        this.num = num;
     }
 
     // 方法
@@ -50,8 +56,14 @@ class Clerk {
                 e.printStackTrace();
             }
         } else {
+            try {
+                Thread.currentThread().sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("库存: " + getNum());
             ++num;
+            System.out.println(Thread.currentThread().getName() + "生产了一个");
             notifyAll();
         }
 
@@ -65,8 +77,14 @@ class Clerk {
                 e.printStackTrace();
             }
         } else {
+            try {
+                Thread.currentThread().sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("库存: " + getNum());
             --num;
+            System.out.println(Thread.currentThread().getName() + "客户买走了一个");
             notifyAll();
         }
     }
