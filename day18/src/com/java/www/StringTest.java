@@ -23,6 +23,26 @@ String(StringBuffer buffer)
 String(StringBuilder builder)
 
 
+## 字符串与基本数据类型、包装类之间转换
+* 字符串 -> 基本数据类型、包装类：调用 相应包装类.parseXxx(String str)   其中Xxx为相应的基本数据类型
+* 基本数据类型、包装类 -> 字符串：调用String.valueOf(T obj)
+
+## 字符串与字节数组的相互转换
+* 字符串 -> 字节数组：字符串对象.getBytes()
+* 字节数据 -> 字符串：new String(byte[] b)
+
+## 字符串与字符数据的转换
+* 字符串 -> 字符数组：
+    * 字符串对象.toCharArray()
+    * String.getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+    ```
+    char[] ch = new char[s.length()];
+    s.getChars(0, s.length(), ch, 0);
+    ```
+* 字符数组 -> 字符串：* new String(char[] ch)
+
+
+
 * 常用方法
 char charAt(int index) 返回索引为index的字符
 boolean endsWith(String suffix) 当前字符串是否以字符串suffix结尾
@@ -60,6 +80,8 @@ boolean startsWith(String prefix) 当前字符串是否已子字符串prefix开�
 boolean startsWith(String prefix, int toffset) 从索引为toffset位置开始是否以子字符串prefix开始
 int compareTo(String anotherString) 从词法上比较两个字符串
 int compareToIgnoreCase(String str) 忽略大小写，从词法上比较两个字符串
+static String join(CharSequence delimiter, CharSequence... elements) 使用指定的分隔符delimiter连接多个元素elements组成的新字符串，并返回
+static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements) 使用指定的分隔符delimiter连接可迭代的集合元素，并返回
 
 
 int codePointAt(int index) 返回指定索引位置为index处的int型字符Unicode编码值，
@@ -75,8 +97,6 @@ static String format(String format, Object... args)
 void getBytes(int srcBegin, int srcEnd, byte[] dst, int dstBegin)
 void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将此字符串中[srcBegin, srcEnd)的字符复制到目标字符数组dst中，且开始位置为dstBegin
 int hashCode()
-static String join(CharSequence delimiter, CharSequence... elements) 使用指定的分隔符delimiter连接多个元素elements组成的新字符串，并返回
-static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)
 boolean matches(String regex) 测试当前字符串与给定的正则表达式regex是否匹配
 int offsetByCodePoints(int index, int codePointOffset) 返回指定的字节编码为codePointOffset在当前字符串中的索引与给定的索引index的差值
 boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)
