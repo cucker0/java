@@ -3,7 +3,7 @@ String类
 
 特点
 * String 不可变的字符序，底层使用char[]存放
-* String时final修饰的
+* String时final修饰的，不能增删改
 
 
 * 构造器
