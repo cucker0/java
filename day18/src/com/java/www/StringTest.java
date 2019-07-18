@@ -58,11 +58,12 @@ String[] split(String regex) 使用正则表达式regex分割当前字符串，�
 String[] split(String regex, int limit) 使用正则表达式regex分割当前字符串，最多分割limit次，分割结果以String[]返回
 boolean startsWith(String prefix) 当前字符串是否已子字符串prefix开始
 boolean startsWith(String prefix, int toffset) 从索引为toffset位置开始是否以子字符串prefix开始
+int compareTo(String anotherString) 从词法上比较两个字符串
+int compareToIgnoreCase(String str) 忽略大小写，从词法上比较两个字符串
+
 
 int codePointAt(int index) 返回指定索引位置为index处的int型字符Unicode编码值，
 int codePointCount(int beginIndex, int endIndex)
-int compareTo(String anotherString)
-int compareToIgnoreCase(String str)
 String concat(String str) 将指定的字符串连接到此字符串的结尾
 boolean contains(CharSequence s) 当前字符是否包含子字符串s
 boolean contentEquals(CharSequence cs) 比较当前字符串与指定的cs字符串是否相等
@@ -267,6 +268,15 @@ public class StringTest {
         }
         System.out.println("===");
 
+        String s271 = "aaxx-bb-99-a37";
+        String[] sarr = s271.split("-");
+        System.out.println("===>");
+        for (String obj : sarr) {
+            System.out.println(obj);
+        }
+        System.out.println("===>");
+
+
         // String[] split(String regex, int limit) 使用正则表达式regex分割当前字符串，最多分割limit次，分割结果以String[]返回
         String[] ss2 = s256.split("\\d+", 2);
         System.out.println("===");
@@ -280,6 +290,17 @@ public class StringTest {
 
         // boolean startsWith(String prefix, int toffset) 从索引为toffset位置开始是否以子字符串prefix开始
         System.out.println(s256.startsWith("66", 10));
+
+        // int compareTo(String anotherString) 从词法上比较两个字符串
+        String s286 = "ShengZhen";
+        String s287 = "ShengZhen1";
+        String s289 = "shengzhen";
+        int i288 = s286.compareTo(s287);
+        System.out.println(i288);
+
+        // int compareToIgnoreCase(String str) 忽略大小写，从词法上比较两个字符串
+        int i293 = s286.compareToIgnoreCase(s289);
+        System.out.println(i293);
     }
 
 }
