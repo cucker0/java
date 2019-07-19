@@ -135,5 +135,47 @@ public class StringBufferTest {
 
     }
 
+    @Test
+    public void test5() {
+        // 其他
+        // int capacity() 返回当前的容量大小
+        StringBuffer sb = new StringBuffer("Good"); // new StringBuffer() 的默认容量为 16
+        int capacity = sb.capacity();
+        System.out.println(capacity);
+
+        // int length() 返回序列内容长度
+        int len = sb.length();
+        System.out.println(len);
+
+        // StringBuffer reverse() 反转当前序列内容，并返回当前序列
+        StringBuffer sb2 = sb.reverse(); // 只能用序列来接受，String不行，它不是序列
+        System.out.println(sb2);
+
+        // void trimToSize() 试图减少用于字符序列的存储空间，删除未使用容量
+        StringBuffer sb155 = new StringBuffer("好马配好鞍");
+        int capacity2 = sb155.capacity();
+        int len2 = sb155.length();
+        System.out.printf("'''%s''' 容量为处理前：capacity:%d, length: %d\n", sb155, capacity2, len2);
+        sb155.trimToSize();
+        System.out.printf("'''%s''' 容量为处理后：capacity:%d, length: %d\n", sb155, sb155.capacity(), sb155.length());
+
+        // int indexOf(String str) 返回字符串str在此字符中首次出现的索引值
+        StringBuffer sb163 = new StringBuffer("good good study, day day up, good good study, day day up");
+        int i164 = sb163.indexOf("day");
+        System.out.printf("day 在'''%s''' 中首次出现的索引位置：%d\n", sb163, i164);
+
+        // int indexOf(String str, int fromIndex) 返回字符串str在此字符中首次出现的索引值，从索引fromIndex开始查找
+        int i168 = sb163.indexOf("good", 3);
+        System.out.println(i168);
+        System.out.println(sb163.indexOf("good"));
+        // int lastIndexOf(String str) 返回字符串str在此字符中首最后一次出现的索引值
+        System.out.println(sb163.lastIndexOf("good"));
+
+        // int lastIndexOf(String str, int fromIndex) 返回字符串str在此字符中首最后一次出现的索引值，从索引fromIndex开始查找
+        int i175 = sb163.lastIndexOf("good", 2);
+        System.out.println(i175);
+
+    }
+
 
 }
