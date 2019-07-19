@@ -4,7 +4,7 @@ StringBuffer类
 ## 特点
 可变的字符序列，可以对字符串内容进行增删改
 很多方法与String类相同，但StringBuffer是可变长度的
-StringBuffer是一个窗口
+StringBuffer是一容器
 
 ## 4个构造器
 StringBuffer() 新建一个空的字符串缓冲区，容量大小为16
