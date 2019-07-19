@@ -2,7 +2,7 @@
 String类
 
 特点
-* String 不可变的字符序，底层使用char[]存放
+* String 不可变的字符串（不是字符序列），底层使用char[]存放
 * String时final修饰的，不能增删改，只能读取
 
 
