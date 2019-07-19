@@ -106,4 +106,34 @@ public class StringBufferTest {
         System.out.println(sb);
     }
 
+    @Test
+    public void test4() {
+        // 查
+        // char charAt(int index) 返回索引为index的字符
+        StringBuffer sb = new StringBuffer("lusitedengni");
+        char c = sb.charAt(3);
+        System.out.println(c);
+
+        // CharSequence subSequence(int start, int end) 获取索引为[start, end)的字符序列
+        CharSequence cs = sb.subSequence(2, 5);
+        System.out.println(cs);
+
+        // String substring(int start) 获取此序列中索引从start开始到结束的子序列
+        String s125 = sb.substring(5);
+        System.out.println(s125);
+
+        // String substring(int start, int end) 获取此序列中索引[start, end)的子序列
+        String s128 = sb.substring(3, 6);
+        System.out.println(s128);
+
+        // void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 把此序列中索引为[srcBegin, srcEnd)的字符复制到到目标字符数组dst，从索引为dstBegin开始存
+        char[] cArr = new char[sb.length()];
+        sb.getChars(0, sb.length(), cArr, 0);
+        for (char ch : cArr) {
+            System.out.print(ch + " ");
+        }
+
+    }
+
+
 }
