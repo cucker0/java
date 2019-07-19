@@ -1,5 +1,6 @@
 /*
 String类
+位于java.lang包下
 
 特点
 * String 不可变的字符串（不是字符序列），底层使用char[]存放
