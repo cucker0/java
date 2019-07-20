@@ -22,8 +22,8 @@ static double	cbrt(double a) 求立方根
 static double	ceil(double a) 天花整，上取整(返回double型的整数)，
 static double	copySign(double magnitude, double sign)
 static float	copySign(float magnitude, float sign)
-static double	cos(double a) 求余弦值
-static double	cosh(double x) 求返回双曲余弦值
+static double	cos(double a) 求余弦值，即cos(a)
+static double	cosh(double x) 求返回双曲余弦值，即cosh(x)
 static int	decrementExact(int a) 减1
 static long	decrementExact(long a) 减1
 static double	exp(double a) 返回欧拉数e的幂，即e^a
@@ -47,34 +47,44 @@ static T min(T a, T b) T为double、float、int、long 求两数的最小值
 static int	multiplyExact(int x, int y) 返回两数的积
 static long	multiplyExact(long x, long y) 返回两数的积
 static int	negateExact(int a) 求此数的相反数
-static long	negateExact(long a)
-static double	nextAfter(double start, double direction) 
+static long	negateExact(long a) 求此数的相反数
+static double	nextAfter(double start, double direction) 返回与start相近的浮点数，精度为系统最大精度，方向与direction靠近。
 static float	nextAfter(float start, double direction)
-static double	nextDown(double d)
+static double	nextDown(double d) 返回沿负无穷大方向与d相邻的浮点数
 static float	nextDown(float f)
-static double	nextUp(double d)
+static double	nextUp(double d) 返回沿正无穷大方向与d相邻的浮点数
 static float	nextUp(float f)
-static double	pow(double a, double b)
-static double	random()
-static double	rint(double a)
-static long	round(double a)
-static int	round(float a)
-static double	scalb(double d, int scaleFactor)
+static double	pow(double a, double b) 返回a的b次幂，即a^b
+static double	random() 返回[0.0, 1.0)范围内随机的一个双精度浮点数
+static double	rint(double a) 返回最接近浮点数a的整数的双精度值，以四舍五入原则，精确到个位。如 Math.rint(3.5) -> 4.0
+static long	round(double a) 取最接近小数a的长整型数，取值方向为正无穷大，以四舍五入原则处理
+static int	round(float a) 取最接近小数a的整型数，取值方向为正无穷大，以四舍五入原则处理
+static double	scalb(double d, int scaleFactor) 返回小数d 乘以 2的scaleFactor次幂的积，即 d * 2^scaleFactor
 static float	scalb(float f, int scaleFactor)
-static double	signum(double d)
-static float	signum(float f)
-static double	sin(double a)
-static double	sinh(double x)
-static double	sqrt(double a)
-static int	subtractExact(int x, int y)
+static double	signum(double d) 返回数d的符号，
+                                0.0：d = 0
+                                1.0：d > 0
+                                -1.0：d < 0
+static float	signum(float f) 返回数d的符号,
+                                0.0F：d = 0
+                                1.0F：d > 0
+                                -1.0F：d < 0
+static double	sin(double a) 返回弧度a的正弦值，即sin(a)
+static double	sinh(double x) 返回x的双曲正弦值
+static double	sqrt(double a) 返回双精度数a的平方根，即a^(1/2)
+static int	subtractExact(int x, int y) 返回x - y的差值，即 x - y
 static long	subtractExact(long x, long y)
-static double	tan(double a)
-static double	tanh(double x)
-static double	toDegrees(double angrad)
-static int	toIntExact(long value)
-static double	toRadians(double angdeg)
-static double	ulp(double d)
+static double	tan(double a) 返回弧度a的正切值，即tan(a)
+static double	tanh(double x) 返回x的双曲正切值，即tanh(x)
+static double	toDegrees(double angrad) 弧度转换成角度(近似值)
+static int	toIntExact(long value) 返回long型数转int的值，即(int) value
+static double	toRadians(double angdeg) 角度转换成弧度(近似值)
+static double	ulp(double d) 返回数d的精度值
 static float	ulp(float f)
+
+
+// 浮点 Math 方法的准确性根据 ulp（units in the last place，最后一位的进退位）来衡量
+An ulp stands for unit of least precision 一个ulp表示最小精度单位, https://www.geeksforgeeks.org/java-math-ulp-method-examples/
 
 
 * */
@@ -84,6 +94,7 @@ package com.java.www;
 import org.junit.Test;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class MathTest {
     @Test
@@ -111,5 +122,66 @@ public class MathTest {
         System.out.println(Math.multiplyExact(2, 3));
 
         System.out.println(Math.negateExact(-1));
+
+        System.out.println("Math.nextAfter(a, b): " + Math.nextAfter(2.1, 3)); // 2.1000000000000005
+        System.out.println("Math.nextAfter(a, b): " + Math.nextAfter(2.1, -1)); // 2.0999999999999996
+
+        System.out.println(Math.random());
+
+        System.out.println(Math.rint(3.4999999)); // 3.0
+        System.out.println(Math.rint(3.5)); // 4.0
+
+        System.out.println(Math.round(-2.4599)); // -2
+
+        System.out.println(Math.scalb(2.0, 3)); // 16.0, ==> 2 * 2^3
+
+        System.out.println(Math.signum(2.2F));
+        System.out.println(Math.signum(0));
+        System.out.println(Math.signum(-2.2F));
+
     }
+
+    @Test
+    public void test2() {
+        for (int i = 0; i < 10000; ++i) {
+            System.out.println(Math.random());
+
+        }
+    }
+
+    @Test
+    public void test3() {
+        // 弧度、角度
+
+        System.out.println(Math.sin(Math.PI/2)); // 1.0
+
+        // 双曲正弦
+        System.out.println(Math.sinh(1)); // 1.1752011936438014
+
+        System.out.println(Math.subtractExact(2, 5)); // -3
+        System.out.println(Math.subtractExact(5, -1)); // -3
+
+        // tan(a) 正切
+        System.out.println(Math.tan(Math.PI/4)); // 0.9999999999999999
+
+        System.out.println(Math.tanh(1)); // 0.7615941559557649
+
+
+        // 弧度转角度
+        System.out.println(Math.toDegrees(Math.PI)); // 180.0
+
+
+    }
+
+    @Test
+    public void test4() {
+        System.out.println(Math.ulp(Math.PI));
+        System.out.println(Math.ulp(3));
+        System.out.println(Math.ulp(1));
+        System.out.println(Math.ulp(1.0));
+        System.out.println(Math.ulp(1.229));
+
+        System.out.println(Math.ulp(-1.0F / 0)); // Infinity
+    }
+
 }
