@@ -14,3 +14,7 @@ day18_java常用类
 * BigDecimal类
 
 
+# String类
+
+作用：构造字符对象
+* 常量
