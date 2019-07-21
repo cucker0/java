@@ -175,11 +175,11 @@ public class MathTest {
 
     @Test
     public void test4() {
-        System.out.println(Math.ulp(Math.PI));
-        System.out.println(Math.ulp(3));
-        System.out.println(Math.ulp(1));
-        System.out.println(Math.ulp(1.0));
-        System.out.println(Math.ulp(1.229));
+        System.out.println(Math.ulp(Math.PI)); // 4.440892098500626E-16
+        System.out.println(Math.ulp(3)); // 2.3841858E-7
+        System.out.println(Math.ulp(1)); // 1.1920929E-7
+        System.out.println(Math.ulp(1.0)); // 2.220446049250313E-16
+        System.out.println(Math.ulp(1.229)); // 2.220446049250313E-16
 
         System.out.println(Math.ulp(-1.0F / 0)); // Infinity
     }
