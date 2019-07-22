@@ -382,6 +382,365 @@ String toPattern()
 位于java.util.Calendar  
 Calendar是一个抽象基类，主用用于完成日期字段之间相互操作的功能
 
+* 获取Calendar实例的方法
+    * 调用 Calendar.getInstace() 方法
+    * 调用它的子类 GregorianCalendar 的构造器
+* 一个Calendar的实例是系统时间的抽象表示，通过 get(int field) 方法来获取想要的时间信息。
+    >比如 YEAR、MONTH、DAY_OF_WEEK、HOUR_OF_DAY、MINUTE、SECOND  
+    * public void set(int field, int value)
+    * public void add(int field, int amount)
+    * public final Date getTime()
+    * public final void setTime(Date date)
+    
+* 常量字段
+```text
+public static final int ERA = 0;
+public static final int YEAR = 1;
+public static final int MONTH = 2;
+public static final int WEEK_OF_YEAR = 3;
+public static final int WEEK_OF_MONTH = 4;
+public static final int DATE = 5;
+public static final int DAY_OF_MONTH = 5;
+public static final int DAY_OF_YEAR = 6;
+public static final int DAY_OF_WEEK = 7;
+public static final int DAY_OF_WEEK_IN_MONTH = 8;
+public static final int AM_PM = 9;
+public static final int HOUR = 10;
+public static final int HOUR_OF_DAY = 11;
+public static final int MINUTE = 12;
+public static final int SECOND = 13;
+public static final int MILLISECOND = 14;
+public static final int ZONE_OFFSET = 15;
+public static final int DST_OFFSET = 16;
+public static final int FIELD_COUNT = 17;
 
 
+public static final int SUNDAY = 1;
+public static final int MONDAY = 2;
+public static final int TUESDAY = 3;
+public static final int WEDNESDAY = 4;
+public static final int THURSDAY = 5;
+public static final int FRIDAY = 6;
+public static final int SATURDAY = 7;
+
+public static final int JANUARY = 0;
+public static final int FEBRUARY = 1;
+public static final int MARCH = 2;
+public static final int APRIL = 3;
+public static final int MAY = 4;
+public static final int JUNE = 5;
+public static final int JULY = 6;
+public static final int AUGUST = 7;
+public static final int SEPTEMBER = 8;
+public static final int OCTOBER = 9;
+public static final int NOVEMBER = 10;
+public static final int DECEMBER = 11;
+public static final int UNDECIMBER = 12;
+
+public static final int AM = 0;
+public static final int PM = 1;
+
+```
+    
  
+# Math类
+位于java.lang.Math
+
+提供了一系列用于科学计算的方法。
+
+##  特点
+* 不能再继承，final修饰的类
+* 不需要实例化，方法都为static静态的
+ 
+ ## 常量
+ public static final double E = 2.7182818284590452354
+ public static final double PI = 3.14159265358979323846
+ 
+ ## Math方法
+```text
+static T abs(T a) 求绝对值，T为double、float、int、long
+static int	addExact(int x, int y) 返回传入的两个数的和
+static long	addExact(long x, long y) 返回传入的两个数的和
+static int	subtractExact(int x, int y) 返回x - y的差值，即 x - y
+static long	subtractExact(long x, long y) 返回 x - y
+static int	multiplyExact(int x, int y) 返回两数的积
+static long	multiplyExact(long x, long y) 返回两数的积
+static int	negateExact(int a) 求此数的相反数
+static long	negateExact(long a) 求此数的相反数
+static int	floorMod(int x, int y) 取模，返回x % y
+static long	floorMod(long x, long y) 取模，返回x % y
+
+static double	sin(double a) 返回弧度a的正弦值，即sin(a)
+static double	cos(double a) 求余弦值，即cos(a)
+static double	tan(double a) 返回弧度a的正切值，即tan(a)
+static double	asin(double a) 返回反正弦值，值范围：[-pi/2, pi/2]
+static double	acos(double a) 返回反余弦值，值范围：[0, pi]
+static double	atan(double a) 返回反正切值，值范围：(-pi/2, pi/2)
+static double	atan2(double y, double x) 返回从直角坐标(x，y)到极坐标(r，θ)的转换角度θ
+
+static double	sinh(double x) 返回x的双曲正弦值
+static double	cosh(double x) 求返回双曲余弦值，即cosh(x)
+static double	tanh(double x) 返回x的双曲正切值，即tanh(x)
+
+static double	toDegrees(double angrad) 弧度转换成角度(近似值)
+static double	toRadians(double angdeg) 角度转换成弧度(近似值)
+
+static double	cbrt(double a) 求立方根
+
+static T max(T a, T b) T为double、float、int、long 求两数的最大值
+static T min(T a, T b) T为double、float、int、long 求两数的最小值
+
+static double	sqrt(double a) 返回双精度数a的平方根，即a^(1/2)
+static double	pow(double a, double b) 返回a的b次幂，即a^b
+static double	exp(double a) 返回欧拉数e的幂，即e^a
+static double	random() 返回[0.0, 1.0)范围内随机的一个双精度浮点数
+
+static double	log(double a) 求此值的自然对数，以e为底
+static double	log10(double a) 求此值的以10为底的对数
+
+static int	decrementExact(int a) 减1，返回 a - 1
+static long	decrementExact(long a) 减1，返回 a - 1
+static int	incrementExact(int a) 加1，返回 a + 1
+static long	incrementExact(long a) 加1，返回 a + 1
+
+static double	expm1(double x) 返回欧拉数 e^x - 1
+static double	ceil(double a) 天花整，上取整(返回double型的整数)
+static double	floor(double a) 地板整，下取整(返回double型的整数)
+static int	floorDiv(int x, int y) 返回两数相除的商下去整
+static long	floorDiv(long x, long y) 返回两数相除的商下去整
+
+static double	copySign(double magnitude, double sign)
+static float	copySign(float magnitude, float sign)
+static int	getExponent(double d) 求指定数的无偏质数
+static int	getExponent(float f) 求指定数的无偏质数
+static double	hypot(double x, double y) 求两数平方的和开平方，即 (x^2 + y^2)^(1/2)，类似已知直角三角形直角边长度，求斜边
+static double	IEEEremainder(double f1, double f2) 按照IEEE754标准，计算两个数的余数
+static double log1p(double x) 此值的以10为底的对数，返回此对数+1的和
+static double	nextAfter(double start, double direction) 返回与start相近的浮点数，精度为系统最大精度，方向与direction靠近。
+static float	nextAfter(float start, double direction)
+static double	nextDown(double d) 返回沿负无穷大方向与d相邻的浮点数
+static float	nextDown(float f)
+static double	nextUp(double d) 返回沿正无穷大方向与d相邻的浮点数
+static float	nextUp(float f)
+static double	rint(double a) 返回最接近浮点数a的整数的双精度值，以四舍五入原则，精确到个位。如 Math.rint(3.5) -> 4.0
+static long	round(double a) 取最接近小数a的长整型数，取值方向为正无穷大，以四舍五入原则处理
+static int	round(float a) 取最接近小数a的整型数，取值方向为正无穷大，以四舍五入原则处理
+static double	scalb(double d, int scaleFactor) 返回小数d 乘以 2的scaleFactor次幂的积，即 d * 2^scaleFactor
+static float	scalb(float f, int scaleFactor)
+static double	signum(double d) 返回数d的符号，
+                                0.0：d = 0
+                                1.0：d > 0
+                                -1.0：d < 0
+static float	signum(float f) 返回数d的符号,
+                                0.0F：d = 0
+                                1.0F：d > 0
+                                -1.0F：d < 0
+static int	toIntExact(long value) 返回long型数转int的值，即(int) value
+static double	ulp(double d) 返回数d的精度值
+static float	ulp(float f)
+
+
+// 浮点 Math 方法的准确性根据 ulp（units in the last place，最后一位的进退位）来衡量
+An ulp stands for unit of least precision 一个ulp表示最小精度单位, https://www.geeksforgeeks.org/java-math-ulp-method-examples/
+
+```
+
+示例  
+[Math Test](./src/com/java/www/MathTest.java)  
+
+
+# BigInteger类
+Integer类是int的包装类，能存储的最大整型值为2^31 - 1  
+BitInteger类的数字范围比Integer类的数字范围要大的多，可以支持任意精度的整数
+
+## 使用场景
+整数范围超过2^31 - 1，科学研究计算
+
+## BigInteger构造器
+```text
+BigInteger(String val)
+BigInteger(byte[] val)
+BigInteger(int signum, byte[] magnitude)
+BigInteger(int bitLength, int certainty, Random rnd)
+BigInteger(int numBits, Random rnd)
+BigInteger(String val, int radix)
+
+```
+
+## BigInteger常量
+```text
+static BigInteger ONE
+static BigInteger TEN
+static BigInteger ZERO
+
+```
+
+## BigInteger方法
+```text
+BigInteger abs() 返回绝对值
+BigInteger add(BigInteger val) 返回 this + val
+BigInteger subtract(BigInteger val) 返回 this - val
+BigInteger multiply(BigInteger val) 返回 this * val
+BigInteger divide(BigInteger val) 返回 this / val
+
+BigInteger and(BigInteger val) 返回 this & val
+BigInteger or(BigInteger val) 或运算，返回 (this | val)
+BigInteger not() 取反，返回~this
+BigInteger xor(BigInteger val) 异或运算，返回 this ^ val
+BigInteger andNot(BigInteger val) 返回 this & ~val
+BigInteger shiftLeft(int n) this << n
+BigInteger shiftRight(int n) this >> n
+
+BigInteger max(BigInteger val) 返回 this 与 val中较大的值
+BigInteger min(BigInteger val) 返回 this 与 val中较小的值
+BigInteger mod(BigInteger m) 返回 this % m
+BigInteger modInverse(BigInteger m) 返回 this^(-1) % m
+BigInteger modPow(BigInteger exponent, BigInteger m) 返回 this^exponent % m
+BigInteger pow(int exponent) 返回 this^exponent
+BigInteger remainder(BigInteger val) 返回 this % val
+
+int bitCount() 返回这个大整数的二进制补码表示中与其符号位不同的位数
+int bitLength() 返回这个大整数的最小二进制补码表示中的位数，不包括符号位
+byte byteValueExact() 将这个大整数转换为byte，检查丢失的信息
+BigInteger clearBit(int n)
+int compareTo(BigInteger val)
+BigInteger[] divideAndRemainder(BigInteger val) 返回 BigInteger[]{ this / val, this % val }
+double doubleValue() 把此BigInteger转化成 double
+boolean equals(Object x)
+BigInteger flipBit(int n)
+float floatValue()
+BigInteger gcd(BigInteger val)
+int getLowestSetBit()
+int hashCode()
+int intValue()
+int intValueExact()
+boolean isProbablePrime(int certainty)
+long longValue()
+long longValueExact()
+BigInteger negate()
+BigInteger nextProbablePrime()
+static BigInteger probablePrime(int bitLength, Random rnd)
+
+BigInteger setBit(int n)
+short shortValueExact()
+int signum()
+boolean testBit(int n)
+byte[] toByteArray()
+String toString()
+String toString(int radix)
+static BigInteger valueOf(long val)
+
+```
+
+示例  
+[BigInteger Test](./src/com/java/www/BigIntegerTest.java)
+
+
+# BigDecimal类
+一般的Float类和Double类可以用来做科学计算或工程计算，但在商业计算中，  
+要求数字精度比较高，故用到java.math.BigDecimal类。BigDecimal类支持任何精度的定点数
+
+## BigDecimal类构造器
+```text
+BigDecimal(BigInteger val)
+BigDecimal(BigInteger unscaledVal, int scale)
+BigDecimal(BigInteger unscaledVal, int scale, MathContext mc)
+BigDecimal(BigInteger val, MathContext mc)
+BigDecimal(char[] in)
+BigDecimal(char[] in, int offset, int len)
+BigDecimal(char[] in, int offset, int len, MathContext mc)
+BigDecimal(char[] in, MathContext mc)
+BigDecimal(double val)
+BigDecimal(double val, MathContext mc)
+BigDecimal(int val)
+BigDecimal(int val, MathContext mc)
+BigDecimal(long val)
+BigDecimal(long val, MathContext mc)
+BigDecimal(String val)
+BigDecimal(String val, MathContext mc)
+
+```
+
+## BigDecimal类常量
+```text
+static BigDecimal ONE
+static BigDecimal TEN
+static BigDecimal ZERO
+static int ROUND_CEILING
+static int ROUND_DOWN
+static int ROUND_FLOOR
+static int ROUND_HALF_DOWN
+static int ROUND_HALF_EVEN
+static int ROUND_HALF_UP
+static int ROUND_UNNECESSARY
+static int ROUND_UP
+
+``` 
+
+## BigDecimal方法
+```text
+BigDecimal abs()
+BigDecimal abs(MathContext mc)
+BigDecimal add(BigDecimal augend)
+BigDecimal add(BigDecimal augend, MathContext m
+byte byteValueExact()
+int compareTo(BigDecimal val)
+BigDecimal divide(BigDecimal divisor)
+BigDecimal divide(BigDecimal divisor, int roundingMode)
+BigDecimal divide(BigDecimal divisor, int scale, int roundingMode)
+BigDecimal divide(BigDecimal divisor, int scale, RoundingMode roundingMode)
+BigDecimal divide(BigDecimal divisor, MathContext mc)
+BigDecimal divide(BigDecimal divisor, RoundingMode roundingMode)
+BigDecimal divideAndRemainder(BigDecimal divisor)
+BigDecimal divideAndRemainder(BigDecimal divisor, MathContext mc)
+BigDecimal divideToIntegralValue(BigDecimal divisor)
+BigDecimal divideToIntegralValue(BigDecimal divisor, MathContext mc)
+double doubleValue()
+boolean equals(Object x)
+float floatValue()
+int hashCode()
+int intValue()
+int intValueExact()
+long longValue()
+BigDecimal max(BigDecimal val)
+BigDecimal min(BigDecimal val)
+BigDecimal movePointLeft(int n)
+BigDecimal movePointRight(int n)
+BigDecimal multiply(BigDecimal multiplicand)
+BigDecimal multiply(BigDecimal multiplicand, MathContext mc)
+BigDecimal negate()
+BigDecimal negate(MathContext mc)
+BigDecimal plus()
+BigDecimal plus(MathContext mc)
+BigDecimal pow(int n)
+BigDecimal pow(int n, MathContext mc)
+int precision()
+BigDecimal remainder(BigDecimal divisor)
+BigDecimal remainder(BigDecimal divisor, MathContext mc)
+BigDecimal round(MathContext mc)
+int scale()
+BigDecimal scaleByPowerOfTen(int n)
+BigDecimal setScale(int newScale)
+BigDecimal setScale(int newScale, int roundingMode)
+BigDecimal setScale(int newScale, RoundingMode roundingMode)
+short shortValueExact()
+int signum()
+BigDecimal stripTrailingZeros()
+BigDecimal subtract(BigDecimal subtrahend)
+BigDecimal subtract(BigDecimal subtrahend, MathContext mc)
+BigInteger toBigInteger()
+BigInteger toBigIntegerExact()
+String toEngineeringString()
+String toPlainString()
+String toString()
+BigDecimal 	ulp()
+BigInteger unscaledValue()
+static BigDecimal valueOf(double val)
+static BigDecimal valueOf(long val)
+static BigDecimal valueOf(long unscaledVal, int scale)
+
+```
+
+示例  
+[BigDecimal Test](./src/com/java/www/BigDecimalTest.java)
+

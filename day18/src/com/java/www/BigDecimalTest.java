@@ -4,7 +4,7 @@ BigDecimal类
 一般的Float类和Double类可以用来做科学计算或工程计算，但在商业计算中，要求数字精度比较高，故用到java.math.BigDecimal类。BigDecimal类支持任何精度的定点数
 
 
-// 构造器
+## 构造器
 BigDecimal(BigInteger val)
 BigDecimal(BigInteger unscaledVal, int scale)
 BigDecimal(BigInteger unscaledVal, int scale, MathContext mc)
@@ -23,7 +23,7 @@ BigDecimal(String val)
 BigDecimal(String val, MathContext mc)
 
 
-// 常量
+## 常量
 static BigDecimal ONE
 static BigDecimal TEN
 static BigDecimal ZERO
@@ -38,7 +38,7 @@ static int ROUND_UP
 
 
 
-// 方法
+## 方法
 BigDecimal abs()
 BigDecimal abs(MathContext mc)
 BigDecimal add(BigDecimal augend)

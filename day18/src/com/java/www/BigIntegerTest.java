@@ -22,7 +22,7 @@ static BigInteger TEN
 static BigInteger ZERO
 
 
-// 方法
+## 方法
 BigInteger abs() 返回绝对值
 BigInteger add(BigInteger val) 返回 this + val
 BigInteger subtract(BigInteger val) 返回 this - val
