@@ -50,14 +50,14 @@ public class SimpleDateFormatTest {
         // 格式化日期方式1
         SimpleDateFormat sdf = new SimpleDateFormat();
         String date = sdf.format(new Date());
-        System.out.println(date);
+        System.out.println(date); // 2019/7/22 下午12:04
 
         // 格式化日期方式2
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss");
         String d2 = sdf2.format(new Date());
-        System.out.println(d2);
-
+        System.out.println(d2); // 2019-07-22 12:04:48
+        System.out.println(sdf3.format(new Date())); // 2019-07-22 12:04:48.048
     }
 
     @Test

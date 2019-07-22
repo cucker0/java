@@ -10,7 +10,7 @@ String类
 * 构造器
 String()
 String(byte[] bytes) 使用运行JVM平台的默认字符集几码自己数组bytes
-String(byte[] bytes, Charset charset) 使用指定的字符集charset来解码字节数组bytes
+String(byte[] bytes, Charset charset) 使用运行JVM平台的默认字符集编码字节数组bytes
 String(byte[] ascii, int hibyte)    Deprecated
 String(byte[] bytes, int offset, int length)
 String(byte[] bytes, int offset, int length, Charset charset)
@@ -26,11 +26,11 @@ String(StringBuilder builder)
 
 ## 字符串与基本数据类型、包装类之间转换
 * 字符串 -> 基本数据类型、包装类：调用 相应包装类.parseXxx(String str)   其中Xxx为相应的基本数据类型
-* 基本数据类型、包装类 -> 字符串：调用String.valueOf(T obj)
+* 基本数据类型、包装类 -> 字符串：调用String.valueOf(T obj)  // T 为int、boolean、byte等基本数据类型
 
 ## 字符串与字节数组的相互转换
 * 字符串 -> 字节数组：字符串对象.getBytes()
-* 字节数据 -> 字符串：new String(byte[] b)
+* 字节数组 -> 字符串：new String(byte[] b)
 
 ## 字符串与字符数据的转换
 * 字符串 -> 字符数组：
@@ -40,7 +40,8 @@ String(StringBuilder builder)
     char[] ch = new char[s.length()];
     s.getChars(0, s.length(), ch, 0);
     ```
-* 字符数组 -> 字符串：* new String(char[] ch)
+* 字符数组 -> 字符串：
+    * new String(char[] ch)
 
 
 

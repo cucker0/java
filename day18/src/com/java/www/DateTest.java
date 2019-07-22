@@ -17,9 +17,9 @@ Date()
 Date(int year, int month, int date) // Deprecated
 Date(int year, int month, int date, int hrs, int min) // Deprecated
 Date(int year, int month, int date, int hrs, int min, int sec) // Deprecated
-以上三个构造器以1900-01-01 00:00:00为基准时间
+以上三个构造器以1900-01-01 00:00:00 GMT为基准时间
 
-Date(long date) 以1970, 00:00:00 GMT为基准的，毫秒差值
+Date(long date) 以1970-01-01, 00:00:00 GMT为基准的，毫秒差值
 Date(String s) // Deprecated
 
 ## 方法
@@ -35,7 +35,7 @@ int getHours() // Deprecated
 int getMinutes() // Deprecated
 int getMonth() // Deprecated
 int getSeconds() // Deprecated
-int getTime()
+int getTime() 返回自 1970-1-1 00:00:00 GMT 以来此Date对象表示的毫秒数
 int getTimezoneOffset()
 int getYear() // Deprecated
 int hashCode() // Deprecated
@@ -50,7 +50,7 @@ void setYear(int year) // Deprecated
 String toGMTString() // Deprecated
 Instant toInstant()
 String toLocaleString() // Deprecated
-String toString()
+String toString() 把此 Date 对象转换为以下形式的 String： dow mon dd hh:mm:ss zzz yyyy 其中： dow 是一周中的某一天 (Sun, Mon, Tue, Wed, Thu, Fri, Sat)，zzz是时间标准
 static long UTC(int year, int month, int date, int hrs, int min, int sec) // Deprecated
 
 ## java.sql.Date构造器
