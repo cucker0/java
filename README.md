@@ -20,6 +20,7 @@ JAVA Study
 * [day15_IO流](./day15/README.md "IO流")
 * [day16](./day16/README.md "")
 * [day17_多线程](./day17/README.md "多线程")
+* [day18_java常用类](./day18/README.md "java常用类")
 
 * [enmu枚举类](./README/枚举类.md "enmu枚举类")
 * [注解](./README/注解.md "注解")
