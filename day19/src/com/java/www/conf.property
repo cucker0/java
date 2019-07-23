@@ -1,0 +1,5 @@
+host="db.facai.com"
+port=3306
+dbname="bank"
+user="bank_user"
+password="ad455ddx"

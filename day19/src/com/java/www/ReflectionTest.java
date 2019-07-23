@@ -32,6 +32,17 @@ Class的实例。
 * 调用对应的运行时类的指定结构（属性、方法、构造器）
 * 反射的应用：动态代理
 
+
+
+
+类加载器ClassLoader
+    类加载器是用来把类(class)装载时内存的。JVM规范定义了两种类型的类加载器：启动类加载器(bootstrap)和用户定义
+加载器(user-defined class loader)。JVM在运行时会产生3个类加载器组成的初始化加载器层次结构：
+Bootstrap ClassLoader 引导类加载器：用C++编写，是JVM自带的类加载器，负责java平台核心库，用来加载核心类库。访加载器无法直接获取
+Extension ClassLoader 扩展类加载器：负责jre/lib/ext 目录下的jar包或-D java.ext.dirs指定目录下的jar包载入工作库
+System ClassLoader 系统类加载器：负责java -classpath 或 -D java.class.path所指定的目录下的类与jar包载入工作，是最常用的加载器
+
+
 * */
 
 
@@ -39,9 +50,14 @@ package com.java.www;
 
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 public class ReflectionTest {
     @Test
@@ -98,7 +114,7 @@ public class ReflectionTest {
         System.out.println(clazz);
 
         // 方式2：通过运行时类，调用 类.class
-        Class clazz2 = String.class;
+        Class<String> clazz2 = String.class;
         System.out.println(clazz2.getName());
 
         // 方式3：通过Class的静态方法，调用 public Class Class.forName(String className)
@@ -116,9 +132,70 @@ public class ReflectionTest {
 
     @Test
     public void test4() {
+        // 类加载器
+        ClassLoader loader0 = this.getClass().getClassLoader();
+        System.out.println(loader0);
 
+        String className = "java.lang.Math";
+        Class clazz = null;
+        try {
+            clazz = loader0.loadClass(className);
+            System.out.println(clazz.getName());
+            ClassLoader loader5 = clazz.getClassLoader(); // null
+            System.out.println(loader5);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
 
+        ClassLoader loader1 = ClassLoader.getSystemClassLoader();
+        System.out.println(loader1);
+
+        ClassLoader loader2 = loader1.getParent();
+        System.out.println(loader2);
+
+        ClassLoader loader3 = loader2.getParent();
+        System.out.println(loader3); // BootStrap ClassLoader 无法直接获取
+
+        Class<Person> clazz1 = Person.class;
+        ClassLoader loader4 = clazz1.getClassLoader();
+        System.out.println(loader4);
 
     }
+
+    @Test
+    public void test5() {
+        // 利用类加载器访问包内的文件，非根路径下的
+        ClassLoader loader = this.getClass().getClassLoader();
+        String filePath = "com\\java\\www\\conf.property";
+        InputStream is = loader.getResourceAsStream(filePath);
+
+        // 或
+//        String filePath = "E:\\dev\\java_2019\\day19\\src\\com\\java\\www\\conf.property";
+//        InputStream is = null;
+//        try {
+//            is = new FileInputStream(filePath); // FileInputStream只能加载根目录下或绝对路径的文件，相对包路径下的文件加载找不到路径
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
+        Properties properties = new Properties();
+        try {
+            properties.load(is);
+            String host = properties.getProperty("host"); // 等号后的""也会取出来
+            String port = properties.getProperty("port");
+            String user = properties.getProperty("user");
+            String password = properties.getProperty("password");
+
+            System.out.println(host);
+            System.out.println(port);
+            System.out.println(user);
+            System.out.println(password);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
