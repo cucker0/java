@@ -1,18 +1,28 @@
 package com.java.www;
 
-public class Person {
+import java.util.Comparator;
+
+@MyAnnotation(value = "setp 1")
+public class Person extends Biology<String> implements MyInterface, Comparator {
     public String name;
     private int age;
 
     // 构造器
     public Person() {
         super();
+        System.out.println("Person空参构造器...");
     }
 
+    public Person(String name) {
+        super();
+        setName(name);
+    }
+
+    @MyAnnotation
     public Person(String name, int age) {
         super();
         setName(name);
-        this.age = age;
+        setAge(age);
     }
 
     // 方法
@@ -38,6 +48,7 @@ public class Person {
         this.age = age;
     }
 
+    @MyAnnotation(value = "method")
     public void speak(String content) {
         System.out.println(name + "说：" + content);
     }
@@ -67,5 +78,30 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public void walk() {
+        System.out.println(name + ": walking ...");
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        if (o1 == o2) {
+            return 0;
+        }
+
+        if (o1 instanceof Person && o2 instanceof Person) {
+            Person p1 = (Person) o1;
+            Person p2 = (Person) o2;
+            if (p1.name != p2.name) {
+               return p1.name.compareTo(p2.name);
+            }
+            if (p1.age != p2.age){
+                return p1.age - p2.age;
+            }
+        }
+
+        return 0;
     }
 }

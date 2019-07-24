@@ -76,7 +76,7 @@ public class ReflectionTest {
         Class clazz = Person.class;
 
         // 2. 通过Class对象创建对应的运行时类Person类的对象
-        Object obj = clazz.newInstance();
+        Object obj = clazz.newInstance(); // 代用了空参的Person()构造器
         Person p1 = (Person) obj;
         System.out.println(p1);
 
@@ -128,6 +128,10 @@ public class ReflectionTest {
         }
         System.out.println(clazz3.getName());
 
+
+        Class<Person> clazz4 = Person.class;
+        System.out.println(clazz == clazz4); // true
+        System.out.println(clazz == clazz3); // true
     }
 
     @Test
@@ -174,7 +178,7 @@ public class ReflectionTest {
 //        String filePath = "E:\\dev\\java_2019\\day19\\src\\com\\java\\www\\conf.property";
 //        InputStream is = null;
 //        try {
-//            is = new FileInputStream(filePath); // FileInputStream只能加载根目录下或绝对路径的文件，相对包路径下的文件加载找不到路径
+//            is = new FileInputStream(filePath); // FileInputStream相对路径只能加载根目录下或绝对路径的文件，相对包路径下的文件加载找不到路径
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
