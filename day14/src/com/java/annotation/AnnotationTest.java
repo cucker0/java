@@ -97,7 +97,7 @@ class Student extends Person{
 
     // 方法
     /*
-    // 快速发生有错误的地方
+    // 快速发现有错误的地方
     @Override
     public void walk(String how) {
 
