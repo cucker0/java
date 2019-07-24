@@ -91,6 +91,7 @@ public class ReflectionTest {
         f2.set(p1, 29);
         System.out.println(p1);
 
+        // 方法
         Method m1 = clazz.getMethod("getName");
         Object obj67 = m1.invoke(p1);
         String name = (String) obj67;
@@ -200,6 +201,8 @@ public class ReflectionTest {
             e.printStackTrace();
         }
     }
+
+
 
 
 }

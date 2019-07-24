@@ -13,13 +13,13 @@ public class Person extends Biology<String> implements MyInterface, Comparator {
         System.out.println("Person空参构造器...");
     }
 
-    public Person(String name) {
+    private Person(String name) {
         super();
         setName(name);
     }
 
     @MyAnnotation
-    public Person(String name, int age) {
+    protected Person(String name, int age) {
         super();
         setName(name);
         setAge(age);
@@ -30,7 +30,7 @@ public class Person extends Biology<String> implements MyInterface, Comparator {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws RuntimeException{
         if (name.isEmpty()) {
             throw new RuntimeException("name can't be empty!");
         }
@@ -42,10 +42,14 @@ public class Person extends Biology<String> implements MyInterface, Comparator {
     }
 
     public void setAge(int age) {
-        if (age < 0 || age <= 150) {
+        if (age < 0 || age > 150) {
             throw new RuntimeException("age must >= 0 and < 150");
         }
         this.age = age;
+    }
+
+    private String see(int time, String how) {
+        return name + " " + how + " 在看，花费时间：" + time + "s";
     }
 
     @MyAnnotation(value = "method")
@@ -104,4 +108,15 @@ public class Person extends Biology<String> implements MyInterface, Comparator {
 
         return 0;
     }
+
+    public static void info() {
+        System.out.println("是黄种人");
+    }
+
+    // 内部类
+    class Wallet {
+        double balance;
+    }
+
+
 }
