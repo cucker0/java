@@ -148,6 +148,9 @@ try {
     // 异常1处理方法
 } catch(Exception2 e) {
     // 异常2处理方法
+} catch(Exception3 | Exception4 | Exception5 e) {
+    // 异常2处理方法
+    e.printStackTrace();
 } finally {
     // 一定要执行的代码
 }
