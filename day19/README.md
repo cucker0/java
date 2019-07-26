@@ -53,5 +53,42 @@ reflection(反射)被视为动态语言的关键，反射机制允许程序员�
 * Field[] getDeclaredFields() 返回此对象对应类的声明的属性，Field[]
 * Method getMethod(String name, Class... paramTypes) 返回此对象对象类形参为paramTypes 的方法
 
+示例  
+[Reflection2Test](./src/com/java/www/Reflection2Test.java)
+
+
+## 获取类的Class实例
+* 通过运行时类的对象，调用 对象.getClass()
+```text
+        Person p1 = new Person();
+        // 获取对象的运行时类
+        Class clazz = p1.getClass();
+```
+* 通过运行时类，调用 类.class
+>Class<String> clazz2 = String.class;
+* 通过Class的静态方法，调用 public Class Class.forName(String className),className必须是完整路径的
+```text
+        String className = "com.java.www.Person";
+        Class clazz3 = null;
+        try {
+            clazz3 = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(clazz3.getName());
+```
+* 类加载器
+```text
+        ClassLoader loader = this.getClass().getClassLoader();
+        try {
+            Class clazz5 = loader.loadClass("java.lang.Math");
+            System.out.println(clazz5);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+```
+示例  
+[ReflectionTest test3](./src/com/java/www/ReflectionTest.java)
+
 
 

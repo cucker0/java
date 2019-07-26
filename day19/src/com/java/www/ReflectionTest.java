@@ -133,6 +133,16 @@ public class ReflectionTest {
         Class<Person> clazz4 = Person.class;
         System.out.println(clazz == clazz4); // true
         System.out.println(clazz == clazz3); // true
+        System.out.println();
+
+        // 方式4：类的加载器
+        ClassLoader loader = this.getClass().getClassLoader();
+        try {
+            Class clazz5 = loader.loadClass("java.lang.Math");
+            System.out.println(clazz5);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
