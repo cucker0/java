@@ -247,3 +247,104 @@ String modifier = Modifier.toString(i);
 >使用一个代理将对象包装起来, 然后用该代理对象取代原始对象. 任何对原始对象的调用都要通过代理. 代理对象决定是否以及何时将方法调用转到原始对象
 
 
+* Proxy：专门完成代理的操作类，是所有动态代理的父类。通过此类为一个或多个接口动态地生成实现类
+* 提供用于创建动态代理类和动态代理对象的静态方法
+    * static Class<?> getProxyClass(ClassLoader loader, Class<?>... interfaces) 创建一个动态代理类序所对应的Class对象
+    * static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) 直接创建一个动态代理对象
+    ```text
+    loader: 类加载器
+    interfaces: 得到全部的接口
+    h: 得到InvocationHandler接口的子类实例
+
+    ```
+* 动态代理步骤
+    1. 创建一个实现接口InvocationHandler的类，它必须实现invoke方法，以完成代理的具体操作
+    ```text
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // 当通过代理类的对象发起对被重写方法的调用时，都会转为对invoke方法的调用
+    
+        Object returnVal = method.invoke(obj, args);
+        System.out.println("实现的invoke方法被调用了");
+        return returnVal;
+    }
+        
+    /*
+    proxy: 被代理的对象
+    method：要调用的方法
+    args: 方法调用时需要的参数
+    **/    
+    
+    ```
+    2. 创建被代理的类以及接口
+    ```text
+    // 示例
+    interface Factory {
+        void make();
+    }
+    
+    class HuaweiFactory implements Factory {
+    
+        // 构造器
+        public HuaweiFactory() {
+            super();
+        }
+    
+        // 方法
+        @Override
+        public void make() {
+            System.out.println("华为松山湖生产基地生产了100000 部手机");
+        }
+    
+    }
+  
+    ```
+    3. 通过Proxy的静态方法 public Object newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)创建一个相应的接口代理
+    ```text
+    // 示例
+    public Object getProxyInstance(Object obj) {
+        /*
+        本方法作用：
+        1. 给被代理的对象实例化
+        2. 返回一个代理类的对象
+
+        * */
+
+        this.obj = obj;
+        // 使用反射，根据被代理类动态生成代理对象
+        Object proxy = Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), this);
+        return proxy;
+    }
+    
+    ```
+    4. 通过代理调用被代理类的方法
+    ```text
+    // 示例
+    // 1. 创建被代理类对象
+    HuaweiFactory huawei = new HuaweiFactory();
+    // 2. 创建一个 实现了 InvocationHandler接口的对象
+    MyInvocationHandler handler = new MyInvocationHandler();
+
+    // 调用getProxy获取 动态生成代理类对象
+    Object obj = handler.getProxyInstance(huawei);
+    Factory haproxy = (Factory) obj;
+    haproxy.make(); // 转到对动态代理类对象的invoke()方法的调用
+    System.out.println();
+    ```
+
+
+静态代理示例  
+[StaticProxyTest](./src/com/java/proxy/StaticProxyTest.java)
+
+动态代理示例  
+[DynamicProxyTest](./src/com/java/proxy/DynamicProxyTest.java)  
+
+
+# 动态代理与AOP(Aspect Orient Programming面向切面编程)
+AOP动态代理功能类似于python中的装饰器
+* 使用Proxy生成一个动态代理时，往往并不会凭空产生一个动态代理。通常都是为指定的目标对象生成动态代理
+* 这种动态代理在AOP中称为AOP代理，AOP代理可代替目标对象，AOP代理包含了目标对象的全部方法。  
+但AOP代理中的方法与目标对象的方法存在差异：AOP代理中的方法可以在执行目标方法之前、之后插入一些通用处理
+
+![](./images/AOP动态代理.png "AOP动态代理")
+
