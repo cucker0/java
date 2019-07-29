@@ -346,5 +346,8 @@ AOP动态代理功能类似于python中的装饰器
 * 这种动态代理在AOP中称为AOP代理，AOP代理可代替目标对象，AOP代理包含了目标对象的全部方法。  
 但AOP代理中的方法与目标对象的方法存在差异：AOP代理中的方法可以在执行目标方法之前、之后插入一些通用处理
 
+
+示例  
+[AOP代理 Test](./src/com/java/proxy/AOPTest.java)  
 ![](./images/AOP动态代理.png "AOP动态代理")
 
