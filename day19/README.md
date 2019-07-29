@@ -57,7 +57,7 @@ reflection(反射)被视为动态语言的关键，反射机制允许程序员�
 [Reflection2Test](./src/com/java/www/Reflection2Test.java)
 
 
-## 获取类的Class实例
+## 获取类的Class实例的4种方法
 * 通过运行时类的对象，调用 对象.getClass()
 ```text
         Person p1 = new Person();
@@ -116,21 +116,23 @@ System ClassLoader 系统类加载器：负责java -classpath 或 -D java.class.
 [ReflectionTest test5](./src/com/java/www/ReflectionTest.java)
 
 
-# 创建类对象并获取类的完整结构
-Field、Method、Constructor、Supperclass、Interface、Annotation
-* 实现的接口
+# 通过反射调用类的完整结构
+Field、Method、Constructor、Supperclass、实现的Interface、Annotation、方法的Exception信息、内部类  
+先获取类的Class实例
+
+* 获取实现的接口
     ```text
     public Class<?>[] getInterfaces()
     获取此对象所表示的类或接口实现的接口
   
     ```
-* 所继承的父类
+* 获取所继承的父类
     ```text
     public Class<? Super T> getSuperclass()
     返回此Class所表示的实体(类、接口、基本数据类型)的父类的Class
     ```
 
-* 全部的构造器
+* 获取全部的构造器
     * public Constructor<T>[] getConstructors()
     >返回此Class对象所表示的类的所有public构造器
     * public Constructor<T>[] getDeclaredConstructors()
@@ -143,14 +145,105 @@ Field、Method、Constructor、Supperclass、Interface、Annotation
     取得参数的类型：public Class<?>[] getParameterTypes()
     ```
     
-* 全部的方法
-    * 
+* 获取全部的方法
+    * public Method[] getDeclaredMethods()
+    >返回此Class对象所表示的类或接口的全部方法
+    * public Method[] getMethods()
+    返回此Class对象所表示的类或接口的public方法
+    ```text
+    Method类中：
+    * public Class<?> getReturnType() 取得方法全部的返回值
+    * public Class<?>[] getParameterTypes() 获取方法全部的参数
+    * public int getModifiers() 取得方法修饰符
+    * public Class<?>[] getExceptionTypes() 获取方法异常信息
+  
+    ```
 
-## 通过反射调用类的完整结构
+* 获取全部的属性(Field)
+    * public Field[] getFields()
+    >返回此Class对象所表示的类或接口的public的Field
+    * public Field[] getDeclaredFields()
+    >返回此Class对象所表示的类或接口的全部Field，包括private修饰的属性
+    ```text
+    Field类中：
+    * public int getModifiers() 以整数形式返回此Field的修饰符
+    * public Class<?> getType() 返回Field的属性类型
+    * public String getName() 返回Field名称
+    
+    ```
+* 获取注解(Annotation)
+    * public Annotation[] getAnnotations() 获取此Class对象所表示的类或接口的public修饰的注解
+    * public Annotation[] getDeclaredAnnotations() 获取此Class对象所表示的类或接口的全部注解
+    
+* 泛型相关
+    * Type getGenericSuperclass() 获取带泛型的父类
+    * 获取父类的泛型
+    ```text
+    Class clazz = Person.class;
+    Type type1 = clazz.getGenericSuperclass();
+    ParameterizedType parameterizedType = (ParameterizedType) type1;
+    Type[] args = parameterizedType.getActualTypeArguments(); //获取实际的泛型类型参数数组
+    Class firstArg = (Class) args[0];
+    System.out.println(firstArg.getName());
+    ```
+
+* 获取类所在的包
+    >public Package getPackage()
+    
+* 获取内部类
+    >public Class[] getDeclaredClasses()
+
+* 数字形式修饰符转String修饰符
+```text
+int i = f.getModifiers();
+String modifier = Modifier.toString(i); 
+```
+
+示例  
+[Reflection2Test test1 - test10](./src/com/java/www/Reflection2Test.java)
 
 
+## 通过反射调用类中指定的方法、属性、构造器
+* 调用指定的方法
+    1. 通过Class类的getMethod(String name, Class... parameterTypes) 方法获得一个Method对象，并设置此方法操作是需要的参数
+    2. 再使用Object invoke(Object obj, Object[] args) 进行调用，并向方法中传递要设置的obj对象的参数信息
+    3. 说明
+        * Object对应原方法的返回值，若原方法无返回值，此时返回null
+        * 若原方法为static静态方法，此时形参Object obj可为null
+        * 若原方法形参列表为空，则Object[] args 为null, 可比传此参数
+        * 若原方法权限修饰符为private，则需要在调用invoke()方法前，显式的调用方法对象的setAccessible(true)方法，这样就能访问private的方法了，其他的构造、属性等也是类似的
+        
+        
+示例  
+[Reflection2Test test13](./src/com/java/www/Reflection2Test.java)
+
+* 调用指定的属性
+    * public Field getField(String name) 返回此Class对象表示的类或接口指定的public的Field
+    * public Field getDeclaredField(String name) 返回此Class对象表示的类或接口指定的Field，包括private的
+    ```text
+    Field中：
+    public Object get(Object obj) 获取指定对象obj上此Field的属性内容
+    public void set(Object, Object value) 设置指定对象obj上此Field的属性内容值  
+
+    ```
+
+实例  
+[Reflection2Test test12](./src/com/java/www/Reflection2Test.java)
 
 
+* 调用指定的构造器
+>public Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes)  
 
+示例  
+[Reflection2Test test14](./src/com/java/www/Reflection2Test.java)
+
+
+# JAVA动态代理
+* 动态代理是指客户通过代理类来调用其它对象的方法，并且是在程序运行时根据需要动态创建目标类的代理对象
+* 动态代理的使用场景
+    * 调试
+    * 远程方法调用
+* 代理设计模式的原理
+>使用一个代理将对象包装起来, 然后用该代理对象取代原始对象. 任何对原始对象的调用都要通过代理. 代理对象决定是否以及何时将方法调用转到原始对象
 
 

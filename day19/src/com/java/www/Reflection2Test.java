@@ -146,7 +146,17 @@ public class Reflection2Test {
         // 获取此类本身声明的所有方法，包括private方法
         Method[] methods2 = clas.getDeclaredMethods();
         for (Method m : methods2) {
+            // 获取方法的异常信息
             System.out.println(m);
+            Class[] exceptionArr = m.getExceptionTypes();
+            if (exceptionArr.length > 0) {
+                System.out.println("方法的异常信息：");
+                for (Class e : exceptionArr) {
+                    System.out.println(e);
+                }
+                System.out.println();
+            }
+
         }
     }
 
@@ -184,7 +194,7 @@ public class Reflection2Test {
 
     @Test
     public void test13() {
-        // 获取指定的方法，并条用该方法
+        // 获取指定的方法，并调用该方法
 
         Method m1 = null;
         try {
@@ -212,7 +222,7 @@ public class Reflection2Test {
             // 静态方法
             Method m4 = clas.getDeclaredMethod("info");
             m4.invoke(Person.class);
-            m4.invoke(null); // 对象床null也可以
+            m4.invoke(null); // 对象null也可以
 
 
         } catch (Exception e) {
