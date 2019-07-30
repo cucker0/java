@@ -179,7 +179,11 @@ File类的方法示例
     * void close()
 
 [FileInputStream、FileOutStream Test](./src/com/java/www/FileInputStreamAndFileOutStreamTest.java)   
-[FileReader、FileWriter Test](./src/com/java/www/FileReaderAndFileWriterTest.java)
+[FileReader、FileWriter Test](./src/com/java/www/FileReaderAndFileWriterTest.java)  
+
+使用字节流读取含中文的文本文件  
+[byteStreamAndCharStream 2.1 字节流 读取文件到控制台](./src/com/java/exercise/byteStreamAndCharStream.java)  
+
 
 
 # 处理流之一：缓冲流
