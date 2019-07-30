@@ -13,6 +13,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -65,7 +66,8 @@ public class TCPSocketTest1 {
         Socket socket = null;
         OutputStream outputStream = null;
         try {
-            socket = new Socket("localhost", 9090);
+//            socket = new Socket("localhost", 9090);
+            socket = new Socket(InetAddress.getByName("localhost"), 9090);
             outputStream = socket.getOutputStream();
             outputStream.write("哈哈，你看到你还在线呢...".getBytes());
         } catch (IOException e) {
