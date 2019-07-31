@@ -27,12 +27,12 @@ int	getSoTimeout() 获取socket 超时设置值
 protected void implAccept(Socket s) 重写accept()方法
 boolean isBound() 返回ServerSocket是否已经绑定
 oolean isClosed() 返回ServerSocket是否已关闭
-void setPerformancePreferences(int connectionTime, int latency, int bandwidth) 设置ServerSocket性能偏好：
+void setPerformancePreferences(int connectionTime, int latency, int bandwidth) 设置此ServerSocket性能偏好：
                 connectionTime：连接保持时间，对于短链接来说此参数相对重要
                 latency：延迟时间，对于要求低延迟的连接，此参数相对重要
                 bandwidth：带宽，如要求带宽比较高的，此参数比较重要
 void setReceiveBufferSize(int size)  重置socket接收缓存的大小，默认的大小将被修改
-void setReuseAddress(boolean on) 开启/关闭 SO_REUSEADDR socket 选项
+void setReuseAddress(boolean on) 开启/关闭 SO_REUSEADDR socket 选项，当需要使用多进程时，需要开启address重用
 static void	setSocketFactory(SocketImplFactory fac)
 void setSoTimeout(int timeout) 设置socket的超时时间，单位ms，0：表示不超时
 String toString()
@@ -58,46 +58,49 @@ protected Socket(SocketImpl impl) throws SocketException 创建一个由用户�
 
 
 ## 方法
-void bind(SocketAddress bindpoint)
-void close()
-void connect(SocketAddress endpoint)
-void connect(SocketAddress endpoint, int timeout)
-SocketChannel getChannel()
-InetAddress	getInetAddress()
-InputStream	getInputStream()
-boolean	getKeepAlive()
-InetAddress	getLocalAddress()
-int	getLocalPort()
-SocketAddress getLocalSocketAddress()
-boolean	getOOBInline()
-OutputStream getOutputStream()
-int	getPort()
-int	getReceiveBufferSize()
-SocketAddress getRemoteSocketAddress()
-boolean	getReuseAddress()
-int	getSendBufferSize()
-int	getSoLinger()
-int	getSoTimeout()
-boolean	getTcpNoDelay()
-int	getTrafficClass()
-boolean	isBound()
-boolean	isClosed()
-boolean	isConnected()
-boolean	isInputShutdown()
-boolean	isOutputShutdown()
-void sendUrgentData(int data)
-void setKeepAlive(boolean on)
+void bind(SocketAddress bindpoint) 绑定SocketAddress，即IP和端口
+void close() 关闭此socket
+void connect(SocketAddress endpoint) 连接此socket到服务器
+void connect(SocketAddress endpoint, int timeout) 连接此socket到服务器，并指定连接超时时间
+SocketChannel getChannel() 返回唯一的SocketChannel 对象，如果存在的话
+InetAddress	getInetAddress() 返回此socket连接到远端的IP
+InputStream	getInputStream() 获取此socket的InputStream输入流
+boolean	getKeepAlive() 测试SO_KEEPALIVE 是否开启，返回此socket是否开启回话保持
+InetAddress	getLocalAddress() 获取此socket绑定的本地IP
+int	getLocalPort() 获取此socket绑定的本地端口
+SocketAddress getLocalSocketAddress() 获取此socket绑定的本地SocketAddress信息，即绑定的本地IP、本地端口
+boolean	getOOBInline() 获取此socket的SO_OOBINLINE是否开启
+OutputStream getOutputStream() 获取此socket的OutputStream输出流
+int	getPort() 返回此socket连接的远端端口
+int	getReceiveBufferSize() 获取此socket的SO_RCVBUF值
+SocketAddress getRemoteSocketAddress() 返回此socket连接着远端的SocketAddress信息(IP、port)
+boolean	getReuseAddress() 获取SO_REUSEADDR是否可重用
+int	getSendBufferSize() 获取此socket的SO_SNDBUF返送缓冲大小
+int	getSoLinger() 获取 SO_LINGER值
+int	getSoTimeout() 获取此socket的SO_TIMEOUT设置的值
+boolean	getTcpNoDelay() 获取此socket的TCP_NODELAY是否开启，关闭Nagle算法，即要发送到网络的数据不缓冲
+int	getTrafficClass() 从发送的IP头包里获取traffic跟踪类或服务类型
+boolean	isBound() 返回此socket是绑定状态
+boolean	isClosed() 返回此socket是关闭状态
+boolean	isConnected() 返回此socket是连接状态
+boolean	isInputShutdown()  在此socket输入流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
+boolean	isOutputShutdown()  在此socket输出流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
+void sendUrgentData(int data) 发送一个字节的紧急数据到此socket
+void setKeepAlive(boolean on) 设置此suocket的SO_KEEPALIVE值，即socket TCP的超时时间
 void setOOBInline(boolean on)
-void setPerformancePreferences(int connectionTime, int latency, int bandwidth)
-void setReceiveBufferSize(int size)
-void setReuseAddress(boolean on)
-void setSendBufferSize(int size)
+void setPerformancePreferences(int connectionTime, int latency, int bandwidth) 设置此Socket性能偏好：
+                connectionTime：连接保持时间，对于短链接来说此参数相对重要
+                latency：延迟时间，对于要求低延迟的连接，此参数相对重要
+                bandwidth：带宽，如要求带宽比较高的，此参数比较重要
+void setReceiveBufferSize(int size) 设置此socket的SO_RCVBUF值
+void setReuseAddress(boolean on) 设置address是否可重用
+void setSendBufferSize(int size) 设置SO_SNDBUF值
 static void	setSocketImplFactory(SocketImplFactory fac)
-void setSoLinger(boolean on, int linger)
-void setSoTimeout(int timeout)
-void setTcpNoDelay(boolean on)
+void setSoLinger(boolean on, int linger) 开启/关闭 SO_LINGER，指定linger时间为linger，单位s
+void setSoTimeout(int timeout) 设置此socket超时时间(单位ms)，以timeout为0时无限超时，read()将一直阻塞，如果timeout > 0,在read()时做多阻塞timeout 毫秒，超时后抛出java.net.SocketTimeoutException异常
+void setTcpNoDelay(boolean on) 设置此socket的TCP_NODELAY 值
 void setTrafficClass(int tc)
-void shutdownInput()
+void shutdownInput() 在read socket InputStream时，调用此方法后，InputStream的read()方法返回-1，其他可用方法都将返回0，
 void shutdownOutput()
 String toString()
 
