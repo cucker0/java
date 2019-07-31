@@ -181,7 +181,7 @@ File类的方法示例
 [FileInputStream、FileOutStream Test](./src/com/java/www/FileInputStreamAndFileOutStreamTest.java)   
 [FileReader、FileWriter Test](./src/com/java/www/FileReaderAndFileWriterTest.java)  
 
-** 使用 字节流 读取含中文的文本文件 **
+**使用 字节流 读取含中文的文本文件**  
 [byteStreamAndCharStream 2.1 字节流 读取文件到控制台](./src/com/java/exercise/byteStreamAndCharStream.java)  
 
 
