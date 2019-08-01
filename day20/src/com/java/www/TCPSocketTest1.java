@@ -101,7 +101,7 @@ void setSoTimeout(int timeout) 设置此socket超时时间(单位ms)，以timeou
 void setTcpNoDelay(boolean on) 设置此socket的TCP_NODELAY 值
 void setTrafficClass(int tc)
 void shutdownInput() 在read socket InputStream时，调用此方法后，InputStream的read()方法返回-1，其他可用方法都将返回0，
-void shutdownOutput()
+void shutdownOutput() 关闭此socket的OutputStream流。对于TCP，调用此方法前需要发送的数据还未完成发送的将继续正常发送，发送完后才关闭连接
 String toString()
 
 * */
