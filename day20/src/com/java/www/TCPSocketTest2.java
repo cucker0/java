@@ -32,19 +32,27 @@ public class TCPSocketTest2 {
                 System.out.println(s);
             }
 
-            // 回复远端客户
+            // 响应远端客户
             outputStream = socket.getOutputStream();
-            outputStream.write("哈哈，小毛孩儿，门都没有...".getBytes());
+            outputStream.write("占领月球？哈哈，小毛孩儿，撒泡尿照照镜子吧...".getBytes());
 
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                outputStream.close();
-                inputStream.close();
-                socket.close();
-                serverSocket.close();
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (socket != null) {
+                    socket.close();
+                }
+                if (serverSocket != null) {
+                    serverSocket.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,6 +69,7 @@ public class TCPSocketTest2 {
             socket = new Socket(InetAddress.getByName("127.0.0.1"), 9090);
             outputStream = socket.getOutputStream();
             outputStream.write("占领月球，别回复，别回复，别回复".getBytes());
+            // 关闭OutputStream流，没有关闭的情况下，对端的服务器 InputStream对象.read()方法将一直阻塞。
             socket.shutdownOutput();
 
             // 接收服务端信息
@@ -76,8 +85,15 @@ public class TCPSocketTest2 {
             e.printStackTrace();
         } finally {
             try {
-                outputStream.close();
-                socket.close();
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+                if (socket != null) {
+                    socket.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

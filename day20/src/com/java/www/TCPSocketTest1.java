@@ -1,8 +1,8 @@
 /*
+TCP socket编程
+
 题目：
     客户端发送内容给服务端，服务端将内容打印到控制台上。
-
-TCP socket编程
 
 
 # ServerSocket类
@@ -120,6 +120,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class TCPSocketTest1 {
+    /*
+    先启动 server，再启动client
+    客户端连接的端口要与服务器端侦听的端口相同
+
+    * */
+
     @Test
     public void server() {
         /*
