@@ -21,19 +21,19 @@ public class WebServer {
         while (true) {
 
             Socket socket = serverSocket.accept();
-            System.err.println("有客户端连接进来了");
+            System.err.println("有客户端连接进来了: " + socket.getRemoteSocketAddress());
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream())
             );
-            PrintWriter out = new PrintWriter(
-                    new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())),
-                    true
-            );
-
+//            PrintWriter out = new PrintWriter(
+//                    new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())),
+//                    true
+//            );
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            // 获取客户端httpd请求头信息
             String data = "";
             String s;
-            // 判断客户的请求发送是否完毕
             while ((s = in.readLine()) != null) {
                 s += CRLF;  // 很重要，默认情况下\r\n被去掉了
                 data = data + s;
@@ -41,16 +41,17 @@ public class WebServer {
                     break;
                 }
             }
-            System.out.println("UserAgent信息：");
+            System.out.println("客户请求http header信息：");
             System.out.println(data);
 
             System.err.println("响应");
             out.write("HTTP/1.0 200 OK\r\n");
-            out.write("Server: Apache/0.8.4\r\n");
+            out.write("Server: Java/12.0.1\r\n");
             out.write("Content-Type: text/html\r\n");
             out.write("\r\n");
-            out.write("<TITLE>Exemple</TITLE>");
+            out.write("<title>Exemple</title>");
             out.write("<h1>Java Web Server</h1>");
+            out.write("<p>timeStamp: " + System.currentTimeMillis() + "</p>");
             out.flush();
 
             System.err.println("结束");
@@ -58,6 +59,8 @@ public class WebServer {
             out.close();
             in.close();
             socket.close();
+//            socket.shutdownOutput();
+//            socket.shutdownInput();
         }
     }
 }

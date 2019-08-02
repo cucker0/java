@@ -36,8 +36,8 @@ class Server {
         SendPoint sendPoint = new SendPoint(socket);
         ReceivePoint receivePoint = new ReceivePoint(socket);
 
-        Thread th1 = new Thread(sendPoint);
-        Thread th2 = new Thread(receivePoint);
+        Thread th1 = new Thread(receivePoint);
+        Thread th2 = new Thread(sendPoint);
         th1.start();
         th2.start();
     }
