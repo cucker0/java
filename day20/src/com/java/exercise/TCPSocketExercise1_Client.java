@@ -13,7 +13,7 @@ public class TCPSocketExercise1_Client {
         try {
             s = new Socket("127.0.0.1", 8000);
             is = s.getInputStream();
-            fos = new FileOutputStream(new File("img_recive.png"));
+            fos = new FileOutputStream(new File("img_receive.png"));
 
             byte[] b = new byte[1024];
             int len;

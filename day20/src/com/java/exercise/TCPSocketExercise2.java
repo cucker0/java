@@ -8,10 +8,14 @@ package com.java.exercise;
 
 import org.junit.Test;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
+
 
 public class TCPSocketExercise2 {
     @Test
@@ -21,29 +25,22 @@ public class TCPSocketExercise2 {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
-            serverSocket = new ServerSocket(8090);
+            serverSocket = new ServerSocket(8000);
             socket = serverSocket.accept();
+            System.out.println("等待客户端连接...");
             inputStream = socket.getInputStream();
-            outputStream = socket.getOutputStream();
-            while (true) {
-                byte[] b = inputStream.readAllBytes();
-                String str = new String(b);
-                if (str.equalsIgnoreCase("q") || str.equalsIgnoreCase("exit")) {
-                    System.out.println("接收客户端退出指令，现在关闭socket");
-                    break;
-                }
-                String str2 = str.toUpperCase();
+            byte[] b = inputStream.readAllBytes();
+            String str = new String(b);
+            System.out.println("接受到客户端的信息：" + str);
+            String str2 = str.toUpperCase();
 
-                // 响应客户端，发送str2
-                if (socket.isOutputShutdown()) {
-                    outputStream = socket.getOutputStream();
-                }
-                outputStream.write(str2.getBytes());
-                socket.shutdownOutput(); // 本次内容已经发送完毕
-            }
+            // 响应客户端
+            outputStream = socket.getOutputStream();
+            outputStream.write(str2.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // 关闭流、socket、ServerSocket
             try {
                 if (outputStream != null) {
                     outputStream.close();
@@ -61,47 +58,40 @@ public class TCPSocketExercise2 {
                 e.printStackTrace();
             }
         }
+
     }
 
     @Test
     public void client() {
         Socket socket = null;
         OutputStream outputStream = null;
-        BufferedReader br = null;
+        Scanner sc = null;
         InputStream inputStream = null;
         try {
-            socket = new Socket(InetAddress.getByName("127.0.0.1"), 8090);
+            socket = new Socket(InetAddress.getByName("127.0.0.1"), 8000);
             outputStream = socket.getOutputStream();
-            InputStream is = System.in;
-            InputStreamReader isr = new InputStreamReader(is);
-            br = new BufferedReader(isr);
-            inputStream = socket.getInputStream();
-            System.out.println("请输入任意字符，服务器响应大写内容(输入q或exit退出)");
-            while (true) {
-                String str = br.readLine();
-                if (socket.isOutputShutdown()) { // 如果OutputStream关闭了，再重建
-                    outputStream = socket.getOutputStream();
-                }
-                outputStream.write(str.getBytes()); // 发送本次内容
-                socket.shutdownOutput(); // 发送完毕后，关闭本socket OutputStream流
-                if (str.equalsIgnoreCase("q") || str.equalsIgnoreCase("exit")) {
-                    break;
-                }
+            sc = new Scanner(System.in);
+            System.out.println("请输入多个字符：\n");
+            String str = sc.nextLine();
+            outputStream.write(str.getBytes());
+//            socket.shutdownOutput();
+            outputStream.flush();
 
-                // 接收对端的响应信息
-                byte[] b = inputStream.readAllBytes();
-                String str2 = new String(b);
-                System.out.println("服务器响应信息：" + str2);
-            }
+            // 接受服务端信心
+            inputStream = socket.getInputStream();
+            byte[] b = inputStream.readAllBytes();
+            String str2 = new String(b);
+            System.out.println("服务端响应信息，服务端将响应装换成大写的内容：" + str2);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // 关闭流、socket
             try {
                 if (inputStream != null) {
                     inputStream.close();
                 }
-                if (br != null) {
-                    br.close();
+                if (sc != null) {
+                    sc.close();
                 }
                 if (outputStream != null) {
                     outputStream.close();
@@ -115,5 +105,4 @@ public class TCPSocketExercise2 {
         }
 
     }
-
 }

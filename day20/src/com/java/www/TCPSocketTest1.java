@@ -13,7 +13,7 @@ ServerSocket(int port, int backlog) 建服务器端的ServerSocket对象，指�
 ServerSocket(int port, int backlog, InetAddress bindAddr) 建服务器端的ServerSocket对象，指定要绑定的监听端口，指定请求连接队列的最大长度，指定绑定的IP(InetAddress对象)
 
 ## 方法(没有特殊说明，都是public方法)
-Socket accept() 创建并返回一个Socket对象，开始侦听该socket并接收请求连接
+Socket accept() 创建并返回一个Socket对象，开始侦听该socket并接收请求连接，阻塞的，直到有请求连接进来
 void bind(SocketAddress endpoint)  绑定SocketAddress，即绑定IP和端口，如 ServerSocket对象.bind(new InetSocketAddress(InetAddress.getByName("hostName")), 端口)
 void bind(SocketAddress endpoint, int backlog)  绑定SocketAddress，并指定请求连接队列的最大长度
 void close() 关闭此socket
@@ -64,13 +64,13 @@ void connect(SocketAddress endpoint) 连接此socket到服务器
 void connect(SocketAddress endpoint, int timeout) 连接此socket到服务器，并指定连接超时时间
 SocketChannel getChannel() 返回唯一的SocketChannel 对象，如果存在的话
 InetAddress	getInetAddress() 返回此socket连接到远端的IP
-InputStream	getInputStream() 获取此socket的InputStream输入流
+InputStream	getInputStream() 获取此socket的InputStream输入流，此InputStream.read()、InputStream.read(byte[] b) 都是是阻塞的
 boolean	getKeepAlive() 测试SO_KEEPALIVE 是否开启，返回此socket是否开启回话保持
 InetAddress	getLocalAddress() 获取此socket绑定的本地IP
 int	getLocalPort() 获取此socket绑定的本地端口
 SocketAddress getLocalSocketAddress() 获取此socket绑定的本地SocketAddress信息，即绑定的本地IP、本地端口
 boolean	getOOBInline() 获取此socket的SO_OOBINLINE是否开启
-OutputStream getOutputStream() 获取此socket的OutputStream输出流
+OutputStream getOutputStream() 获取此socket的OutputStream输出流，此OutputStream.write(byte[] b) 非阻塞的
 int	getPort() 返回此socket连接的远端端口
 int	getReceiveBufferSize() 获取此socket的SO_RCVBUF值
 SocketAddress getRemoteSocketAddress() 返回此socket连接着远端的SocketAddress信息(IP、port)
@@ -100,13 +100,21 @@ void setSoLinger(boolean on, int linger) 开启/关闭 SO_LINGER，指定linger�
 void setSoTimeout(int timeout) 设置此socket超时时间(单位ms)，以timeout为0时无限超时，read()将一直阻塞，如果timeout > 0,在read()时做多阻塞timeout 毫秒，超时后抛出java.net.SocketTimeoutException异常
 void setTcpNoDelay(boolean on) 设置此socket的TCP_NODELAY 值
 void setTrafficClass(int tc)
-void shutdownInput() 关闭此socket的InputStream流，在read socket InputStream时，调用此方法后，InputStream的read()方法返回-1，其他可用方法都将返回0，
-void shutdownOutput() 关闭此socket的OutputStream流。对于TCP，调用此方法前需要发送的数据还未完成发送的将继续正常的连接终止顺序发送，
+void shutdownInput() 关闭此socket的InputStream流，在read socket InputStream时，调用此方法后，InputStream的read()方法返回-1，其他可用方法都将返回0，不可恢复
+void shutdownOutput() 关闭此socket的OutputStream流。对于TCP，调用此方法前需要发送的数据还未完成发送的将继续正常的连接终止顺序发送，不可恢复
 String toString() //"Socket[addr=" + getImpl().getInetAddress() +
                     ",port=" + getImpl().getPort() +
                     ",localport=" + getImpl().getLocalPort() + "]";
 
+
+注意：
+调用socket.close() 或者socket.shutdownOutput()方法，都会结束客户端socket，且不可恢复。
+socket.close() 将socket关闭连接，那边如果有服务端给客户端反馈信息，此时客户端是收不到的。
+socket.shutdownOutput() 是将输出流关闭，此时，如果服务端有信息返回，则客户端是可以正常接受的
+inputStream.readAllBytes()，只有等对端的socket关闭了，才能读取完成，是阻塞的
+
 * */
+
 
 package com.java.www;
 
@@ -201,7 +209,7 @@ public class TCPSocketTest1 {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            // 4. 关闭OutputStream流、Socket连接
+             // 4. 关闭OutputStream流、Socket连接
             if (outputStream != null) {
                 try {
                     outputStream.close();
