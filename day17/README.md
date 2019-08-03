@@ -77,7 +77,7 @@ day17 多线程
 
 * Thread()
 >Allocates a new Thread object. 分配一个新的线程对象
-* Thread(Runnable target)
+* Thread(Runnable target) 
 >Allocates a new Thread object. 
 * Thread(Runnable target, String name)
 >Allocates a new Thread object.
