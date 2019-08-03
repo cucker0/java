@@ -73,6 +73,26 @@ day17 多线程
     * 多个线程可以共用同一个接口实现类的对象，非常适合多个相同线程来处理同一份资源
     
 
+## Thread构造器
+
+* Thread()
+>Allocates a new Thread object. 分配一个新的线程对象
+* Thread(Runnable target)
+>Allocates a new Thread object. 
+* Thread(Runnable target, String name)
+>Allocates a new Thread object.
+* Thread(String name)
+>Allocates a new Thread object.
+* Thread(ThreadGroup group, Runnable target)
+>Allocates a new Thread object.
+* Thread(ThreadGroup group, Runnable target, String name)
+>Allocates a new Thread object so that it has target as its run object, has the specified name as its name, and belongs to the thread group referred to by group.
+* Thread(ThreadGroup group, Runnable target, String name, long stackSize)
+>Allocates a new Thread object so that it has target as its run object, has the specified name as its name, and belongs to the thread group referred to by group, and has the specified stack size.
+* Thread(ThreadGroup group, String name)
+>Allocates a new Thread object.
+
+
 ## Thread常用方法
 * void start() 启动这个线程；调用该线程里的run()方法
 * void run() 子线程要执行的代码放入run()方法中
