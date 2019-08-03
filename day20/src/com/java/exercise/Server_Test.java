@@ -31,7 +31,7 @@ public  class  Server_Test extends Thread{
             InputStream in = socket.getInputStream();
             int len = 0;
             byte[] buf = new byte[1024];
-            while ((len=in.read(buf))!=-1){
+            while ((len = in.read(buf)) != -1) {
                 System.out.println("client saying: "+new String(buf,0,len));
             }
 
