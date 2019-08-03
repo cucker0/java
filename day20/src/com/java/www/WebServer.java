@@ -10,7 +10,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class WebServer {
-    final static String CRLF = "\r\n";
 
     public static void main(String[] args) throws Exception {
 
@@ -26,6 +25,7 @@ public class WebServer {
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream())
             );
+            // PrintWriter流也可以
 //            PrintWriter out = new PrintWriter(
 //                    new BufferedWriter( new OutputStreamWriter(socket.getOutputStream())),
 //                    true
@@ -33,11 +33,10 @@ public class WebServer {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             // 获取客户端httpd请求头信息
             String data = "";
-            String s;
-            while ((s = in.readLine()) != null) {
-                s += CRLF;  // 很重要，默认情况下\r\n被去掉了
-                data = data + s;
-                if (s.equals(CRLF)){
+            String s = "";
+            while ((s = in.readLine()) != null) { // 这里获取到的数据，没有换行符
+                data = data + s + "\n";
+                if (s.equals("")){
                     break;
                 }
             }
