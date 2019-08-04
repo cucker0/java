@@ -172,7 +172,7 @@ import org.junit.Test;
 * 测试类使用Test做为类名的后缀（非必须）
 * 测试方法使用test作为访求名的前缀（非必须）
 
-* JUnit测试方法使用与Scanner相关的要输入时停止不动解决方法
+* JUnit测试方法使用与Scanner、System.in相关的要输入时停止不动解决方法
 ```test
 https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000556544-Why-can-t-I-input-anything-from-console-when-i-run-unit-test-with-JUNIT
 编辑 .vmoptions配置文件，选择相应位数的文件
