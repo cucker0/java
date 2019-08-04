@@ -62,7 +62,7 @@ byte[] getData() 从接收到或要发送的数据报包中获取缓冲数据，
 int	getLength() 返回接收到或要发送的数据报包数据的大小
 int	getOffset() 返回读取数据报包中数据的指定的偏移量，不指定默认为0
 int	getPort() 返回发送或接收数据报中远端的端口
-SocketAddress getSocketAddress() 返回发送或接收数据报中远端的SocketAddress，包含了IP、端口
+SocketAddress getSocketAddress() 返回发送或接收数据报中远端的SocketAddress，包含了IP、端口，接收端要知道数据报包从哪发过来的，用此方法就可以知道发送端的IP和端口
 void setAddress(InetAddress iaddr) 设置要发送数据报的接收端的IP
 void setPort(int iport) 设置要发送数据报的接收端的端口
 void setData(byte[] buf) 设置此数据报包的数据缓冲区
