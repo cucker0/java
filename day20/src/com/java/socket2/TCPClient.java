@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class TCPClient2 {
+public class TCPClient {
     public static void main(String[] args) {
         Client c1 = new Client("127.0.0.1", 8080);
         c1.start();
@@ -31,8 +31,8 @@ class Client {
         ReceivePoint receivePoint = new ReceivePoint(socket);
         System.out.println("客户端启动好(输入q退出)...");
 
-        Thread th1 = new Thread(receivePoint);
-        Thread th2 = new Thread(sendPoint);
+        Thread th1 = new Thread(receivePoint); // 接收信息线程
+        Thread th2 = new Thread(sendPoint); // 发送信息线程
         th1.start();
         th2.start();
     }

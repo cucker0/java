@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TCPServer2 {
+public class TCPServer {
     public static void main(String[] args) {
         Server server = new Server(8080);
         server.start();
@@ -36,8 +36,8 @@ class Server {
         SendPoint sendPoint = new SendPoint(socket);
         ReceivePoint receivePoint = new ReceivePoint(socket);
 
-        Thread th1 = new Thread(receivePoint);
-        Thread th2 = new Thread(sendPoint);
+        Thread th1 = new Thread(receivePoint); // 接收信息线程
+        Thread th2 = new Thread(sendPoint); // 发送信息线程
         th1.start();
         th2.start();
     }
