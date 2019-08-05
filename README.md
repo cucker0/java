@@ -36,3 +36,4 @@ JAVA Study
     * [如何编译和运行包含package的java源文件](./README/Compile_and_run_a_contain_package.md)
     * [jdk 1.8 api document](./README/java_resources.md)
     * [java方法区以及static的内存分配图](./README/java方法区以及static的内存分配图.md)
+    * [URI、URL、URN联系与区别](./README/URI_URL_URN.md)
