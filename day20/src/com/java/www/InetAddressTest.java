@@ -5,12 +5,11 @@ InetAddress
 
 ## 构造器
 // 跨包后调用不了此构造器
-InetAddress() {
+protected InetAddress() {
         holder = new InetAddressHolder();
-    }
+}
 
 ## 方法
-
 * 创建InetAddress对象
 static InetAddress getByName(String host)
 static InetAddress getByAddress(byte[] addr)
