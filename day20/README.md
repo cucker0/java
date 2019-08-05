@@ -240,12 +240,12 @@ void bind(SocketAddress endpoint)  绑定SocketAddress，即绑定IP和端口，
 void bind(SocketAddress endpoint, int backlog)  绑定SocketAddress，并指定请求连接队列的最大长度
 void close() 关闭此socket
 ServerSocketChannel getChannel() 返回此ServerSocket对象相关的唯一的ServerSocketChannel 对象
-InetAddress	getInetAddress() 获取此socket的IP信息
-int	getLocalPort() 获取侦听的端口
+InetAddress getInetAddress() 获取此socket的IP信息
+int getLocalPort() 获取侦听的端口
 SocketAddress getLocalSocketAddress() 获取绑定的IP信息
-int	getReceiveBufferSize()
-boolean	getReuseAddress() 获取请求客户端的address信息
-int	getSoTimeout() 获取socket 超时设置值
+int getReceiveBufferSize()
+boolean getReuseAddress() 获取请求客户端的address信息
+int getSoTimeout() 获取socket 超时设置值
 protected void implAccept(Socket s) 重写accept()方法
 boolean isBound() 返回ServerSocket是否已经绑定
 oolean isClosed() 返回ServerSocket是否已关闭
