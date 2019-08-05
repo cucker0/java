@@ -80,7 +80,8 @@ Gets the userInfo part of this URL.
 int	hashCode() 获取hash值
 Creates an integer suitable for hash table indexing.
 
-URLConnection openConnection() 返回一个URLConnection实例，该实例代表本地连接到URL远程的连接对象
+URLConnection openConnection() 返回一个URLConnection实例，该实例代表本地连接到URL远程的连接对象。
+    注意：该方法不是建立一个真实的网络连接，只是返回一个URLConnection类的实例
 Returns a URLConnection instance that represents a connection to the remote object referred to by the URL.
 
 URLConnection openConnection(Proxy proxy) 与openConnection()相同，只是本地用的输入、输出流有指定的proxy处理
@@ -170,7 +171,7 @@ Returns the value of the content-length header field as a long.
 String getContentType() 从content-encoding头字段中获取内容的类型
 Returns the value of the content-type header field.
 
-long getDate() 
+long getDate()
 Returns the value of the date header field.
 
 static boolean getDefaultAllowUserInteraction()
@@ -266,10 +267,10 @@ The instance specific setRequestProperty method should be used after an appropri
 void setDefaultUseCaches(boolean defaultusecaches)
 Sets the default value of the useCaches field to the specified value.
 
-void setDoInput(boolean doinput)
+void setDoInput(boolean doinput) 设置doInput属性值，默认是true，即允许读取InputStream
 Sets the value of the doInput field for this URLConnection to the specified value.
 
-void setDoOutput(boolean dooutput)
+void setDoOutput(boolean dooutput) 设置doOutput属性值，默认是false，即默认不允许OutputStream写入数据。若要写入，把doOutput设置为true
 Sets the value of the doOutput field for this URLConnection to the specified value.
 
 static void	setFileNameMap(FileNameMap map)

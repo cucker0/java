@@ -25,6 +25,7 @@ public class URLTest2 {
         int port = 80;
         try {
             serverSocket = new ServerSocket(port);
+//            serverSocket.setReuseAddress(true);
             System.out.println("服务端已经启动，绑定端口：" + port);
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,11 +49,23 @@ public class URLTest2 {
                                     s = "";
                             while ((s = br.readLine()) != null) {
                                 data = data + s + "\n";
-                                if (s.equals("")) {
+//                                if (s.equals("")) {
+//                                    break;
+//                                }
+                                if (s.endsWith("<ENF>")) {
                                     break;
                                 }
                             }
-                            System.out.println(data);
+                            System.out.println(data.split("<ENF>")[0]);
+
+                           /*
+                           InputStream inputStream = socket.getInputStream();
+                            byte[] b = new byte[1024 * 8];
+                            int len;
+                            while ((len = inputStream.read(b)) != -1) {
+                                String str = new String(b, 0, len);
+                                System.out.println(str);
+                            }*/
 
                             // 响应客户端
                             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -99,15 +112,21 @@ public class URLTest2 {
         try {
             URL url = new URL("http://127.0.0.1/");
             URLConnection urlConnection = url.openConnection();
+            urlConnection.setDoOutput(true); // 设置doOutput值为true，允许向OutputStream写入数据，默认是不允许的
 
             // upload
-          /*  outputStream = urlConnection.getOutputStream();
-            outputStream.write("hello server...".getBytes());*/
+            urlConnection.setDoOutput(true);
+            outputStream = urlConnection.getOutputStream();
+            outputStream.write("hello server...".getBytes());
+            outputStream.write("<ENF>\n".getBytes());
+            outputStream.flush();
+            System.out.println("向服务端发送数据完毕");
 
             // get
             inputStream = urlConnection.getInputStream();
             byte[] b = new byte[1024];
             int len;
+            System.out.println("开始接受数据");
             while ((len = inputStream.read(b)) != -1) {
                 String str = new String(b, 0, len);
                 System.out.println(str);
