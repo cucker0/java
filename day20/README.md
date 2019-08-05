@@ -171,28 +171,28 @@ void close() 关闭此socket
 void connect(SocketAddress endpoint) 连接此socket到服务器
 void connect(SocketAddress endpoint, int timeout) 连接此socket到服务器，并指定连接超时时间
 SocketChannel getChannel() 返回唯一的SocketChannel 对象，如果存在的话
-InetAddress	getInetAddress() 返回此socket连接到远端的IP
-InputStream	getInputStream() 获取此socket的InputStream输入流，此InputStream.read()、InputStream.read(byte[] b) 都是是阻塞的
-boolean	getKeepAlive() 测试SO_KEEPALIVE 是否开启，返回此socket是否开启回话保持
-InetAddress	getLocalAddress() 获取此socket绑定的本地IP
-int	getLocalPort() 获取此socket绑定的本地端口
+InetAddress getInetAddress() 返回此socket连接到远端的IP
+InputStream getInputStream() 获取此socket的InputStream输入流，此InputStream.read()、InputStream.read(byte[] b) 都是是阻塞的
+boolean getKeepAlive() 测试SO_KEEPALIVE 是否开启，返回此socket是否开启回话保持
+InetAddress getLocalAddress() 获取此socket绑定的本地IP
+int getLocalPort() 获取此socket绑定的本地端口
 SocketAddress getLocalSocketAddress() 获取此socket绑定的本地SocketAddress信息，即绑定的本地IP、本地端口
-boolean	getOOBInline() 获取此socket的SO_OOBINLINE是否开启
+boolean getOOBInline() 获取此socket的SO_OOBINLINE是否开启
 OutputStream getOutputStream() 获取此socket的OutputStream输出流，此OutputStream.write(byte[] b) 非阻塞的
-int	getPort() 返回此socket连接的远端端口
-int	getReceiveBufferSize() 获取此socket的SO_RCVBUF值
+int getPort() 返回此socket连接的远端端口
+int getReceiveBufferSize() 获取此socket的SO_RCVBUF值
 SocketAddress getRemoteSocketAddress() 返回此socket连接着远端的SocketAddress信息(IP、port)
 boolean	getReuseAddress() 获取SO_REUSEADDR是否可重用
-int	getSendBufferSize() 获取此socket的SO_SNDBUF返送缓冲大小
-int	getSoLinger() 获取 SO_LINGER值
-int	getSoTimeout() 获取此socket的SO_TIMEOUT设置的值
-boolean	getTcpNoDelay() 获取此socket的TCP_NODELAY是否开启，关闭Nagle算法，即要发送到网络的数据不缓冲
-int	getTrafficClass() 从发送的IP头包里获取traffic跟踪类或服务类型
-boolean	isBound() 返回此socket是绑定状态
-boolean	isClosed() 返回此socket是关闭状态
-boolean	isConnected() 返回此socket是连接状态
-boolean	isInputShutdown()  在此socket输入流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
-boolean	isOutputShutdown()  在此socket输出流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
+int getSendBufferSize() 获取此socket的SO_SNDBUF返送缓冲大小
+int getSoLinger() 获取 SO_LINGER值
+int getSoTimeout() 获取此socket的SO_TIMEOUT设置的值
+boolean getTcpNoDelay() 获取此socket的TCP_NODELAY是否开启，关闭Nagle算法，即要发送到网络的数据不缓冲
+int getTrafficClass() 从发送的IP头包里获取traffic跟踪类或服务类型
+boolean isBound() 返回此socket是绑定状态
+boolean isClosed() 返回此socket是关闭状态
+boolean isConnected() 返回此socket是连接状态
+boolean isInputShutdown()  在此socket输入流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
+boolean isOutputShutdown()  在此socket输出流读取过程中，返回此socket连接是否为是关闭状态，是关闭则返回true
 void sendUrgentData(int data) 发送一个字节的紧急数据到此socket
 void setKeepAlive(boolean on) 设置此suocket的SO_KEEPALIVE值，即socket TCP的超时时间
 void setOOBInline(boolean on)
