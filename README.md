@@ -26,31 +26,33 @@ JAVA Study
 
 * [day17_多线程](./day17/README.md "多线程")
     * [程序、进程、线程概念](./day17/README.md#程序、进程、线程概念)
-    * 多线程使用场景
+    * 多线程使用场景(./day17/README.md)
         * 多线程的创建和启动
-    * Thread类
-        * 创建线程(类)的两种方法
-            * 继承Thread类
-            * 实现Runnable接口
-         * 继承Thread方式和实现Runnable方法的联系与区别
-         * Thread构造器
-         * Thread常用方法
-    * 线程的调度
-    * 线程的优先级
-    * 使用多线程的优点
-    * 线程的分类
-    * 线程的生命周期
-    * 线程的同步
-    * synchronized线程同步使用方法
-    * synchronized线程同步机制的两种实现方式
+    * Thread类(./day17/README.md)
+        * [创建线程(类)的两种方法](./day17/README.md#创建线程类的两种方法)
+            * [继承Thread类](./day17/README.md#继承Thread类)
+            * [实现Runnable接口](./day17/README.md#实现Runnable接口)
+         * [继承Thread方式和实现Runnable方法的联系与区别](./day17/README.md#继承Thread方式和实现Runnable方法的联系与区别)
+         * [Thread构造器](./day17/README.md#Thread构造器)
+         * [Thread常用方法](./day17/README.md#Thread常用方法)
+    * [线程的调度](./day17/README.md#线程的调度)
+    * [线程的优先级](./day17/README.md#线程的优先级)
+    * [使用多线程的优点](./day17/README.md#使用多线程的优点)
+    * [线程的分类](./day17/README.md#线程的分类)
+        * 守护线程
+        * 用户线程
+    * [线程的生命周期](./day17/README.md#线程的生命周期)
+    * [线程的同步](./day17/README.md#线程的同步)
+    * [synchronized线程同步使用方法](./day17/README.md#synchronized线程同步使用方法)
+    * [synchronized线程同步机制的两种实现方式](./day17/README.md#synchronized线程同步机制的两种实现方式)
         * 同步代码块
         * 同步方法
-    * 互斥锁
-    * 懒汉式单例模式线程安全问题修复
-    * 释放锁的操作
-    * 不会释放锁的操作
-    * 线程的死锁问题
-    * 线程通信
+    * [互斥锁](./day17/README.md#互斥锁)
+    * [懒汉式单例模式线程安全问题修复](./day17/README.md#懒汉式单例模式线程安全问题修复)
+    * [释放锁的操作](./day17/README.md#释放锁的操作)
+    * [不会释放锁的操作](./day17/README.md#不会释放锁的操作)
+    * [线程的死锁问题](./day17/README.md#线程的死锁问题)
+    * [线程通信](./day17/README.md#线程通信)
         * 线程通信示例
         * 线程通信应用示例(生产者/消费者问题)
 </details>
