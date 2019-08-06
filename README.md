@@ -22,7 +22,7 @@ JAVA Study
 
 
 <details>
-<summary>day18_java常用类</summary>
+<summary>day17_多线程</summary>
 
 * [day17_多线程](./day17/README.md "多线程")
     * [程序、进程、线程概念](./day17/README.md#程序、进程、线程概念)
