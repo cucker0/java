@@ -504,7 +504,608 @@ Uniform Resource Locator, 统一资源定位符，它表示 Internet 上某一�
     * <传输协议>://<主机名>:<端口号>/<文件名>
     * 如：http://192.168.1.100:8080/helloworld/index.jsp
 
+* 类URL的构造方法都声明抛出非运行时异常，
+必须要对这一异常进行处理，通常是用 try-catch 语句进行捕获
 
+* 一个URL对象生成后，其属性是不能被改变的，但可以通过它给定的方法来获取这些属性
+
+# URL类
+位置：java.net.URL
+
+## 构造器
+<details>
+<summary>展开构造器</summary>
+
+```text
+URL(String spec)
+Creates a URL object from the String representation.
+从字符串形式的URL spec中创建一个URL对象
+
+URL(String protocol, String host, int port, String file)
+Creates a URL object from the specified protocol, host, port number, and file.
+创建URL对象，指定协议为protocol、主机为host、端口为port、文件为字符串形式的file
+
+URL(String protocol, String host, int port, String file, URLStreamHandler handler)
+Creates a URL object from the specified protocol, host, port number, file, and handler.
+创建URL对象，指定协议为protocol、主机为host、端口为port、文件为file、URL流处理器为Handler
+
+URL(String protocol, String host, String file)
+Creates a URL from the specified protocol name, host name, and file name.
+创建URL对象，指定协议为protocol、主机为host、文件为file
+
+URL(URL context, String spec)
+Creates a URL by parsing the given spec within a specified context.
+从指定的上下文context解析字符形式的spec，并创建该URL对象
+
+URL(URL context, String spec, URLStreamHandler handler)
+Creates a URL by parsing the given spec with the specified handler within a specified context.
+创建URL对象，指定URL上下文解释器context、字符串形式URLspec，URL流处理器handler
+
+```
+
+</details>
+
+## 方法
+<details>
+<summary>展开方法</summary>
+
+```text
+boolean	equals(Object obj) 判断此URL对象与URL对象obj是否相等
+Compares this URL for equality with another object.
+
+String getAuthority() 获取Authority
+Gets the authority part of this URL.
+
+Object getContent() 从此URL对象中获取内容，如：openConnection().getContent()
+Gets the contents of this URL.
+
+Object getContent(Class[] classes) 从此URL对象中获取内容，有classes数组中的第一个类型开始匹配
+Gets the contents of this URL.
+
+int	getDefaultPort() 获取此URL协议的默认端口
+Gets the default port number of the protocol associated with this URL.
+
+String getFile() 获取文件名
+Gets the file name of this URL.
+
+String getHost() 获取主机
+Gets the host name of this URL, if applicable.
+
+String getPath() 获取目录path
+Gets the path part of this URL.
+
+int	getPort() 获取端口
+Gets the port number of this URL.
+
+String getProtocol() 获取协议
+Gets the protocol name of this URL.
+
+String getQuery() 获取所有query参数
+Gets the query part of this URL.
+
+String getRef() 获取reference
+Gets the anchor (also known as the "reference") of this URL.
+
+String getUserInfo() 获取用户信息
+Gets the userInfo part of this URL.
+
+int	hashCode() 获取hash值
+Creates an integer suitable for hash table indexing.
+
+URLConnection openConnection() 返回一个URLConnection实例，该实例代表本地连接到URL远程的连接对象。
+    注意：该方法不是建立一个真实的网络连接，只是返回一个URLConnection类的实例
+Returns a URLConnection instance that represents a connection to the remote object referred to by the URL.
+
+URLConnection openConnection(Proxy proxy) 与openConnection()相同，只是本地用的输入、输出流有指定的proxy处理
+Same as openConnection(), except that the connection will be made through the specified proxy; Protocol handlers that do not support proxing will ignore the proxy parameter and make a normal connection.
+
+InputStream	openStream() 打开本地到URL远端的连接，并返回一个InputStream输入流
+Opens a connection to this URL and returns an InputStream for reading from that connection.
+
+boolean	sameFile(URL other) 比较此URL与other URL是否相同，不包括fragment片段参数
+Compares two URLs, excluding the fragment component.
+
+static void	setURLStreamHandlerFactory(URLStreamHandlerFactory fac) 设置此URL的URL流处理器为fac
+Sets an application's URLStreamHandlerFactory.
+
+String toExternalForm() 获取此URL对象字符串形式的字符串
+Constructs a string representation of this URL.
+
+String toString()
+Constructs a string representation of this URL.
+
+URI	toURI() 获取去此URL等效的URI
+Returns a URI equivalent to this URL.
+
+```
+</details>
+
+
+# URLConnection类
+针对HTTP协议  
+位置：java.net.URLConnection
+
+* URL的方法 openStream()：能从网络上读取数据
+* 若希望输出数据，例如向服务器端的 CGI （公共网关接口-Common Gateway Interface-的简称，  
+是用户浏览器和服务器端的应用程序进行连接的接口）程序发送一些数据，  
+则必须先与URL建立连接，然后才能对其进行读写，此时需要使用 URLConnection
+* 如果有输入和输入数据需求，使用URL对象.openConnection()，返回一个URLConnection
+* URLConnection
+```text
+表示到URL所引用的远程对象的连接。当与一个URL建立连接时，
+首先要在一个 URL 对象上通过方法 openConnection() 生成对应的 URLConnection 对象。
+如果连接过程失败，将产生IOException
+
+URLConnection对象可获取输入流、输出流
+
+```
+* 通过URLConnection对象获取的输入流和输出流，即可以与现有的CGI程序进行交互
+
+
+## 属性
+<details>
+<summary>展开属性</summary>
+
+```text
+protected boolean allowUserInteraction
+If true, this URL is being examined in a context in which it makes sense to allow user interactions such as popping up an authentication dialog.
+
+protected boolean connected
+If false, this connection object has not created a communications link to the specified URL.
+
+protected boolean doInput
+This variable is set by the setDoInput method.
+
+protected boolean doOutput
+This variable is set by the setDoOutput method.
+
+protected long ifModifiedSince
+Some protocols support skipping the fetching of the object unless the object has been modified more recently than a certain time.
+
+protected URL url
+The URL represents the remote object on the World Wide Web to which this connection is opened.
+
+protected boolean useCaches
+If true, the protocol is allowed to use caching whenever it can.
+```
+</details>
+
+
+## 构造器
+<details>
+<summary>展开构造器</summary>
+
+```text
+protected URLConnection(URL url)
+Constructs a URL connection to the specified URL.
+```
+</details>
+
+## 方法
+<details>
+<summary>展开方法</summary>
+
+```text
+InputStream	getInputStream() 从此打开的连接中获取 InputStreams输入流
+Returns an input stream that reads from this open connection.
+
+OutputStream getOutputStream() 从此打开的连接中获取 OutputStreams输出流
+Returns an output stream that writes to this connection.
+
+void addRequestProperty(String key, String value)
+Adds a general request property specified by a key-value pair.
+
+abstract void connect()
+Opens a communications link to the resource referenced by this URL, if such a connection has not already been established.
+
+boolean	getAllowUserInteraction()
+Returns the value of the allowUserInteraction field for this object.
+
+int	getConnectTimeout() 获取连接超时时间，单位ms毫秒
+Returns setting for connect timeout.
+
+Object getContent()
+Retrieves the contents of this URL connection.
+
+Object getContent(Class[] classes)
+Retrieves the contents of this URL connection.
+
+String getContentEncoding() 从content-encoding头字段中获取内容的编码
+Returns the value of the content-encoding header field.
+
+int	getContentLength() 从content-encoding头字段中获取内容长度
+Returns the value of the content-length header field.
+
+long getContentLengthLong()
+Returns the value of the content-length header field as a long.
+
+String getContentType() 从content-encoding头字段中获取内容的类型
+Returns the value of the content-type header field.
+
+long getDate() 获取long型日期
+Returns the value of the date header field.
+
+static boolean getDefaultAllowUserInteraction()
+Returns the default value of the allowUserInteraction field.
+
+static String getDefaultRequestProperty(String key)
+Deprecated.
+The instance specific getRequestProperty method should be used after an appropriate instance of URLConnection is obtained.
+
+boolean	getDefaultUseCaches()
+Returns the default value of a URLConnection's useCaches flag.
+
+boolean	getDoInput()
+Returns the value of this URLConnection's doInput flag.
+
+boolean	getDoOutput()
+Returns the value of this URLConnection's doOutput flag.
+
+long getExpiration()
+Returns the value of the expires header field.
+
+static FileNameMap	getFileNameMap()
+Loads filename map (a mimetable) from a data file.
+
+String getHeaderField(int n)
+Returns the value for the nth header field.
+
+String getHeaderField(String name)
+Returns the value of the named header field.
+
+long getHeaderFieldDate(String name, long Default)
+
+Returns the value of the named field parsed as date.
+
+int	getHeaderFieldInt(String name, int Default)
+Returns the value of the named field parsed as a number.
+
+String getHeaderFieldKey(int n)
+Returns the key for the nth header field.
+
+long getHeaderFieldLong(String name, long Default)
+Returns the value of the named field parsed as a number.
+
+Map<String,List<String>> getHeaderFields()
+Returns an unmodifiable Map of the header fields.
+
+long getIfModifiedSince()
+Returns the value of this object's ifModifiedSince field.
+
+long getLastModified()
+Returns the value of the last-modified header field.
+
+Permission	getPermission()
+Returns a permission object representing the permission necessary to make the connection represented by this object.
+
+int	getReadTimeout()
+Returns setting for read timeout.
+
+Map<String,List<String>> getRequestProperties()
+Returns an unmodifiable Map of general request properties for this connection.
+
+String getRequestProperty(String key)
+Returns the value of the named general request property for this connection.
+
+URL	getURL()
+Returns the value of this URLConnection's URL field.
+
+boolean	getUseCaches()
+Returns the value of this URLConnection's useCaches field.
+
+static String guessContentTypeFromName(String fname)
+Tries to determine the content type of an object, based on the specified "file" component of a URL.
+
+static String guessContentTypeFromStream(InputStream is)
+Tries to determine the type of an input stream based on the characters at the beginning of the input stream.
+
+void setAllowUserInteraction(boolean allowuserinteraction)
+Set the value of the allowUserInteraction field of this URLConnection.
+
+void setConnectTimeout(int timeout)
+Sets a specified timeout value, in milliseconds, to be used when opening a communications link to the resource referenced by this URLConnection.
+
+static void	setContentHandlerFactory(ContentHandlerFactory fac)
+Sets the ContentHandlerFactory of an application.
+
+static void	setDefaultAllowUserInteraction(boolean defaultallowuserinteraction)
+Sets the default value of the allowUserInteraction field for all future URLConnection objects to the specified value.
+
+static void	setDefaultRequestProperty(String key, String value)
+Deprecated.
+The instance specific setRequestProperty method should be used after an appropriate instance of URLConnection is obtained. Invoking this method will have no effect.
+
+void setDefaultUseCaches(boolean defaultusecaches)
+Sets the default value of the useCaches field to the specified value.
+
+void setDoInput(boolean doinput) 设置doInput属性值，默认是true，即允许读取InputStream
+Sets the value of the doInput field for this URLConnection to the specified value.
+
+void setDoOutput(boolean dooutput) 设置doOutput属性值，默认是false，即默认不允许OutputStream写入数据。若要写入，把doOutput设置为true
+Sets the value of the doOutput field for this URLConnection to the specified value.
+
+static void	setFileNameMap(FileNameMap map)
+Sets the FileNameMap.
+
+void setIfModifiedSince(long ifmodifiedsince)
+Sets the value of the ifModifiedSince field of this URLConnection to the specified value.
+
+void setReadTimeout(int timeout)
+Sets the read timeout to a specified timeout, in milliseconds.
+
+void setRequestProperty(String key, String value)
+Sets the general request property.
+
+void setUseCaches(boolean usecaches)
+Sets the value of the useCaches field of this URLConnection to the specified value.
+
+String toString()
+Returns a String representation of this URL connection.
+
+```
+</details>
+
+
+# HttpURLConnection类
+位置：java.net.HttpURLConnection
+
+## 属性
+<details>
+<summary>展开属性</summary>
+
+```text
+protected int chunkLength
+The chunk-length when using chunked encoding streaming mode for output.
+
+protected int fixedContentLength0
+The fixed content-length when using fixed-length streaming mode.
+
+protected long fixedContentLengthLong
+The fixed content-length when using fixed-length streaming mode.
+
+static int HTTP_ACCEPTED
+HTTP Status-Code 202: Accepted.
+
+static int HTTP_BAD_GATEWAY
+HTTP Status-Code 502: Bad Gateway.
+
+static int HTTP_BAD_METHOD
+HTTP Status-Code 405: Method Not Allowed.
+
+static int HTTP_BAD_REQUEST
+HTTP Status-Code 400: Bad Request.
+
+static int HTTP_CLIENT_TIMEOUT
+HTTP Status-Code 408: Request Time-Out.
+
+static int HTTP_CONFLICT
+HTTP Status-Code 409: Conflict.
+
+static int HTTP_CREATED
+HTTP Status-Code 201: Created.
+
+static int HTTP_ENTITY_TOO_LARGE
+HTTP Status-Code 413: Request Entity Too Large.
+
+static int HTTP_FORBIDDEN
+HTTP Status-Code 403: Forbidden.
+
+static int HTTP_GATEWAY_TIMEOUT
+HTTP Status-Code 504: Gateway Timeout.
+
+static int HTTP_GONE
+HTTP Status-Code 410: Gone.
+
+static int HTTP_INTERNAL_ERROR
+HTTP Status-Code 500: Internal Server Error.
+
+static int HTTP_LENGTH_REQUIRED
+HTTP Status-Code 411: Length Required.
+
+static int HTTP_MOVED_PERM
+HTTP Status-Code 301: Moved Permanently.
+
+static int HTTP_MOVED_TEMP
+HTTP Status-Code 302: Temporary Redirect.
+
+static int HTTP_MULT_CHOICE
+HTTP Status-Code 300: Multiple Choices.
+
+static int HTTP_NO_CONTENT
+HTTP Status-Code 204: No Content.
+
+static int HTTP_NOT_ACCEPTABLE
+HTTP Status-Code 406: Not Acceptable.
+
+static int HTTP_NOT_AUTHORITATIVE
+HTTP Status-Code 203: Non-Authoritative Information.
+
+static int HTTP_NOT_FOUND
+HTTP Status-Code 404: Not Found.
+
+static int HTTP_NOT_IMPLEMENTED
+HTTP Status-Code 501: Not Implemented.
+
+static int HTTP_NOT_MODIFIED
+HTTP Status-Code 304: Not Modified.
+
+static int HTTP_OK
+HTTP Status-Code 200: OK.
+
+static int HTTP_PARTIAL
+HTTP Status-Code 206: Partial Content.
+
+static int HTTP_PAYMENT_REQUIRED
+HTTP Status-Code 402: Payment Required.
+
+static int HTTP_PRECON_FAILED
+HTTP Status-Code 412: Precondition Failed.
+
+static int HTTP_PROXY_AUTH
+HTTP Status-Code 407: Proxy Authentication Required.
+
+static int HTTP_REQ_TOO_LONG
+HTTP Status-Code 414: Request-URI Too Large.
+
+static int HTTP_RESET
+HTTP Status-Code 205: Reset Content.
+
+static int HTTP_SEE_OTHER
+HTTP Status-Code 303: See Other.
+
+static int HTTP_SERVER_ERROR
+Deprecated.
+it is misplaced and shouldn't have existed.
+
+static int HTTP_UNAUTHORIZED
+HTTP Status-Code 401: Unauthorized.
+
+static int HTTP_UNAVAILABLE
+HTTP Status-Code 503: Service Unavailable.
+
+static int HTTP_UNSUPPORTED_TYPE
+HTTP Status-Code 415: Unsupported Media Type.
+
+static int HTTP_USE_PROXY
+HTTP Status-Code 305: Use Proxy.
+
+static int HTTP_VERSION
+HTTP Status-Code 505: HTTP Version Not Supported.
+
+protected boolean instanceFollowRedirects
+If true, the protocol will automatically follow redirects.
+
+protected String method
+The HTTP method (GET,POST,PUT,etc.).
+
+protected int responseCode
+An int representing the three digit HTTP Status-Code.
+
+protected String responseMessage
+The HTTP response message.
+```
+</details>
+
+## 构造器
+<details>
+<summary>展开构造器</summary>
+
+```text
+protected HttpURLConnection(URL u)
+Constructor for the HttpURLConnection.
+```
+</details>
+
+## 方法
+<details>
+<summary>展开方法</summary>
+
+```text
+abstract void disconnect()
+Indicates that other requests to the server are unlikely in the near future.
+
+InputStream	getErrorStream()
+Returns the error stream if the connection failed but the server sent useful data nonetheless.
+
+static boolean getFollowRedirects()
+Returns a boolean indicating whether or not HTTP redirects (3xx) should be automatically followed.
+
+String getHeaderField(int n)
+Returns the value for the nth header field.
+
+long getHeaderFieldDate(String name, long Default)
+Returns the value of the named field parsed as date.
+
+String getHeaderFieldKey(int n)
+Returns the key for the nth header field.
+
+boolean	getInstanceFollowRedirects()
+Returns the value of this HttpURLConnection's instanceFollowRedirects field.
+
+Permission getPermission()
+Returns a SocketPermission object representing the permission necessary to connect to the destination host and port.
+
+String getRequestMethod()
+Get the request method.
+
+int	getResponseCode()
+Gets the status code from an HTTP response message.
+
+String getResponseMessage()
+Gets the HTTP response message, if any, returned along with the response code from a server.
+
+void setChunkedStreamingMode(int chunklen)
+This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is not known in advance.
+
+void setFixedLengthStreamingMode(int contentLength)
+This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is known in advance.
+
+void setFixedLengthStreamingMode(long contentLength)
+This method is used to enable streaming of a HTTP request body without internal buffering, when the content length is known in advance.
+
+static void	setFollowRedirects(boolean set)
+Sets whether HTTP redirects (requests with response code 3xx) should be automatically followed by this class.
+
+void setInstanceFollowRedirects(boolean followRedirects)
+Sets whether HTTP redirects (requests with response code 3xx) should be automatically followed by this HttpURLConnection instance.
+
+void setRequestMethod(String method) 设置请求方法，GET、POST、HEAD、OPTIONS、PUT、DELETE、TRACE方法之一
+Set the method for the URL request, one of: GET POST HEAD OPTIONS PUT DELETE TRACE are legal, subject to protocol restrictions.
+
+abstract boolean usingProxy()
+Indicates if the connection is going through a proxy.
+```
+</details>
+
+## URL编程示例
+```text
+URL url = new URL("http://127.0.0.1/");
+
+URLConnection urlConnection = url.openConnection();
+urlConnection.setDoOutput(true); // 设置doOutput值为true，允许向OutputStream写入数据，默认是不允许的
+
+InputStream inputStream = urlConnection.getInputStream()
+OutputStream outputStream = urlConnection.getOutputStream()
+
+
+如果URL的scheme为 http或https，则可以把URLConnection转为HttpURLConnection
+
+HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+```
+
+* 从网络上下载一个文件  
+[URLTest](./src/com/java/www/URLTest.java)  
+* 本地上传信息到服务器  
+[URLTest2](./src/com/java/www/URLTest2.java)
+
+
+# 小结
+* 位于网络中的计算机具有唯一的IP地址，这样不同的主机可以互相区分
+* 客户端--服务器模型
+```text
+是一种最常见的网络应用程序模型。
+服务器是一个为其客户端提供某种特定服务的硬件或软件。
+客户机是一个用户应用程序，用于访问某台服务器提供的服务。
+端口号是对一个服务的访问场所，它用于区分同一物理计算机上的多个服务。
+套接字用于连接客户端和服务器，客户端和服务器之间的每个通信会话使用一个不同的套接字。
+TCP协议用于实现面向连接的会话
+```
+* Java 中有关网络方面的功能都定义在 java.net 程序包中。  
+Java 用 InetAddress 对象表示 IP 地址，  
+该对象里有两个字段：主机名(String) 和 IP 地址(int)
+* 类 Socket 和 ServerSocket 实现了基于TCP协议的客户端－服务器程序
+```text
+Socket是客户端和服务器之间的一个连接，连接创建的细节被隐藏了。
+这个连接提供了一个安全的数据传输通道，
+这是因为 TCP 协议可以解决数据在传送过程中的丢失、损坏、重复、乱序以及网络拥挤等问题，
+它保证数据可靠的传送
+```
+* 类 URL 和 URLConnection 提供了最高级网络应用
+```text
+URL 的网络资源的位置来同一表示 Internet 上各种网络资源。
+通过URL对象可以创建当前应用程序和 URL 表示的网络资源之间的连接，
+这样当前程序就可以读取网络资源数据，或者把自己的数据传送到网络上去
+```
 
 
 # 其他
@@ -526,6 +1127,3 @@ Runnable runnable = () -> {
 * 设置超时的时间，根据我的经验，只有在Socket级别设置才有效. 
 Socket socket = new Socket(host,port); 
 socket.setSoTimeout(100); // 如果超过100毫秒还没有数据，则抛出 SocketTimeoutException
-
-
-

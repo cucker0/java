@@ -315,7 +315,6 @@ public class URLTest2 {
             urlConnection.setDoOutput(true); // 设置doOutput值为true，允许向OutputStream写入数据，默认是不允许的
 
             // upload
-            urlConnection.setDoOutput(true);
             outputStream = urlConnection.getOutputStream();
             outputStream.write("hello server...".getBytes());
             outputStream.write("<ENF>\n".getBytes());
