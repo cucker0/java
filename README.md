@@ -19,7 +19,41 @@ JAVA Study
 * [day14_泛型](./day14/README.md "泛型")
 * [day15_IO流](./day15/README.md "IO流")
 * [day16](./day16/README.md "")
+
+
+<details>
+<summary>day18_java常用类</summary>
+
 * [day17_多线程](./day17/README.md "多线程")
+    * [程序、进程、线程概念](./day17/README.md#程序、进程、线程概念)
+    * 多线程使用场景
+        * 多线程的创建和启动
+    * Thread类
+        * 创建线程(类)的两种方法
+            * 继承Thread类
+            * 实现Runnable接口
+         * 继承Thread方式和实现Runnable方法的联系与区别
+         * Thread构造器
+         * Thread常用方法
+    * 线程的调度
+    * 线程的优先级
+    * 使用多线程的优点
+    * 线程的分类
+    * 线程的生命周期
+    * 线程的同步
+    * synchronized线程同步使用方法
+    * synchronized线程同步机制的两种实现方式
+        * 同步代码块
+        * 同步方法
+    * 互斥锁
+    * 懒汉式单例模式线程安全问题修复
+    * 释放锁的操作
+    * 不会释放锁的操作
+    * 线程的死锁问题
+    * 线程通信
+        * 线程通信示例
+        * 线程通信应用示例(生产者/消费者问题)
+</details>
 
 
 <details>
@@ -107,6 +141,7 @@ JAVA Study
     * [TCP socket网络编程](./day20/README.md#基于Socket的TCP编程)
         * ServerSocket类
         * Socket类
+        * [TCP socket示例](./day20/README.md#TCP-socket示例)
     * [UDP socket网络编程](./day20/README.md#基于socket的UDP编程)
         * DatagramSocket类
         * DatagramPacket类

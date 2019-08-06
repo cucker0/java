@@ -212,7 +212,7 @@ JDK中用Thread.State枚举类表示了线程的几种状态
 其他线程不能参与执行
 
 
-# synchronized 线程同步使用方法
+# synchronized线程同步使用方法
 * java对于多线程的安全问题提供了专门的解决方式：同步机制，关键字synchronized
 
 ## synchronized线程同步机制的两种实现方式
@@ -309,7 +309,7 @@ java中引入了对象互斥锁的概念，用来保证共享数据操作的完�
     * 调用此方法的必须条件：当前线程必须是具有对该对象的监控权(加锁)
 
 
-示例  
+线程通信示例  
 [ThreadCommunication Test](./src/com/java/www/ThreadCommunicationTest.java)
 
 
