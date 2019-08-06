@@ -52,6 +52,7 @@ day20_网络编程
 
 
 # InetAddress类
+位置：java.net.InetAddress
 * 主机地址的两种表示形式
     * 域名(hostName)，如：www.baidu.com
     * IP地址(hostAddress)，如：223.5.5.5
@@ -69,6 +70,9 @@ protected InetAddress() {
 }
 
 ## 方法
+<details>
+<summary>展开方法</summary>
+
 * 创建InetAddress对象
 static InetAddress getByName(String host)
 static InetAddress getByAddress(byte[] addr)
@@ -82,6 +86,7 @@ byte[] getAddress()
 String getCanonicalHostName()
 static InetAddress getLocalHost()
 static InetAddress getLoopbackAddress()
+<details>
 
 [InetAddress使用示例 ](./src/com/java/www/InetAddressTest.java)  
 
@@ -143,6 +148,7 @@ static InetAddress getLoopbackAddress()
 
 
 # Socket类
+位置：java.net.Socket
 ## 构造器
 <details>
 <summary>展开Socket类构造器</summary>
@@ -232,6 +238,7 @@ String toString() //"Socket[addr=" + getImpl().getInetAddress() +
 
 
 # ServerSocket类
+位置：java.net.ServerSocket
 ## 构造器(没有特殊说明时，都是public构造器)
 ```text
 ServerSocket() 创建未绑定IP、端口等的ServerSocket对象
@@ -367,6 +374,7 @@ String toString()
 * UDP协议中每个数据报都包含了完整的地址信息，因此无须建立发送方和接收方的连接
 
 # DatagramSocket类
+位置：java.net.DatagramSocket;
 ## 构造器
 <details>
 <summary>展开构造器</summary>
@@ -425,6 +433,7 @@ void setTrafficClass(int tc) Sets traffic class or type-of-service octet in the 
 
 
 # DatagramPacket类
+位置：java.net.DatagramPacket
 ## 构造器
 <details>
 <summary>展开构造器</summary>
@@ -484,7 +493,16 @@ void setSocketAddress(SocketAddress address)
 
 
 # URL编程
+* URL
+```text
+Uniform Resource Locator, 统一资源定位符，它表示 Internet 上某一资源的地址。
+通过 URL 我们可以访问 Internet 上的各种网络资源，比如最常见的 www，ftp 站点。
+浏览器通过解析给定的 URL 可以在网络上查找相应的文件或其他资源
 
+```
+* URL的基本结构
+    * <传输协议>://<主机名>:<端口号>/<文件名>
+    * 如：http://192.168.1.100:8080/helloworld/index.jsp
 
 
 
