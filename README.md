@@ -45,7 +45,7 @@ JAVA Study
         * SimpleDateFormat
         * Calendar
     * [主要时间标准](./day18/README.md#主要时间标准)
-    * [System类的System.currentTimeMillis()方法](./day18/README.md#System类的System.currentTimeMillis方法)
+    * [System类的System.currentTimeMillis()方法](./day18/README.md#system类的systemcurrenttimemillis方法)
     * [Date类](./day18/README.md#Date类)
     * [SimpleDateFormat类](./day18/README.md#SimpleDateFormat类)
     * [Calendar类](./day18/README.md#Calendar类)
