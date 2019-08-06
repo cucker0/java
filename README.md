@@ -28,7 +28,7 @@ JAVA Study
     * [程序、进程、线程概念](./day17/README.md#程序、进程、线程概念)
     * 多线程使用场景(./day17/README.md)
         * 多线程的创建和启动
-    * Thread类(./day17/README.md)
+    * [Thread类](./day17/README.md#Thread类)
         * [创建线程(类)的两种方法](./day17/README.md#创建线程类的两种方法)
             * [继承Thread类](./day17/README.md#继承Thread类)
             * [实现Runnable接口](./day17/README.md#实现Runnable接口)
