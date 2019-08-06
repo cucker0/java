@@ -70,6 +70,9 @@ public class UDPSocketTest3 {
             while (true) {
                 // 发送信息
                 String data = br.readLine();
+                if (data.equalsIgnoreCase("q")) {
+                    break;
+                }
                 byte[] b = data.getBytes();
                 DatagramPacket datagramPacket = new DatagramPacket(b, b.length, InetAddress.getByName("127.0.0.1"), 6060);
                 datagramSocket.send(datagramPacket);
