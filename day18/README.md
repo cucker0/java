@@ -140,7 +140,7 @@ static String valueOf(Object obj)
     >public byte[] getBytes(String charsetName) 使用参数指定字符编码，将当前字符串转化为一个字节数组
 * 字节数组 -> 字符串：new String(byte[] b)
     >String(byte[]，int offset，int length)
-## 字符串与字符数据的转换
+## 字符串与字符数组的相互转换
 * 字符串 -> 字符数组：
     * 字符串对象.toCharArray()
     * String.getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
@@ -249,7 +249,7 @@ s=s+"b"; // 实际上原来的"a"字符串对象已经丢弃了，现在又产�
 * SimpleDateFormat
 * Calendar
 
-# System类
+# System类的System.currentTimeMillis()方法
 位于java.lang.System  
 
 System类提供的public static long currentTimeMillis() 用来返回当前时间与1970-01-01 00:00:00 之间以毫秒为单位的时间差  

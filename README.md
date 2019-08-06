@@ -20,7 +20,40 @@ JAVA Study
 * [day15_IO流](./day15/README.md "IO流")
 * [day16](./day16/README.md "")
 * [day17_多线程](./day17/README.md "多线程")
+
+
+<details>
+<summary>day18_java常用类</summary>
+
 * [day18_java常用类](./day18/README.md "java常用类")
+    * [String类](./day18/README.md#String类)
+        * 字符串的特性
+        * String类的构造器
+        * String方法
+        * 字符串与基本数据类型、包装类之间转换
+        * 字符串与字节数组的相互转换
+        * 字符串与字符数组的相互转换
+    * [StringBuffer类](./day18/README.md#StringBuffer类)
+        * 特点
+        * 构造器
+        * StringBuffer方法
+    * [StringBuilder类](./day18/README.md#StringBuilder类)
+        * String、StringBuffer、StringBuilder特点比较
+    * 与时间相关的类
+        * System.currentTimeMillis();
+        * Date：java.util.Date、java.sql.Date
+        * SimpleDateFormat
+        * Calendar
+    * [主要时间标准](./day18/README.md#主要时间标准)
+    * [System类的System.currentTimeMillis()方法](./day18/README.md#System类的System.currentTimeMillis方法)
+    * [Date类](./day18/README.md#Date类)
+    * [SimpleDateFormat类](./day18/README.md#SimpleDateFormat类)
+    * [Calendar类](./day18/README.md#Calendar类)
+    * [Math类](./day18/README.md#Math类)
+    * [BigInteger类](./day18/README.md#BigInteger类)
+    * [BigDecimal类](./day18/README.md#BigDecimal类)
+</details>
+
 
 <details>
 <summary>day19_java反射机制</summary>
