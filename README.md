@@ -24,16 +24,24 @@ JAVA Study
 * [day19_java反射机制](./day19/README.md "java反射机制")
 
 <details>
+<summary>day20_网络编程</summary>
 
 * [day20_网络编程](./day20/README.md "网络编程")
-<summary></summary>
     * [网络编程概述](./day20/README.md#网络编程概述)
     * [通讯要素](./day20/README.md#网络基础)
         * IP和端口
+            * InetAddress类(IP地址)、InetSocketAddress(IP、端口)
         * 网络通信协议
     * [TCP socket网络编程](./day20/README.md#基于Socket的TCP编程)
+        * ServerSocket类
+        * Socket类
     * [UDP socket网络编程](./day20/README.md#基于socket的UDP编程)
+        * DatagramSocket类
+        * DatagramPacket类
     * [URL socket网络编程](./day20/README.md#URL编程)
+        * URL类
+        * URLConnection类
+        * HttpURLConnection类
 
 </details>
 

@@ -62,6 +62,7 @@ day20_网络编程
     * Inet6Address
 * InetAddress对象含有一个Internet主机的域名和IP地址
 * 域名易于记忆，通信前需要把域名解析成IP地址
+* InetSocketAddress，表示IP、端口的组合，即一个socket地址
 
 ## 构造器
 // 跨包后调用不了此构造器
