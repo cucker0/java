@@ -17,8 +17,16 @@ JAVA Study
 * [day12_异常处理](./day12/README.md "day12")
 * [day13_java 集合](./day13/README.md "day13")
 * [day14_泛型](./day14/README.md "泛型")
+
+
+<details>
+<summary>day15_IO流</summary>
+
 * [day15_IO流](./day15/README.md "IO流")
-* [day16](./day16/README.md "")
+</details>
+
+
+* [day16_多线程练习](./day16/README.md "")
 
 
 <details>
