@@ -24,17 +24,15 @@ JAVA Study
 * [day19_java反射机制](./day19/README.md "java反射机制")
 
 <details>  
-
+<summary>* [day20_网络编程](./day20/README.md "网络编程")</summary>
 * [day20_网络编程](./day20/README.md "网络编程")
-<summary></summary>
-
-* 网络编程概述
-* 通讯要素
-    * IP和端口
-    * 网络通信协议
-* TCP socket网络编程
-* UDP socket网络编程
-* URL socket网络编程
+    * 网络编程概述
+    * 通讯要素
+        * IP和端口
+        * 网络通信协议
+    * TCP socket网络编程
+    * UDP socket网络编程
+    * URL socket网络编程
 
 </details>
 
