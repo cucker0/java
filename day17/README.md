@@ -237,7 +237,7 @@ synchronized(obj) {
 
 ```
 
-示例  
+同步代码块示例  
 [Windows3Test](./src/com/java/www/Windows3Test.java)  
 [Windows1Test](./src/com/java/www/Windows1Test.java)
 
@@ -252,9 +252,10 @@ synchronized(obj) {
 synchronized void show() {
     // 需要被同步的代码，即操作共享数据的代码
 }
-
-
 ```
+
+同步方法示例  
+[Windows4Test](./src/com/java/www/Windows4Test.java)  
 
 # 互斥锁
 java中引入了对象互斥锁的概念，用来保证共享数据操作的完整性
