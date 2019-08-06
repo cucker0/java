@@ -86,7 +86,7 @@ byte[] getAddress()
 String getCanonicalHostName()
 static InetAddress getLocalHost()
 static InetAddress getLoopbackAddress()
-<details>
+</details>
 
 [InetAddress使用示例 ](./src/com/java/www/InetAddressTest.java)  
 
