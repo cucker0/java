@@ -55,7 +55,7 @@ JAVA Study
     * [JAVA动态代理](./day19/README.md#JAVA动态代理)
         * 静态代理示例
         * 动态代理示例
-    * [动态代理与AOP(Aspect Orient Programming面向切面编程)](./day19/README.md#动态代理与AOP(Aspect Orient Programming面向切面编程))
+    * [动态代理与AOP(Aspect Orient Programming面向切面编程)](./day19/README.md#动态代理与AOP\(Aspect-Orient-Programming面向切面编程\))
         * AOP代理示例
     
         
