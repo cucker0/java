@@ -1,3 +1,7 @@
+/*
+首先开启一个线程，等待连接，当有请求连接进来时，再新开一个线程等待下一个请求连接
+* */
+
 package socket.socket1.socket3;
 
 import java.io.BufferedReader;

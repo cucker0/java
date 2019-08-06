@@ -1,3 +1,9 @@
+/*
+服务端不断一行一行读取数据
+
+* */
+
+
 package socket.socket1.socket2;
 
 import java.io.BufferedReader;

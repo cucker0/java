@@ -310,19 +310,40 @@ String toString()
 
 
 ## TCP socket示例
-客户端发送内容给服务端，服务端将内容打印到控制台上  
+<details>
+<summary>展开示例</summary>
+
+* 客户端发送内容给服务端，服务端将内容打印到控制台上  
 [TCPSocketTest1](./src/com/java/www/TCPSocketTest1.java) 
 
-客户端发送内容给服务端，服务端给予反馈  
+* 客户端发送内容给服务端，服务端给予反馈  
 [TCPSocketTest2](./src/com/java/www/TCPSocketTest2.java)  
 
-从客户端发送文件给服务端，服务端保存到本地。并返回“发送成功”给客户端。并关闭相应的连接  
+* 从客户端发送文件给服务端，服务端保存到本地。并返回“发送成功”给客户端。并关闭相应的连接  
 [TCPSocketTest3](./src/com/java/www/TCPSocketTest3.java)  
 
-[]()
+* 客户端持续发送内容给服务端，输入q或exit是退出，服务端将内容打印到控制台上  
+[TCPServer](./src/com/java/socket/TCPServer.java)  
+[TCPClient](./src/com/java/socket/TCPClient.java)  
 
-Web server  
-[WebServer](./src/com/java/www/WebServer.java)
+* 服务端、客户端互相收发信息，类似聊天，即一对一通信
+[TCPServer](./src/com/java/socket2/TCPServer.java)  
+[TCPClient](./src/com/java/socket2/TCPClient.java)  
+
+* java socket TCP 模拟 简单的WEB Server  
+[WebServer](./src/com/java/www/WebServer.java)  
+
+* Web server:先启动一个线程来等待用户的请求连接，当有一个客户请求连接进来时，新开启一个线程等待下一个客户端请求连接。  
+线程响应完客户请求后，关闭当前socket及相关的IO流，当前线程就退出了。  
+[WebServer2](./src/com/java/www/WebServer2.java)  
+[WebServer3](./src/com/java/www/WebServer3.java)  
+[WebServer4](./src/com/java/www/WebServer4.java)  
+
+* Web server:利用线程池，让服务端一直保持开启n个线程  
+[WebServer5](./src/com/java/www/WebServer5.java)
+
+</details>
+
 
 
 # 其他

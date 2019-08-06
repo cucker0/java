@@ -1,3 +1,8 @@
+/*
+服务端等待请求连接，准备读取一行数据，
+客户端发送一条信息，然后直接退出。会导致连接重置，需要通知服务什么时候结束或什么标识结束
+* */
+
 package socket.socket1.socket1;
 
 import java.io.BufferedReader;
