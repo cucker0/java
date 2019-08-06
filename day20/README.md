@@ -144,6 +144,9 @@ static InetAddress getLoopbackAddress()
 
 # Socket类
 ## 构造器
+<details>
+<summary>展开Socket类构造器</summary>
+
 ```text
 
 public Socket() 创建一个未绑定IP、端口等的Socket对象
@@ -163,8 +166,12 @@ public Socket(Proxy proxy) 创建一个未连接的代理Socket，使用代理�
 protected Socket(SocketImpl impl) throws SocketException 创建一个由用户实现的SocketImpl且未连接的Socket对象。
 
 ```
+</details>
 
 ## 方法
+<details>
+<summary>展开Socket类方法</summary>
+
 ```text
 void bind(SocketAddress bindpoint) 绑定SocketAddress，即IP和端口
 void close() 关闭此socket
@@ -215,6 +222,7 @@ String toString() //"Socket[addr=" + getImpl().getInetAddress() +
                     ",localport=" + getImpl().getLocalPort() + "]";
                     
 ```
+</details>
 
 ## 注意
 * 调用socket.close() 或者socket.shutdownOutput()方法，都会结束客户端socket，且不可恢复。
@@ -233,6 +241,9 @@ ServerSocket(int port, int backlog, InetAddress bindAddr) 建服务器端的Serv
 ```
 
 ## 方法(没有特殊说明，都是public方法)
+<details>
+<summary>ServerSocket类方法</summary>
+
 ```text
 
 Socket accept() 创建并返回一个Socket对象，开始侦听该socket并接收请求连接，阻塞的，直到有请求连接进来
