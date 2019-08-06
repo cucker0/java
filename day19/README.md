@@ -42,7 +42,7 @@ reflection(反射)被视为动态语言的关键，反射机制允许程序员�
 * 每个类的实例都会记录自己是有哪个Class实例生成的
 * 通过Class可以完整的得到一个类的完整结构
 
-## Class类重用方法
+## Class类主要方法
 * static Class forName(String name) 返回指定类名name的Class对象
 * Object newInstance() 调用空参(或缺省)的构造器，返回Class对象的一个实例
 * String getName() 返回此Class对象所表示的实体名称(类、接口、数组、基本类型或void)
@@ -227,7 +227,7 @@ String modifier = Modifier.toString(i);
 
     ```
 
-实例  
+示例  
 [Reflection2Test test12](./src/com/java/www/Reflection2Test.java)
 
 
@@ -347,7 +347,7 @@ AOP动态代理功能类似于python中的装饰器
 但AOP代理中的方法与目标对象的方法存在差异：AOP代理中的方法可以在执行目标方法之前、之后插入一些通用处理
 
 
-示例  
+AOP代理示例  
 [AOP代理 Test](./src/com/java/proxy/AOPTest.java)  
 ![](./images/AOP动态代理.png "AOP动态代理")
 
