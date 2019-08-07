@@ -18,7 +18,7 @@ day03
  ```text
 * for
 * while
-* do/while
+* do-while
 
 ```
 
@@ -48,6 +48,10 @@ for (; ; ) {
 }
 ```
 
+示例  
+[ForTest](./ForTest.java)
+
+
 ## while
 * 语法格式
 ```text
@@ -75,6 +79,9 @@ while (true) {
 
 * for循环与while循环可以互相转换
 
+示例  
+[WhileTest](./WhileTest.java)
+
 ## do-while
 * 语法格式
 ```text
@@ -85,20 +92,27 @@ do {
 } while (布尔测试表达式);
 
 ```
+示例  
+[DoWhileTest](./DoWhileTest.java)
 
 ## 特殊流程控制break
+### break语句用于终止某个语句块的执行
 ```text
-* break语句用于终止某个语句块的执行
 {
     ... ...
     break;
 }
+```
 
-* break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
+
+### break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
+```text
         lable1:
         for (int i = 0; i < 4; ++i) {
+            System.out.println("i layer: " + i);
             lable2:
             for (int j = 0; j < 4; ++j) {
+                System.out.println("j layer: " + j);
                 lable3:
                 for (int k = 0; k < 4; ++k) {
                     if (k == 2) {
@@ -106,20 +120,24 @@ do {
                     }
                     System.out.println("k layer: " + k);
                 }
-                System.out.println("j layer: " + j);
             }
-            System.out.println("i layer: " + i);
         }
         
         
 ```
+示例  
+[BreakTest](./BreakTest.java)
+
 
 ## continue特殊控制
 ```text
+        // 跳过指定层的本次循环
         lable1:
         for (int i = 0; i < 4; ++i) {
+            System.out.println("i layer: " + i);
             lable2:
             for (int j = 0; j < 4; ++j) {
+                System.out.println("j layer: " + j);
                 lable3:
                 for (int k = 0; k < 4; ++k) {
                     if (k == 2) {
@@ -127,12 +145,12 @@ do {
                     }
                     System.out.println("k layer: " + k);
                 }
-                System.out.println("j layer: " + j);
             }
-            System.out.println("i layer: " + i);
         }
 
 ```
+示例  
+[ContinueTest](./ContinueTest.java)
 
 ## return
 ```text

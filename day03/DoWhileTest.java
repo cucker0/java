@@ -17,10 +17,10 @@ do {
 # do-while与while区别：do-while至少会执行一次
 
 
-运行：javac -encoding utf8 TestDoWhile.java && java TestDoWhile
+运行：javac -encoding utf8 DoWhileTest.java && java DoWhileTest
 * */
 
-class TestDoWhile {
+class DoWhileTest {
     public static void main(String[] args) {
         // 打印1-100的所有偶数，并对所有偶数示和
         int sum = 0;

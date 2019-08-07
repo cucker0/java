@@ -11,10 +11,10 @@ for (①; ②; ③) {
     ④;
 }
 
-运行：javac -encoding utf8 TestFor1.java && java TestFor1
+运行：javac -encoding utf8 ForTest.java && java ForTest
 * */
 
-class TestFor1 {
+class ForTest {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             System.out.println("测试" + i);

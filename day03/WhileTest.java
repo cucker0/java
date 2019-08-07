@@ -15,10 +15,10 @@ while (②) {
 
 # for循环与while循环可以互相转换
 
-运行：javac -encoding utf8 TestWhile.java && java TestWhile
+运行：javac -encoding utf8 WhileTest.java && java WhileTest
 * */
 
-class TestWhile {
+class WhileTest {
     public static void main(String[] args) {
 
         // 打印1-100的所有偶数，并对所有偶数示和
