@@ -42,9 +42,9 @@ JAVA Study
 </details>
 
 <details>
-<summary>day07</summary>
+<summary>day07_高级类特性1</summary>
 
-* [day07](./day07/README.md "day07")
+* [day07_高级类特性1](./day07/README.md "day07")
     * [关键字--this](./day07/README.md#关键字--this)
         * [this作用](./day07/README.md#this作用)
         * [this关键字使用注意事项](./day07/README.md#this关键字使用注意事项)
