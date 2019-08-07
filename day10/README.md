@@ -7,7 +7,7 @@ day10高级类特性2
 
 解决的问题：使得一个类只能够创建一个对象
 
-## 实现
+## 单例的实现
 * 饿汉式单例模式
 ```java
 /*
@@ -93,7 +93,7 @@ public class MainTest {
     > 对java对象进行初始化
     
 * 代码块修饰符只能是空或static
-## 分类
+## 代码块分类
 * 静态代码块 static { }
     * { }内可以有输出语句
     * 随着类的加载而加载，且只能被加载一次，内存中同样只有一份
@@ -205,7 +205,7 @@ class Order {
 ```
 
 
-# final 关键字
+# final关键字
 final  （最终的）   
 可以修饰类、属性、方法。不能修饰构造器  
 目的：禁止被修改、被继承  
@@ -468,6 +468,9 @@ class Driver extends Man {
     - 编写一个抽象父类，父类提供了多个子类的通用方法，并把一个或多个方法留给其子类实现，就是一种模板模式。
 
 示例
+<details>
+<summary>展开示例</summary>
+
 ```java
 public class TemplateTest {
     public static void main(String[] args) {
@@ -527,6 +530,7 @@ class MySort extends Template {
 }
 
 ```
+</details>
 
 # interfacer接口
 接口用途：被实现类去实现接口定义的功能（面向接口编程）
@@ -544,6 +548,9 @@ class MySort extends Template {
 * 与继承关系类似，接口与实现类之间存在多态性
 
 示例
+<details>
+<summary>展开示例</summary>
+
 ```java
 package com.java.www;
 
@@ -666,8 +673,12 @@ class Audi implements ChinaCar{
     }
 }
 ```
+</details>
 
 多态示例
+<details>
+<summary></summary>
+
 ```java
 public class InterfacePolymorphicTest {
     public static void main(String[] args) {
@@ -726,9 +737,10 @@ class Duck implements runner, swimer, flier {
     }
 }
 ```
+</details>
 
 ## 接口用法总结
 * 通过接口可以实现不相关类的相同行为，而不需要考虑这些类之间的层次关系
-* 通过接口可以指明多个类需要实现的方法，一般用于定义对象的扩张功能
+* 通过接口可以指明类需要实现的多个方法，一般用于定义对象的扩张功能
 * 接口主要用来定义规范。解除耦合关系
 

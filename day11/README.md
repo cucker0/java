@@ -11,7 +11,7 @@ day11
 * 当一个希望由它的子类来指定它所创建的对象的时间点
 * 当类将创建对象的职责委托给多个帮助子类中的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候
 
-## 示例
+## 工厂方法设计模式示例
 [factory method](./src/com/java/www/FactoryMethodTest.java)
 
 ## 工厂方法设计总结
@@ -85,7 +85,7 @@ No. |区别 |抽象类 |接口
 匿名内部类不能定义任何静态成员、方法和类，  只能创建匿名内部类的一个实例。  
 一个匿名内部类一定是在new的后面，用其隐含实现一个接口或实现一个类
 
-匿名内部示例  
+## 匿名内部示例  
 [Anonymous Inner Class](./src/com/java/www/AnonymousInnerClassTest.java)
 
 
