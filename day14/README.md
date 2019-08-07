@@ -2,7 +2,7 @@ day14泛型
 ==
 
 # 泛型概述
-* 概念：泛型将接口的概念进一步延伸，”泛型”字面意思就是广泛的类型，类、接口和方法代码可以应用于非常广泛的类型，  
+* 概念：泛型将接口的概念进一步延伸，"泛型"字面意思就是广泛的类型，类、接口和方法代码可以应用于非常广泛的类型，  
 代码与它们能够操作的数据类型不再绑定在一起，同一套代码，可以用于多种数据类型，  
 这样，不仅可以复用代码，降低耦合，同时，还可以提高代码的可读性和安全性。
 * 泛型作用
@@ -89,24 +89,35 @@ public class DAO {
 
 
 # 泛型与继承的关系
+```text
 * 若B是A的一个子类型（子类或者子接口），而G是具有泛型声明的类或接口，G<B>并不是G<A>的子类型！  
 那么List<A>不是List<B>的子类，List<A>与List<B>类型不一样
-* 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> { }
-* 子类仍为泛型类：继承时子类使用泛型，例如class SubCustomer2<T> extends Customer<T> { }
 
+* 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> { }
+
+* 子类仍为泛型类：继承时子类使用泛型，例如class SubCustomer2<T> extends Customer<T> { }
+```
 
 # 泛型通配符
 作用：兼容多种泛型类型
-* 类型通配符符号：\<?>  
-如List\<?>, Map\<?, ?>
-* List\<A>、List\<B> ... ... 都是List\<?>的子类
-* 读取 List<?> 对象list中的元素时，永远是安全的，因为不管list的元素真实类型是什么，list包含都是Object
-* 写入、修改list中的元素时，不行，因为我们不知道list的元素类型，唯一例外的是null，null是所有类的成员
-* \<? extends A>  
-只能存放A及其子类，元素可以增查改删
-* \<? super A>   
-只能存放A及其父类
-* \<? extends Comparable> 只允许泛型为实现Comparable接口的实现类的引用调用
-* 不能向声明为通配符的集合中添加、修改元素(当元素为null除外)，但可以获取、删除元素
+```text
+* 类型通配符符号：<?>  
+如List<?>, Map<?, ?>
 
+* List<A>、List<B> ... ... 都是List<?>的子类
+
+* 读取 List<?> 对象list中的元素时，永远是安全的，因为不管list的元素真实类型是什么，list包含都是Object
+
+* 写入、修改list中的元素时，不行，因为我们不知道list的元素类型，唯一例外的是null，null是所有类的成员
+
+* <? extends A>  
+只能存放A及其子类，元素可以增查改删
+
+* <? super A>   
+只能存放A及其父类
+
+* <? extends Comparable> 只允许泛型为实现Comparable接口的实现类的引用调用
+
+* 不能向声明为通配符的集合中添加、修改元素(当元素为null除外)，但可以获取、删除元素
+```
 
