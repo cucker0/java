@@ -1,6 +1,12 @@
 JAVA Study
 ==
 
+---
+内容: java基础
+讲师: 宋红康
+JDK 版本: JDK 12.0.1
+---
+
 # Table Of Contents
 <details>
 <summary>day01</summary>
@@ -80,6 +86,7 @@ JAVA Study
 <summary>day12_异常处理</summary>
 
 * [day12_异常处理](./day12/README.md "day12")
+
 </details>
 
 
