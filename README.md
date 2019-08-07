@@ -1,11 +1,12 @@
-JAVA Study
-==
-
 ---
 内容: java基础
 讲师: 宋红康
 JDK 版本: JDK 12.0.1
 ---
+
+JAVA Study
+==
+
 
 # Table Of Contents
 <details>
