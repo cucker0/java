@@ -1,15 +1,5 @@
----
-内容: java基础
-讲师: 宋红康
-JDK 版本: JDK 12.0.1
-    标题:
-        AAA
-        BBB
----
-
 JAVA Study
 ==
-
 
 # Table Of Contents
 <details>

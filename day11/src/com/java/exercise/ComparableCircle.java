@@ -1,3 +1,8 @@
+/*
+比较连个圆是否相等
+
+* */
+
 package com.java.exercise;
 
 public class ComparableCircle extends Circle implements CompareObject {

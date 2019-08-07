@@ -1,3 +1,7 @@
+/*
+比较两个矩形是否相等
+* */
+
 package com.java.exercise;
 
 public class ComparableRectangle extends Rectangle implements CompareObject{
