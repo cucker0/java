@@ -1,28 +1,138 @@
 JAVA Study
 ==
 
-# Table of contents
+# Table Of Contents
+<details>
+<summary>day01</summary>
 
 * [day01](./day01/README.md "day01")
+</details>
+
+<details>
+<summary>day02</summary>
+
 * [day02](./day02/README.md "day02")
+</details>
+
+
+<details>
+<summary>day03</summary>
+
 * [day03](./day03/README.md "day03")
+</details>
+
+
+<details>
+<summary>day04</summary>
+
 * [day04](./day04/README.md "day04")
+</details>
+
+
+<details>
+<summary>day05</summary>
+
 * [day05](./day05/README.md "day05")
+</details>
+
+<details>
+<summary>day06</summary>
+
 * [day06](./day06/README.md "day06")
+</details>
+
+<details>
+<summary>day07</summary>
+
 * [day07](./day07/README.md "day07")
+</details>
+
+
+<details>
+<summary>day08</summary>
+
 * [day08](./day08/README.md "day08")
+</details>
+
+
+<details>
+<summary>day09_高级类特性1</summary>
+
 * [day09_高级类特性1](./day09/README.md "day09")
+</details>
+
+
+<details>
+<summary>day10_高级类特性2</summary>
+
 * [day10_高级类特性2](./day10/README.md "day10")
+</details>
+
+
+<details>
+<summary>day11_异常处理</summary>
+
 * [day11_异常处理](./day11/README.md "day11")
+</details>
+
+
+<details>
+<summary>day12_异常处理</summary>
+
 * [day12_异常处理](./day12/README.md "day12")
+</details>
+
+
+<details>
+<summary>day13_java 集合</summary>
+
 * [day13_java 集合](./day13/README.md "day13")
+</details>
+
+
+<details>
+<summary>day14_泛型</summary>
+
 * [day14_泛型](./day14/README.md "泛型")
+    * [泛型概述](./day14/README.md#泛型概述)
+    * [泛型的使用](./day14/README.md#泛型的使用)
+    * [泛型的几个重要使用的地方](./day14/README.md#泛型的几个重要使用的地方)
+    * [泛型类规则](./day14/README.md#泛型类规则)
+        * 自定义泛型类示例
+    * [泛型接口](./day14/README.md#泛型接口)
+    * [泛型方法](./day14/README.md#泛型方法)
+    * [泛型与继承的关系](./day14/README.md#泛型与继承的关系)
+    * [泛型通配符](./day14/README.md#泛型通配符)
+</details>
 
 
 <details>
 <summary>day15_IO流</summary>
 
 * [day15_IO流](./day15/README.md "IO流")
+    * [File类](./day15/README.md#File类)
+    * [JAVA IO原理](./day15/README.md#java-io原理)
+    * [流的分类](./day15/README.md#流的分类)
+        * [流的抽象基类](./day15/README.md#流的抽象基类)
+        * [IO流体系](./day15/README.md#IO流体系)
+        * [节点流和处理流](./day15/README.md#节点流和处理流)
+    * [InputStream、Reader](./day15/README.md#inputstreamreader)
+    * [OutputStream、Writer](./day15/README.md#outputstreamwriter)
+    * [处理流之一：缓冲流](./day15/README.md#处理流之一缓冲流)
+    * [处理流之二：转换流](./day15/README.md#处理流之二转换流)
+        * [InputStreamReader](./day15/README.md#InputStreamReader)
+        * [OutputStreamWriter](./day15/README.md#OutputStreamWriter)
+    * [字符集](./day15/README.md#字符集)
+    * [字符编码、解码](./day15/README.md#字符编码解码)
+    * [处理之三：标准输入输出流](./day15/README.md#处理之三标准输入输出流)
+    * [处理流之四：打印流](./day15/README.md#处理流之四打印流)
+    * [处理流之五：数据流](./day15/README.md#处理流之五数据流)
+    * [处理流之六：对象流](./day15/README.md#处理流之六对象流)
+        * 对象的序列化
+        * 使用对象流序列化对象
+    * [RandomAccessFile类](./day15/README.md#RandomAccessFile类)
+    * [流的基本应用小总结](./day15/README.md#流的基本应用小总结)
+    
 </details>
 
 
@@ -33,7 +143,7 @@ JAVA Study
 <summary>day17_多线程</summary>
 
 * [day17_多线程](./day17/README.md "多线程")
-    * [程序、进程、线程概念](./day17/README.md#程序、进程、线程概念)
+    * [程序、进程、线程概念](./day17/README.md#程序进程线程概念)
     * 多线程使用场景(./day17/README.md)
         * 多线程的创建和启动
     * [Thread类](./day17/README.md#Thread类)
@@ -125,7 +235,7 @@ JAVA Study
         * 获取内部类
         * 数字形式修饰符转String修饰符
         * 示例
-    * [通过反射调用类中指定的方法、属性、构造器](./day19/README.md#通过反射调用类中指定的方法、属性、构造器)
+    * [通过反射调用类中指定的方法、属性、构造器](./day19/README.md#通过反射调用类中指定的方法属性构造器)
         * 调用指定的方法
         * 调用指定的属性
         * 调用指定的构造器

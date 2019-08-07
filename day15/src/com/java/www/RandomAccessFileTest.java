@@ -39,8 +39,12 @@ public class RandomAccessFileTest {
             e.printStackTrace();
         } finally {
             try {
-                raf1.close();
-                raf2.close();
+                if (raf1 != null) {
+                    raf1.close();
+                }
+                if (raf2 != null) {
+                    raf2.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -128,6 +132,7 @@ public class RandomAccessFileTest {
 //            raf.write(sb.toString().getBytes());
 
             // 方法2
+            // 思路：把插入点后面的内容先存放起来，插入完内容后，再把存放起来的内容添加上来
             byte[] b = new byte[1024];
             int len;
             LinkedList<Byte> list = new LinkedList<>();
@@ -146,7 +151,9 @@ public class RandomAccessFileTest {
             e.printStackTrace();
         } finally {
             try {
-                raf.close();
+                if (raf != null) {
+                    raf.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
