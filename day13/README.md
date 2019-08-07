@@ -24,7 +24,7 @@ day13 java集合
 
 # java集合概述
 * 一方面，面向对象语言对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储。  
-另一方面，使用Array数组存储对方具有一些弊端，二java集合就像一种容器，可以动态的把多个对象的引用放入容器中。
+另一方面，使用Array数组存储对方具有一些弊端，而java集合就像一种容器，可以动态的把多个对象的引用放入容器中。
 
 * java集合类可以用于数量不等的多个对象，还可以用于保存具有映射关系的关联数组。
 * java集合分为Collection和Map两种体系
@@ -35,14 +35,14 @@ day13 java集合
     
 
 ## Collection接口继承树
-![](../day12/images/Collectoin接口继承树.png)
+![](./images/Collectoin接口继承树.png)
 
 + Collection
     - 方法iterator()
         返回对象类型为Iterator
             ListIterator
     
-    - 实现接口子类
+    - 实现接口子类(若需要线程安全的，可以用Collections同步方法捷解决)
         * List 元素有序（遍历顺序为添加顺序），可重复
             * ArrayList 元素在内存中连续存储，  
                         读取性能好，  
@@ -72,7 +72,7 @@ day13 java集合
     * Comparator
     
 ## Map接口继承树
-![](../day12/images/Map接口继承树.png)
+![](./images/Map接口继承树.png)
 
 + Map key-value键值对，或叫entry，key不能重复，value可以重复  
     Set keySet();  
@@ -116,7 +116,7 @@ day13 java集合
 
 
 实例  
-[Collection Test](../day12/src/com/java/collection/CollectionTest.java)
+[Collection Test](./src/com/java/collection/CollectionTest.java)
 
 
 ## 使用Iterator接口遍历集合元素
@@ -126,7 +126,7 @@ day13 java集合
 必须有一个别迭代的集合
 
 示例  
-[用Iterator对象遍历集合](../day12/src/com/java/collection/CollectionErgodic.java)
+[用Iterator对象遍历集合](./src/com/java/collection/CollectionErgodic.java)
 
 ## Iterator接口方法
 
@@ -142,7 +142,7 @@ void remove() |从集合中移除迭代器返回的最后一个元素（可选�
 * java 5提供了foreach迭代访问集合，同时也可用遍历数组
 
 遍历集合示例  
-[CollectionErgodic test4](../day12/src/com/java/collection/CollectionErgodic.java)
+[CollectionErgodic test4](./src/com/java/collection/CollectionErgodic.java)
 
 
 # List接口
@@ -162,7 +162,7 @@ void remove() |从集合中移除迭代器返回的最后一个元素（可选�
     * List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下标，结束下标)为新的List，注意是左闭右开，相当于取一个子集
 
 示例  
-[List接口方法测试](../day12/src/com/java/collection/ListTest.java)
+[List接口方法测试](./src/com/java/collection/ListTest.java)
 
 ## List接口实现类之一：ArrayList
 * ArrayList时List接口的典型事项类
@@ -173,7 +173,6 @@ Arrays.asList(Object...) 返回值是一个固定长度的List集合
 
 
 ## List实现类之二：LinkedList
-
 * 对于频繁插入或删除元素操作的List，建议使用LinkedList，效率高，遍历时也有不错的效率
 * 基于Collectoin接口新的增方法
     * boolean add(E e) // 在最后一个位置插入一个元素，成功则返回true,否则返回false
