@@ -98,7 +98,7 @@ JAVA Study
     * [异常处理小结](./day12/README.md#异常处理小结)
         * [java异常处理模型：抓抛模型](./day12/README.md#java异常处理模型抓抛模型)
         * [异常处理5个关键字](./day12/README.md#异常处理5个关键字)
-    * 其他(./day12/README.md#)
+    * 其他
         * [java对象在内存中的结构](./day12/README.md#java对象在内存中的结构)
 </details>
 
