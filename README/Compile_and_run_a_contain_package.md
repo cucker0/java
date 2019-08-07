@@ -6,7 +6,7 @@
 2. javac -encoding utf8 -d out com\java\www\MainTest.java
     * -d：编译出来的class文件存放存放目录，这里指定src/out
     * 最后一个为源文件路径，同个包下有多个.java文件时可用*来表示，如：com\java\www\*.java
-    * 有多个包时，需要把每个包下的.java文件都进行编译
+    * 有多个包时，需要分多次把每个包下的.java文件都进行编译
 ![](./images/other/contain_package_compile.png)
     
     
