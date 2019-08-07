@@ -16,9 +16,9 @@ JAVA Study
 
 
 <details>
-<summary>day03</summary>
+<summary>day03_基本语法</summary>
 
-* [day03](./day03/README.md "day03")
+* [day03_基本语法](./day03/README.md "day03")
     * [循环结构](./day03/README.md#循环结构)
     * [for循环](./day03/README.md#for循环)
     * [while](./day03/README.md#while)
