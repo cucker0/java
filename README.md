@@ -36,9 +36,9 @@ JAVA Study
 </details>
 
 <details>
-<summary>day06</summary>
+<summary>day06_面向对象编程</summary>
 
-* [day06](./day06/README.md "day06")
+* [day06_面向对象编程](./day06/README.md "day06")
     * 类的成员之三：构造器(构造方法)
         * 构造器的特征
         * 构造器的作用

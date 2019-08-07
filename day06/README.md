@@ -1,4 +1,4 @@
-day06
+day06面向对象编程
 ==
 
 # Table of Contents
