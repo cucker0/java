@@ -1,7 +1,7 @@
 day09 高级特性1
 ==
 
-# toString() 方法
+# toString()方法
 * toString()方法在Object类中定义，其返回值是String类型，返回类名和它的引用地址
 * 在进行String与其他类型数据的连接操作时，自动调用toString()方法
 ```java
@@ -115,7 +115,7 @@ String相关的变量在内存的结构
 ![String相关的变量在内存的结构](./images/new_String.png)
 
 
-# static 关键字
+# static关键字
 当我们编写一个类时，其实就是在描述其对象的属性和行为，而并没有产生实质上的对象，
 只有通过new关键字才会产生出对象，这时系统才会分配内存空间给对象，其方法才可以供外部调用。  
 们有时候希望无论是否产生了对象或无论产生了多少对象的情况下，某些特定的数据在内存空间里只有一份，
@@ -152,6 +152,9 @@ String相关的变量在内存的结构
 
 
 示例
+<details>
+<summary>展开示例</summary>
+
 ```java
 
 class SportMan {
@@ -232,6 +235,7 @@ class SportMan {
     }
 }
 ```
+</details>
 
 ![](./images/static属性内存结构.png)
 

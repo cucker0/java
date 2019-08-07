@@ -120,6 +120,9 @@ o = new Student(); // Object类型的变量o,指向Student类型的对象
 * 对于属性则不存在这样的现象，即使子类里定义了与父类完全相同的属性，这个实例属性依然不能覆盖父类中
 定义的属性
 
+<details>
+<summary>类的多态特性应用示例</summary>
+
 ```java
 // 类的多态特性应用示例
 
@@ -249,8 +252,8 @@ class Cat extends Animal {
 
 }
 
-
 ```
+</details>
 
 # instanceof 操作符
 x instanceof A  
