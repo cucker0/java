@@ -97,9 +97,9 @@ public class DAO {
 
 # 泛型通配符
 作用：兼容多种泛型类型
-* 类型通配符符号：<?>  
-如List<?>, Map<?, ?>
-* List<A>、List<B> ... ... 都是List<?>的子类
+* 类型通配符符号：\<?>  
+如List\<?>, Map\<?, ?>
+* List\<A>、List\<B> ... ... 都是List\<?>的子类
 * 读取 List<?> 对象list中的元素时，永远是安全的，因为不管list的元素真实类型是什么，list包含都是Object
 * 写入、修改list中的元素时，不行，因为我们不知道list的元素类型，唯一例外的是null，null是所有类的成员
 * \<? extends A>  
