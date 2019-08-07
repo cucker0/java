@@ -132,7 +132,7 @@ class MySort {
 
         for (int i = 0; i < L.size(); ++i) {
             int max_index = i;
-            for (int j = i + 1; j < L.size(); ++j) {
+            for (int j = i + 1; j < L.size(); ++j) { // 每轮比较中找出比较值最大的索引
                 Map.Entry entry_max = (Map.Entry) L.get(max_index);
                 Integer max = (Integer) entry_max.getValue();
                 Map.Entry entry_compare = (Map.Entry) L.get(j);
@@ -141,7 +141,7 @@ class MySort {
                     max_index = j;
                 }
             }
-            if (max_index != i) {
+            if (max_index != i) { // 把比较大的放到索引i处
                 Object temp = L.get(i);
                 L.set(i, L.get(max_index));
                 L.set(max_index, temp);
