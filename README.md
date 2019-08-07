@@ -39,6 +39,13 @@ JAVA Study
 <summary>day06</summary>
 
 * [day06](./day06/README.md "day06")
+    * 类的成员之三：构造器(构造方法)
+        * 构造器的特征
+        * 构造器的作用
+        * 构造器语法格式
+        * 构造器规则
+    * 构造器重载
+
 </details>
 
 <details>
@@ -377,7 +384,7 @@ JAVA Study
     * [TCP socket网络编程](./day20/README.md#基于Socket的TCP编程)
         * ServerSocket类
         * Socket类
-        * [TCP socket示例](./day20/README.md#TCP-socket示例)
+        * [TCP socket、WebServer示例](./day20/README.md#TCP-socket示例)
     * [UDP socket网络编程](./day20/README.md#基于socket的UDP编程)
         * DatagramSocket类
         * DatagramPacket类
