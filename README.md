@@ -49,11 +49,24 @@ JAVA Study
 
 
 <details>
-<summary>高级类特性1</summary>
+<summary>day08_高级类特性1</summary>
 
-* [高级类特性1](./day08/README.md "day08")
-
-
+* [day08_高级类特性1](./day08/README.md "day08")
+    * [四种访问权限修饰符](./day08/README.md#四种访问权限修饰符)
+    * [super关键字](./day08/README.md#super关键字)
+        * [调用父类的构造器](./day08/README.md#调用父类的构造器)
+    * [this和super的区别](./day08/README.md#this和super的区别)
+        * [super父类与子类的内存结构](./day08/README.md#super父类与子类的内存结构)
+        * [子类对象实例化的过程及内存结构](./day08/README.md#子类对象实例化的过程及内存结构)
+    * [面向对象特征之三：多态性](./day08/README.md#面向对象特征之三多态性)
+        * [虚拟方法调用(Virtual method invocation)](./day08/README.md#虚拟方法调用Virtual-method-invocation)
+        * [子类继承父类](./day08/README.md#子类继承父类)
+    * [instanceof操作符](./day08/README.md#instanceof操作符)
+    * [对象类型转换(Casting)](./day08/README.md#对象类型转换Casting)
+    * [Object类](./day08/README.md#Object类)
+        * [Object类中的主要方法](./day08/README.md#Object类中的主要方法)
+    * [==操作符与equals方法](./day08/README.md#==操作符与equals方法)
+    
 </details>
 
 

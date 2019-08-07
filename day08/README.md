@@ -41,7 +41,7 @@ super: 可以用来修饰属性、方法、构造器
 本类或父类中相应的构造其，且必须放在构造其的第一行
 * 如果子类构造其中没有显示调用父类或本类的构造器，并且父类中也没有无参的构造器，则编译出错
 
-# this 和 super的区别
+# this和super的区别
 区别 |this |super
 :--- | --- |---
 访问属性|访问本类中的属性，如果本类中没有此属性则从父类中继续查找 |访问父类中的属性(可继续找到跟类)
@@ -50,10 +50,10 @@ super: 可以用来修饰属性、方法、构造器
 特殊 |表示当前对象 |无此概念 
 
 
-super
+## super父类与子类的内存结构
 ![super](./images/super.png)
 
-子类对象实例化的过程
+## 子类对象实例化的过程及内存结构
 ![子类对象实例化的过程](./images/子类实例化过程.png)
 
 
@@ -255,7 +255,7 @@ class Cat extends Animal {
 ```
 </details>
 
-# instanceof 操作符
+# instanceof操作符
 x instanceof A  
 检验对象实体x 是否为类A的对象，返回值为boolean类型。是返回true，不是返回false   
 可以看上面的例子
@@ -283,7 +283,7 @@ x instanceof A
     * 无继承关系的引用类型间的转换是非法的
     * 在造型之前可以使用instanceof操作符判断该对象的类型，从而决定是否要造型
     
-类的造型(类强制转换)
+类的转型(类强制转换)
 ![类强制转换](./images/造型(类强制转换).png)
 
 
@@ -332,7 +332,7 @@ public final void wait(long timeoutMillis, int nanos) throws InterruptedExceptio
 protected void finalize() throws Throwable |普通 |
 
 
-# == 操作符与equals方法
+# ==操作符与equals方法
 * ==
     * 基本类型比较值：只要两个变量的值相等，返回true
     ```
