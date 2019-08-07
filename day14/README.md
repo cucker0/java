@@ -91,7 +91,7 @@ public class DAO {
 # 泛型与继承的关系
 ```text
 * 若B是A的一个子类型（子类或者子接口），而G是具有泛型声明的类或接口，G<B>并不是G<A>的子类型！  
-那么List<A>不是List<B>的子类，List<A>与List<B>类型不一样
+那么List<B>不是List<A>的子类，List<A>与List<B>类型不一样
 
 * 子类不为泛型类：继承时指定父类泛型中的类型，例如class SubCustomer extends Customer<Integer> { }
 
