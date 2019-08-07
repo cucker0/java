@@ -23,9 +23,18 @@ JAVA Study
 
 
 <details>
-<summary>day04</summary>
+<summary>day04_基本语法</summary>
 
-* [day04](./day04/README.md "day04")
+* [day04_基本语法](./day04/README.md "day04")
+    * [数组](./day04/README.md#数组)
+    * [数组声明与初始化](./day04/README.md#数组声明与初始化)
+    * [数组元素的默认值](./day04/README.md#数组元素的默认值)
+    * [java数据的内存基本结构](./day04/README.md#java数据的内存基本结构)
+    * [多维数组](./day04/README.md#多维数组)
+        * [数组的不同书写格式](./day04/README.md#数组的不同书写格式)
+        * [混合数据类型数组](./day04/README.md#混合数据类型数组)
+        
+    
 </details>
 
 
