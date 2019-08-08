@@ -35,7 +35,7 @@ JAVA Study
 
 
 <details>
-<summary>day03_基本语法.程序流程控制</summary>
+<summary>day03_基本语法.程序流程控制.循环结构</summary>
 
 * [day03_基本语法.程序流程控制.循环结构](./day03/README.md "day03")
     * [循环结构](./day03/README.md#循环结构)
@@ -52,9 +52,9 @@ JAVA Study
 
 
 <details>
-<summary>day04_基本语法</summary>
+<summary>day04_基本语法.数组</summary>
 
-* [day04_基本语法](./day04/README.md "day04")
+* [day04_基本语法.数组](./day04/README.md "day04")
     * [数组](./day04/README.md#数组)
     * [数组声明与初始化](./day04/README.md#数组声明与初始化)
     * [数组元素的默认值](./day04/README.md#数组元素的默认值)
