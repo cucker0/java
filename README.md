@@ -37,6 +37,7 @@ JAVA Study
     * [4种整数表达方式](./day01/README.md#4种整数表达方式)
     * [原码、反码、补码](./day01/README.md#原码反码补码)
     * [进制之间转换](./day01/README.md#进制之间转换)
+        * [十进制转其它进制内置方法](./day01/README.md#十进制转其它进制内置方法)
     * [编码与字符集](./day01/README.md#编码与字符集)
         * [ASCII编码](./day01/README.md#ASCII编码)
         * [Unicode编码](./day01/README.md#Unicode编码)
@@ -62,8 +63,7 @@ JAVA Study
             * [位运算符细节](./day02/README.md#位运算符细节)
         * [三元运算符](./day02/README.md#三元运算符)
         * [运算符的优先级](./day02/README.md#运算符的优先级)
-    * [进制转换](./day02/README.md#进制转换)
-        * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
+    * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
 
 </details>
 

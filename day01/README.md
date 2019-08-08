@@ -327,6 +327,10 @@ char, byte, short ==> int ==> long ==> float ==> double
 * 8进制或16进制转二进制
 ![8进制或16进制转二进制](./images/八进制或十六进制转二进制.png)
 
+## 十进制转其它进制内置方法
+* 转二进制字符串：Integer.toBinaryString(int i)
+* 转八进制字符串：Integer.toOctalString(int i)
+* 转十六进制字符串：Integer.toHexString(int i)
 
 # 编码与字符集
 ## ASCII编码
