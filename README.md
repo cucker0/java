@@ -12,31 +12,32 @@ JAVA Study
 <summary>day02_基本语法1</summary>
 
 * [day02_基本语法1](./day02/README.md "day02")
-    * [赋值运算符](./day02/README.md#赋值运算符)
-    * [比较运算符](./day02/README.md#比较运算符)
-    * [逻辑运算符](./day02/README.md#逻辑运算符)
-        * [逻辑运算符对比示例](./day02/README.md#逻辑运算符对比示例)
-    * [位运算符](./day02/README.md#位运算符)
-        * [位运算符细节](./day02/README.md#位运算符细节)
-    * [三元运算](./day02/README.md#三元运算)
+    * [运算符](./day02/README.md#运算符)
+        * [赋值运算符](./day02/README.md#赋值运算符)
+        * [比较运算符](./day02/README.md#比较运算符)
+        * [逻辑运算符](./day02/README.md#逻辑运算符)
+            * [逻辑运算符对比示例](./day02/README.md#逻辑运算符对比示例)
+        * [位运算符](./day02/README.md#位运算符)
+            * [位运算符细节](./day02/README.md#位运算符细节)
+        * [三元运算符](./day02/README.md#三元运算符)
+        * [运算符的优先级](./day02/README.md#运算符的优先级)
     * [进制转换](./day02/README.md#进制转换)
         * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
-    * [运算符的优先级](./day02/README.md#运算符的优先级)
     * [程序流程控制](./day02/README.md#程序流程控制)
         * [结构类型](./day02/README.md#结构类型)
             * 顺序结构
             * 分支结构
             * 循环结构
-    * [if-else](./day02/README.md#if-else)
-    * [switch-case](./day02/README.md#switch-case)
-        * [switch-case规则](./day02/README.md#switch-case规则)
+        * [if-else](./day02/README.md#if-else)
+        * [switch-case](./day02/README.md#switch-case)
+            * [switch-case规则](./day02/README.md#switch-case规则)
 </details>
 
 
 <details>
-<summary>day03_基本语法</summary>
+<summary>day03_基本语法.程序流程控制</summary>
 
-* [day03_基本语法](./day03/README.md "day03")
+* [day03_基本语法.程序流程控制.循环结构](./day03/README.md "day03")
     * [循环结构](./day03/README.md#循环结构)
     * [for循环](./day03/README.md#for循环)
     * [while](./day03/README.md#while)

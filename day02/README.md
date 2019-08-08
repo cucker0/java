@@ -1,8 +1,8 @@
 day02_基本语法1
 ==
 
-
-# 赋值运算符
+# 运算符
+## 赋值运算符
 * 符号：=
 >当"="两侧数据类型不一致时，可以使用自动类型转换或使用强制类型转换原则进行处理
 
@@ -17,7 +17,7 @@ int x, y, z;
 * 扩展赋值运算符：+=, -+, *=, /=, %=
 >扩展赋值不会改变原来值的类型
 
-# 比较运算符
+## 比较运算符
 |运算符 |运算 |示例 |结果 |
 |:---|:---|:---|:---|
 |== |相等于|4 == 3 |false |
@@ -35,7 +35,7 @@ int x, y, z;
 =：赋值
 
 
-# 逻辑运算符
+## 逻辑运算符
 ```text
 & 逻辑与
 | 逻辑或
@@ -77,7 +77,7 @@ false || true 结果为true
 
 ```
 
-## 逻辑运算符对比示例
+### 逻辑运算符对比示例
 |值/项 |a |b |a&b |a&#124;b |!a |a^b |a&&b |a&#124;&#124;b |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | |**true** |**true** |true |true |false |false |true |true |
@@ -86,7 +86,7 @@ false || true 结果为true
 | |**false** |**false** |false |false |true |false |false |false |
 
 
-# 位运算符
+## 位运算符
 |运算符 |运算 |示例 |
 |:--- |:--- |:--- |
 |<< |位左移 |3 << 2 = 12 --> 3*2*2 = 12 | 
@@ -99,7 +99,7 @@ false || true 结果为true
 
 注意：没有<<<
 
-## 位运算符细节
+### 位运算符细节
 |位运算符 |说明 |
 |:--- |:--- |
 |<< |空位补0，被移除的高位丢弃，空缺位补0 |
@@ -133,7 +133,7 @@ false || true 结果为true
 ![反码](./images/位反码.png)
 
 
-# 三元运算
+## 三元运算符
 * 格式
 ```text
 条件表达式 ? 表达式1 : 表达式2             或 (条件表达式) ? 表达式1 : 表达式2
@@ -154,46 +154,7 @@ max = a > b ? a : b
 
 ```
 
-# 进制转换
-## 10进制数转以16进制格式打印出来
-```java
-class DecToHexOutput {
-    public static void main(String[] args) {
-        int i = 60; // 3c
-        System.out.println("i = " + i + "转成十六进制数并打印");
-        // 方法1：调用Integer类现成的方法
-        String binary = Integer.toBinaryString(i);
-        String hex = Integer.toHexString(i);
-        System.out.println(binary);
-        System.out.println(hex);
-
-        // 手动实现
-
-/*
-        char c = 'a';
-        char c1 = (char)(c + 2);
-        System.out.println(c1); // c
-*/
-
-        int x = i & 15; // 为什么是与15做与运算，因为4位二进制数每位数都为1的数转10进制值为15。这一步的主要目的是取出i的最后4位数2进制值
-        String v1 = (x <= 9) ? x + "": (char)( x - 10 + 'a') + ""; // 判断是否小于=9
-
-        i = i >> 4; // 把i右移的位，相当于，把上面这步的后面4位截掉了
-        int y = i & 15;
-        String v2 = (y <= 9) ? y + "" : (char)(y - 10 + 'a') + "";
-
-        System.out.println(v2 + v1);
-
-    }
-}
-
-```
-
->理解原理
-![60以16进制格式打印出来](./images/60以16进制格式打印出来.png)
-
-
-# 运算符的优先级
+## 运算符的优先级
 * 运算符优先级就是表达式中的运算顺序，如下图，上一行运算符总优先于下一行。
 * 只有单目运算符、三元运算符、赋值运算符是从右向左运算的
 * 建议不要在同一个表达式中写太多的运算符
@@ -268,8 +229,46 @@ class DecToHexOutput {
 </table>
 
 
-# 程序流程控制
+# 进制转换
+## 10进制数转以16进制格式打印出来
+```java
+class DecToHexOutput {
+    public static void main(String[] args) {
+        int i = 60; // 3c
+        System.out.println("i = " + i + "转成十六进制数并打印");
+        // 方法1：调用Integer类现成的方法
+        String binary = Integer.toBinaryString(i);
+        String hex = Integer.toHexString(i);
+        System.out.println(binary);
+        System.out.println(hex);
 
+        // 手动实现
+
+/*
+        char c = 'a';
+        char c1 = (char)(c + 2);
+        System.out.println(c1); // c
+*/
+
+        int x = i & 15; // 为什么是与15做与运算，因为4位二进制数每位数都为1的数转10进制值为15。这一步的主要目的是取出i的最后4位数2进制值
+        String v1 = (x <= 9) ? x + "": (char)( x - 10 + 'a') + ""; // 判断是否小于=9
+
+        i = i >> 4; // 把i右移的位，相当于，把上面这步的后面4位截掉了
+        int y = i & 15;
+        String v2 = (y <= 9) ? y + "" : (char)(y - 10 + 'a') + "";
+
+        System.out.println(v2 + v1);
+
+    }
+}
+
+```
+
+>理解原理
+![60以16进制格式打印出来](./images/60以16进制格式打印出来.png)
+
+
+# 程序流程控制
 ## 结构类型
 * 顺序结构
 >程序从上到下逐行地执行（从上往下），中间没有任何判断和跳转
@@ -284,9 +283,12 @@ class DecToHexOutput {
 
 >有while, do ... while, for 三种循环语句
 
->注：JDK1.5 提供了foreach循环，方便遍历集合、数组元素
+>注：JDK1.5 提供了foreach循环，方便遍历集合、数组元素  
+for (类型 o : obj被遍历的对象) {
+    // o为obj中的元素
+}
 
-# if-else
+## if-else
 >从上往下找，匹配到一个条件后跳出判断。
 
 * 格式1
@@ -325,7 +327,7 @@ else {
 >执行代码块只有一行语句时可省略这个代码块的{}  
 建议任意时候都保留{}
 
-# switch-case
+## switch-case
 格式：
 ```text
 switch (变量) {
@@ -346,7 +348,7 @@ switch (变量) {
 
 ```
 
-## switch-case规则
+### switch-case规则
 * 变量的值只有是下列数据类型：byte, short, char, 枚举, String(jdk1.7)
 * case子句中的值必须是常量，不能取范围，且所有case子句中的值应是不同的
 * default子句是可选选的，位置也是灵活的，不一定放到最后。但建议放到最后。  
