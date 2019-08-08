@@ -1,3 +1,8 @@
+/*
+变量声明与使用
+
+* */
+
 public class TestVariable {
     public static void main(String[] args) {
         int num1 = 10;

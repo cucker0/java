@@ -1,7 +1,7 @@
 /*
 十进制转十六进制并在控制台输出(十六进制格式)
 
-
+运行：javac -encoding utf-8 DecToHexOutput.java &&  java DecToHexOutput
 * */
 
 

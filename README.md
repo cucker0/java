@@ -3,9 +3,44 @@ JAVA Study
 
 # Table Of Contents
 <details>
-<summary>day01</summary>
+<summary>day01_JAVA语言概述与基本语法</summary>
 
-* [day01](./day01/README.md "day01")
+* [day01_JAVA语言概述与基本语法](./day01/README.md "day01")
+    * [JAVA语言概述](./day01/README.md#JAVA语言概述)
+        * [java语言特点](./day01/README.md#java语言特点)
+        * [java两种核心机制](./day01/README.md#java两种核心机制)
+        * [.java源文件要求](./day01/README.md#java源文件要求)
+    * [关键字](./day01/README.md#关键字)
+        * [定义数据类型的关键字](./day01/README.md#定义数据类型的关键字)
+        * [定义数据类型值的关键字](./day01/README.md#定义数据类型值的关键字)
+        * [定义流程控制的关键字](./day01/README.md#定义流程控制的关键字)
+        * [定义权限修饰符的关键字](./day01/README.md#定义权限修饰符的关键字)
+        * [定义类、函数、变量修饰符的关键字](./day01/README.md#定义类函数变量修饰符的关键字)
+        * [v](./day01/README.md#定义类与类之间关系的关键字)
+        * [定义建立实例及引用实例，判断实例的关键字](./day01/README.md#定义建立实例及引用实例判断实例的关键字)
+        * [异常处理的关键字](./day01/README.md#异常处理的关键字)
+        * [用于包的关键字](./day01/README.md#用于包的关键字)
+        * [其他修饰符关键字](./day01/README.md#其他修饰符关键字)
+        * [保留字](./day01/README.md#保留字)
+    * [标识符](./day01/README.md#标识符)
+        * [合法标识符规则](./day01/README.md#合法标识符规则)
+    * [Java中名称命名规范](./day01/README.md#Java中名称命名规范)
+    * [java中变量的声明与使用](./day01/README.md#java中变量的声明与使用)
+        * [变量](./day01/README.md#变量)
+        * [程序的执行过程](./day01/README.md#程序的执行过程)
+        * [变量的分类](./day01/README.md#变量的分类)
+            * [整数类型](./day01/README.md#整数类型)
+            * [浮点型](./day01/README.md#浮点型)
+            * [字符类型](./day01/README.md#字符类型)
+            * [布尔类型boolean](./day01/README.md#布尔类型boolean)
+        * [变量之间的运算](./day01/README.md#变量之间的运算)
+    * [4种整数表达方式](./day01/README.md#4种整数表达方式)
+    * [原码、反码、补码](./day01/README.md#原码反码补码)
+    * [进制之间转换](./day01/README.md#进制之间转换)
+    * [编码与字符集](./day01/README.md#编码与字符集)
+        * [ASCII编码](./day01/README.md#ASCII编码)
+        * [Unicode编码](./day01/README.md#Unicode编码)
+            * [UTF-8](./day01/README.md#UTF-8)
 </details>
 
 <details>
@@ -13,6 +48,12 @@ JAVA Study
 
 * [day02_基本语法1](./day02/README.md "day02")
     * [运算符](./day02/README.md#运算符)
+        * [算术运算](./day02/README.md#算术运算)
+            * [取模(取余数)：%](./day02/README.md#取模取余数)
+            * [自增](./day02/README.md#自增)
+            * [自减](./day02/README.md#自减)
+            * [算术运算符的注意问题](./day02/README.md#算术运算符的注意问题)
+            * [算术运算示例](./day02/README.md#算术运算示例)
         * [赋值运算符](./day02/README.md#赋值运算符)
         * [比较运算符](./day02/README.md#比较运算符)
         * [逻辑运算符](./day02/README.md#逻辑运算符)
