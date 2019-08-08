@@ -194,6 +194,8 @@ false || true 结果为true
 * 反码
 ![反码](./images/位反码.png)
 
+### 位运算应用例子
+[BitTest](./BitTest.md)
 
 ## 三元运算符
 * 格式

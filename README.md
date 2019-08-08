@@ -45,9 +45,9 @@ JAVA Study
 </details>
 
 <details>
-<summary>day02_基本语法1</summary>
+<summary>day02_基本语法</summary>
 
-* [day02_基本语法1](./day02/README.md "day02")
+* [day02_基本语法](./day02/README.md "day02")
     * [运算符](./day02/README.md#运算符)
         * [算术运算](./day02/README.md#算术运算)
             * [取模(取余数)：%](./day02/README.md#取模取余数)
@@ -61,6 +61,7 @@ JAVA Study
             * [逻辑运算符对比示例](./day02/README.md#逻辑运算符对比示例)
         * [位运算符](./day02/README.md#位运算符)
             * [位运算符细节](./day02/README.md#位运算符细节)
+            * [位运算应用例子](./day02/README.md#位运算应用例子)
         * [三元运算符](./day02/README.md#三元运算符)
         * [运算符的优先级](./day02/README.md#运算符的优先级)
     * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
