@@ -510,3 +510,4 @@ JAVA Study
     * [jdk 1.8 api document](./README/java_resources.md)
     * [java方法区以及static的内存分配图](./README/java方法区以及static的内存分配图.md)
     * [URI、URL、URN联系与区别](./README/URI_URL_URN.md)
+    * [double数据的内存存储方式](./README/double数据的内存存储方式.md)

@@ -31,6 +31,10 @@ day01_JAVA语言概述与基本语法
 * 生成文档说明：javadoc -encoding utf8 -d mydoc -author -version HelloJava.java ,java文档说明，以/** 开头的多文本注释
 * java源文件的字符集与环境的字符集不一样时（尤其是windows cmd为GBK），这里javac 可指定字符集，如：javac encoding utf8 .java源文件
 
+示例  
+[HelloJava](./HelloJava.java)  
+[HelloWorld](./HelloWorld.java)  
+
 
 # 关键字
 > 定义：被Java语言赋予了特殊含义，用做专门用途的字符串（单词）
