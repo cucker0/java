@@ -1,10 +1,10 @@
 /*
 switch-case分支语句
 
-运行：javac -encoding utf8 TestSwitch.java &&java  TestSwitch
+运行：javac -encoding utf8 SwitchTest.java &&java  SwitchTest
 * */
 
-class TestSwitch {
+class SwitchTest {
     public static void main(String[] args) {
         int i = 0;
         switch (i) {

@@ -1,10 +1,10 @@
 /*
-if - else分支语句
+if-else分支语句
 
-执行：javac -encoding utf8 TestIf1.java && java TestIf1
+执行：javac -encoding utf8 IfTest1.java && java IfTest1
 * */
 
-class TestIf1 {
+class IfTest1 {
     public static void main(String[] args) {
         int age = 20;
         System.out.println("你的年龄：" + age + "岁");

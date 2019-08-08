@@ -3,6 +3,8 @@
 =
 扩展赋值运算符：+=, -+, *=, /+, %=
 
+运行：javac -encoding utf8 GetValue.java && java GetValue
+
 * */
 
 class GetValue {
@@ -30,12 +32,16 @@ class GetValue {
         变量产生影响，而右边变量的变化对左边变量不产生影响
         * */
 
-        int a=0,b=0;
-        b+=a*=b+=(a=1)/(b=1);
+        int a = 0, b = 0;
+        b += a *= b += (a = 1) / (b = 1); // <==> b = b + (a = a * (b = b + ((a = 1)/(b = 1)) ) );
+//        b += (a = 1) / (b = 1); // b ==1
+//        b += a *= 1; // b == 0
+
         System.out.println("b: " + b); // 0
 
-        a=0;b=0;
-        b+=++a+(++a+b);
+        a = 0;
+        b = 0;
+        b += ++a + (++a + b);
         System.out.println("b: " + b); // 3
 
     }

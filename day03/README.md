@@ -1,6 +1,109 @@
 day03_基本语法
 ==
 
+# 程序流程控制
+## 结构类型
+* 顺序结构
+>程序从上到下逐行地执行（从上往下），中间没有任何判断和跳转
+
+* 分支结构
+>根据条件，选择性地执行某段代码
+
+>有if ... else 和 switch ... case两种分支语句
+
+* 循环结构
+>根据循环条件，重复性地执行某段代码
+
+>有while, do ... while, for 三种循环语句
+
+>注：JDK1.5 提供了foreach循环，方便遍历集合、数组元素  
+for (类型 o : obj被遍历的对象) {
+    // o为obj中的元素
+}
+
+
+# 分支结构
+## if-else
+>从上往下找，匹配到一个条件后跳出判断。
+
+* 格式1
+```text
+if (true) {
+    执行的代码块;
+}
+
+
+```
+
+* 格式2
+```text
+if (条件表达式) {
+    执行代码块;
+} else {
+    执行代码块;
+}
+
+```
+
+* 格式3
+```text
+if (表达式1) {
+    执行代码块;
+} else if {
+    执行代码块;
+} 
+... ...
+else {
+    执行代码块;
+}
+
+```
+
+>执行代码块只有一行语句时可省略这个代码块的{}  
+建议任意时候都保留{}
+
+### if示例
+[IfTest1](./IfTest1.java)  
+[ScoreIf](ScoreIf.java)  
+[SortIf3](./SortIf3.java)  
+[WetherToMarry](./WetherToMarry.java)
+
+## switch-case
+格式：
+```text
+switch (变量) {
+    case 常量1:
+        语句1;
+        break;
+    case 常量2;
+        语句2;
+        break;
+    ... ...
+    case 常量N:
+        语句N;
+        break;
+    default:
+        语句;
+        break;
+}
+
+```
+
+### switch-case规则
+* 变量的值只有是下列数据类型：byte, short, char, 枚举, String(jdk1.7)
+* case子句中的值必须是常量，不能取范围，且所有case子句中的值应是不同的
+* default子句是可选选的，位置也是灵活的，不一定放到最后。但建议放到最后。  
+当没有匹配的case时，执行default子句
+* break语句用来执行完成一个case分支后使程序跳出switch语句块;  
+如果没有break，则从匹配的case开始顺序执行到switch结尾，这一特性可以很好的用于计算日期为当年的第几天
+
+### switch-case示例
+[SwitchTest](./SwitchTest.java)  
+[Score2](./Score2.java)  
+[IfExchangeSwitch](./IfExchangeSwitch.java)  特定情况下if与switch可互换  
+[DateEstimationDays](DateEstimationDays.java)  switch特殊应用：输入任意2019年一个年月日日期，算出这是当年的第几天  
+[DateEstimationDays2 自动判断是否为闰年](./DateEstimationDays2.java)  switch特殊应用:输入任意一个年月日日期，算出这是当年的第几天
+
 # 循环结构
 * 循环语句功能
 >在某些条件满足的情况下，反复执行特定代码的功能

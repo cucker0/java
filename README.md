@@ -23,31 +23,33 @@ JAVA Study
         * [运算符的优先级](./day02/README.md#运算符的优先级)
     * [进制转换](./day02/README.md#进制转换)
         * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
-    * [程序流程控制](./day02/README.md#程序流程控制)
-        * [结构类型](./day02/README.md#结构类型)
-            * 顺序结构
-            * 分支结构
-            * 循环结构
-        * [if-else](./day02/README.md#if-else)
-        * [switch-case](./day02/README.md#switch-case)
-            * [switch-case规则](./day02/README.md#switch-case规则)
+
 </details>
 
 
 <details>
-<summary>day03_基本语法.程序流程控制.循环结构</summary>
+<summary>day03_基本语法.程序流程控制</summary>
 
 * [day03_基本语法.程序流程控制.循环结构](./day03/README.md "day03")
+    * [程序流程控制](./day03/README.md#程序流程控制)
+        * [结构类型](./day03/README.md#结构类型)
+            * 顺序结构
+            * 分支结构
+            * 循环结构
+    * [分支结构](./day03/README.md#分支结构)
+        * [if-else](./day03/README.md#if-else)
+        * [switch-case](./day03/README.md#switch-case)
+            * [switch-case规则](./day03/README.md#switch-case规则)
     * [循环结构](./day03/README.md#循环结构)
-    * [for循环](./day03/README.md#for循环)
-    * [while](./day03/README.md#while)
-    * [do-while](./day03/README.md#do-while)
-    * [特殊流程控制break](./day03/README.md#特殊流程控制break)
-        * break语句用于终止某个语句块的执行
-        * [break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块](./day03/README.md#break语句出现在多层嵌套的语句块中时可以通过标签指明要终止的是哪一层语句块)
-    * [continue特殊控制](./day03/README.md#continue特殊控制)
-    * [return](./day03/README.md#return)
-    * [break, continue, return特殊流程控制说明](./day03/README.md#break-continue-return特殊流程控制说明)
+        * [for循环](./day03/README.md#for循环)
+        * [while](./day03/README.md#while)
+        * [do-while](./day03/README.md#do-while)
+        * [特殊流程控制break](./day03/README.md#特殊流程控制break)
+            * break语句用于终止某个语句块的执行
+            * [break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块](./day03/README.md#break语句出现在多层嵌套的语句块中时可以通过标签指明要终止的是哪一层语句块)
+        * [continue特殊控制](./day03/README.md#continue特殊控制)
+        * [return](./day03/README.md#return)
+        * [break, continue, return特殊流程控制说明](./day03/README.md#break-continue-return特殊流程控制说明)
 </details>
 
 
