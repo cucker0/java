@@ -24,4 +24,8 @@ IntelliJ IDE
 
 # TortoiseGit设置不自动转换换行符
 建议安装的git也不自动转换换行符，主要目的是换行符使用LF(\n)
+```text
+[core]
+  autocrlf = false
+```
 ![](./images/Intellij_IDE/TortoiseGit设置不自动转换换行符.png)
