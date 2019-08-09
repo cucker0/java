@@ -534,6 +534,7 @@ JAVA Study
 
 
 * other
+    * [Java学习线路](./README/java学习线路.md)
     * [廖雪峰Java教程](https://www.liaoxuefeng.com/wiki/1252599548343744)
     * [安装JDK](./README/install_JDK.md "安装JDK")  
     * [clone或一个新的Interlij IDE项目到本地如何正常运行](README/Intellij_IDE_open_new_clone_project.md "clone或一个新的Interlij IDE项目到本地如何正常运行")
@@ -549,3 +550,4 @@ JAVA Study
     * java中调用shell脚本
         * [java中调用shell脚本](./README/java中调用shell脚本/java中调用shell脚本.md)
         * [Runtime.exec()执行shell、cmd命令常见陷阱于完善](./README/java中调用shell脚本/Runtime.exec()执行shell、cmd命令常见陷阱于完善.md)
+    
