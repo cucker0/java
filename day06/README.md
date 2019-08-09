@@ -83,6 +83,14 @@ public class Animal {
 . 类对象属性赋值先后顺序：  
     属性的默认初始化 > 属性的显示初始化 > 通过构造器给属性初始化 > 通过 "对象.方法" 的方式给属性赋值
 
+### 构造器练习
+[TestPerson](./src/com/java/www/TestPerson.java)  
+[TestPoint](./src/com/java/exercise/TestPoint.java)  
+[TestTriAngle](./src/com/java/exercise/TestTriAngle.java)  
+[Person1](./src/com/java/exercise/Person1.java)  
+[Person2](./src/com/java/exercise/Person2.java)  
+[Person3](./src/com/java/exercise/Person3.java)  
+
 # 构造器重载
 * 类的多个构造器之间构成重载(Over Load)
 * 构造器重载一般用来创建对象的同时初始化对象
