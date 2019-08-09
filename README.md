@@ -333,6 +333,38 @@ JAVA Study
 
 
 <details>
+<summary>day14_enmu枚举类</summary>
+
+* [enmu枚举类](./README/枚举类.md "enmu枚举类")
+    * [枚举类入门](./README/枚举类.md#)
+        * [枚举类的属性](./README/枚举类.md#枚举类的属性)
+    * [自定义枚举类](./README/枚举类.md#自定义枚举类)
+        * [enum枚举类与普通类的区别](./README/枚举类.md#enum枚举类与普通类的区别)
+        * [常用方法](./README/枚举类.md#常用方法)
+        * [enum枚举类示例](./README/枚举类.md#enum枚举类示例)
+    * [枚举类实现接口](./README/枚举类.md#枚举类实现接口)
+        * [实现接口的枚举类示例](./README/枚举类.md#实现接口的枚举类示例)
+    * [JDK内置的枚举类示例](./day14/src/com/java/enumerate/enumerate.md)
+</details>
+
+
+<details>
+<summary>day14_注解</summary>
+
+* [注解](./README/注解.md "注解")
+    * [注解概述](./README/注解.md#注解概述)
+    * [三个常用的Annotation](./README/注解.md#三个常用的Annotation)
+        * [三个基本注解的使用示例](./README/注解.md#三个基本注解的使用示例)
+    * [自定义注解](./README/注解.md#自定义注解)
+        * [自定义注解示例](./README/注解.md#自定义注解示例)
+    * [元注解](./README/注解.md#元注解)
+    * [提取Annotation信息](./README/注解.md#提取Annotation信息)
+    * [内置注解源码](./README/注解.md#内置注解源码)
+
+</details>
+
+
+<details>
 <summary>day15_IO流</summary>
 
 * [day15_IO流](./day15/README.md "IO流")
@@ -499,36 +531,7 @@ JAVA Study
 </details>
 
 
-<details>
-<summary>day14_enmu枚举类</summary>
 
-* [enmu枚举类](./README/枚举类.md "enmu枚举类")
-    * [枚举类入门](./README/枚举类.md#)
-        * [枚举类的属性](./README/枚举类.md#枚举类的属性)
-    * [自定义枚举类](./README/枚举类.md#自定义枚举类)
-        * [enum枚举类与普通类的区别](./README/枚举类.md#enum枚举类与普通类的区别)
-        * [常用方法](./README/枚举类.md#常用方法)
-        * [enum枚举类示例](./README/枚举类.md#enum枚举类示例)
-    * [枚举类实现接口](./README/枚举类.md#枚举类实现接口)
-        * [实现接口的枚举类示例](./README/枚举类.md#实现接口的枚举类示例)
-    * [JDK内置的枚举类示例](./day14/src/com/java/enumerate/enumerate.md)
-</details>
-
-
-<details>
-<summary>day14_注解</summary>
-
-* [注解](./README/注解.md "注解")
-    * [注解概述](./README/注解.md#注解概述)
-    * [三个常用的Annotation](./README/注解.md#三个常用的Annotation)
-        * [三个基本注解的使用示例](./README/注解.md#三个基本注解的使用示例)
-    * [自定义注解](./README/注解.md#自定义注解)
-        * [自定义注解示例](./README/注解.md#自定义注解示例)
-    * [元注解](./README/注解.md#元注解)
-    * [提取Annotation信息](./README/注解.md#提取Annotation信息)
-    * [内置注解源码](./README/注解.md#内置注解源码)
-
-</details>
 
 * other
     * [安装JDK](./README/install_JDK.md "安装JDK")  
