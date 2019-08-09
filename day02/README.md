@@ -1,4 +1,4 @@
-day02_基本语法1
+day02_基本语法
 ==
 
 # 运算符
@@ -120,20 +120,21 @@ int x, y, z;
 
 >推荐使用 ||
 
-* ^：追求的是异，比较的两边结果不同时为真，相同则为假
+* ^：追求的是"异"，比较的两边结果不同时为真，相同则为假
 ```text
-true || true 结果为false
-false || false 结果为true
-true || false 结果为true
-false || true 结果为true
+true ^ true 结果为false
+false ^ false 结果为false
+true ^ false 结果为true
+false ^ true 结果为true
 
 ```
+
 ### 逻辑运算符示例  
 [LogicTest 逻辑运算](./LogicTest.java)
 
 
 ### 逻辑运算符对比示例
-|值/项 |a |b |a&b |a&#124;b |!a |a^b |a&&b |a&#124;&#124;b |
+|值/项 |a |b |a & b |a &#124; b |!a |a ^ b |a && b |a &#124;&#124; b |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | |**true** |**true** |true |true |false |false |true |true |
 | |**true** |**false** |false |true |false |true |false |true |
