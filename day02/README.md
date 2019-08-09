@@ -196,7 +196,8 @@ false ^ true 结果为true
 ![反码](./images/位反码.png)
 
 ### 位运算应用例子
-[BitTest](./BitTest.md)
+[BitTest](./BitTest.md)  
+[利用异或运算交换两个int变量的值](./VarExchange.java)  
 
 ## 三元运算符
 * 格式

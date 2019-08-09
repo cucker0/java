@@ -1,5 +1,6 @@
 /*
-两个int变量互换值
+利用异或运算交换两个int变量的值
+
 运行：javac -encoding utf-8 VarExchange.java && java VarExchange
 * */
 
