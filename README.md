@@ -534,6 +534,7 @@ JAVA Study
 
 
 * other
+    * [廖雪峰Java教程](https://www.liaoxuefeng.com/wiki/1252599548343744)
     * [安装JDK](./README/install_JDK.md "安装JDK")  
     * [clone或一个新的Interlij IDE项目到本地如何正常运行](README/Intellij_IDE_open_new_clone_project.md "clone或一个新的Interlij IDE项目到本地如何正常运行")
     * [IntelliJ IDEA的安装、配置与使用](README/images/other/IntelliJ_IDEA的安装、配置与使用.pdf)
@@ -544,3 +545,4 @@ JAVA Study
     * [java方法区以及static的内存分配图](./README/java方法区以及static的内存分配图.md)
     * [URI、URL、URN联系与区别](./README/URI_URL_URN.md)
     * [double数据的内存存储方式](./README/double数据的内存存储方式.md)
+    * [Java常用工具类](./README/Java常用工具类.md)
