@@ -387,6 +387,7 @@ JAVA Study
     * [处理流之四：打印流](./day15/README.md#处理流之四打印流)
     * [处理流之五：数据流DataInputStream、DataOutputStream](./day15/README.md#处理流之五数据流DataInputStreamDataOutputStream)
     * [处理流之六：对象流](./day15/README.md#处理流之六对象流)
+        * [对象流使用注意，读取时报java.io.EOFException异常](./day15/README.md#对象流使用注意读取时报javaioEOFException异常)
         * 对象的序列化
         * 使用对象流序列化对象
     * [RandomAccessFile类](./day15/README.md#RandomAccessFile类)

@@ -318,6 +318,10 @@ File类的方法示例
     >ObjectOutputStream、ObjectInputStream不能序列化static和transient修饰的成员变量  
     读出来是null
 
+## 对象流使用注意，读取时报java.io.EOFException异常
+如果同时开了 ObjectInputStream、ObjectOutputStream，  
+ObjectInputStream实例必须放在ObjectOutputStream的实例前面，才能保证正常的读取文件内容
+
 示例  
 [ObjectInputStream、ObjectOutputSteam Test](./src/com/java/www/ObjectInputStreamAndObjectOutputSteamTest.java)
 
