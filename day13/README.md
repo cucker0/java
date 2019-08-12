@@ -361,6 +361,20 @@ Set entrySet() 获取当前map所有的entry，值为Set
 * HashMap 判断两个 key 相等的标准是：两个 key 通过 equals() 方法返回 true，hashCode 值也相等
 * HashMap 判断两个 value相等的标准是：两个 value 通过 equals() 方法返回 true
 
+### Map创建对象时指定初始值
+```text
+HashMap hmap = new HashMap() {
+    { // 匿名内部类
+        put("type", "支出");
+        put("price", price);
+        put("item", item);
+    }
+};
+```
+
+注意：
+    慎用， 非静态内部类/ 匿名内部类包含了外围实例的引用， 
+如果拥有比外部类更长的生命周期，有内存泄露隐患
 
 [HashMap Test](./src/com/java/www/HashMapTest.java)
 
