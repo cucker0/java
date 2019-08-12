@@ -319,8 +319,12 @@ File类的方法示例
     读出来是null
 
 ## 对象流使用注意，读取时报java.io.EOFException异常
+new ObjectOutputStream(new FileOutputStream("file.txt"))
+一创建对象流，file.txt文件内容就被替换成4个字节的内容，准备后续的写入。  
+
 如果同时开了 ObjectInputStream、ObjectOutputStream，  
-ObjectInputStream实例必须放在ObjectOutputStream的实例前面，才能保证正常的读取文件内容
+ObjectInputStream的实例化和操作必须放在ObjectOutputStream的实例化和操作的前面，才能保证正常的读取文件内容，  
+否则内容已经被替换成4个字节内容，所有就报EOFException异常了
 
 示例  
 [ObjectInputStream、ObjectOutputSteam Test](./src/com/java/www/ObjectInputStreamAndObjectOutputSteamTest.java)
