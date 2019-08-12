@@ -324,7 +324,10 @@ new ObjectOutputStream(new FileOutputStream("file.txt"))
 
 如果同时开了 ObjectInputStream、ObjectOutputStream，  
 ObjectInputStream的实例化和操作必须放在ObjectOutputStream的实例化和操作的前面，才能保证正常的读取文件内容，  
-否则内容已经被替换成4个字节内容，所有就报EOFException异常了
+否则内容已经被替换成4个字节内容，所有就报EOFException异常了。 
+ 
+建议不同时打开ObjectInputStream、ObjectOutputStream，  
+对象输入流读取操作完后，关闭对象输入流，再打开对象输出流操作
 
 示例  
 [ObjectInputStream、ObjectOutputSteam Test](./src/com/java/www/ObjectInputStreamAndObjectOutputSteamTest.java)
