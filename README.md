@@ -304,6 +304,7 @@ JAVA Study
         * [Map特点](./day13/README.md#Map特点)
         * [Map接口实现类之一：HashMap](./day13/README.md#Map接口实现类之一HashMap)
             * HashMap特点
+            * [Map创建对象时指定初始值](./day13/README.md#Map创建对象时指定初始值)
         * [Map接口实现类之二：LinkedHashMap](./day13/README.md#Map接口实现类之二LinkedHashMap)
         * [Map接口实现类之三：TreeMap](./day13/README.md#Map接口实现类之三TreeMap)
         * [Map接口实现类之四：Hashtable](./day13/README.md#Map接口实现类之四Hashtable)

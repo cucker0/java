@@ -363,6 +363,8 @@ Set entrySet() 获取当前map所有的entry，值为Set
 
 ### Map创建对象时指定初始值
 ```text
+// 其他类型的Map类也类似
+
 HashMap hmap = new HashMap() {
     { // 匿名内部类
         put("type", "支出");
