@@ -382,7 +382,7 @@ JAVA Study
         * [InputStreamReader](./day15/README.md#InputStreamReader)
         * [OutputStreamWriter](./day15/README.md#OutputStreamWriter)
     * [字符集](./day15/README.md#字符集)
-    * [字符编码、解码](./day15/README.md#字符编码解码)
+    * [字符编码、解码(字节数组与字符数组互转时才需要指定字符集)](./day15/README.md#字符编码解码字节数组与字符数组互转时才需要指定字符集)
     * [处理之三：标准输入输出流](./day15/README.md#处理之三标准输入输出流)
     * [处理流之四：打印流](./day15/README.md#处理流之四打印流)
     * [处理流之五：数据流](./day15/README.md#处理流之五数据流)
