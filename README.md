@@ -385,7 +385,7 @@ JAVA Study
     * [字符编码、解码(字节数组与字符数组互转时才需要指定字符集)](./day15/README.md#字符编码解码字节数组与字符数组互转时才需要指定字符集)
     * [处理之三：标准输入输出流](./day15/README.md#处理之三标准输入输出流)
     * [处理流之四：打印流](./day15/README.md#处理流之四打印流)
-    * [处理流之五：数据流](./day15/README.md#处理流之五数据流)
+    * [处理流之五：数据流DataInputStream、DataOutputStream](./day15/README.md#处理流之五数据流DataInputStreamDataOutputStream)
     * [处理流之六：对象流](./day15/README.md#处理流之六对象流)
         * 对象的序列化
         * 使用对象流序列化对象

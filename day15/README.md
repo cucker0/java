@@ -275,7 +275,7 @@ File类的方法示例
 [PrintStream、PrintWriter Test](./src/com/java/www/PrintStreamAndPrintWriterTest.java)    
 
 
-# 处理流之五：数据流
+# 处理流之五：数据流DataInputStream、DataOutputStream
 * 为了方便操作java语言的基本数据类型的数据，可以使用数据流
 * 数据流有两个类
     * DataInputStream 数据输入流，套接在InputStream 节点流上
