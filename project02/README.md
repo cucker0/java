@@ -198,7 +198,7 @@ public static void main(String[] args)
 
 ```
 
-### 测试
+### 测试CustomerView类
 * 按照设计要求编写CustomerView类，逐一实现各个方法，并编译
 * 执行main方法中，测试以下功能：
 * 主菜单显示及操作是否正确
