@@ -1,5 +1,5 @@
 /*
-客户
+客户类
 
 
 * void表示无返回值
@@ -99,12 +99,10 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
+        // 姓名、性别、年龄相同则判断为相等
         if (sex != customer.sex) return false;
         if (age != customer.age) return false;
-        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
-        return email != null ? email.equals(customer.email) : customer.email == null;
-
+        return name != null ? name.equals(customer.name) : customer.name == null;
     }
 
     @Override
@@ -119,12 +117,12 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "\n\t\tCustomer{" +
                 "name='" + name + '\'' +
                 ", sex=" + sex +
                 ", age=" + age +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                '}';
+                "}";
     }
 }

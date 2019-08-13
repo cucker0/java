@@ -1,12 +1,17 @@
 /*
-存放Customer
+存放、管理Customer
 
 * */
 
 package com.java.com;
 
-public class CustomerList {
-    private Customer[] customers;
+import java.util.Arrays;
+
+public class CustomerList{
+    // 类变量
+    private static Customer[] customers;
+
+    // 实例变量
     private int total; // 记录添加的用户数量，相当于计数器，默认值为0，也可以这样写：private int total = 0
     private int defaultLength = 10; // 保存客户数量的最大值，默认值，创建CustomerList对象时可指定该值
 
@@ -31,21 +36,20 @@ public class CustomerList {
     // 方法
     private boolean totalAdd() {
         // 计数器加1
-        if (total >= 0 && total < customers.length - 1) {
+        if (total >= 0 && total < customers.length) {
             ++total;
             return true;
         }
-        System.out.println("已经存放满了...");
         return false;
     }
 
     private boolean totalDel() {
         // 计算器减1
-        if (total > 0 && total < customers.length) {
+        if (total > 0 && total <= customers.length) {
             --total;
             return true;
         }
-        
+
         return false;
     }
 
@@ -54,37 +58,90 @@ public class CustomerList {
         return total;
     }
 
-    public void addCustomer(Customer customer) {
+    public boolean addCustomer(Customer customer) {
         // 添加一个客户
-        if (totalAdd()) {
-            customers[total -1] = customer;
+        if (total < customers.length) {
+            for (int i = 0; i <= total -1; ++i) {
+                if (customer.equals(customers[i])) { // 已经有该客户了
+                    System.out.println("该用户已经存在");
+                    return false;
+                }
+            }
+            customers[total] = customer;
+            totalAdd();
+            return true;
         }
+        System.out.printf("存放客户的数组已经存放满了，已经存放了%d个客户\n", customers.length);
+        return false;
     }
 
-    public void deleteCustomer(int index) {
-        // 删除一个指定客户
+    public boolean deleteCustomer(int index) {
+        // 删除一个指定index的客户
         // 从删除位置开始，把后面的客户向前移动一位。或者把最后一个客户补到这个位置来
 
         if (checkIndex(index)) {
-            if (index == total) { // 存放于最后位置的客户
+            if (total == 0) {
+                System.out.println("存放客户的数组里一个客户的信息也没有");
+                return false;
+            }
+
+            if (index == total -1) { // 该客户是存放于最后位置的客户
                 customers[index] = null;
             } else {
-                for (; index <= total; ++index) {
+/*
+                // 方法1：对customer数组逐个移动数据
+                for (; index + 1 <= total - 1; ++index) {
                     customers[index] = customers[index + 1];
                 }
+                customers[total - 1] = null; // 最后位置的数据重置为null
+*/
+
+                // 方法2：最后的客户移到删除位置来
+                customers[index] = customers[total -1];
+                customers[total - 1] = null;
             }
+            totalDel();
+            return true;
         }
-
-
+        return false;
     }
 
-    public void modifyCustomer(int index, Customer customer) {
+    public boolean deleteCustomer(Customer customer) {
+        // 删除一个指定客户
+        for (int i = 0; i < total - 1; ++i) {
+            if (customer.equals(customers[i])) { // 找到了该客户
+                return deleteCustomer(i);
+            }
+        }
+        System.out.println("该客户不存在");
+        return false;
+    }
+
+    public boolean modifyCustomer(int index, Customer customer) {
         // 修改客户信息
+        if (checkIndex(index)) {
+            for (int i = 0; i <= total - 1; ++i) {
+                if (customer.equals(customers[i])) {
+                    return false;
+                }
+            }
+            customers[index] = customer;
+            return true;
+        }
+        return false;
     }
 
     public Customer getCustomer(int index) {
         // 获取指定客户
-        return null;
+        Customer customer = null;
+        if (checkIndex(index)) {
+            try {
+                customer = customers[index];
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return customer;
     }
 
     public Customer[] getAllCustomers() {
@@ -98,11 +155,18 @@ public class CustomerList {
 
     public boolean checkIndex(int index) {
         // 检测指定的index是否合法
-        if (index >= 0 && index <= total) {
+        if (index >= 0 && index <= total -1) {
             return true;
         }
         System.out.println("客户index值不合法");
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "CustomerList{" +
+                "\n\tcustomers=" + Arrays.toString(customers) +
+                ", \n\ttotal=" + total +
+                "\n}";
+    }
 }
