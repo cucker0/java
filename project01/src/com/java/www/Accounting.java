@@ -23,7 +23,7 @@ class Accounting {
     public Accounting() {
         super();
         fileIsExists();
-        read();
+        read(); // 启动时，把收入支出数据加载到内存
     }
 
     // 方法
@@ -56,6 +56,8 @@ class Accounting {
                 objectOutputStream.writeObject(database);
                 objectOutputStream.flush();
             }
+        } catch (NotSerializableException e) {
+            System.out.println("有未序列化的元素");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -201,7 +203,7 @@ class Accounting {
             System.out.println("本次支出金额(￥)：");
             double price = GetInput.getPrice();
             balance -= price;
-/*            HashMap hmap = new HashMap() { // 此写法为序列化
+ /*           HashMap hmap = new HashMap() { // 此写法未序列化
                 {
                     put("type", "pay");
                     put("price", price);
