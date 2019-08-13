@@ -193,7 +193,7 @@ JAVA Study
     * [对象类型转换(Casting)](./day08/README.md#对象类型转换Casting)
     * [Object类](./day08/README.md#Object类)
         * [Object类中的主要方法](./day08/README.md#Object类中的主要方法)
-    * [==操作符与equals方法](./day08/README.md#==操作符与equals方法)
+    * [==操作符与equals方法](./day08/README.md#操作符与equals方法)
     
 </details>
 
