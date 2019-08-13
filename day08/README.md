@@ -354,12 +354,15 @@ protected void finalize() throws Throwable |普通 |
     否则编译出错
 * equals()
     * 所有类都继承了Object，也就获得了equals()方法。还可以重写
-    * 只能比较引用类型，其作用于"=="相同，比较是否指向同一个对象
+    * 只能比较引用类型，其作用与"=="相同，比较是否指向同一个对象
     * 格式
     >obj1.equals(obj2)
     * 特例
-    >当用equals()方法比较时，对类File、String、Date、包装类(Wrapper class),
+    ```
+    当用equals()方法比较时，对类File、String、Date、包装类(Wrapper class),  
     是比较类型及内容，而不仅考虑引用的是否为同一个对象  
-    原因：在这些类中重写了Object类中的equals()方法
+    
+    * 原因：在这些类中重写了Object类中的equals()方法
+    ```
     
     
