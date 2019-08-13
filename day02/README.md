@@ -198,6 +198,9 @@ false ^ true 结果为true
 ### 位运算应用例子
 [BitTest](./BitTest.md)  
 [利用异或运算交换两个int变量的值](./VarExchange.java)  
+[String hash code 计算](./BitOperationAppApplication/HashCode1.java)  
+[String hash code 计算](./BitOperationAppApplication/HashCode2.java)  
+[Inet4Address IPv4地址的生成](./BitOperationAppApplication/Inet4Address.java)  
 
 ## 三元运算符
 * 格式
