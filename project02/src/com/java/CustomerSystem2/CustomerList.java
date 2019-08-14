@@ -127,10 +127,9 @@ public class CustomerList{
     public ArrayList<Customer> getAllCustomers(String sortKey) {
         // 获取所有客户，按指定字段排序
         ArrayList<Customer> list = CloneUtils.clone(customers);
-//        System.out.println(list);
 
         // 比较id
-        Comparator comparator1 = new Comparator<Customer>() {
+        Comparator<Customer> comparator1 = new Comparator<>() {
             @Override
             public int compare(Customer o1, Customer o2) {
                 int i = 0;
@@ -140,18 +139,24 @@ public class CustomerList{
         };
 
         // 比较age
-        Comparator comparator2 = new Comparator<Customer>() {
+        Comparator<Customer> comparator2 = new Comparator<Customer>() {
             @Override
             public int compare(Customer o1, Customer o2) {
-                return 0;
+                int i = 0;
+                i = o1.getAge() - o2.getAge();
+                return i;
             }
         };
 
         if (sortKey == "id") {
-            Collections.sort(list, comparator1);
+//            Collections.sort(list, comparator1); // Collections排序
+            list.sort(comparator1); // ArrayList 排序
         } else if (sortKey == "age") {
             Collections.sort(list, comparator2);
+        } else {
+            Collections.reverse(list);
         }
+
         return list;
     }
 
