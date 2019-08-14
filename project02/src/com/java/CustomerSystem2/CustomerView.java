@@ -98,9 +98,10 @@ public class CustomerView {
 
     public void deleteMenu() {
         // 删除客户操作菜单
+        String endIndex = ((list.getTotal() - 1) == 0) ? "" : " - " + (list.getTotal() - 1);
         String menu = "---------------------删除客户---------------------\n" +
                 "请选择待删除客户编号(-1退出)：\n" +
-                "客户编号: 0 - " + (list.getTotal() - 1) + "\n",
+                "客户编号: 0" + endIndex + "\n",
                 menuEndSuccess = "---------------------删除完成---------------------",
                 menuEndFail = "---------------------删除失败---------------------";
         System.out.println(menu);

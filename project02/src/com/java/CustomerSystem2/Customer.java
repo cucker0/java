@@ -19,6 +19,10 @@ package com.java.CustomerSystem2;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
+    // 类属性
+    private static int init = 10000; // id计数器初始值
+    private static final long serialVersionUID = 8683452581122892333L; // 序列化版本号
+
     // 实例属性
     private int id;
     private String name;
@@ -26,8 +30,6 @@ public class Customer implements Serializable {
     private int age;
     private String phone;
     private String email;
-    private int init = 10000; // id计数器初始值
-    private static final long serialVersionUID = 8683452581122892333L; // 序列化版本号
 
     // 构造器
     public Customer() {

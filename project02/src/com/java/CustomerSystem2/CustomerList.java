@@ -127,7 +127,8 @@ public class CustomerList{
     public ArrayList<Customer> getAllCustomers(String sortKey) {
         // 获取所有客户，按指定字段排序
         ArrayList<Customer> list = CloneUtils.clone(customers);
-        System.out.println(list);
+//        System.out.println(list);
+
         // 比较id
         Comparator comparator1 = new Comparator<Customer>() {
             @Override
