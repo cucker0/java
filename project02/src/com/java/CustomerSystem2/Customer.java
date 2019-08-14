@@ -58,7 +58,7 @@ public class Customer implements Serializable {
     private void idAdd() {
         // ID自增
         id = init;
-        ++id;
+        ++init;
     }
 
     public int getId() {
