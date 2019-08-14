@@ -20,32 +20,53 @@ import java.io.Serializable;
 
 public class Customer implements Serializable {
     // 实例属性
+    private int id;
     private String name;
     private boolean sex; // 性别 true: 女性， false: 男性
     private int age;
     private String phone;
     private String email;
+    private int init = 10000; // id计数器初始值
+    private static final long serialVersionUID = 8683452581122892333L; // 序列化版本号
 
     // 构造器
     public Customer() {
         super();
+        idAdd();
     }
 
-    public Customer(String name, boolean sex) {
+    public Customer(String name, boolean sex) { // 构造器2
         super();
         setName(name);
         this.sex = sex;
+        idAdd();
     }
 
     public Customer(String name, boolean sex, int age, String phone, String email) {
-        setName(name);
-        this.sex = sex;
+        this(name, sex); // 调用 构造器2
+//        setName(name);
+//        this.sex = sex;
         setAge(age);
         this.phone = phone;
         setEmail(email);
+        idAdd();
     }
 
     // 方法
+    private void idAdd() {
+        // ID自增
+        id = init;
+        ++id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

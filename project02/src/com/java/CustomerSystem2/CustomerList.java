@@ -8,6 +8,8 @@
 package com.java.CustomerSystem2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CustomerList{
     // 类变量
@@ -118,7 +120,38 @@ public class CustomerList{
 
     public ArrayList<Customer> getAllCustomers() {
         // 获取所有客户
+        // 自然排序，即添加的顺序
         return getCustomers();
+    }
+
+    public ArrayList<Customer> getAllCustomers(String sortKey) {
+        // 获取所有客户，按指定字段排序
+        ArrayList<Customer> list = CloneUtils.clone(customers);
+        System.out.println(list);
+        // 比较id
+        Comparator comparator1 = new Comparator<Customer>() {
+            @Override
+            public int compare(Customer o1, Customer o2) {
+                int i = 0;
+                i = o1.getId() - o2.getId();
+                return i;
+            }
+        };
+
+        // 比较age
+        Comparator comparator2 = new Comparator<Customer>() {
+            @Override
+            public int compare(Customer o1, Customer o2) {
+                return 0;
+            }
+        };
+
+        if (sortKey == "id") {
+            Collections.sort(list, comparator1);
+        } else if (sortKey == "age") {
+            Collections.sort(list, comparator2);
+        }
+        return list;
     }
 
     public ArrayList<Customer> getCustomers() {

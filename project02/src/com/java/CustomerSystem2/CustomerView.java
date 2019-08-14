@@ -14,10 +14,6 @@ public class CustomerView {
         list = CustomerList.getInstance();
     }
 
-    public CustomerView(CustomerList customerList) {
-        list = customerList;
-    }
-
     // 方法
     public void mainMenu() {
         /*
@@ -192,12 +188,12 @@ public class CustomerView {
     public void showAllCustomers() {
         // 列出所有客户
         String menu = String.format("---------------------------客户列表---------------------------\n" +
-                "%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", "编号", "姓名", "性别", "年龄", "电话", "邮箱"),
+                "%-4s\t%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", "Index", "ID", "姓名", "性别", "年龄", "电话", "邮箱"),
                 menuEnd = "-------------------------客户列表完成-------------------------\n\n";
         System.out.println(menu);
         int i = 0;
-        for (Customer c : list.getAllCustomers()) {
-            String custStr = String.format("%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", i, c.getName(), c.getSexString(), c.getAge(), c.getPhone(), c.getEmail());
+        for (Customer c : list.getAllCustomers("age")) {
+            String custStr = String.format("%-4s\t%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", i, c.getId(), c.getName(), c.getSexString(), c.getAge(), c.getPhone(), c.getEmail());
             System.out.print(custStr);
             ++i;
         }
