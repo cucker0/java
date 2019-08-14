@@ -29,12 +29,12 @@ public class Customer {
 
     public Customer(String name, boolean sex) {
         super();
-        this.name = name;
+        setName(name);
         this.sex = sex;
     }
 
     public Customer(String name, boolean sex, int age, String phone, String email) {
-        this.name = name;
+        setName(name);
         this.sex = sex;
         setAge(age);
         this.phone = phone;
@@ -47,7 +47,9 @@ public class Customer {
     }
 
     public void setName(String name) {
-        this.name = name.strip();
+        if (name.length() > 0 && name.length() < 37) {
+            this.name = name.strip();
+        }
     }
 
     public boolean getSex() {
@@ -84,7 +86,8 @@ public class Customer {
     }
 
     public void setEmail(String email) throws RuntimeException{
-        if (email.contains("@")) {
+//        if (email.contains("@")) {
+        if (email.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
             this.email = email;
         } else {
             // 邮件格式不正确时抛出异常

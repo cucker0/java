@@ -18,7 +18,9 @@ public class GetInput {
     // 方法
     public static String getRaw() {
         // 获取原生指令，返回去除空格的字符串
-        String s = sc.next().strip();
+//        String s = sc.next().strip();
+        String s = sc.nextLine().strip();
+//        System.out.println("1. raw cmd ==== " + s);
         return s;
     }
 
@@ -41,36 +43,61 @@ public class GetInput {
         }
     }
 
-    public static boolean getIsExit() {
-        // 获取退出指令，退出指令Y/N
-        boolean isExit = false;
-        while (true) {
-            String s = getRaw();
-            if (s.equalsIgnoreCase("y")) {
-                isExit = true;
-            }
-            if (s.length() > 0) {
-                break;
+    public static boolean isDigital(String s) {
+        if (s.length() > 0) {
+            try {
+                int num = Integer.parseInt(s);
+                // 不报错则解析成功成功
+                return true;
+            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+                return false;
             }
         }
+        return false;
+    }
 
-        return isExit;
+    public static int getNumber(String s) {
+        int num = -400;
+        if (isDigital(s)) {
+            return Integer.parseInt(s);
+        }
+        return num;
+    }
+
+    public static boolean getIsYes() {
+        // 获取是否确定指令，指令Y/N
+        boolean isYes = false;
+        String s = getRaw();
+        if (s.equalsIgnoreCase("y")) {
+            isYes = true;
+        }
+        return isYes;
     }
 
     public static boolean getSex() {
         // 获取性别指令
         // 输入0:女性，其他数字为男性
-        if (getRaw().equals("")) { // 回车时表示 默认选择女性
+        String rawCmd = getRaw();
+        if (rawCmd.equals("")) { // 回车时表示 默认选择女性
             return true;
         }
 
-        int i = getNumber();
+        int i = getNumber(rawCmd);
         if (i == 1) {
             return false;
         }
         return true;
     }
-    
+
+    public static boolean getSex(String s) {
+        int i = getNumber(s);
+        if (i == 1) {
+            return false;
+        }
+        return true;
+    }
+
     public static String getName() {
         // 获取姓名
         while (true) {
@@ -93,6 +120,15 @@ public class GetInput {
         }
     }
 
+    public static int getAge(String s) {
+        int age = getNumber(s);
+        if (age > 0 && age < 151) {
+            return age;
+        }
+        System.out.println("年龄不合法，范围(0, 150]");
+        return getAge();
+    }
+
     public static String getEmail() {
         // 获取邮箱地址
         // s.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$") 名称允许汉字、字母、数字，域名只允许英文域名
@@ -108,6 +144,13 @@ public class GetInput {
                 System.out.println("邮箱地址不合法，请重新输入");
             }
         }
+    }
+
+    public static String getEmail(String s) {
+        if (s.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
+            return s;
+        }
+        return getEmail();
     }
 
 }
