@@ -466,6 +466,8 @@ JAVA Study
     * [Math类](./day18/README.md#Math类)
     * [BigInteger类](./day18/README.md#BigInteger类)
     * [BigDecimal类](./day18/README.md#BigDecimal类)
+    * [Scanner类](./day18/README.md#Scanner类)
+        * [Scanner类](./day18/README.md#next与nextLine区别)
 </details>
 
 
