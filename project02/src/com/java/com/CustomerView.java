@@ -39,6 +39,7 @@ public class CustomerView {
                     break;
                 case 4:
                     showAllCustomers();
+//                    showAllCustomers2();
                     break;
                 case 5:
                     System.out.print("是否退出系统(Y/N)：");
