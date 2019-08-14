@@ -1,26 +1,17 @@
 /*
-测试编写的类
+客户信息管理系统增强版
+
+程序入口
 
 * */
 
-package com.java.com;
+package com.java.CustomerSystem2;
 
-import org.junit.Test;
-
-public class CustomerSystemTest {
-
-    @Test
-    public void test1() {
-        // test Customer
-        Customer customer = new Customer("西河风", true, 30, "138 2666 1333", "xihef@qq.com");
-
-        System.out.println(customer);
-    }
-
-    @Test
-    public void test2() {
-        // test CustomerList
-        CustomerList list = new CustomerList();
+public class CustomerSystem {
+    public static void main(String[] args) {
+        CustomerView customerView = new CustomerView();
+        CustomerList list = customerView.getList();
+/*        // 添加客户资料
         Customer customer1 = new Customer("西河凤", true, 23, "138 2666 1333", "xihef@qq.com");
         Customer customer2 = new Customer("肖思琪", false, 30, "142 2666 1333", "xiaosiqi@163.com");
         Customer customer3 = new Customer("马道", false, 28, "133 2666 1333", "madao@hotmail.com");
@@ -39,32 +30,12 @@ public class CustomerSystemTest {
         list.addCustomer(customer5);
         list.addCustomer(customer6);
         list.addCustomer(customer7);
-        list.addCustomer(customer8);
-        list.addCustomer(customer9);
-        list.addCustomer(customer10);
-        list.deleteCustomer(customer4);
-        list.deleteCustomer(4);
-
+//        list.addCustomer(customer9);
+//        list.addCustomer(customer10);
         list.addCustomer(customer11);
+        list.addCustomer(customer11);*/
 
-        System.out.println(list);
-        System.out.println("客户数量：" + list.getTotal());
-
-        System.out.println(list.getCustomer(12));
-    }
-
-    @Test
-    public void test3() {
-        // test CustomerList
-        CustomerList list = new CustomerList();
-        Customer customer1 = new Customer("西河凤", true, 23, "138 2666 1333", "xihef@qq.com");
-        list.addCustomer(customer1);
-        System.out.println(list);
-
-        list.deleteCustomer(0);
-        list.deleteCustomer(0);
-        list.deleteCustomer(0);
-
-        System.out.println(list);
+        // 进入主菜单
+        customerView.mainMenu();
     }
 }

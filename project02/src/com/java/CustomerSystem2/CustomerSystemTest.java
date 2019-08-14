@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.com;
+package com.java.CustomerSystem2;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class CustomerSystemTest {
     @Test
     public void test2() {
         // test CustomerList
-        CustomerList list = new CustomerList();
+        CustomerList list = CustomerList.getInstance();
         Customer customer1 = new Customer("西河凤", true, 23, "138 2666 1333", "xihef@qq.com");
         Customer customer2 = new Customer("肖思琪", false, 30, "142 2666 1333", "xiaosiqi@163.com");
         Customer customer3 = new Customer("马道", false, 28, "133 2666 1333", "madao@hotmail.com");
@@ -56,7 +56,7 @@ public class CustomerSystemTest {
     @Test
     public void test3() {
         // test CustomerList
-        CustomerList list = new CustomerList();
+        CustomerList list = CustomerList.getInstance();
         Customer customer1 = new Customer("西河凤", true, 23, "138 2666 1333", "xihef@qq.com");
         list.addCustomer(customer1);
         System.out.println(list);

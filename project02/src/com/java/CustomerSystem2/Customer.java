@@ -10,11 +10,15 @@ public void setName(String name) {
 
 ```
 
+实现Serializable接口为了把此该类的对象写入文件
+
 * */
 
-package com.java.com;
+package com.java.CustomerSystem2;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     // 实例属性
     private String name;
     private boolean sex; // 性别 true: 女性， false: 男性

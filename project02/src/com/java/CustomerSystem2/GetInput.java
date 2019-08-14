@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.com;
+package com.java.CustomerSystem2;
 
 import java.util.Scanner;
 

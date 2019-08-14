@@ -121,7 +121,8 @@ public class CustomerList{
         // 修改客户信息
         if (checkIndex(index)) {
             for (int i = 0; i <= total - 1; ++i) {
-                if (customer.equals(customers[i])) {
+                if (customer.hashCode() == customers[i].hashCode()) {
+                    System.out.println("未改动");
                     return false;
                 }
             }
@@ -146,7 +147,14 @@ public class CustomerList{
 
     public Customer[] getAllCustomers() {
         // 获取所有客户
-        return getCustomers();
+        Customer[] customers2 = new Customer[total];
+        System.arraycopy(customers, 0, customers2, 0, total); // 数组切片
+
+        // 手动复制
+/*        for (int i = 0; i < total; ++i) {
+            customers2[i] = customers[i];
+        }*/
+        return customers2;
     }
 
     public Customer[] getCustomers() {

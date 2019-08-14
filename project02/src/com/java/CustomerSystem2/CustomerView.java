@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.com;
+package com.java.CustomerSystem2;
 
 public class CustomerView {
     private CustomerList list;
@@ -11,7 +11,7 @@ public class CustomerView {
     // 构造器
     public CustomerView() {
         super();
-        list = new CustomerList();
+        list = CustomerList.getInstance();
     }
 
     public CustomerView(CustomerList customerList) {
@@ -49,6 +49,8 @@ public class CustomerView {
             }
             // 退出系统
             if (isExit) {
+                // 保存数据
+                CustomerList.save();
                 break;
             }
         }
@@ -151,7 +153,7 @@ public class CustomerView {
         String rawCmd = GetInput.getRaw();
         String name = rawCmd.equals("") ? customer.getName() : rawCmd;
 
-        String sexDis = String.format("性别(%s)：", customer.getSexString());
+        String sexDis = String.format("性别(%s)0:女性, 1:男性：", customer.getSexString());
         System.out.println(sexDis);
         rawCmd = GetInput.getRaw();
         boolean sex = rawCmd.equals("") ? customer.getSex() : GetInput.getSex(rawCmd);
@@ -188,20 +190,6 @@ public class CustomerView {
     }
 
     public void showAllCustomers() {
-        // 列出所有客户
-        String menu = String.format("---------------------------客户列表---------------------------\n" +
-                "%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", "编号", "姓名", "性别", "年龄", "电话", "邮箱"),
-                menuEnd = "-------------------------客户列表完成-------------------------\n\n";
-        System.out.println(menu);
-        for (int i = 0; i < list.getTotal(); ++i) {
-            Customer c = list.getCustomer(i);
-            String custStr = String.format("%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", i, c.getName(), c.getSexString(), c.getAge(), c.getPhone(), c.getEmail());
-            System.out.print(custStr);
-        }
-        System.out.println(menuEnd);
-    }
-
-    public void showAllCustomers2() {
         // 列出所有客户
         String menu = String.format("---------------------------客户列表---------------------------\n" +
                 "%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", "编号", "姓名", "性别", "年龄", "电话", "邮箱"),
