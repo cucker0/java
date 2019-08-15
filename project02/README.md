@@ -3,10 +3,14 @@
 
 # 版本说明
 * com.java.www包中的为普通版
-* com.java.CustomerSystem2包中的为增强版
+* com.java.CustomerSystem2包中的为增强版，普通版的基础上添加了如下功能
     * 可保存数据
     * 保存客户的数量限
     * 查看所有客户资料时，可指定字段排序，可选择排序方式
+    * 引用对象的复制使用了自定义的深度复制，见./src/com/java/CustomerSystem2/CloneUtils.java
+    
+## 引用对象的复制自定义的深度复制
+[深度复制](./src/com/java/CustomerSystem2/CloneUtils.java)
 
 
 # 目 标
