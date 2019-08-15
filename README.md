@@ -535,7 +535,25 @@ JAVA Study
 </details>
 
 
+<details>
+<summary>经典项目</summary>
 
+* 经典项目
+    * [家庭记账软件](./project01/README.md)
+    * [客户信息管理系统](./project02/README.md)
+    * Bank管理系统
+        * [Bank01](./Bank01/README.md)
+        * [Bank02](./Bank02/README.md)
+        * [Bank03](./Bank03/README.md)
+        * [Bank04](./Bank04/README.md)
+        * [Bank05](./Bank05/README.md)
+        * [Bank06](./Bank06/README.md)
+        * [Bank07](./Bank07/README.md)
+        * [Bank08](./Bank08/README.md)
+   
+    * [开发团队调度软件](./project03/README.md)
+    * 考试管理系统软件
+</details>
 
 * other
     * [Java学习线路](./README/java学习线路_ok.md)

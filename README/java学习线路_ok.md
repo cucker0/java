@@ -116,6 +116,7 @@ Java学习线路
 * JDK 内置注解
 * 自定义注解
 * 元注解
+
 </details>
 
 <details>
@@ -225,6 +226,7 @@ Java学习线路
 * 线程的死锁问题
 * 线程通信
 * 生产者与消费者案例
+
 </details>
 
 <details>
@@ -289,7 +291,6 @@ Java学习线路
 * 归约与收集
 * 并行流与串行流
 * Optional 容器类
-* 
 
 </details>
 
@@ -464,6 +465,7 @@ Java学习线路
 * DOM4j文档操作
 * xPath语法
 * xPath快速查询
+
 </details>
 
 <details>
@@ -602,7 +604,7 @@ Java学习线路
 * 文件下载原理
 * 文件下载响应头
 * 文件下载中文乱码&浏览器兼容
-* 
+
 </details>
 
 </details>
@@ -931,7 +933,7 @@ Java学习线路
 * 线程调度
 * ForkJoinPool 分支/合并框架
 * 工作窃取窃取模式
-* 
+
 </details>
 
 </details>
@@ -1139,7 +1141,7 @@ Java学习线路
 * Zookeeper rmi高可用分布式集群开发
 * Netty 异步io通信框架
 * Zookeeper实现netty分布式
-* 
+
 </details>
 
 </details>
@@ -1216,6 +1218,7 @@ Java学习线路
 * 讲师模块分页和条件查询
 * 讲师模块逻辑删除
 * 讲师模块新增和修改
+
 </details>
 
 <details>
@@ -1274,6 +1277,7 @@ Java学习线路
 * 创建云存储微服务
 * 实现文件上传接口
 * 前端整合讲师头像上传功能
+
 </details>
 
 <details>
@@ -1365,8 +1369,7 @@ Java学习线路
 * JWT
 * SpringCloud 网关
 * SpringCloud 服务追踪
-* 
-* 
+
 </details>
 
 </details>
@@ -1442,6 +1445,7 @@ Java学习线路
 * WordCount案例实战
 * 项目打包、部署和运行
 * MapReduce在实际应用中常见的优化
+
 </details>
 
 <details>
@@ -1507,7 +1511,7 @@ Java学习线路
 * 自定义UDF去除数据双引号项目实战
 * 自定义UDF转换日期时间数据项目实战
 * 依据业务编写HiveQL分析数据
-* 
+
 </details>
 
 </details>
@@ -1656,6 +1660,7 @@ Java学习线路
 * OOM之unable to create new native thread故障演示
 * OOM之unable to create new native thread上限调整
 * OOM之Metaspace
+
 </details>
 
 <details>
@@ -1702,4 +1707,5 @@ Java学习线路
 * GitHub骚操作之#L数字
 * GitHub骚操作之T搜索
 * GitHub骚操作之搜索区域活跃用户
+
 </details>
