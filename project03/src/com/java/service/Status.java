@@ -31,6 +31,6 @@ public enum Status {
 
     @Override
     public String toString() {
-        return getName();
+        return NAME;
     }
 }
