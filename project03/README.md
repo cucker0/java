@@ -1,4 +1,4 @@
-开发团队调度软件
+开发团队人员调度软件
 ==
 
 # 目标
@@ -17,8 +17,10 @@
 * 根据菜单提示，基于现有的公司成员，组建一个开发团队以开发一个新的项目
 * 组建过程包括将成员插入到团队中，或从团队中删除某成员，还可以列出团队中现有成员的列表
 * 开发团队成员包括架构师、设计师和程序员
-
- 
+* 开发团队人员组成要求：
+    * 最多一名架构师
+    * 最多两名设计师
+    * 最多三名程序员
 ## 功能详情
 * 本软件采用单级菜单方式工作。当软件运行时，主界面显示公司成员的列表，如下
 ```text
@@ -155,28 +157,10 @@ public static char readConfirmSelection() ：
 * 根据需要提供各属性的get/set方法以及重载构造器
 * 实现类实现接口的方法，返回各自属性的信息
 
-### Employee类及其子类的设计
-![](images/Employee类及其子类的设计1.png)  
-
-* 说明
-    * memberId 用来记录成员加入开发团队后在团队中的ID
-    * Status是项目service包下自定义的类，声明三个对象属性，分别表示成员的状态。
-    * FREE-空闲
-    * BUSY-已加入开发团队
-    * VOCATION-正在休假
-    * equipment 表示该成员领用的设备
-* 可根据需要为类提供各属性的get/set方法以及重载构造器
-
-![](images/Employee类及其子类的设计2.png)  
-* 说明
-    * bonus 表示奖金
-    * stock 表示公司奖励的股票数量
-* 可根据需要为类提供各属性的get/set方法以及重载构造器
-
 ### Status类
 * Status枚举类位于com.atguigu.team.service包中，封装员工的状态
 ```text
-// Status枚举类
+// Status枚举类(自定义枚举类)
 package com.atguigu.team.service;
 
 public class Status {
@@ -187,15 +171,42 @@ public class Status {
     public static final Status FREE = new Status("FREE");
     public static final Status VOCATION = new Status("VOCATION");
     public static final Status BUSY = new Status("BUSY");
+    
     public String getNAME() {
         return NAME;
     }
+    
     @Override
     public String toString() {
         return NAME;
     }
 }
+
 ```
+
+或参考 [Status类](./src/com/java/service/Status.java)  
+
+### Employee类及其子类的设计
+![](images/Employee类.png)  
+
+
+![](./images/Employee类的子类Programmer类.png)  
+* 说明
+    * memberId 用来记录成员加入开发团队后在团队中的ID
+    * Status是项目service包下自定义的类，声明三个对象属性，分别表示成员的状态。
+    * FREE-空闲
+    * BUSY-已加入开发团队
+    * VOCATION-正在休假
+    * equipment 表示该成员领用的设备
+* 可根据需要为类提供各属性的get/set方法以及重载构造器
+
+![](./images/Employee类的子类Designer类.png)  
+![](./images/Employee类的子类Architect类.png)  
+* 说明
+    * bonus 表示奖金
+    * stock 表示公司奖励的股票数量
+* 可根据需要为类提供各属性的get/set方法以及重载构造器
+
 
 ## 第2步--实现service包中的类
 1. 按照设计要求编写NameListService类
