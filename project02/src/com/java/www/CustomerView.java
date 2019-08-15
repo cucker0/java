@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.com;
+package com.java.www;
 
 public class CustomerView {
     private CustomerList list;

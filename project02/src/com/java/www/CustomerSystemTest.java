@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.com;
+package com.java.www;
 
 import org.junit.Test;
 

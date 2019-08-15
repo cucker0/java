@@ -12,7 +12,7 @@ public void setName(String name) {
 
 * */
 
-package com.java.com;
+package com.java.www;
 
 public class Customer {
     // 实例属性
