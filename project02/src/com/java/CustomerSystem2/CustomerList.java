@@ -153,10 +153,26 @@ public class CustomerList{
             list.sort(comparator1); // ArrayList 排序
         } else if (sortKey == "age") {
             Collections.sort(list, comparator2);
-        } else {
-            Collections.reverse(list);
         }
 
+        return list;
+    }
+
+    public ArrayList<Customer> getAllCustomers(String sortKey, String order) {
+        /*
+        * 获取所有客户，按指定字段和排序方式
+        * @param  sortKey
+        *         A sort key
+        * @param  order
+        *         A order type, types: asc/dec, asc: Ascending order, des: Descending order, asc is defaults
+        * @return ArrayList<Customer>
+        *
+        *
+        * */
+        ArrayList<Customer> list = getAllCustomers(sortKey);
+        if (order.equalsIgnoreCase("dec")) {
+            Collections.reverse(list);
+        }
         return list;
     }
 

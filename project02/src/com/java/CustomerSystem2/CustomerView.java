@@ -5,13 +5,14 @@
 
 package com.java.CustomerSystem2;
 
+import java.util.ArrayList;
+
 public class CustomerView {
-    private CustomerList list;
+    private CustomerList list = CustomerList.getInstance();
 
     // 构造器
     public CustomerView() {
         super();
-        list = CustomerList.getInstance();
     }
 
     // 方法
@@ -34,7 +35,7 @@ public class CustomerView {
                     deleteMenu();
                     break;
                 case 4:
-                    showAllCustomers();
+                    showAllCustomersMenu();
                     break;
                 case 5:
                     System.out.print("是否退出系统(Y/N)：");
@@ -186,19 +187,64 @@ public class CustomerView {
         }
     }
 
-    public void showAllCustomers() {
+    public void showAllCustomers(ArrayList<Customer> customersOrder) {
         // 列出所有客户
         String menu = String.format("---------------------------客户列表---------------------------\n" +
                 "%-4s\t%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", "Index", "ID", "姓名", "性别", "年龄", "电话", "邮箱"),
                 menuEnd = "-------------------------客户列表完成-------------------------\n\n";
         System.out.println(menu);
-        int i = 0;
-        for (Customer c : list.getAllCustomers("age")) {
-            String custStr = String.format("%-4s\t%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", i, c.getId(), c.getName(), c.getSexString(), c.getAge(), c.getPhone(), c.getEmail());
+        ArrayList<Customer> customers = list.getCustomers();
+        for (Customer c : customersOrder) {
+            String custStr = String.format("%-4s\t%-4s\t%-16s\t%-8s\t%-4s\t%-16s\t%-36s\n", customers.indexOf(c), c.getId(), c.getName(), c.getSexString(), c.getAge(), c.getPhone(), c.getEmail());
             System.out.print(custStr);
-            ++i;
         }
         System.out.println(menuEnd);
+    }
+
+    public void showAllCustomersMenu() {
+        showAllCustomers(list.getAllCustomers());
+
+        String orderMenu = "======排序方式======\n" +
+                "1 ID升序\t\t2 ID降序\n" +
+                "3 年龄升序\t\t4 年龄降序\n" +
+                "5 Index升序\t\t6 Index降序\n" +
+                "\n" +
+                "排序方式（按Enter退出）：";
+        ArrayList<Customer> customersOrder = null;
+        while (true) {
+            System.out.print(orderMenu);
+            String ramCmd = GetInput.getRaw();
+            if (ramCmd.equals("")) {
+                return;
+            }
+            int num = GetInput.getNumber(ramCmd);
+            switch (num) {
+                case 1:
+                    customersOrder = list.getAllCustomers("id");
+                    break;
+                case 2:
+                    customersOrder = list.getAllCustomers("id", "dec");
+                    break;
+                case 3:
+                    customersOrder = list.getAllCustomers("age");
+                    break;
+                case 4:
+                    customersOrder = list.getAllCustomers("age", "dec");
+                    break;
+                case 5:
+                    customersOrder = list.getAllCustomers();
+                    break;
+                case 6:
+                    customersOrder = list.getAllCustomers("index", "dec");
+                    break;
+                default:
+                    System.out.println("无此选项");
+                    break;
+            }
+            if (customersOrder != null) {
+                showAllCustomers(customersOrder);
+            }
+        }
     }
 
     public CustomerList getList() {
