@@ -62,14 +62,14 @@ public class EnumTest {
 }
 
 enum Season2 {
-    // 创建类的实例对象只能放在第一行，多个实例之间用","分隔,
+    // 创建类的实例对象只能放在第一行，多个实例之间用","分隔, 相当于用public static final修饰，即类常量
     SPRING ("spring", "春暖"),
     SUMMER ("summer", "夏热"),
     AUTUMN ("autumn", "秋凉"),
     WINTER ("winter", "冬寒");
     // 如果构造器中无参数，写成 SPRING, SUMMER, AUTUMN, WINTER;
 
-    // 1 属性，声明为private final
+    // 1 属性，声明为private final，私有的常量
     private final String seasonName;
     private final String seasonDesc;
 
