@@ -4,7 +4,7 @@
 * */
 package com.java.domain;
 
-public class PC implements Equipment {
+public class PC extends EquipmentBasic implements Equipment {
     // 实例变量
     private String model;
     private String display;
@@ -48,18 +48,16 @@ public class PC implements Equipment {
 
     @Override
     public String toString() {
-        return "PC{" +
-                "model='" + model + '\'' +
-                ", display='" + display + '\'' +
-                '}';
+        return getDescription();
     }
 
     @Override
     public String getDescription() {
         String des = "PC{" +
                 " model: '" + model + '\'' +
-                ", display: " + display +
+                ", display: '" + display + '\'' +
+                ", status: " + this.getStatus() +
                 " }";
-        return null;
+        return des;
     }
 }

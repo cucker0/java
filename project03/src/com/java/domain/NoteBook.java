@@ -5,7 +5,7 @@
 
 package com.java.domain;
 
-public class NoteBook implements Equipment {
+public class NoteBook extends EquipmentBasic implements Equipment {
     // 实例变量
     private String model;
     private double price;
@@ -46,7 +46,8 @@ public class NoteBook implements Equipment {
         String des = "NoteBooke{ " +
                 "model: '" + model + '\'' +
                 ", price: " + price +
+                ", status: " + this.getStatus() +
                 " }";
-        return null;
+        return des;
     }
 }

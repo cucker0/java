@@ -5,7 +5,7 @@
 
 package com.java.domain;
 
-public class Printer implements Equipment {
+public class Printer extends EquipmentBasic implements Equipment {
     // 实例变量
     private String name;
     private String type;
@@ -50,9 +50,10 @@ public class Printer implements Equipment {
     public String getDescription() {
         String des = "Printer{ " +
                 "name: '" + + '\'' +
-                ", type: ''" + type + '\'' +
+                ", type: '" + type + '\'' +
+                ", status: " + this.getStatus() +
                 " }";
-        return null;
+        return des;
     }
 
 }

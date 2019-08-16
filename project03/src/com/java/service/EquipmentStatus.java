@@ -10,11 +10,18 @@
 
 package com.java.service;
 
+import java.io.ObjectInputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class EquipmentStatus {
     // 类常量
-    private static final EquipmentStatus FREE = new EquipmentStatus("FREE");
-    private static final EquipmentStatus USING = new EquipmentStatus("USING");
-    private static final EquipmentStatus SCRAP = new EquipmentStatus("SCRAP");
+    public static final EquipmentStatus FREE = new EquipmentStatus("FREE");
+    public static final EquipmentStatus USING = new EquipmentStatus("USING");
+    public static final EquipmentStatus SCRAP = new EquipmentStatus("SCRAP");
+
+    // 类变量
+    private static EquipmentStatus[] installs = new EquipmentStatus[]{FREE, USING, SCRAP};
 
     // 实例变量
     private final String NAME;
@@ -32,5 +39,10 @@ public class EquipmentStatus {
     @Override
     public String toString() {
         return getName();
+    }
+
+    public static EquipmentStatus[] values() {
+        // return all instance of this class
+        return installs;
     }
 }
