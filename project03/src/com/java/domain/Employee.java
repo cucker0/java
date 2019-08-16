@@ -21,9 +21,12 @@ public class Employee {
 
     public Employee(String name, int age, double salary) {
         initIncrement();
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
+//        this.name = name;
+//        this.age = age;
+//        this.salary = salary;
+        setName(name);
+        setAge(age);
+        setSalary(salary);
     }
 
 

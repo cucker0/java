@@ -5,12 +5,12 @@
 
 package com.java.domain;
 
-import com.java.service.Status;
+import com.java.service.EmployeeStatus;
 
 public class Programmer extends Employee{
     // 实例变量
     private int memberId;
-    private Status status = Status.FREE; // 程序员默认在岗状态为空闲
+    private EmployeeStatus status = EmployeeStatus.FREE; // 程序员默认在岗状态为空闲
     private Equipment equipment;
 
     // 构造器
@@ -32,11 +32,11 @@ public class Programmer extends Employee{
         this.memberId = memberId;
     }
 
-    public Status getStatus() {
+    public EmployeeStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(EmployeeStatus status) {
         this.status = status;
     }
 

@@ -10,7 +10,7 @@
 
 package com.java.service;
 
-public enum Status {
+public enum EmployeeStatus {
     // 类实例，且是类常量
     FREE("FREE"),
     BUSY("BUSY"),
@@ -20,7 +20,7 @@ public enum Status {
     private final String NAME;
 
     // 构造器
-    Status(String name) {
+    EmployeeStatus(String name) {
         this.NAME = name;
     };
 

@@ -184,7 +184,7 @@ public class Status {
 
 ```
 
-或参考 [Status类](./src/com/java/service/Status.java)  
+或参考 [Status类](src/com/java/service/EmployeeStatus.java)  
 
 ### Employee类及其子类的设计
 ![](images/Employee类.png)  
