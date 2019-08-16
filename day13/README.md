@@ -162,15 +162,17 @@ void remove() |从集合中移除迭代器返回的最后一个元素（可选�
     * List subList(int fromIndex, int toIndex) // List切片处理，截取[开始下标，结束下标)为新的List，注意是左闭右开，相当于取一个子集
 
 示例  
-[List接口方法测试](./src/com/java/collection/ListTest.java)
+[List接口方法测试](./src/com/java/collection/ListTest.java)  
 
 ## List接口实现类之一：ArrayList
-* ArrayList时List接口的典型事项类
+* ArrayList时List接口的典型实现类
 * ArrayList本质上是对象引用的一个边长数组
 * ArrayList时线程不安全的，Vector时线程安全的（不推荐使用，效率低）
 * Arrays.asList(Object...) 方法返回的List集合既不是ArrayList实例也不是Vector实例。  
 Arrays.asList(Object...) 返回值是一个固定长度的List集合
 
+示例  
+[ArrayList测试](./src/com/java/collection/ListTest.java)  
 
 ## List实现类之二：LinkedList
 * 对于频繁插入或删除元素操作的List，建议使用LinkedList，效率高，遍历时也有不错的效率
