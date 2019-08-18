@@ -8,11 +8,11 @@ package com.java.service;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-public class TeamService {
+public class TeamsService {
     private static LinkedList<Team> teams = new LinkedList<>(); // 保存所有的team信息
 
     // 构造器
-    public TeamService() {
+    public TeamsService() {
         super();
     }
 

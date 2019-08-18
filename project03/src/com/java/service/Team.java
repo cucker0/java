@@ -7,16 +7,13 @@ package com.java.service;
 
 import com.java.domain.Employee;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Team {
     private static int init = 1; // 团队id初始值
     private int id; // 团队id
     private String name; // team name
-    private LinkedHashMap<String, Integer> membersStructor = new LinkedHashMap<>(); // 团队成员结构要求，如：{ Programmer: 3, Designer: 2, Architect: 1 }
+    private LinkedHashMap<String, HashMap> membersStructor = new LinkedHashMap<>(); // 团队成员结构要求，如：{ "Programmer": {"max": 3, "total":2}, "Designer": {"max": 2, "total":0}, "Architect": {"max": 1, "total":20 }
     private LinkedList<Employee> members = new LinkedList<>(); // 团队成员
 
     // 构造器
@@ -30,7 +27,7 @@ public class Team {
         idProcess();
     }
 
-    public Team(String name, LinkedHashMap<String, Integer> membersStructor) {
+    public Team(String name, LinkedHashMap<String, HashMap> membersStructor) {
         setName(name);
         setMembersStructor(membersStructor);
         idProcess();
@@ -58,21 +55,21 @@ public class Team {
         }
     }
 
-    public LinkedHashMap<String, Integer> getMembersStructor() {
+    public LinkedHashMap<String, HashMap> getMembersStructor() {
         return membersStructor;
     }
 
-    public void setMembersStructor(LinkedHashMap<String, Integer> membersStructor) {
+    public void setMembersStructor(LinkedHashMap<String, HashMap> membersStructor) {
         this.membersStructor = membersStructor;
     }
 
     public String showMembersStructor() {
         String str = "";
         if (membersStructor != null) {
-            Set<Map.Entry<String, Integer>> entrysSet = membersStructor.entrySet();
+            Set<Map.Entry<String, HashMap>> entrysSet = membersStructor.entrySet();
             str += "{\n";
-            for (Map.Entry<String, Integer> entry : entrysSet) {
-                str += String.format("%s: %s个\n", entry.getKey(), entry.getValue());
+            for (Map.Entry<String, HashMap> entry : entrysSet) {
+                str += String.format("岗位: %s, 预招:%s个, 实招:%s个\n", entry.getKey(), entry.getValue().get("max"), entry.getValue().get("total"));
             }
             str += "}";
         }
@@ -103,8 +100,14 @@ public class Team {
     /*
     * 添加指定成员到memebers 列表中
     * */
-    public void joinTeam(Employee member) {
-        members.addLast(member);
+    public void joinTeam(Employee member) throws TeamException{
+        if (member != null) {
+            if (!members.contains(member)) {
+                members.addLast(member);
+            } else {
+                throw new TeamException("");
+            }
+        }
     }
 
     /*

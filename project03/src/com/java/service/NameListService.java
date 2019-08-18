@@ -21,6 +21,9 @@ public class NameListService {
         return employees;
     }
 
+    /*
+    * 返回记录所有员工信息的list
+    * */
     public LinkedList<Employee> getAllEmployee() {
         return getEmployees();
     }
