@@ -4,6 +4,8 @@
 
 package com.java.view;
 
+import com.java.domain.Architect;
+import com.java.domain.Designer;
 import com.java.domain.Employee;
 import com.java.service.EquipmentRepository;
 import com.java.service.NameListService;
@@ -27,10 +29,47 @@ public class TeamView {
     }
 
     /*
+    * 打印主菜单
+    * */
+    public void printMainMenu() {
+        String menu = "-----------------团队调度软件-----------------\n" +
+                "\n" +
+                "1 列出所有员工信息\n" +
+                "2 列出所有团队\n" +
+                "3 招聘员工\n" +
+                "4 列出所有设备\n" +
+                "5 添加设备\n" +
+                "6 退       出\n" +
+                "\n" +
+                "请选择(1-6)：";
+        System.out.println(menu);
+    }
+
+    /*
     * 列出公司所有员工信息
     * */
     private void listAllEmployees() {
-
+        String menu = "-------------------------------------团队调度软件--------------------------------------\n" +
+                "\n" +
+                "ID     姓名      年龄    工资         职位      状态      奖金        股票     领用设备" +
+                "\n";
+        System.out.println(menu);
+        for (Employee e : listService.getAllEmployee()) {
+            boolean isDesigner = e instanceof Designer;
+            String bonusString = isDesigner ? "" + ((Designer) e).getBonus() : "\t";
+            String stockString = e instanceof Architect ? "" + ((Architect) e).getStock() : "\t";
+            System.out.printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%s\t%s\t%s",
+                    e.getId(),
+                    e.getName(),
+                    e.getAge(),
+                    e.getSalary(),
+                    e.getPost(),
+                    e.getStatus(),
+                    bonusString,
+                    stockString,
+                    e.listEquipment());
+        }
+        System.out.println();
     }
 
     /*

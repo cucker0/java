@@ -9,6 +9,7 @@ import com.java.service.EmployeeStatus;
 import com.java.service.EquipmentStatus;
 import com.java.service.Team;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Employee {
@@ -91,6 +92,19 @@ public class Employee {
      * */
     public LinkedList<Equipment> getEquipment() {
         return equipment;
+    }
+
+    /*
+    * 列出此员工领取的所有设备
+    * */
+    public String listEquipment() {
+        StringBuilder sb = new StringBuilder();
+        Iterator<Equipment> iterator = equipment.iterator();
+        while (iterator.hasNext()) {
+            sb.append(iterator.next().getDescription());
+            sb.append(", ");
+        }
+        return sb.toString();
     }
 
     /*

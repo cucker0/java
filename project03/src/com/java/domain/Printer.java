@@ -48,18 +48,20 @@ public class Printer extends EquipmentBasic implements Equipment {
 
     @Override
     public String getDescription() {
-        String des = "Printer{ " +
+        return  "Printer{ " +
+                "sn: " + getSn() +
+                ", name: '" + + '\'' +
+                " }";
+    }
+
+    @Override
+    public String toString() {
+        return "Printer{ " +
                 "sn: " + getSn() +
                 ", name: '" + + '\'' +
                 ", type: '" + type + '\'' +
                 ", status: " + this.getStatus() +
                 " }";
-        return des;
-    }
-
-    @Override
-    public String toString() {
-        return getDescription();
     }
 
 }

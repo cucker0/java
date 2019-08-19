@@ -48,17 +48,19 @@ public class PC extends EquipmentBasic implements Equipment {
 
     @Override
     public String toString() {
-        return getDescription();
-    }
-
-    @Override
-    public String getDescription() {
-        String des = "PC{ " +
+        return "PC{ " +
                 "sn: " + getSn() +
                 ", model: '" + model + '\'' +
                 ", display: '" + display + '\'' +
                 ", status: " + this.getStatus() +
                 " }";
-        return des;
+    }
+
+    @Override
+    public String getDescription() {
+        return  "PC{ " +
+                "sn: " + getSn() +
+                ", model: '" + model + '\'' +
+                " }";
     }
 }

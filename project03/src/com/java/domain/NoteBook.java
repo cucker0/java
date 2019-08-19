@@ -43,17 +43,19 @@ public class NoteBook extends EquipmentBasic implements Equipment {
 
     @Override
     public String getDescription() {
-        String des = "NoteBooke{ " +
+        return  "NoteBooke{ " +
+                "sn: " + getSn() +
+                ", model: '" + model + '\'' +
+                " }";
+    }
+
+    @Override
+    public String toString() {
+        return "NoteBooke{ " +
                 "sn: " + getSn() +
                 ", model: '" + model + '\'' +
                 ", price: " + price +
                 ", status: " + this.getStatus() +
                 " }";
-        return des;
-    }
-
-    @Override
-    public String toString() {
-        return getDescription();
     }
 }
