@@ -112,8 +112,9 @@ public class Mytest {
 
         ArrayList<Equipment> repository = EquipmentRepository.getRepository();
         Equipment e = repository.get(2);
-        System.out.println("33===  " + e);
+//        System.out.println("33===  " + e);
         p1.receiveEquipment(e);
+        d1.receiveEquipment(e);
         System.out.println(repository);
 
     }

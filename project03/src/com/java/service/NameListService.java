@@ -7,6 +7,7 @@ package com.java.service;
 
 import com.java.domain.Employee;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -44,6 +45,25 @@ public class NameListService {
             if (e.getId() == id) {
                 return e;
             }
+        }
+        throw new TeamException("找不到指定的员工");
+    }
+
+    /*
+     * 查询指定姓名的员工
+     * @param    name
+     *           员工姓名
+     * @return   对应姓名的员工对象数组，为空着为null
+     * */
+    public Employee[] getEmployee(String name) throws TeamException {
+        ArrayList<Employee> list = new ArrayList<>();
+        for (Employee em : employees) {
+            if (em.getName().equals(name)) {
+                list.add(em);
+            }
+        }
+        if (list.size() != 0) {
+            return (Employee[]) list.toArray();
         }
         throw new TeamException("找不到指定的员工");
     }

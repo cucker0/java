@@ -107,6 +107,10 @@ public class Employee {
                 aEquipment.setStatus(EquipmentStatus.USING);
             }
             return status;
+        } else if (aEquipment.getStatus() == EquipmentStatus.USING) {
+            System.out.println("设备已经被领用");
+        } else if (aEquipment.getStatus() == EquipmentStatus.SCRAP) {
+            System.out.println("设备已经作废处理了");
         }
         return false;
     }
