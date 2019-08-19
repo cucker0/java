@@ -37,7 +37,7 @@ public class Architect extends Employee {
     public String toString() {
         return "Architect{" +
                 getFields() +
-                "stock=" + stock +
+                ", stock=" + stock +
                 '}';
     }
 }

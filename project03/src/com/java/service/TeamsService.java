@@ -5,6 +5,11 @@
 
 package com.java.service;
 
+import com.java.domain.Architect;
+import com.java.domain.Designer;
+import com.java.domain.Programmer;
+
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
@@ -21,12 +26,21 @@ public class TeamsService {
     * 生成团队
     * */
     public void generateTeams() {
-        LinkedHashMap<String, Integer> membersStructor = new LinkedHashMap<>();
-        membersStructor.put("Programmer", 3);
-        membersStructor.put("Designer", 2);
-        membersStructor.put("Architect", 1);
+        LinkedHashMap<Class, HashMap> membersStructor = new LinkedHashMap<>();
+        HashMap post1 = new HashMap(); // 岗位要求
+        post1.put("max", 3);
+        post1.put("total", 0);
+        HashMap post2 = new HashMap();
+        post2.put("max", 2);
+        post2.put("total", 0);
+        HashMap post3 = new HashMap();
+        post3.put("max", 1);
+        post3.put("total", 0);
+        membersStructor.put(Programmer.class, post1);
+        membersStructor.put(Designer.class, post2);
+        membersStructor.put(Architect.class, post3);
         Team t1 = new Team("DevelopmentTeam", membersStructor);
-
+        addTeam(t1);
     }
 
     /*

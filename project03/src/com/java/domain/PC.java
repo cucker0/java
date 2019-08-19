@@ -53,8 +53,9 @@ public class PC extends EquipmentBasic implements Equipment {
 
     @Override
     public String getDescription() {
-        String des = "PC{" +
-                " model: '" + model + '\'' +
+        String des = "PC{ " +
+                "sn: " + getSn() +
+                ", model: '" + model + '\'' +
                 ", display: '" + display + '\'' +
                 ", status: " + this.getStatus() +
                 " }";

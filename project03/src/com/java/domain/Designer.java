@@ -37,7 +37,7 @@ public class Designer extends Employee {
     public String toString() {
         return "Designer{" +
                 getFields() +
-                "bonus=" + bonus +
+                ", bonus=" + bonus +
                 '}';
     }
 }

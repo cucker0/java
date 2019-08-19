@@ -5,6 +5,12 @@
 
 package com.java.domain;
 
+import com.java.service.EmployeeStatus;
+import com.java.service.EquipmentStatus;
+import com.java.service.Team;
+
+import java.util.LinkedList;
+
 public class Employee {
     // 类变量
     private static int init = 1; // 员工编号初始值
@@ -14,7 +20,9 @@ public class Employee {
     private String name;
     private int age;
     private double salary; // 薪水
-
+    private LinkedList<Equipment> equipment = new LinkedList<>(); // 该员工领取的办公设备
+    private EmployeeStatus status = EmployeeStatus.FREE; // 员工默认在岗状态为空闲，即未加入任何团队
+    private Team team; // 已加入的团队，一个员工只能加入一个团队，默认值是null
 
     // 构造器
     public Employee() {}
@@ -76,11 +84,82 @@ public class Employee {
         }
     }
 
+    /*
+     * 获取该员工领取的所有设备
+     * @return  equipment
+     *          保存所有设备信息的LinkedList
+     * */
+    public LinkedList<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    /*
+     * 领取设备
+     * @prama   aEquipment
+     *          一件设备
+     * @return  true/false
+     *          操作状态
+     * */
+    public boolean receiveEquipment(Equipment aEquipment) {
+        if (aEquipment.getStatus() == EquipmentStatus.FREE) {
+            boolean status = equipment.add(aEquipment);
+            if (status) {
+                aEquipment.setStatus(EquipmentStatus.USING);
+            }
+            return status;
+        }
+        return false;
+    }
+
+    /*
+    * 回收(归还)指定的设备
+    * @prama   aEquipment
+    *          一件设备
+    * @return  true/false
+    *          操作状态
+    * */
+    public boolean recycleEquipment(Equipment aEquipment) {
+        if (equipment.contains(aEquipment)) {
+            if (equipment.remove(aEquipment)) {
+                aEquipment.setStatus(EquipmentStatus.FREE);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public EmployeeStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EmployeeStatus status) {
+        this.status = status;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    /*
+    * 获取员工的岗位名
+    * @return   String形式的岗位名
+    * */
+    public String getPost() {
+        Class clazz = this.getClass();
+        String sArr[] = clazz.toString().split("\\.");
+        return sArr.length > 0 ? sArr[sArr.length -1] : "";
+    }
+
     public String getFields() {
         return " id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", salary=" + salary;
+                ", salary=" + salary +
+                ", status=" + status;
     }
     @Override
     public String toString() {
