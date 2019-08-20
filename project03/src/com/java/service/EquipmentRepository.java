@@ -33,7 +33,7 @@ public class EquipmentRepository {
     * @param    sn
     *           要查询的设备的sn
     * */
-    public Equipment getEquipment(int sn) {
+    public static Equipment getEquipment(int sn) {
         for (Equipment e : repository) {
             if (e.getSn() == sn) {
                 return e;

@@ -102,7 +102,7 @@ public class GetInput {
         // 获取姓名
         while (true) {
             String s = getRaw();
-            if (s.length() > 0 && s.length() < 37) {
+            if (s.length() > 0 && s.length() <= 64) {
                 return s;
             }
         }

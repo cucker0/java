@@ -4,13 +4,11 @@
 
 package com.java.view;
 
-import com.java.domain.Architect;
-import com.java.domain.Designer;
-import com.java.domain.Employee;
-import com.java.domain.Programmer;
+import com.java.domain.*;
 import com.java.service.*;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class TeamView {
@@ -26,7 +24,47 @@ public class TeamView {
     * 主菜单
     * */
     public void enterMainMenu() {
-
+        boolean isExit = false;
+        while (true) {
+            // 是否退出系统
+            if (isExit) {
+                break;
+            }
+            // 列出主菜单
+            printMainMenu();
+            String item = GetInput.getRaw();
+            switch (item) {
+                case "a":
+                    break;
+                case "b":
+                    listAllEmployees();
+                    break;
+                case "c":
+                    listAllTeams();
+                    break;
+                case "d":
+                    recruitingStaff();
+                    break;
+                case "e":
+                    receiveEquipment();
+                    break;
+                case "f":
+                    resignation();
+                    break;
+                case "g":
+                    listAllEquipment();
+                    break;
+                case "h":
+                    addEquipment();
+                    break;
+                case "q":
+                    isExit = true;
+                    break;
+                default:
+                    System.out.println("无此操作选项");
+                    break;
+            }
+        }
     }
 
     /*
@@ -35,13 +73,14 @@ public class TeamView {
     public void printMainMenu() {
         String menu = "-----------------团队调度软件-----------------\n" +
                 "\n" +
-                "a 列出所有员工信息\n" +
-                "b 列出所有团队\n" +
-                "c 招聘员工\n" +
-                "d 员工领取设备\n" +
-                "e 员工办理离职\n" +
-                "f 列出所有设备\n" +
-                "g 添加设备\n" +
+                "a 团队人员调度\n" +
+                "b 列出所有员工信息\n" +
+                "c 列出所有团队\n" +
+                "d 招聘员工\n" +
+                "e 员工领取设备\n" +
+                "f 员工办理离职\n" +
+                "g 列出所有设备\n" +
+                "h 添加设备\n" +
                 "q 退       出\n" +
                 "\n" +
                 "请选择：";
@@ -111,26 +150,90 @@ public class TeamView {
         System.out.println();
     }
 
+    /*
+    * 检测team是否为null
+    * */
+    public boolean checkTeamIsNull(Team team) {
+        if (team == null) {
+            System.out.println("team对象为null");
+            return true;
+        }
+        return false;
+    }
 
     /*
-     * 团队操作菜单，操作指定的团队
+     * 打印团队调度操作菜单
      * */
-    public void teamMenu(Team team) {
-        listAteamMembers(team);
-        String menu = "a  添加成员\n" +
-                "b  删除成员\n" +
-                "c  列出成员\n" +
-                "d  调整成员架构\n" +
-                "q  退出\n" +
+    public void printTeamMenu(Team team) {
+        if (checkTeamIsNull(team)) return;
+        String menu = "-----------------团队调度管理-----------------\n" +
+                "a 添加成员\n" +
+                "b 删除成员\n" +
+                "c 列出成员\n" +
+                "d 调整成员架构\n" +
+                "q 退出\n" +
                 "\n" +
-                "选择：";
+                "选择操作项(回车退出)：";
         System.out.println(menu);
     }
 
     /*
-    * 显示指定团队成员列表操作
+    * 团队调度操作
+    * */
+    public void teamDispatch() {
+        if (teamsService.getTeamsCount() <= 0) {
+            System.out.println("暂未创建任何团队，请先创建团队");
+            return;
+        }
+        listAllTeams();
+        String menu = "-----------------团队调度管理-----------------\n" +
+                "\n" +
+                "选择团队id (回车退出)：";
+        System.out.println(menu);
+        String ramCmd = GetInput.getRaw();
+        if (ramCmd.equals("")) {
+            return;
+        }
+        int id = GetInput.getNumber(ramCmd);
+        Team team = teamsService.getTeam(id);
+        if (checkTeamIsNull(team)) return;
+
+        printTeamMenu(team);
+        String item = GetInput.getRaw(); // 团队调度操作的选项
+
+        // 退出
+        if (item.equals("") || item.equals("q")) {
+            return;
+        }
+
+        // 相应的选项操作
+        switch (item) {
+            case "a":
+                addMemberToTeam(team);
+                break;
+            case "b":
+                deleteMemterFromTeam(team);
+                break;
+            case "c":
+                listAteamMembers(team);
+                break;
+            case "d":
+
+                break;
+//            case "q":
+//                break;
+            default:
+                System.out.println("无此操作选项");
+                break;
+
+        }
+    }
+
+    /*
+    * 显示指定团队的成员
      * */
     public void listAteamMembers(Team team) {
+        if (checkTeamIsNull(team)) return;
         String menu = String.format("-----------------%s团队成员-----------------\n\n" +
                 "ID     姓名      年龄   职位      状态\n", team.getName());
         System.out.println(menu);
@@ -152,6 +255,7 @@ public class TeamView {
     *           团队对象
     * */
     public void addMemberToTeam(Team team) {
+        if (checkTeamIsNull(team)) return;
         listAllEmployees();
         String menu = "选择要添加成员的id (-1或回车退出)：";
         String rawCmd = GetInput.getRaw();
@@ -175,6 +279,7 @@ public class TeamView {
      * 指定的团队删除成员
      * */
     public void deleteMemterFromTeam(Team team) {
+        if (checkTeamIsNull(team)) return;
         listAteamMembers(team);
         String menu = "选择要删除成员的id (-1或回车退出)：";
         String rawCmd = GetInput.getRaw();
@@ -196,15 +301,32 @@ public class TeamView {
     }
 
     /*
+    * 列出指定团队的成员架构
+    * */
+    public void listTeamMembersStructor(Team team) {
+        if (checkTeamIsNull(team)) return;
+    }
+
+    /*
+    * 调整指定团队的成员架构
+    * */
+    public void modifyTeamMembersStructor(Team team) {
+        if (checkTeamIsNull(team)) return;
+        String menu = String.format("-----------------调整%s团队的成员架构-----------------\n", team.getName());
+
+
+    }
+
+    /*
     * 招聘入职新员工
     * */
-    public void RecruitingStaff() {
+    public void recruitingStaff() {
         String menu = "-----------------招聘入职新员工-----------------\n";
         // 岗位
-        String post = "a   程序员\n" +
-                "b  设计师\n" +
-                "c  架构师" +
-                "q  退出" +
+        String post = "a 程序员\n" +
+                "b 设计师\n" +
+                "c 架构师" +
+                "q 退出" +
                 "\n" +
                 "选择项(回车退出)：";
         System.out.println(menu);
@@ -287,29 +409,94 @@ public class TeamView {
     * */
     public void listAllEquipment() {
         String menu = "-----------------列出设备-----------------\n" +
-                "SN\t状态\t\n";
-
+                "index\tSN\t描述\t状态\n";
+        System.out.println(menu);
+        ArrayList<Equipment> list = equipmentRepository.getRepository();
+        for (int i= 0; i < list.size(); ++i) {
+            System.out.printf("%d\t%s\t%s\n", i, list.get(i).getSn(), list.get(i).getDescription());
+        }
+        System.out.println();
     }
 
     /*
     * 添加设备
     * */
     public void addEquipment() {
-        String menu = "-----------------添加设备-----------------\n";
+        String menu = "-----------------添加设备-----------------\n" +
+                "a PC办公电脑\n" +
+                "b 笔记本电脑\n" +
+                "c 打印机" +
+                "q 退出" +
+                "\n" +
+                "选择项(回车退出)：";
+        System.out.println(menu);
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("") || rawCmd.equalsIgnoreCase("q")) {
+            return;
+        }
+        if (rawCmd.equalsIgnoreCase("a")) {
+            System.out.println("==添加PC办公电脑==");
+            System.out.println("型号：");
+            String model = GetInput.getName();
+            System.out.println("显示器：");
+            String display = GetInput.getName();
+            PC pc = new PC(model, display);
+            equipmentRepository.addEquipment(pc);
+        }
+        if (rawCmd.equalsIgnoreCase("b")) {
+            System.out.println("==添加笔记本电脑==");
+            System.out.println("型号：");
+            String model = GetInput.getName();
+            System.out.println("价格：");
+            double price = GetInput.getNumber();
+            NoteBook noteBook = new NoteBook(model, price);
+            equipmentRepository.addEquipment(noteBook);
+        }
+        if (rawCmd.equalsIgnoreCase("c")) {
+            System.out.println("==添加打印机==");
+            System.out.println("型号：");
+            String name = GetInput.getName();
+            System.out.println("类型：");
+            String type = GetInput.getName();
+            Printer printer = new Printer(name, type);
+            equipmentRepository.addEquipment(printer);
+        }
     }
 
     /*
     * 员工领取设备
     * */
     public void receiveEquipment() {
-        
+        listAllEmployees();
+        String menu = "-----------------领取设备-----------------\n" +
+                "\n" +
+                "选择员工id (回车退出)：";
+        String equipmentSelectMenu = "选择设备id (回车退出)：";
+        System.out.println(menu);
+        String ramCmd = GetInput.getRaw();
+        if (ramCmd.equals("")) {
+            return;
+        }
+        int employeeId = GetInput.getNumber(ramCmd);
+        if (employeeId < 0) {
+            return;
+        }
+        listAllEmployees();
+        System.out.print(equipmentSelectMenu);
+        String ramCmd2 = GetInput.getRaw();
+        if (ramCmd2.equals("")) {
+            return;
+        }
+        int equipmentId = GetInput.getNumber(ramCmd2);
+        listService.receiveEquipment(employeeId, equipmentId);
     }
 
     /*
     * 程序入口
     * */
     public static void main(String[] args) {
-
+        TeamView teamView = new TeamView();
+        teamView.enterMainMenu();
     }
 
 }

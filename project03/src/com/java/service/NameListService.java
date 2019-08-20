@@ -6,6 +6,7 @@
 package com.java.service;
 
 import com.java.domain.Employee;
+import com.java.domain.Equipment;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -89,5 +90,24 @@ public class NameListService {
     public static void resignation(int employeeId) {
         employees.get(employeeId).resignation();
 
+    }
+
+    /*
+    * 指定的员工领取指定设备
+    * */
+    public void receiveEquipment(Employee employee, Equipment equipment) {
+        employee.receiveEquipment(equipment);
+    }
+
+    /*
+    * 指定id的员工领取指定设备
+    * */
+    public void receiveEquipment(int employeeId, int equipmentId) {
+        try {
+            receiveEquipment(getEmployee(employeeId), EquipmentRepository.getEquipment(equipmentId));
+        } catch (TeamException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 }

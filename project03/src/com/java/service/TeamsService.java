@@ -68,4 +68,14 @@ public class TeamsService {
         return teams.size();
     }
 
+    /*
+    * 通过指定的team id查找team
+    * @prama    teamId
+    *           团队id
+    * @return   a team
+    * */
+    public Team getTeam(int teamId) {
+        return teams.get(teamId);
+    }
+
 }
