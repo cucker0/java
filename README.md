@@ -532,6 +532,10 @@ JAVA Study
         * URL类
         * URLConnection类
         * HttpURLConnection类
+    * [小结](./day20/README.md#小结)
+    * [其他](./day20/README.md#其他)
+        * [java lambda表达式](./day20/README.md#java-lambda表达式)
+        * [InputStream判断数据已经读取结束的解决方法](./day20/README.md#InputStream判断数据已经读取结束的解决方法)
 
 </details>
 
