@@ -50,7 +50,7 @@ day01_JAVA语言概述与基本语法
 * javadoc格式
 ```text
 javadoc -encoding utf8 -d mydoc -author -version HelloJava.java
-java文档说明，以 /** 开头的为多文本注释
+-d: 输出文件的目标目录
 ```
 * java源文件的字符集与环境的字符集不一样时（尤其是windows cmd为GBK），这里javac 可指定字符集，如：javac encoding utf8 .java源文件
 
