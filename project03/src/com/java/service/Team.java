@@ -13,7 +13,7 @@ public class Team {
     private static int init = 1; // 团队id初始值
     private int id; // 团队id
     private String name; // team name
-    private LinkedHashMap<Class, HashMap> membersStructor = new LinkedHashMap<>(); // 团队成员结构要求，如：{ "Programmer": {"max": 3, "total":2}, "Designer": {"max": 2, "total":0}, "Architect": {"max": 1, "total":20 }
+    private LinkedHashMap<Class, HashMap> membersStructor = new LinkedHashMap<>(); // 团队成员结构要求，如：{ Programmer: {"max": 3, "total":2}, Designer: {"max": 2, "total":0}, Architect: {"max": 1, "total":20 }
     private LinkedList<Employee> members = new LinkedList<>(); // 团队成员
 
     // 构造器
@@ -76,7 +76,7 @@ public class Team {
             membersStructor.put(post, postRequirements);
             return true;
         } else {
-            System.out.println("此岗位已经存在");
+            System.out.println("本团队已经存在此岗位");
         }
         return false;
     }
@@ -89,8 +89,13 @@ public class Team {
     * */
     public boolean deletePostFromMmbersStructor(Class post) {
         if (membersStructor.keySet().contains(post)) {
-            membersStructor.remove(post);
-            return true;
+            // 该岗位未加入相应的员工才能被删除
+            if ((int) membersStructor.get(post).get("total") == 0) {
+                membersStructor.remove(post);
+                return true;
+            } else {
+                System.out.println("本团队中该岗位还有其他员工，不能删除");
+            }
         }
         return false;
     }
@@ -113,6 +118,22 @@ public class Team {
             return true;
         }
         System.out.println("不存在此岗位");
+        return false;
+    }
+
+    /*
+    * 修改指定岗位的预招人数
+    * @param    num
+    *           新的预招人数
+    * */
+    public boolean modifyTeamPostMax(Class post, int num) {
+        if (membersStructor.keySet().contains(post)) {
+            int total = (int) membersStructor.get(post).get("total");
+            if (num > total) {
+                membersStructor.get(post).put("max", num);
+                return true;
+            }
+        }
         return false;
     }
 

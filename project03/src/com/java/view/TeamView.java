@@ -7,9 +7,7 @@ package com.java.view;
 import com.java.domain.*;
 import com.java.service.*;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 public class TeamView {
     private static NameListService listService = new NameListService();
@@ -35,6 +33,7 @@ public class TeamView {
             String item = GetInput.getRaw();
             switch (item) {
                 case "a":
+                    teamDispatch();
                     break;
                 case "b":
                     listAllEmployees();
@@ -52,9 +51,12 @@ public class TeamView {
                     resignation();
                     break;
                 case "g":
-                    listAllEquipment();
+                    vocation();
                     break;
                 case "h":
+                    listAllEquipment();
+                    break;
+                case "i":
                     addEquipment();
                     break;
                 case "q":
@@ -79,8 +81,9 @@ public class TeamView {
                 "d 招聘员工\n" +
                 "e 员工领取设备\n" +
                 "f 员工办理离职\n" +
-                "g 列出所有设备\n" +
-                "h 添加设备\n" +
+                "g 员工休假\n" +
+                "h 列出所有设备\n" +
+                "i 添加设备\n" +
                 "q 退       出\n" +
                 "\n" +
                 "请选择：";
@@ -166,14 +169,16 @@ public class TeamView {
      * */
     public void printTeamMenu(Team team) {
         if (checkTeamIsNull(team)) return;
-        String menu = "-----------------团队调度管理-----------------\n" +
+        String menu = String.format("-----------------团队调度管理(%s)-----------------\n" +
                 "a 添加成员\n" +
                 "b 删除成员\n" +
                 "c 列出成员\n" +
-                "d 调整成员架构\n" +
+                "d 调整岗位成员预招人数\n" +
+                "e 团队增加一个岗位\n" +
+                "f 团队删除一个岗位\n" +
                 "q 退出\n" +
                 "\n" +
-                "选择操作项(回车退出)：";
+                "选择操作项(回车退出)：", team.getName());
         System.out.println(menu);
     }
 
@@ -198,34 +203,45 @@ public class TeamView {
         Team team = teamsService.getTeam(id);
         if (checkTeamIsNull(team)) return;
 
-        printTeamMenu(team);
-        String item = GetInput.getRaw(); // 团队调度操作的选项
+        boolean isExit = false;
+        while (true) {
+            if (isExit) {
+                return;
+            }
 
-        // 退出
-        if (item.equals("") || item.equals("q")) {
-            return;
-        }
+            printTeamMenu(team);
+            String item = GetInput.getRaw(); // 团队调度操作的选项
 
-        // 相应的选项操作
-        switch (item) {
-            case "a":
-                addMemberToTeam(team);
-                break;
-            case "b":
-                deleteMemterFromTeam(team);
-                break;
-            case "c":
-                listAteamMembers(team);
-                break;
-            case "d":
+            // 退出
+            if (item.equals("") || item.equals("q")) {
+                isExit = true;
+            }
 
-                break;
-//            case "q":
-//                break;
-            default:
-                System.out.println("无此操作选项");
-                break;
+            // 相应的选项操作
+            switch (item) {
+                case "a":
+                    addMemberToTeam(team);
+                    break;
+                case "b":
+                    deleteMemterFromTeam(team);
+                    break;
+                case "c":
+                    listAteamMembers(team);
+                    break;
+                case "d":
+                    modifyTeamPostMax(team);
+                    break;
+                case "e":
+                    addTeamPost(team);
+                    break;
+                case "f":
+                    deleteTeamPost(team);
+                    break;
+                default:
+                    System.out.println("无此操作选项");
+                    break;
 
+            }
         }
     }
 
@@ -305,16 +321,88 @@ public class TeamView {
     * */
     public void listTeamMembersStructor(Team team) {
         if (checkTeamIsNull(team)) return;
+        team.showMembersStructor();
     }
 
     /*
-    * 调整指定团队的成员架构
+    * 调整指定团队的岗位成员预招人数
     * */
-    public void modifyTeamMembersStructor(Team team) {
+    public void modifyTeamPostMax(Team team) {
         if (checkTeamIsNull(team)) return;
-        String menu = String.format("-----------------调整%s团队的成员架构-----------------\n", team.getName());
+        team.showMembersStructor();
+        String menu = String.format("-----------------调整%s团队岗位成员预招人数-----------------\n" +
+                "回退不修改", team.getName());
+//        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
+        for (Map.Entry<Class, HashMap> entry : team.getMembersStructor().entrySet()) {
+            String[] sArr = entry.getKey().toString().split("\\.");
+            System.out.printf("岗位:%s, 预招:%s个, 实招:%s个。预招修改为(回车退出)：\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+            String rawCmd = GetInput.getRaw();
+            if (!rawCmd.equals("")) {
+                int num = GetInput.getNumber(rawCmd);
+                team.modifyTeamPostMax(entry.getKey(), num);
+            }
+        }
 
+    }
 
+    /*
+    * 指定的团队增加一个岗位
+    * */
+    public void addTeamPost(Team team) {
+        if (checkTeamIsNull(team)) return;
+        String menu = String.format("-----------------%s团队增加一个岗位-----------------\n\n", team.getName());
+        System.out.println("\n" +
+                "1 Programmer\n" +
+                "2 Designer\n" +
+                "3 Architect\n" +
+                "\n" +
+                "选择岗位(回车退出)：");
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("")) {
+            return;
+        }
+        int num = GetInput.getNumber(rawCmd);
+        Class clazz = null;
+        if (num == 1) {
+            clazz = Programmer.class;
+        } else if (num == 2) {
+            clazz = Designer.class;
+        } else if (num == 3) {
+            clazz = Architect.class;
+        }
+        if (clazz != null) {
+            System.out.println("预招人数：");
+            int max = GetInput.getNumber();
+            HashMap hMap = new HashMap();
+            hMap.put("max", max);
+            hMap.put("total", 0);
+            team.addPostToMmbersStructor(clazz, hMap);
+        }
+
+    }
+
+    /*
+     * 指定的团队删除一个岗位，该岗位未加入相应的职位的员工才能被删除
+     * */
+    public void deleteTeamPost(Team team) {
+        if (checkTeamIsNull(team)) return;
+        String menu = String.format("-----------------%s团队删除一个岗位-----------------\n\n", team.getName());
+        ArrayList<Class> keyList = new ArrayList<>();
+        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
+        Set<Class> keySet = membersStructor.keySet();
+        int i = 0;
+        for (Class clazz : keySet) {
+            keyList.add(clazz);
+            ++i;
+            System.out.printf("%d %s\n", i, clazz);
+        }
+        System.out.print("\n选择岗位(回车退出)：");
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("")) {
+            return;
+        }
+        int num = GetInput.getNumber(rawCmd);
+        team.deletePostFromMmbersStructor(keyList.get(num));
     }
 
     /*
@@ -402,6 +490,28 @@ public class TeamView {
         }
         int num = GetInput.getNumber(rawCmd);
         NameListService.resignation(num); // 等价于 listService.resignation(num);
+    }
+
+    /*
+    * 员工休假
+    * */
+    public void vocation() {
+        String menu = "-----------------员工休假-----------------\n";
+        listAllEmployees();
+        System.out.println("选择员工id (回车退出)：");
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("")) {
+            return;
+        }
+        int num = GetInput.getNumber(rawCmd);
+        try {
+            Employee employee = listService.getEmployee(num);
+            employee.vocation();
+        } catch (TeamException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
     }
 
     /*

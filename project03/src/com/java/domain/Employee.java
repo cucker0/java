@@ -241,4 +241,15 @@ public abstract class Employee { // 抽象类
             recycleEquipment(eq);
         }
     }
+
+    /*
+    * 员工休假
+    * */
+    public boolean vocation() {
+        if (status == EmployeeStatus.VOCATION) {
+            System.out.println("该员工正在休假中");
+            return false;
+        }
+        return true;
+    }
 }
