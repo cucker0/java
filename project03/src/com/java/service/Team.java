@@ -232,6 +232,16 @@ public class Team {
     }
 
     /*
+     * 添加指定id的成员到memebers 列表中
+     * @param    member
+     *           员工
+     * */
+    public boolean addMember(int memberId) throws TeamException{
+        Employee employee = NameListService.getEmployee(memberId);
+        return addMember(employee);
+    }
+
+    /*
     * 指定的成员退出团队
     * */
     public boolean removeMember(Employee member) throws TeamException {
@@ -241,6 +251,16 @@ public class Team {
         throw new TeamException(String.format("%s团队中无此员工，删除失败", name));
     }
 
+    /*
+    * 指定id的成员退出团队
+    * */
+    public boolean removeMember(int memberId) throws TeamException {
+        Employee employee = NameListService.getEmployee(memberId);
+        if (members.contains(employee)) {
+            return members.remove(employee);
+        }
+        throw new TeamException(String.format("%s团队中无此id的员工，删除失败", name));
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -37,4 +37,5 @@ public class EquipmentBasic {
     public void setStatus(EquipmentStatus status) {
         this.status = status;
     }
+
 }

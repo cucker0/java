@@ -12,7 +12,7 @@ import com.java.service.Team;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Employee {
+public abstract class Employee { // 抽象类
     // 类变量
     private static int init = 1; // 员工编号初始值
 
@@ -209,4 +209,7 @@ public class Employee {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
+    // 列出员工基本信息。抽象方法
+    public abstract String getDescription();
 }

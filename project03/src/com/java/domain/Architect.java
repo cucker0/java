@@ -40,4 +40,9 @@ public class Architect extends Employee {
                 ", stock=" + stock +
                 '}';
     }
+
+    @Override
+    public String getDescription() {
+        return "架构师";
+    }
 }

@@ -40,4 +40,9 @@ public class Designer extends Employee {
                 ", bonus=" + bonus +
                 '}';
     }
+
+    @Override
+    public String getDescription() {
+        return "设计师";
+    }
 }

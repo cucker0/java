@@ -12,20 +12,20 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class NameListService {
-    private LinkedList<Employee> employees = new LinkedList<>(); // 记录所有员工资料，使用LinkedList是因为其有较好的出入、删除效率
+    private static LinkedList<Employee> employees = new LinkedList<>(); // 记录所有员工资料，使用LinkedList是因为其有较好的出入、删除效率
 
     // 构造器
     public NameListService() {}
 
     // 方法
-    public LinkedList<Employee> getEmployees() {
+    public static LinkedList<Employee> getEmployees() {
         return employees;
     }
 
     /*
     * 返回记录所有员工信息的list
     * */
-    public LinkedList<Employee> getAllEmployee() {
+    public static LinkedList<Employee> getAllEmployees() {
         return getEmployees();
     }
 
@@ -37,7 +37,7 @@ public class NameListService {
     * @return   return the employee of the specified id
     *
     * */
-    public Employee getEmployee(int id) throws TeamException{
+    public static Employee getEmployee(int id) throws TeamException{
         // 通过遍历list，查询员工
         Iterator<Employee> iterator = employees.iterator();
         while (iterator.hasNext()) {
@@ -46,7 +46,7 @@ public class NameListService {
                 return e;
             }
         }
-        throw new TeamException("找不到指定的员工");
+        throw new TeamException("找不到指定id的员工");
     }
 
     /*
@@ -55,7 +55,7 @@ public class NameListService {
      *           员工姓名
      * @return   对应姓名的员工对象数组，为空着为null
      * */
-    public Employee[] getEmployee(String name) throws TeamException {
+    public static Employee[] getEmployee(String name) throws TeamException {
         ArrayList<Employee> list = new ArrayList<>();
         for (Employee em : employees) {
             if (em.getName().equals(name)) {
@@ -65,6 +65,6 @@ public class NameListService {
         if (list.size() != 0) {
             return (Employee[]) list.toArray();
         }
-        throw new TeamException("找不到指定的员工");
+        throw new TeamException("找不到指定姓名的员工");
     }
 }

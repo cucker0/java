@@ -64,7 +64,7 @@ public class TeamsService {
         return teams;
     }
 
-    public int getTeamCount() {
+    public int getTeamsCount() {
         return teams.size();
     }
 

@@ -33,4 +33,9 @@ public class Programmer extends Employee{
                 ", memberId: " + memberId +
                 " }";
     }
+
+    @Override
+    public String getDescription() {
+        return "程序员";
+    }
 }
