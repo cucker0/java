@@ -27,8 +27,31 @@ day01_JAVA语言概述与基本语法
 > 1>编译:javac {-encoding utf8} 源文件名，生效多个.class字节码文件，
 > 2>运行:java 类名
 * 单行注释：//
-* 多行注释不能嵌套， /* 注释文本 */
-* 生成文档说明：javadoc -encoding utf8 -d mydoc -author -version HelloJava.java ,java文档说明，以/** 开头的多文本注释
+* 多行注释：/* 注释文本 */  
+多行注释不能嵌套
+* 文档注释：/** */
+```text
+// 示例
+
+/**
+ * @author  Lee Boynton
+ * @author  Arthur van Hoff
+ * @author  Martin Buchholz
+ * @author  Ulf Zibis
+ * @see     java.lang.Object#toString()
+ * @see     java.lang.StringBuffer
+ * @see     java.lang.StringBuilder
+ * @see     java.nio.charset.Charset
+ * @since   1.0
+ * @jls     15.18.1 String Concatenation Operator +
+ */
+```
+## javadoc生成文档说明
+* javadoc格式
+```text
+javadoc -encoding utf8 -d mydoc -author -version HelloJava.java
+java文档说明，以 /** 开头的为多文本注释
+```
 * java源文件的字符集与环境的字符集不一样时（尤其是windows cmd为GBK），这里javac 可指定字符集，如：javac encoding utf8 .java源文件
 
 示例  
