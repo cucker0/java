@@ -67,4 +67,27 @@ public class NameListService {
         }
         throw new TeamException("找不到指定姓名的员工");
     }
+
+    /*
+    * 招聘入职新员工
+    * */
+
+    public static boolean addEmployee(Employee employee) {
+        return employees.add(employee);
+    }
+
+    /*
+    * 员工离职
+    * */
+    public static void resignation(Employee employee) {
+        employee.resignation();
+    }
+
+    /*
+     * 指定ID的员工离职
+     * */
+    public static void resignation(int employeeId) {
+        employees.get(employeeId).resignation();
+
+    }
 }

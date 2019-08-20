@@ -7,7 +7,7 @@ package com.java.domain;
 
 public class Designer extends Employee {
     // 实例变量
-    private double bonus; // 奖金
+    private double bonus; // 年终奖金
 
     // 构造器
     public Designer(String name, int age, double salary) {

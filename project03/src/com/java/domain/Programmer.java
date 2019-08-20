@@ -9,7 +9,7 @@ import com.java.service.EmployeeStatus;
 
 public class Programmer extends Employee{
     // 实例变量
-    private int memberId;
+    private String skill; // 技能：java/php/pythons ...
 
 
     // 构造器
@@ -17,20 +17,29 @@ public class Programmer extends Employee{
         super(name, age, salary);
     }
 
-    // 方法
-    public int getMemberId() {
-        return memberId;
+    public Programmer(String name, int age, double salary, String skill) {
+        this(name, age, salary);
+        setSkill(skill);
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    // 方法
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        if (skill.length() > 0 && skill.length() <= 36) {
+            this.skill = skill;
+        } else {
+            System.out.println("invalid skill name");
+        }
     }
 
     @Override
     public String toString() {
         return "Programmer{ " +
                 getFields() +
-                ", memberId: " + memberId +
+                ", skill: '" + skill + '\'' +
                 " }";
     }
 

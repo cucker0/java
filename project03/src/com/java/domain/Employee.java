@@ -8,6 +8,7 @@ package com.java.domain;
 import com.java.service.EmployeeStatus;
 import com.java.service.EquipmentStatus;
 import com.java.service.Team;
+import com.java.service.TeamException;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -163,6 +164,20 @@ public abstract class Employee { // 抽象类
     }
 
     /*
+    * 员工退出团队
+    * */
+    public void quitTeam() {
+        if (team != null) {
+            try {
+                team.removeMember(this);
+            } catch (TeamException e) {
+//                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    /*
     * 获取员工的岗位名
     * @return   String形式的岗位名
     * */
@@ -212,4 +227,18 @@ public abstract class Employee { // 抽象类
 
     // 列出员工基本信息。抽象方法
     public abstract String getDescription();
+
+    /*
+     * 员工离职
+     * */
+    public void resignation() {
+        // 退出已经加入的团队
+        quitTeam();
+        // 员工状态设置为离职
+        setStatus(EmployeeStatus.RESIGNED);
+        // 归还所有领取的设备
+        for (Equipment eq :equipment) {
+            recycleEquipment(eq);
+        }
+    }
 }

@@ -12,9 +12,10 @@ package com.java.service;
 
 public enum EmployeeStatus {
     // 类实例，且是类常量
-    FREE("FREE"),
-    BUSY("BUSY"),
-    VOCATION("VOCATION");
+    FREE("FREE"), // 未加入团队
+    BUSY("BUSY"), // 已经加入团队
+    VOCATION("VOCATION"), // 休假
+    RESIGNED("RESIGNED"); // 离职
 
     // 属性
     private final String NAME;

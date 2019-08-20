@@ -7,8 +7,10 @@ package com.java.view;
 import com.java.domain.Architect;
 import com.java.domain.Designer;
 import com.java.domain.Employee;
+import com.java.domain.Programmer;
 import com.java.service.*;
 
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 
 public class TeamView {
@@ -36,8 +38,10 @@ public class TeamView {
                 "a 列出所有员工信息\n" +
                 "b 列出所有团队\n" +
                 "c 招聘员工\n" +
-                "d 列出所有设备\n" +
-                "e 添加设备\n" +
+                "d 员工领取设备\n" +
+                "e 员工办理离职\n" +
+                "f 列出所有设备\n" +
+                "g 添加设备\n" +
                 "q 退       出\n" +
                 "\n" +
                 "请选择：";
@@ -192,9 +196,98 @@ public class TeamView {
     }
 
     /*
-    * 招聘员工
+    * 招聘入职新员工
     * */
     public void RecruitingStaff() {
+        String menu = "-----------------招聘入职新员工-----------------\n";
+        // 岗位
+        String post = "a   程序员\n" +
+                "b  设计师\n" +
+                "c  架构师" +
+                "q  退出" +
+                "\n" +
+                "选择项(回车退出)：";
+        System.out.println(menu);
+        System.out.println(post);
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("") || rawCmd.equalsIgnoreCase("q")) {
+            return;
+        }
+
+        System.out.println("姓名(e退出)：");
+        String name = GetInput.getName();
+        if (name.equalsIgnoreCase("e")) {
+            return;
+        }
+        System.out.println("年龄：");
+        int age = GetInput.getNumber();
+        System.out.println("月工资：");
+        double salary = GetInput.getNumber();
+        if (rawCmd.equalsIgnoreCase("a")) {
+            System.out.println("技能：");
+            String skill = GetInput.getName();
+            try {
+                Programmer programmer = new Programmer(name, age, salary, skill);
+                listService.addEmployee(programmer);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (rawCmd.equalsIgnoreCase("b")) {
+            System.out.println("年终奖金, 元(回车表示无)：");
+            String ramCmd = GetInput.getRaw();
+            double bonus = ramCmd.equals("") ? 0 : GetInput.getNumber(ramCmd);
+            try {
+                Designer designer = null;
+                if (bonus > 0) {
+                    designer = new Designer(name, age, salary, bonus);
+                } else {
+                    designer = new Designer(name, age, salary);
+                }
+                listService.addEmployee(designer);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (rawCmd.equalsIgnoreCase("c")) {
+            System.out.println("员工股数(回车表示无)：");
+            String ramCmd = GetInput.getRaw();
+            int stock = ramCmd.equals("") ? 0 : GetInput.getNumber(ramCmd);
+            try {
+                Architect architect;
+                if (stock > 0) {
+                    architect = new Architect(name, age, salary, stock);
+                } else {
+                    architect = new Architect(name, age, salary);
+                }
+                listService.addEmployee(architect);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /*
+    * 员工办理离职
+    * */
+    public void resignation() {
+        listAllEmployees();
+        String menu = "-----------------员工办理离职-----------------\n";
+        System.out.println("选择员工id (回车退出)：");
+        String rawCmd = GetInput.getRaw();
+        if (rawCmd.equals("")) {
+            return;
+        }
+        int num = GetInput.getNumber(rawCmd);
+        NameListService.resignation(num); // 等价于 listService.resignation(num);
+    }
+
+    /*
+    * 列出所有设备
+    * */
+    public void listAllEquipment() {
+        String menu = "-----------------列出设备-----------------\n" +
+                "SN\t状态\t\n";
 
     }
 
@@ -202,7 +295,7 @@ public class TeamView {
     * 添加设备
     * */
     public void addEquipment() {
-
+        String menu = "-----------------添加设备-----------------\n";
     }
 
     /*
