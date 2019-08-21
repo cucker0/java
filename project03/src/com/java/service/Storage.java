@@ -45,7 +45,24 @@ public class Storage {
 
         // 解析数据
         String[][] employees = Data.EMPLOYEES;
-        
+        for (String[] em : employees) {
+            int type = Integer.parseInt(em[0]);
+            int id = Integer.parseInt(em[1]);
+            int teamId = Integer.parseInt(em[2]);
+            String statusString = em[3];
+            EmployeeStatus status = null;
+            try {
+                status = EmployeeStatus.valueOf(statusString);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            String name = em[4];
+            boolean sex = Boolean.parseBoolean(em[5]);
+            int age = Integer.parseInt(em[6]);
+            double salary = Double.parseDouble(em[7]);
+
+
+        }
 
     }
 
@@ -108,6 +125,7 @@ public class Storage {
             for (EquipmentStatus eq: EquipmentStatus.values()) {
                 if (statusSring.equals(eq.toString())) {
                     status = eq;
+                    break;
                 }
             }
 
