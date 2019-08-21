@@ -33,14 +33,14 @@ public class TeamView {
             String item = GetInput.getRaw();
             switch (item) {
                 case "a":
-                    teamDispatch();
+                    teamsMenu();
                     break;
                 case "b":
                     listAllEmployees();
                     break;
-                case "c":
-                    listAllTeams();
-                    break;
+//                case "c":
+//                    listAllTeams();
+//                    break;
                 case "d":
                     recruitingStaff();
                     break;
@@ -75,9 +75,9 @@ public class TeamView {
     public void printMainMenu() {
         String menu = "-----------------团队调度软件-----------------\n" +
                 "\n" +
-                "a 团队人员调度\n" +
+                "a 团队调度管理\n" +
                 "b 列出所有员工信息\n" +
-                "c 列出所有团队\n" +
+//                "c 列出所有团队\n" +
                 "d 招聘员工\n" +
                 "e 员工领取设备\n" +
                 "f 员工办理离职\n" +
@@ -103,7 +103,7 @@ public class TeamView {
             boolean isDesigner = e instanceof Designer;
             String bonusString = isDesigner ? "" + ((Designer) e).getBonus() : "\t";
             String stockString = e instanceof Architect ? "" + ((Architect) e).getStock() : "\t";
-            System.out.printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%s\t%s\t%s",
+            System.out.printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%s\t%s\t%s\n",
                     e.getId(),
                     e.getName(),
                     e.getAge(),
@@ -118,25 +118,75 @@ public class TeamView {
     }
 
     /*
-    * 列出所有团队及相关操作
+    * 团队管理菜单
     * */
     public void teamsMenu () {
-        String menu = "-----------------团队调度软件-----------------\n";
-        String menuItem1 = String.format("选择团队调度管理%s", teamsService.getTeamsCount() == 0 ?
-                "" :
-                (teamsService.getTeamsCount() == 1 ? "(0)" : String.format("(0-%s)", teamsService.getTeamsCount() -1))
-        );
+        String menuTitle = "-----------------团队管理-----------------\n\n";
+        String aItem = "a 团队调度管理\n";
         listAllTeams();
-        String menuItem2 = "a  新建团队\n" +
-                "b  删除团队\n" +
-                "q  退出\n" +
+        String menu = menuTitle +
+                aItem +
+                "b 列出所有团队\n" +
+                "c 新建团队\n" +
+                "d 删除团队\n" +
+                "q 退出\n" +
                 "\n" +
                 "选择：";
-        System.out.println(menu);
-        if (teamsService.getTeamsCount() > 0) {
-            System.out.println(menuItem1);
+
+        while (true) {
+            System.out.println(menu);
+            String rawCmd = GetInput.getRaw();
+            switch (rawCmd) {
+                case "q":
+                    return;
+                case "":
+                    return;
+                case "a":
+                    teamDispatch();
+                    break;
+                case "b":
+                    listAllTeams();
+                    break;
+                case "c":
+                    addTeam();
+                    break;
+                case "d":
+                    deleteTeam();
+                    break;
+                default:
+                    break;
+
+            }
+
         }
-        System.out.println(menuItem2);
+
+    }
+
+    /*
+    * 新建团队
+    * */
+    public void addTeam() {
+        String menu = "-----------------新建团队-----------------\n";
+        System.out.println("团队名：");
+        String name = GetInput.getName();
+        Team team = new Team(name);
+        String tips = "\n" +
+                "a 添加岗位需求\n" +
+                "q 退出\n" +
+                "\n" +
+                "选择操作项(回车)：";
+        String ramCmd = GetInput.getRaw();
+        if (ramCmd.equals("q") || ramCmd.equals("")) {
+            return;
+        } else if (ramCmd.equals("a")) {
+            addTeamPost(team);
+        }
+    }
+
+    /*
+    * 删除团队
+    * */
+    public void deleteTeam() {
 
     }
 
@@ -170,12 +220,13 @@ public class TeamView {
     public void printTeamMenu(Team team) {
         if (checkTeamIsNull(team)) return;
         String menu = String.format("-----------------团队调度管理(%s)-----------------\n" +
-                "a 添加成员\n" +
-                "b 删除成员\n" +
-                "c 列出成员\n" +
-                "d 调整岗位成员预招人数\n" +
-                "e 团队增加一个岗位\n" +
-                "f 团队删除一个岗位\n" +
+                "a 列出成员\n" +
+                "b 添加成员\n" +
+                "c 删除成员\n" +
+                "d 查看成员结构\n" +
+                "e 调整岗位成员预招人数\n" +
+                "f 团队增加一个岗位\n" +
+                "g 团队删除一个岗位\n" +
                 "q 退出\n" +
                 "\n" +
                 "选择操作项(回车退出)：", team.getName());
@@ -220,21 +271,24 @@ public class TeamView {
             // 相应的选项操作
             switch (item) {
                 case "a":
-                    addMemberToTeam(team);
-                    break;
-                case "b":
-                    deleteMemterFromTeam(team);
-                    break;
-                case "c":
                     listAteamMembers(team);
                     break;
+                case "b":
+                    addMemberToTeam(team);
+                    break;
+                case "c":
+                    deleteMemterFromTeam(team);
+                    break;
                 case "d":
-                    modifyTeamPostMax(team);
+                    listTeamMembersStructor(team);
                     break;
                 case "e":
-                    addTeamPost(team);
+                    modifyTeamPostMax(team);
                     break;
                 case "f":
+                    addTeamPost(team);
+                    break;
+                case "g":
                     deleteTeamPost(team);
                     break;
                 default:
@@ -254,7 +308,7 @@ public class TeamView {
                 "ID     姓名      年龄   职位      状态\n", team.getName());
         System.out.println(menu);
         for (Employee e : team.getMembers()) {
-            System.out.printf("%s\t%s\t%-3d\t%s\t%s",
+            System.out.printf("%s\t%s\t%-3d\t%s\t%s\n",
                     e.getId(),
                     e.getName(),
                     e.getAge(),
@@ -321,7 +375,7 @@ public class TeamView {
     * */
     public void listTeamMembersStructor(Team team) {
         if (checkTeamIsNull(team)) return;
-        team.showMembersStructor();
+        System.out.println(team.showMembersStructor());
     }
 
     /*

@@ -75,7 +75,11 @@ public class TeamsService {
     * @return   a team
     * */
     public Team getTeam(int teamId) {
-        return teams.get(teamId);
+        if (teamId < teams.size() && teamId >= 0) {
+            return teams.get(teamId);
+        }
+        System.out.println("没有此ID的团队");
+        return null;
     }
 
 }

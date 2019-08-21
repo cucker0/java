@@ -6,10 +6,8 @@
 package test.com.java;
 
 import com.java.domain.*;
-import com.java.service.EquipmentRepository;
-import com.java.service.EquipmentStatus;
-import com.java.service.Team;
-import com.java.service.TeamException;
+import com.java.service.*;
+import com.java.view.TeamView;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -65,11 +63,18 @@ public class Mytest {
         membersStructor.put(Designer.class, post2);
         membersStructor.put(Architect.class, post3);
         Team t1 = new Team("DevelopmentTeam", membersStructor);
+        TeamsService teamsService = new TeamsService();
+        teamsService.addTeam(t1);
 
         Programmer p1 = new Programmer("章亦春", 28, 60000);
         Designer d1 = new Designer("雷响", 22, 50000);
         Architect a1 = new Architect("马云", 50, 200000);
         Architect a2 = new Architect("李彦宏", 46, 200000);
+        NameListService.addEmployee(p1);
+        NameListService.addEmployee(d1);
+        NameListService.addEmployee(a1);
+        NameListService.addEmployee(a2);
+
 //        try {
 //            t1.addMember(p1);
 //            t1.addMember(d1);
@@ -117,6 +122,12 @@ public class Mytest {
         d1.receiveEquipment(e);
         System.out.println(repository);
 
+    }
+
+    @Test
+    public void test4() {
+        test3();
+        TeamView.main(new String[]{});
     }
 
 

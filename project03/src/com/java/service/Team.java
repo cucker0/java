@@ -235,13 +235,15 @@ public class Team {
                 } else if (ret == 1) {
                     throw new TeamException(String.format("%s团队%s岗位只需要%d个成员,已经满员\n", name, member.getPost(), (int) postRequirements.get("max")));
 
-                } else if (ret == 2) { // 团队的该岗位人数为满，添加成员
+                } else if (ret == 2) { // 团队的该岗位人数未满，添加成员
                     boolean status = members.add(member);
                     if (status) {
                         int i = (int) postRequirements.get("total");
                         ++i;
                         postRequirements.put("total", i);
+                        member.setStatus(EmployeeStatus.BUSY);
                     }
+                    return status;
                 }
             } else if (member.getStatus() == EmployeeStatus.BUSY) {
                 throw new TeamException(String.format("该员工已是%s团队的成员\n", member.getTeam().getName()));
