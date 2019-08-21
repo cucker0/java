@@ -10,13 +10,17 @@ public class Designer extends Employee {
     private double bonus; // 年终奖金
 
     // 构造器
-    public Designer(String name, int age, double salary) {
-        super(name, age, salary);
-
+    public Designer(String name, boolean sex, int age, double salary) {
+        super(name, sex, age, salary);
     }
 
-    public Designer(String name, int age, double salary, double bonus) {
+    // 省略性别为女性
+    public Designer(String name, int age, double salary) {
         super(name, age, salary);
+    }
+
+    public Designer(String name, boolean sex, int age, double salary, double bonus) {
+        super(name, sex, age, salary);
         this.bonus = bonus;
     }
 

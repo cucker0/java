@@ -76,14 +76,14 @@ public class GetInput {
 
     public static boolean getSex() {
         // 获取性别指令
-        // 输入0:女性，其他数字为男性
+        // 输入 1:男性，其他数字为女性
         String rawCmd = getRaw();
         if (rawCmd.equals("")) { // 回车时表示 默认选择女性
             return true;
         }
-        System.out.println("getSex === 1.debug  ");
+//        System.out.println("getSex === 1.debug  ");
         int i = getNumber(rawCmd);
-        System.out.println("getSex === 2.debug  ");
+//        System.out.println("getSex === 2.debug  ");
         if (i == 1) {
             return false;
         }

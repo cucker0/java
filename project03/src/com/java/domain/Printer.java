@@ -5,6 +5,9 @@
 
 package com.java.domain;
 
+import com.java.service.EquipmentStatus;
+import com.java.service.TeamException;
+
 public class Printer extends EquipmentBasic implements Equipment {
     // 实例变量
     private String name;
@@ -18,6 +21,12 @@ public class Printer extends EquipmentBasic implements Equipment {
 
     public Printer(String name, String type) {
         this(name);
+        this.type = type;
+    }
+
+    public Printer(int sn, String name, String type, EquipmentStatus status) throws TeamException {
+        super(sn, status);
+        setName(name);
         this.type = type;
     }
 

@@ -13,12 +13,16 @@ public class Programmer extends Employee{
 
 
     // 构造器
+    public Programmer(String name, boolean sex, int age, double salary) {
+        super(name, sex, age, salary);
+    }
+
     public Programmer(String name, int age, double salary) {
         super(name, age, salary);
     }
 
-    public Programmer(String name, int age, double salary, String skill) {
-        this(name, age, salary);
+    public Programmer(String name, boolean sex, int age, double salary, String skill) {
+        this(name, sex, age, salary);
         setSkill(skill);
     }
 

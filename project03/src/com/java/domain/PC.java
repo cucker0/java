@@ -4,6 +4,9 @@
 * */
 package com.java.domain;
 
+import com.java.service.EquipmentStatus;
+import com.java.service.TeamException;
+
 public class PC extends EquipmentBasic implements Equipment {
     // 实例变量
     private String model;
@@ -17,6 +20,12 @@ public class PC extends EquipmentBasic implements Equipment {
     public PC(String model, String display) {
 //        this.model = model;
 //        this.display = display;
+        setModel(model);
+        setDisplay(display);
+    }
+
+    public PC(int sn, String model, String display, EquipmentStatus status) throws TeamException {
+        super(sn, status);
         setModel(model);
         setDisplay(display);
     }

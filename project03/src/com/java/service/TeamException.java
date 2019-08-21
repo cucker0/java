@@ -1,3 +1,7 @@
+/*
+* 自定义异常类
+* */
+
 package com.java.service;
 
 public class TeamException extends Exception{

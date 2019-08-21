@@ -33,6 +33,16 @@ public class Team {
         idProcess();
     }
 
+    public Team(int id, String name, LinkedHashMap<Class, HashMap> membersStructor) throws TeamException {
+        if (id < init) {
+            this.id = id;
+            setName(name);
+            setMembersStructor(membersStructor);
+        } else {
+            throw new TeamException("无效id");
+        }
+    }
+
     // 方法
     private void idProcess() {
         id = init;
@@ -309,5 +319,11 @@ public class Team {
                 ", membersStructor=" + showMembersStructor() + "\n" +
                 ", members=" + members + "\n" +
                 '}';
+    }
+
+    public static void setInit(int init) {
+        if (init >= 1) {
+            Team.init = init;
+        }
     }
 }

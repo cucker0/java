@@ -5,6 +5,9 @@
 
 package com.java.domain;
 
+import com.java.service.EquipmentStatus;
+import com.java.service.TeamException;
+
 public class NoteBook extends EquipmentBasic implements Equipment {
     // 实例变量
     private String model;
@@ -12,6 +15,12 @@ public class NoteBook extends EquipmentBasic implements Equipment {
 
     // 构造器
     public NoteBook(String model, double price) {
+        this.model = model;
+        this.price = price;
+    }
+
+    public NoteBook(int sn, String model, double price, EquipmentStatus status) throws TeamException {
+        super(sn, status);
         this.model = model;
         this.price = price;
     }

@@ -94,18 +94,19 @@ public class TeamView {
     * 列出公司所有员工信息
     * */
     private void listAllEmployees() {
-        String menu = "-------------------------------------团队调度软件--------------------------------------\n" +
+        String menu = String.format("-------------------------------------团队调度软件--------------------------------------\n" +
                 "\n" +
-                "ID     姓名      年龄    工资         职位      状态      奖金        股票     领用设备" +
-                "\n";
+                "%-4s\t%-16s\t%-4s\t%-4s\t%-12s\t%-10s\t%-8s\t%-12s\t%-8s\t%s" +
+                "\n", "ID", "姓名", "性别", "年龄", "工资(￥)", "职位", "状态", "奖金(￥)", "股票", "领用设备" );
         System.out.println(menu);
         for (Employee e : listService.getAllEmployees()) {
             boolean isDesigner = e instanceof Designer;
-            String bonusString = isDesigner ? "" + ((Designer) e).getBonus() : "\t";
+            String bonusString = isDesigner ? String.format("%.2f", ((Designer) e).getBonus()) : "";
             String stockString = e instanceof Architect ? "" + ((Architect) e).getStock() : "\t";
-            System.out.printf("%s\t%s\t%d\t%.2f\t%s\t%s\t%s\t%s\t%s\n",
+            System.out.printf("%-4d\t%-16s\t%-4s\t%-4d\t%-12.2f\t%-10s\t%-8s\t%-12s\t%-8s\t%s\n",
                     e.getId(),
                     e.getName(),
+                    e.sexString(),
                     e.getAge(),
                     e.getSalary(),
                     e.getDescription(),
@@ -305,12 +306,14 @@ public class TeamView {
     public void listAteamMembers(Team team) {
         if (checkTeamIsNull(team)) return;
         String menu = String.format("-----------------%s团队成员-----------------\n\n" +
-                "ID     姓名      年龄   职位      状态\n", team.getName());
+                "%-4s\t%-16s\t%-4s\t%-4s\t%-6s\t%-6s\n", team.getName(),
+                "ID", "姓名", "性别", "年龄", "职位", "状态");
         System.out.println(menu);
         for (Employee e : team.getMembers()) {
-            System.out.printf("%s\t%s\t%-3d\t%s\t%s\n",
+            System.out.printf("%-4s\t%-16s\t%-4s\t%-4d\t%-6s\t%-6s\n",
                     e.getId(),
                     e.getName(),
+                    e.sexString(),
                     e.getAge(),
                     e.getDescription(),
                     e.getStatus()
@@ -389,7 +392,7 @@ public class TeamView {
 //        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         for (Map.Entry<Class, HashMap> entry : team.getMembersStructor().entrySet()) {
             String[] sArr = entry.getKey().toString().split("\\.");
-            System.out.printf("岗位:%s, 预招:%s个, 实招:%s个。预招修改为(回车退出)：\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+            System.out.printf("岗位:%-10s, \t预招:%-4s个, \t实招:%-4s个。预招修改为(回车退出)：\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
             String rawCmd = GetInput.getRaw();
             if (!rawCmd.equals("")) {
                 int num = GetInput.getNumber(rawCmd);
@@ -483,15 +486,22 @@ public class TeamView {
         if (name.equalsIgnoreCase("e")) {
             return;
         }
+        System.out.println("性别(0或回车:女, 1:男)：");
+        boolean sex = GetInput.getSex();
         System.out.println("年龄：");
         int age = GetInput.getNumber();
         System.out.println("月工资：");
         double salary = GetInput.getNumber();
         if (rawCmd.equalsIgnoreCase("a")) {
-            System.out.println("技能：");
-            String skill = GetInput.getName();
+            System.out.println("技能(回车为填)：");
+            String skill = GetInput.getRaw();
             try {
-                Programmer programmer = new Programmer(name, age, salary, skill);
+                Programmer programmer = null;
+                if (skill.length() > 0) {
+                    programmer = new Programmer(name, sex, age, salary, skill);
+                } else {
+                    programmer = new Programmer(name, sex, age, salary);
+                }
                 listService.addEmployee(programmer);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -504,9 +514,9 @@ public class TeamView {
             try {
                 Designer designer = null;
                 if (bonus > 0) {
-                    designer = new Designer(name, age, salary, bonus);
+                    designer = new Designer(name, sex, age, salary, bonus);
                 } else {
-                    designer = new Designer(name, age, salary);
+                    designer = new Designer(name, sex, age, salary);
                 }
                 listService.addEmployee(designer);
             } catch (Exception e) {
@@ -520,9 +530,9 @@ public class TeamView {
             try {
                 Architect architect;
                 if (stock > 0) {
-                    architect = new Architect(name, age, salary, stock);
+                    architect = new Architect(name, sex, age, salary, stock);
                 } else {
-                    architect = new Architect(name, age, salary);
+                    architect = new Architect(name, sex, age, salary);
                 }
                 listService.addEmployee(architect);
             } catch (Exception e) {
@@ -572,12 +582,13 @@ public class TeamView {
     * 列出所有设备
     * */
     public void listAllEquipment() {
-        String menu = "-----------------列出设备-----------------\n" +
-                "index\tSN\t描述\t状态\n";
+        String menu = String.format("-----------------列出设备-----------------\n" +
+                "%-5s\t%-5s\t%-12s\t%s\n",
+                "index", "SN", "状态", "描述");
         System.out.println(menu);
         ArrayList<Equipment> list = equipmentRepository.getRepository();
         for (int i= 0; i < list.size(); ++i) {
-            System.out.printf("%d\t%s\t%s\n", i, list.get(i).getSn(), list.get(i).getDescription());
+            System.out.printf("%-5d\t%-5s\t%-12s\t%s\n", i, list.get(i).getSn(),list.get(i).getStatus(), list.get(i).getDescription());
         }
         System.out.println();
     }

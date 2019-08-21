@@ -10,13 +10,17 @@ public class Architect extends Employee {
     private int stock; // 持有的股票数量
 
     // 构造器
+    // 女性
     public Architect(String name, int age, double salary) {
         super(name, age, salary);
     }
 
-    public Architect(String name, int age, double salary, int stock) {
-        this(name, age, salary);
-//        this.stock = stock;
+    public Architect(String name, boolean sex, int age, double salary) {
+        super(name, sex, age, salary);
+    }
+
+    public Architect(String name, boolean sex, int age, double salary, int stock) {
+        this(name, sex, age, salary);
         setStock(stock);
     }
 

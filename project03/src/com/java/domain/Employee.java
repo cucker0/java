@@ -21,6 +21,7 @@ public abstract class Employee { // 抽象类
     private int id; // 员工编号
     private String name;
     private int age;
+    private boolean sex; // true: 女, false:男
     private double salary; // 薪水
     private LinkedList<Equipment> equipment = new LinkedList<>(); // 该员工领取的办公设备
     private EmployeeStatus status = EmployeeStatus.FREE; // 员工默认在岗状态为空闲，即未加入任何团队
@@ -29,21 +30,52 @@ public abstract class Employee { // 抽象类
     // 构造器
     public Employee() {}
 
+    // 省略性别为女性
     public Employee(String name, int age, double salary) {
+        initIncrement();
+        setName(name);
+        setAge(age);
+        sex = true;
+        setSalary(salary);
+    }
+
+    public Employee(String name, boolean sex, int age, double salary) {
         initIncrement();
 //        this.name = name;
 //        this.age = age;
 //        this.salary = salary;
         setName(name);
         setAge(age);
+        this.sex = sex;
         setSalary(salary);
     }
 
+    public Employee(int id, String name, boolean sex, int age, double salary) throws TeamException {
+        if (id < init) {
+            this.id = id;
+            setName(name);
+            setAge(age);
+            this.sex = sex;
+            setSalary(salary);
+        } else {
+            throw new TeamException("id无效");
+        }
+    }
 
     // 方法
     private void initIncrement() {
         id = init;
         ++init;
+    }
+
+    public static int getInit() {
+        return init;
+    }
+
+    public static void setInit(int init) {
+        if (init >= 1) {
+            Employee.init = init;
+        }
     }
 
     public int getId() {
@@ -72,6 +104,21 @@ public abstract class Employee { // 抽象类
         } else {
             System.out.println("Employee age范围(0, 150]");
         }
+    }
+
+    public boolean getSex() {
+        return sex;
+    }
+
+    /*
+    * 获取String型的sex
+    * */
+    public String sexString() {
+        return sex ? "女" : "男";
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
     }
 
     public double getSalary() {
@@ -191,6 +238,7 @@ public abstract class Employee { // 抽象类
         return " id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", sex=" + sexString() +
                 ", salary=" + salary +
                 ", status=" + status;
     }

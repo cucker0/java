@@ -6,10 +6,11 @@
 package com.java.domain;
 
 import com.java.service.EquipmentStatus;
+import com.java.service.TeamException;
 
 public class EquipmentBasic {
     // 类变量
-    private static int snInit = 0;
+    private static int snInit = 1;
 
     // 实例属性
     private int sn; // 设备序列号
@@ -18,6 +19,15 @@ public class EquipmentBasic {
     // 构造器
     public EquipmentBasic() {
         snInitIncrement();
+    }
+
+    public EquipmentBasic(int sn, EquipmentStatus status) throws TeamException {
+        if (sn < snInit && sn > 0) {
+            this.sn = sn;
+            this.status = status;
+        } else {
+            throw new TeamException("sn无效");
+        }
     }
 
     // 方法
@@ -38,4 +48,15 @@ public class EquipmentBasic {
         this.status = status;
     }
 
+    public static int getSnInit() {
+        return snInit;
+    }
+
+    public static void setSnInit(int init) {
+        if (init >= 1) {
+            snInit = init;
+        } else {
+            System.out.println("snInit无效");
+        }
+    }
 }
