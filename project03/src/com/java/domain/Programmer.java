@@ -6,6 +6,7 @@
 package com.java.domain;
 
 import com.java.service.EmployeeStatus;
+import com.java.service.TeamException;
 
 public class Programmer extends Employee{
     // 实例变量
@@ -26,6 +27,11 @@ public class Programmer extends Employee{
         setSkill(skill);
     }
 
+    public Programmer(int id, String name, boolean sex, int age, double salary, String skill) throws TeamException {
+        super(id, name, sex, age, salary);
+        setSkill(skill);
+    }
+
     // 方法
     public String getSkill() {
         return skill;
@@ -35,7 +41,7 @@ public class Programmer extends Employee{
         if (skill.length() > 0 && skill.length() <= 36) {
             this.skill = skill;
         } else {
-            System.out.println("invalid skill name");
+//            System.out.println("invalid skill name");
         }
     }
 

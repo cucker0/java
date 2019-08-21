@@ -11,6 +11,7 @@ import com.java.domain.*;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 public class Storage {
     // 保存数据的文件路径，使用绝对路径
@@ -27,9 +28,13 @@ public class Storage {
     // 方法
     /*
     * 从文件加载数据
+    * 注意：加载顺
+    *   设备->团队->员工
     * */
     public void read() {
-
+        readTeams();
+        readEquipment();
+        readEmployees();
     }
 
     /*
@@ -48,7 +53,12 @@ public class Storage {
         for (String[] em : employees) {
             int type = Integer.parseInt(em[0]);
             int id = Integer.parseInt(em[1]);
-            int teamId = Integer.parseInt(em[2]);
+            int teamId = -1;
+            try {
+                teamId = Integer.parseInt(em[2]);
+            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+            }
             String statusString = em[3];
             EmployeeStatus status = null;
             try {
@@ -60,10 +70,103 @@ public class Storage {
             boolean sex = Boolean.parseBoolean(em[5]);
             int age = Integer.parseInt(em[6]);
             double salary = Double.parseDouble(em[7]);
+            String equipmentString = em[8]; // 已领取的设备sn, 多个sn之间使用,分割
+
+            switch (type) {
+                case Data.PROGRAMMER:
+                    String skill = em.length == 10 ? em[9] : "";
+                    try {
+                        Programmer p = new Programmer(id, name, sex, age, salary, skill);
+                        restoreEmployee(p, teamId, equipmentString);
+                    } catch (TeamException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case Data.DESIGNER:
+                    double bonus = -1.0;
+                    try {
+                        bonus = Double.parseDouble(em[9]);
+                    } catch (NumberFormatException e) {
+//                        e.printStackTrace();
+                    }
+                    try {
+                        Designer d = new Designer(id, name, sex, age, salary, bonus);
+                        restoreEmployee(d, teamId, equipmentString);
+                    } catch (TeamException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case Data.ARCHITECT:
+                    bonus = -1.0;
+                    try {
+                        bonus = Double.parseDouble(em[9]);
+                    } catch (NumberFormatException e) {
+//                        e.printStackTrace();
+                    }
+                    int stock = Integer.parseInt(em[10]);
+                    try {
+                        Architect a = new Architect(id, name, sex, age, salary, bonus, stock);
+                        restoreEmployee(a, teamId, equipmentString);
+                    } catch (TeamException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case Data.GeneralStaff:
+                    try {
+                        GeneralStaff g = new GeneralStaff(id, name, sex, age, salary);
+                        restoreEmployee(g, teamId, equipmentString);
+                    } catch (TeamException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
 
 
         }
 
+    }
+
+    /*
+    * 领取的设备，重新领取
+    * @param    equipmentString
+    *           设备序列号字符串，如："3,5"
+    * @param    employee
+    *           员工
+    * */
+    private void receiveEquipment(String equipmentString, Employee employee) {
+        if (equipmentString.contains(",")) {
+            String[] equipmentArr = equipmentString.split(",");
+            for (String eq : equipmentArr) {
+                try {
+                    int equipmentSn = Integer.parseInt(eq);
+                    employee.restoreEquipment(equipmentRepository.getEquipment(equipmentSn));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /*
+    * 从文件中读取员工数，恢复员工数据
+    * @param    employee
+    *           员工对象
+    * @param    teamId
+    *           已加入的team id
+    * @param    equipmentString
+    *           设备序列号字符串，如："3,5"
+    * */
+    private void restoreEmployee(Employee employee, int teamId, String equipmentString) {
+        listService.addEmployee(employee);
+        receiveEquipment(equipmentString, employee);
+        if (teamId != -1) {
+            try {
+                teamsService.getTeam(teamId).addMember(employee);
+            } catch (TeamException e) {
+//                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private void readTeams() {
@@ -95,6 +198,7 @@ public class Storage {
                     }
                     if (clazz != null) {
                         hMap.put("max", m);
+                        hMap.put("total", 0);
                         membersStructor.put(clazz, hMap);
                     }
                 } catch (NumberFormatException e) {
@@ -108,7 +212,6 @@ public class Storage {
                 System.out.println(e.getMessage());
             }
         }
-
     }
 
     private void readEquipment() {

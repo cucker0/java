@@ -164,12 +164,13 @@ public class Team {
         String str = "";
         if (membersStructor != null) {
             Set<Map.Entry<Class, HashMap>> entrysSet = membersStructor.entrySet();
-            str += "{\n";
+            str += String.format("-----------------%s团队成员结构-----------------\n\n" +
+                    "%-12s\t%-12s\t%-12s\n", name, "岗位", "预招(个)", "实招(个)");
             for (Map.Entry<Class, HashMap> entry : entrysSet) {
                 String[] sArr = entry.getKey().toString().split("\\.");
-                str += String.format("岗位:%s, 预招:%s个, 实招:%s个\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+                str += String.format("%-12s\t%-12s\t%-12s\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
             }
-            str += "}";
+            str += "\n";
         }
         return str;
     }
@@ -252,6 +253,7 @@ public class Team {
                         ++i;
                         postRequirements.put("total", i);
                         member.setStatus(EmployeeStatus.BUSY);
+                        member.setTeam(this);
                     }
                     return status;
                 }

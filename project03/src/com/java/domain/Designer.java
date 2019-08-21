@@ -1,9 +1,11 @@
 /*
 * 设计师
-*
+* 有年终奖
 * */
 
 package com.java.domain;
+
+import com.java.service.TeamException;
 
 public class Designer extends Employee {
     // 实例变量
@@ -21,7 +23,12 @@ public class Designer extends Employee {
 
     public Designer(String name, boolean sex, int age, double salary, double bonus) {
         super(name, sex, age, salary);
-        this.bonus = bonus;
+        setBonus(bonus);
+    }
+
+    public Designer(int id, String name, boolean sex, int age, double salary, double bonus) throws TeamException {
+        super(id, name, sex, age, salary);
+        setBonus(bonus);
     }
 
     // 方法

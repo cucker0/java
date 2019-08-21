@@ -163,6 +163,7 @@ public abstract class Employee { // 抽象类
      *          操作状态
      * */
     public boolean receiveEquipment(Equipment aEquipment) {
+        if (aEquipment == null) return false;
         if (aEquipment.getStatus() == EquipmentStatus.FREE) {
             boolean status = equipment.add(aEquipment);
             if (status) {
@@ -173,6 +174,22 @@ public abstract class Employee { // 抽象类
             System.out.println("设备已经被领用");
         } else if (aEquipment.getStatus() == EquipmentStatus.SCRAP) {
             System.out.println("设备已经作废处理了");
+        }
+        return false;
+    }
+
+    /*
+    * 为从文件读取员工领用设备的关系数据到程序
+    * @prama    aEquipment
+    *           一件设备
+    * */
+    public boolean restoreEquipment(Equipment aEquipment) {
+        if (aEquipment.getStatus() != EquipmentStatus.SCRAP) {
+            boolean status = equipment.add(aEquipment);
+            if (status) {
+                aEquipment.setStatus(EquipmentStatus.USING);
+            }
+            return status;
         }
         return false;
     }

@@ -75,7 +75,7 @@ public class TeamView {
     public void printMainMenu() {
         String menu = "-----------------团队调度软件-----------------\n" +
                 "\n" +
-                "a 团队调度管理\n" +
+                "a 团队管理\n" +
                 "b 列出所有员工信息\n" +
 //                "c 列出所有团队\n" +
                 "d 招聘员工\n" +
@@ -96,9 +96,9 @@ public class TeamView {
     private void listAllEmployees() {
         String menu = String.format("-------------------------------------团队调度软件--------------------------------------\n" +
                 "\n" +
-                "%-4s\t%-16s\t%-4s\t%-4s\t%-12s\t%-10s\t%-8s\t%-12s\t%-8s\t%s" +
-                "\n", "ID", "姓名", "性别", "年龄", "工资(￥)", "职位", "状态", "奖金(￥)", "股票", "领用设备" );
-        System.out.println(menu);
+                "%-4s\t%-16s\t%-4s\t%-4s\t%-12s\t%-10s\t%-8s\t%-12s\t%-8s\t%s\n",
+                "ID", "姓名", "性别", "年龄", "工资(￥)", "职位", "状态", "奖金(￥)", "股票", "领用设备" );
+        System.out.print(menu);
         for (Employee e : listService.getAllEmployees()) {
             boolean isDesigner = e instanceof Designer;
             String bonusString = isDesigner ? String.format("%.2f", ((Designer) e).getBonus()) : "";
@@ -123,7 +123,7 @@ public class TeamView {
     * */
     public void teamsMenu () {
         String menuTitle = "-----------------团队管理-----------------\n\n";
-        String aItem = "a 团队调度管理\n";
+        String aItem = "a 团队人力资源调度\n";
         listAllTeams();
         String menu = menuTitle +
                 aItem +
@@ -195,11 +195,12 @@ public class TeamView {
     * 列出所有团队
     * */
     public void listAllTeams() {
-        String menu = String.format("-----------------共%d个团队-----------------\n", teamsService.getTeamsCount());
+        String menu = String.format("-----------------共%d个团队-----------------\n\n" +
+                "%-6s\t%s\n", teamsService.getTeamsCount(), "ID", "团队名");
         System.out.println(menu);
         LinkedList<Team> teams = teamsService.getTeams();
         for (int i = 0; i < teams.size(); ++i) {
-            System.out.printf("%-2d%s\n", i, teams.get(i).getName());
+            System.out.printf("%-6d\t%s\n", teams.get(i).getId(), teams.get(i).getName());
         }
         System.out.println();
     }
@@ -308,7 +309,7 @@ public class TeamView {
         String menu = String.format("-----------------%s团队成员-----------------\n\n" +
                 "%-4s\t%-16s\t%-4s\t%-4s\t%-6s\t%-6s\n", team.getName(),
                 "ID", "姓名", "性别", "年龄", "职位", "状态");
-        System.out.println(menu);
+        System.out.print(menu);
         for (Employee e : team.getMembers()) {
             System.out.printf("%-4s\t%-16s\t%-4s\t%-4d\t%-6s\t%-6s\n",
                     e.getId(),
@@ -524,13 +525,16 @@ public class TeamView {
             }
         }
         if (rawCmd.equalsIgnoreCase("c")) {
+            System.out.println("年终奖金, 元(回车表示无)：");
+            String ramCmd1 = GetInput.getRaw();
+            double bonus = ramCmd1.equals("") ? 0 : GetInput.getNumber(ramCmd1);
             System.out.println("员工股数(回车表示无)：");
             String ramCmd = GetInput.getRaw();
             int stock = ramCmd.equals("") ? 0 : GetInput.getNumber(ramCmd);
             try {
                 Architect architect;
                 if (stock > 0) {
-                    architect = new Architect(name, sex, age, salary, stock);
+                    architect = new Architect(name, sex, age, salary, bonus, stock);
                 } else {
                     architect = new Architect(name, sex, age, salary);
                 }
@@ -670,6 +674,11 @@ public class TeamView {
     * 程序入口
     * */
     public static void main(String[] args) {
+        // 从文件加载数据
+        Storage storage = new Storage();
+        storage.read();
+
+        // 进入主菜单
         TeamView teamView = new TeamView();
         teamView.enterMainMenu();
     }

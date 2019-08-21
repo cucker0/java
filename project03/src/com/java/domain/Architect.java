@@ -1,11 +1,13 @@
 /*
 * 架构师
-*
+* 有年终奖、员工股
 * */
 
 package com.java.domain;
 
-public class Architect extends Employee {
+import com.java.service.TeamException;
+
+public class Architect extends Designer {
     // 属性
     private int stock; // 持有的股票数量
 
@@ -19,8 +21,13 @@ public class Architect extends Employee {
         super(name, sex, age, salary);
     }
 
-    public Architect(String name, boolean sex, int age, double salary, int stock) {
-        this(name, sex, age, salary);
+    public Architect(String name, boolean sex, int age, double salary, double bonus, int stock) {
+        super(name, sex, age, salary, bonus);
+        setStock(stock);
+    }
+
+    public Architect(int id, String name, boolean sex, int age, double salary, double bonus, int stock) throws TeamException {
+        super(id, name, sex, age, salary, bonus);
         setStock(stock);
     }
 
