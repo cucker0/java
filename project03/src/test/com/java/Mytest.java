@@ -127,12 +127,6 @@ public class Mytest {
     }
 
     @Test
-    public void test4() {
-        test3();
-        TeamView.main(new String[]{});
-    }
-
-    @Test
     public void test5() {
 //        String str = "2 - 1";
 //        int i = Integer.parseInt(str); // 解析失败
