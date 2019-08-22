@@ -9,9 +9,13 @@ package com.java.service;
 
 import com.java.domain.*;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Storage {
     // 保存数据的文件路径，使用绝对路径
@@ -19,6 +23,28 @@ public class Storage {
     private static NameListService listService = new NameListService();
     private static TeamsService teamsService = new TeamsService();
     private static EquipmentRepository equipmentRepository = new EquipmentRepository();
+    // 保存数据的文档头
+    private static final String documentHead = "/*\n" +
+            "* 数据源\n" +
+            "* 启动时，把这些数据导入到程序\n" +
+            "* 退出时保存数据到此文件\n" +
+            "* */\n" +
+            "\n" +
+            "package com.java.service;\n" +
+            "\n" +
+            "\n" +
+            "public class Data {\n" +
+            "    public static final int GeneralStaff = 10;\n" +
+            "    public static final int PROGRAMMER = 11;\n" +
+            "    public static final int DESIGNER = 12;\n" +
+            "    public static final int ARCHITECT = 13;\n" +
+            "\n" +
+            "    public static final int PC = 21;\n" +
+            "    public static final int NOTEBOOK = 22;\n" +
+            "    public static final int PRINTER = 23;\n\n";
+
+    // 保存数据的文档尾
+    private static final String documentTail = "}\n";
 
     // 构造器
     public Storage() {
@@ -28,8 +54,9 @@ public class Storage {
     // 方法
     /*
     * 从文件加载数据
-    * 注意：加载顺
+    * 注意：加载顺序
     *   设备->团队->员工
+    * 员工数据要最后加载，因为员工要重新执行领取设备、加入团队操作
     * */
     public static void read() {
         readTeams();
@@ -39,9 +66,35 @@ public class Storage {
 
     /*
     * 从程序保存数据到文件
+    * 注意保存顺序：
+    *   文档头 -> 其他数据 -> 文档尾
+    *
     * */
     public static void save() {
-
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(new FileWriter(filePath));
+            bw.write(documentHead);
+            bw.flush();
+            bw.write(saveEployees());
+            bw.flush();
+            bw.write(saveEquipment());
+            bw.flush();
+            bw.write(saveTeams());
+            bw.flush();
+            bw.write(documentTail);
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private static void readEmployees() {
@@ -267,4 +320,168 @@ public class Storage {
         }
 
     }
+
+    private static String saveTeams() {
+        // String[][] TEAMS 数组头
+        String str = String.format("    /*\n" +
+                "    * teams 数组形式数据\n" +
+                "    * */\n" +
+                "    public static final int TEAMS_INIT = %s;\n" +
+                "    // Team: id, name, \"post1,max,total\", \"post2,max,total\" ...\n" +
+                "    public static final String[][] TEAMS = {\n",
+                Team.getInit());
+        // 遍历团队数组
+        // 格式：id, name, "post1,max,total", "post2,max,total" ...
+        for (int i = 0; i < teamsService.getTeams().size(); ++i) {
+            Team t = teamsService.getTeams().get(i);
+            String aTeam = "            {";
+            aTeam += String.format("\"%s\", \"%s\"%s", t.getId(), t.getName(), teamMembersStructorToString(t));
+
+            if (i == teamsService.getTeams().size() -1) {
+                aTeam += "}\n";
+            } else {
+                aTeam += "},\n";
+            }
+            str += aTeam;
+        }
+
+        // String[][] TEAMS 数组尾
+        str += "    };\n\n";
+        return str;
+    }
+
+    /*
+    * 指定团队的成员结构转换成String
+    * */
+    private static String teamMembersStructorToString(Team team) {
+        String str = "";
+        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
+        // 格式：, "Programmer,3,1", "Designer,2,1", "Architect,1,0"
+        for (Map.Entry<Class, HashMap> entry : membersStructor.entrySet()) {
+            String[] clazzStringArr = entry.getKey().toString().split("\\.");
+            str += String.format(", \"%s,%s,%s\"", clazzStringArr[clazzStringArr.length - 1], entry.getValue().get("max"), entry.getValue().get("total"));
+        }
+        return str;
+    }
+
+    private static String saveEquipment() {
+        // String[][] EQUIPMENT头
+        String str = String.format("    /*\n" +
+                "    * 设备 数组形式数据\n" +
+                "    * */\n" +
+                "    public static final int EQUIPMENT_SN_INIT = %s;\n" +
+                "\n" +
+                "    //PC      :21, sn, status, model, display\n" +
+                "    //NoteBook:22, sn, status, model, price\n" +
+                "    //Printer :23, sn, status, name, type\n" +
+                "    public static final String[][] EQUIPMENT = {\n",
+                EquipmentBasic.getSnInit());
+
+        // 遍历设备数据
+        for (int i = 0; i < EquipmentRepository.getRepository().size(); ++i) {
+            Equipment eq = EquipmentRepository.getRepository().get(i);
+            // 一个设备信息数组头
+            String equipment = "            {";
+
+            // 拼接字段
+            //PC      :21, sn, status, model, display
+            //NoteBook:22, sn, status, model, price
+            //Printer :23, sn, status, name, type
+            if (eq.getClass() == PC.class) {
+                PC pc = (PC) eq;
+                equipment += String.format("\"21\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                        eq.getSn(), eq.getStatus(), pc.getModel(), pc.getDisplay());
+            } else if (eq.getClass() == NoteBook.class) {
+                NoteBook nb = (NoteBook) eq;
+                equipment += String.format("\"21\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                        eq.getSn(), eq.getStatus(), nb.getModel(), nb.getPrice());
+            } else if (eq.getClass() == Printer.class) {
+                Printer p = (Printer) eq;
+                equipment += String.format("\"21\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                        eq.getSn(), eq.getStatus(), p.getName(), p.getType());
+            }
+
+            // 一个设备信息数组头
+            if (i == EquipmentRepository.getRepository().size() -1) {
+                equipment += "}\n";
+            } else {
+                equipment += "},\n";
+            }
+            str += equipment;
+        }
+
+        // String[][] EQUIPMENT尾
+        str += "    };\n\n";
+        return str;
+    }
+
+    private static String saveEployees() {
+        // String[][] EMPLOYEES 数组头
+        String str = String.format("    /*\n" +
+                "    * 员工 数组形式数据\n" +
+                "    * */\n" +
+                "    public static final int EMPLOYEE_INIT = %s;\n" +
+                "    //GeneralStaff  :  10, id, teamId, status, name, sex, age, salary, equipment\n" +
+                "    //Programmer:  11, id, teamId, status, name, sex, age, salary, equipment\n" +
+                "    //Designer  :  12, id, teamId, status, name, sex, age, salary, equipment, bonus\n" +
+                "    //Architect :  13, id, teamId, status, name, sex, age, salary, equipment, bonus, stock\n" +
+                "    // equipment, 记录着所有领取设备的SN，SN之间使用\",\"分割\n" +
+                "    public static final String[][] EMPLOYEES = {\n",
+                Employee.getInit());
+        // 遍历员工数据
+        for (int i = 0; i < NameListService.getEmployees().size(); ++i) {
+            Employee e = NameListService.getAllEmployees().get(i);
+//            System.out.println("1 debug===  " + e);
+            // 一个员工信息数组头
+            String employee = "            {";
+            // 员工类型
+            if (e.getClass() == GeneralStaff.class) { // GeneralStaff
+                employee += String.format("\"12\"%s", employeeGeneralFieldToString(e));
+            } else if (e.getClass() == Programmer.class) { // Programmer
+                Programmer p = (Programmer) e;
+                employee += String.format("\"11\"%s, \"%s\"", employeeGeneralFieldToString(e), p.getSkill() == null ? "" : p.getSkill());
+            } else if (e.getClass() == Designer.class) { // Designer
+                Designer d = (Designer) e;
+                employee += String.format("\"12\"%s, \"%s\"", employeeGeneralFieldToString(e), d.getBonus());
+            } else if (e.getClass() == Architect.class) { // Architect
+                Architect a = (Architect) e;
+                employee += String.format("\"13\"%s, \"%s\", \"%s\"", employeeGeneralFieldToString(e), a.getBonus(), a.getStock());
+            }
+
+            // 一个员工信息数组尾
+            if (i == NameListService.getEmployees().size() -1) {
+                employee += "}\n";
+            } else {
+                employee += "},\n";
+            }
+            str += employee;
+
+        }
+
+        // String[][] EMPLOYEES 数组尾
+        str += "    };\n\n";
+        return str;
+    }
+
+    /*
+    * 员工通用字段转换成String
+    * 通用字段：id, teamId, status, name, sex, age, salary, equipment
+    * */
+    private static String employeeGeneralFieldToString(Employee e) {
+        if (e == null) {
+            return "";
+        }
+        String str = String.format(", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                e.getId(),
+                e.getTeam() == null ? "" : e.getTeam().getId(),
+                e.getStatus(),
+                e.getName(),
+                e.getSex(),
+                e.getAge(),
+                e.getSalary(),
+                e.getEquipmentIdToString()
+        );
+        return str;
+    }
+
 }

@@ -25,6 +25,8 @@ public class TeamsService {
     /*
     * 生成团队
     * */
+
+/*
     public void generateTeams() {
         LinkedHashMap<Class, HashMap> membersStructor = new LinkedHashMap<>();
         HashMap post1 = new HashMap(); // 岗位要求
@@ -42,6 +44,7 @@ public class TeamsService {
         Team t1 = new Team("DevelopmentTeam", membersStructor);
         addTeam(t1);
     }
+*/
 
     /*
     * 添加指定的team到teams

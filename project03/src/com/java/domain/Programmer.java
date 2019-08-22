@@ -10,7 +10,7 @@ import com.java.service.TeamException;
 
 public class Programmer extends Employee{
     // 实例变量
-    private String skill; // 技能：java/php/pythons ...
+    private String skill; // 技能：java/php/pythons ... // 默认值为 null
 
 
     // 构造器

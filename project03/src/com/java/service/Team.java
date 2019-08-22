@@ -334,4 +334,8 @@ public class Team {
             Team.init = init;
         }
     }
+
+    public static int getInit() {
+        return init;
+    }
 }

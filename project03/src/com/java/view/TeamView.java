@@ -61,6 +61,7 @@ public class TeamView {
                     break;
                 case "q":
                     isExit = true;
+                    Storage.save();
                     break;
                 default:
                     System.out.println("无此操作选项");

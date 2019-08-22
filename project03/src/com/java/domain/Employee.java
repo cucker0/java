@@ -143,6 +143,21 @@ public abstract class Employee { // 抽象类
     }
 
     /*
+    * 获取该员工领取的所有设备sn的Sring
+    * ","分隔设备sn
+    * */
+    public String getEquipmentIdToString() {
+        String str = "";
+        for (int i = 0; i < equipment.size(); ++i) {
+            if (i != 0) {
+                str += ",";
+            }
+            str += equipment.get(i).getSn();
+        }
+        return str;
+    }
+
+    /*
     * 列出此员工领取的所有设备
     * */
     public String listEquipment() {
