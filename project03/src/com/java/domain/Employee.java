@@ -319,4 +319,20 @@ public abstract class Employee { // 抽象类
         System.out.println("休假成功");
         return true;
     }
+
+    /*
+    * 员工结束休假/离职的员工重新进入公司上班
+    * */
+    public boolean resumeToWork() {
+        if (status == EmployeeStatus.VOCATION) {
+            if (team != null) {
+                setStatus(EmployeeStatus.BUSY);
+            } else {
+                setStatus(EmployeeStatus.FREE);
+            }
+        } else if (status == EmployeeStatus.RESIGNED) {
+            setStatus(EmployeeStatus.FREE);
+        }
+        return false;
+    }
 }

@@ -88,8 +88,12 @@ public class NameListService {
      * 指定ID的员工离职
      * */
     public static void resignation(int employeeId) {
-        employees.get(employeeId).resignation();
-
+        try {
+            getEmployee(employeeId).resignation();
+        } catch (TeamException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     /*

@@ -27,16 +27,16 @@ public class Data {
     //Architect :  13, id, teamId, status, name, sex, age, salary, equipment, bonus, stock
     // equipment, 记录着所有领取设备的SN，SN之间使用","分割
     public static final String[][] EMPLOYEES = {
-            {"12", "1", "", "VOCATION", "马云", "false", "22", "3000.0", "3,5"},
+            {"10", "1", "", "VOCATION", "马云", "false", "22", "3000.0", "3,5"},
             {"13", "2", "", "FREE", "马化腾", "false", "32", "18000.0", "", "15000.0", "2000"},
-            {"11", "3", "", "FREE", "李彦宏", "false", "23", "7000.0", "", "C语言"},
+            {"11", "3", "", "RESIGNED", "李彦宏", "false", "23", "7000.0", "", "C语言"},
             {"11", "4", "1", "BUSY", "刘强东", "false", "24", "7300.0", "", "C#"},
             {"12", "5", "1", "BUSY", "雷军", "false", "28", "10000.0", "", "5000.0"},
             {"11", "6", "", "FREE", "任志强", "false", "22", "6800.0", "", ""},
             {"12", "7", "", "FREE", "柳传志", "false", "29", "10800.0", "", "5200.0"},
             {"13", "8", "", "FREE", "杨元庆", "false", "30", "19800.0", "", "15000.0", "2500"},
             {"12", "9", "", "FREE", "史玉柱", "false", "26", "9800.0", "", "5500.0"},
-            {"11", "10", "", "FREE", "丁磊", "false", "21", "6600.0", "", "Java"},
+            {"11", "10", "2", "BUSY", "丁磊", "false", "21", "6600.0", "", "Java"},
             {"11", "11", "", "FREE", "张朝阳", "false", "25", "7100.0", "", "C++"},
             {"12", "12", "", "FREE", "董明珠", "true", "27", "9600.0", "", "4800.0"}
     };
@@ -66,10 +66,11 @@ public class Data {
     /*
     * teams 数组形式数据
     * */
-    public static final int TEAMS_INIT = 2;
+    public static final int TEAMS_INIT = 3;
     // Team: id, name, "post1,max,total", "post2,max,total" ...
     public static final String[][] TEAMS = {
-            {"1", "DevelopmentTeam", "Programmer,3,1", "Designer,2,1", "Architect,1,0"}
+            {"1", "DevelopmentTeam", "Programmer,3,1", "Designer,2,1", "Architect,1,0"},
+            {"2", "全能队", "Programmer,5,1"}
     };
 
 }

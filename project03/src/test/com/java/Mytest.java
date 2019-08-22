@@ -10,6 +10,8 @@ import com.java.service.*;
 import com.java.view.TeamView;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -132,9 +134,23 @@ public class Mytest {
 
     @Test
     public void test5() {
-        String str = "2 - 1";
-        int i = Integer.parseInt(str); // 解析失败
-        System.out.println(i);
+//        String str = "2 - 1";
+//        int i = Integer.parseInt(str); // 解析失败
+//        System.out.println(i);
+        // 获取当前路径方式1
+        System.out.println(System.getProperty("user.dir"));
+        String filePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "com" + File.separator + "java" + File.separator + "service" + "Data.java";
+        System.out.println(filePath);
+
+        // 获取当前路径方式2
+        File f = new File(".");
+        try {
+            String filePath2 = f.getCanonicalPath() + File.separator + "src" + File.separator + "com" + File.separator + "java" + File.separator + "service" + "Data.java";
+            System.out.println(filePath2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

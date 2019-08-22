@@ -10,6 +10,7 @@ package com.java.service;
 import com.java.domain.*;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,7 +20,12 @@ import java.util.Map;
 
 public class Storage {
     // 保存数据的文件路径，使用绝对路径
-    private static final String filePath = "E:\\dev\\java_2019\\project03\\src\\com\\java\\service\\Data.java";
+    private static final String filePath = System.getProperty("user.dir") +
+            File.separator + "src" +
+            File.separator + "com" +
+            File.separator + "java" +
+            File.separator + "service" +
+            File.separator + "Data.java";
     private static NameListService listService = new NameListService();
     private static TeamsService teamsService = new TeamsService();
     private static EquipmentRepository equipmentRepository = new EquipmentRepository();
@@ -119,6 +125,9 @@ public class Storage {
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
+            if (status == null) {
+                return;
+            }
             String name = em[4];
             boolean sex = Boolean.parseBoolean(em[5]);
             int age = Integer.parseInt(em[6]);
@@ -130,7 +139,7 @@ public class Storage {
                     String skill = em.length == 10 ? em[9] : "";
                     try {
                         Programmer p = new Programmer(id, name, sex, age, salary, skill);
-                        restoreEmployee(p, teamId, equipmentString);
+                        restoreEmployee(p, teamId, equipmentString, status);
                     } catch (TeamException e) {
                         e.printStackTrace();
                     }
@@ -144,7 +153,7 @@ public class Storage {
                     }
                     try {
                         Designer d = new Designer(id, name, sex, age, salary, bonus);
-                        restoreEmployee(d, teamId, equipmentString);
+                        restoreEmployee(d, teamId, equipmentString, status);
                     } catch (TeamException e) {
                         e.printStackTrace();
                     }
@@ -159,7 +168,7 @@ public class Storage {
                     int stock = Integer.parseInt(em[10]);
                     try {
                         Architect a = new Architect(id, name, sex, age, salary, bonus, stock);
-                        restoreEmployee(a, teamId, equipmentString);
+                        restoreEmployee(a, teamId, equipmentString, status);
                     } catch (TeamException e) {
                         e.printStackTrace();
                     }
@@ -167,7 +176,7 @@ public class Storage {
                 case Data.GeneralStaff:
                     try {
                         GeneralStaff g = new GeneralStaff(id, name, sex, age, salary);
-                        restoreEmployee(g, teamId, equipmentString);
+                        restoreEmployee(g, teamId, equipmentString, status);
                     } catch (TeamException e) {
                         e.printStackTrace();
                     }
@@ -208,8 +217,13 @@ public class Storage {
     *           已加入的team id
     * @param    equipmentString
     *           设备序列号字符串，如："3,5"
+    * @param    status
+    *           员工状态
     * */
-    private static void restoreEmployee(Employee employee, int teamId, String equipmentString) {
+    private static void restoreEmployee(Employee employee, int teamId, String equipmentString, EmployeeStatus status) {
+        if (employee == null || status == null) {
+            return;
+        }
         listService.addEmployee(employee);
         receiveEquipment(equipmentString, employee);
         if (teamId != -1) {
@@ -220,6 +234,8 @@ public class Storage {
                 System.out.println(e.getMessage());
             }
         }
+        // 设置员工的状态这步必须在完成加入团队处理后之后，因为状态不为FREE的加不了团队
+        employee.setStatus(status);
     }
 
     private static void readTeams() {
@@ -436,7 +452,7 @@ public class Storage {
             String employee = "            {";
             // 员工类型
             if (e.getClass() == GeneralStaff.class) { // GeneralStaff
-                employee += String.format("\"12\"%s", employeeGeneralFieldToString(e));
+                employee += String.format("\"10\"%s", employeeGeneralFieldToString(e));
             } else if (e.getClass() == Programmer.class) { // Programmer
                 Programmer p = (Programmer) e;
                 employee += String.format("\"11\"%s, \"%s\"", employeeGeneralFieldToString(e), p.getSkill() == null ? "" : p.getSkill());

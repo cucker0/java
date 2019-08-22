@@ -38,20 +38,20 @@ public class TeamView {
                 case "b":
                     listAllEmployees();
                     break;
-//                case "c":
-//                    listAllTeams();
-//                    break;
-                case "d":
+                case "c":
                     recruitingStaff();
                     break;
-                case "e":
+                case "d":
                     receiveEquipment();
                     break;
-                case "f":
+                case "e":
                     resignation();
                     break;
-                case "g":
+                case "f":
                     vocation();
+                    break;
+                case "g":
+                    resumeToWork();
                     break;
                 case "h":
                     listAllEquipment();
@@ -78,11 +78,11 @@ public class TeamView {
                 "\n" +
                 "a 团队管理\n" +
                 "b 列出所有员工信息\n" +
-//                "c 列出所有团队\n" +
-                "d 招聘员工\n" +
-                "e 员工领取设备\n" +
-                "f 员工办理离职\n" +
-                "g 员工休假\n" +
+                "c 招聘员工\n" +
+                "d 员工领取设备\n" +
+                "e 员工办理离职\n" +
+                "f 员工休假\n" +
+                "g 员工结束休假/恢复上班\n" +
                 "h 列出所有设备\n" +
                 "i 添加设备\n" +
                 "q 退       出\n" +
@@ -572,11 +572,10 @@ public class TeamView {
     public void resignation() {
         listAllEmployees();
         String menu = "-----------------员工办理离职-----------------\n";
+        System.out.println(menu);
         System.out.println("选择员工id (回车退出)：");
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("")) {
-            return;
-        }
+        if (GetInput.isExit(rawCmd)) return;
         int num = GetInput.getNumber(rawCmd);
         NameListService.resignation(num); // 等价于 listService.resignation(num);
     }
@@ -600,6 +599,25 @@ public class TeamView {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /*
+    * 员工结束休假/恢复上班
+    * */
+    public void resumeToWork() {
+        String menu = "-----------------员工结束休假/恢复上班-----------------\n";
+        System.out.println(menu);
+        listAllEmployees();
+        System.out.println("选择员工id (回车退出)：");
+        String rawCmd = GetInput.getRaw();
+        if (GetInput.isExit(rawCmd)) return;
+        int num = GetInput.getNumber(rawCmd);
+        try {
+            Employee employee = listService.getEmployee(num);
+            employee.resumeToWork();
+        } catch (TeamException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /*
