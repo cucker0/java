@@ -165,7 +165,7 @@ public class Team {
         if (membersStructor != null) {
             Set<Map.Entry<Class, HashMap>> entrysSet = membersStructor.entrySet();
             str += String.format("-----------------%s团队成员结构-----------------\n\n" +
-                    "%-12s\t%-12s\t%-12s\n", name, "岗位", "预招(个)", "实招(个)");
+                    "%-12s\t%-12s\t%-12s\n", name, "岗位", "预编(个)", "实编(个)");
             for (Map.Entry<Class, HashMap> entry : entrysSet) {
                 String[] sArr = entry.getKey().toString().split("\\.");
                 str += String.format("%-12s\t%-12s\t%-12s\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
@@ -247,12 +247,16 @@ public class Team {
                     throw new TeamException(String.format("%s团队%s岗位只需要%d个成员,已经满员\n", name, member.getPost(), (int) postRequirements.get("max")));
 
                 } else if (ret == 2) { // 团队的该岗位人数未满，添加成员
+                    // members 添加该加工
                     boolean status = members.add(member);
                     if (status) {
+                        // 更新团队成员结构
                         int i = (int) postRequirements.get("total");
                         ++i;
                         postRequirements.put("total", i);
+                        // 更新该员工的加入团队状态
                         member.setStatus(EmployeeStatus.BUSY);
+                        // 设置该加工已经加入的团队
                         member.setTeam(this);
                     }
                     return status;
@@ -281,6 +285,11 @@ public class Team {
     * */
     public boolean removeMember(Employee member) throws TeamException {
         if (members.contains(member)) {
+            // 更新团队的成员结构
+            int total = (int) membersStructor.get(member.getClass()).get("total");
+            --total;
+            membersStructor.get(member.getClass()).put("total", total);
+            // members中删除该成员
             return members.remove(member);
         }
         throw new TeamException(String.format("%s团队中无此员工，删除失败", name));
@@ -291,10 +300,7 @@ public class Team {
     * */
     public boolean removeMember(int memberId) throws TeamException {
         Employee employee = NameListService.getEmployee(memberId);
-        if (members.contains(employee)) {
-            return members.remove(employee);
-        }
-        throw new TeamException(String.format("%s团队中无此id的员工，删除失败", name));
+        return removeMember(employee);
     }
 
     @Override

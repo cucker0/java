@@ -34,6 +34,7 @@ public class EquipmentRepository {
     *           要查询的设备的sn
     * */
     public static Equipment getEquipment(int sn) {
+        // 遍历repository，查找设备
         for (Equipment e : repository) {
             if (e.getSn() == sn) {
                 return e;

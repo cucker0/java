@@ -31,7 +31,7 @@ public class Storage {
     * 注意：加载顺
     *   设备->团队->员工
     * */
-    public void read() {
+    public static void read() {
         readTeams();
         readEquipment();
         readEmployees();
@@ -40,11 +40,11 @@ public class Storage {
     /*
     * 从程序保存数据到文件
     * */
-    public void save() {
+    public static void save() {
 
     }
 
-    private void readEmployees() {
+    private static void readEmployees() {
         // 设置Employee类的init
         Employee.setInit(Data.EMPLOYEE_INIT);
 
@@ -133,13 +133,13 @@ public class Storage {
     * @param    employee
     *           员工
     * */
-    private void receiveEquipment(String equipmentString, Employee employee) {
+    private static void receiveEquipment(String equipmentString, Employee employee) {
         if (equipmentString.contains(",")) {
             String[] equipmentArr = equipmentString.split(",");
             for (String eq : equipmentArr) {
                 try {
                     int equipmentSn = Integer.parseInt(eq);
-                    employee.restoreEquipment(equipmentRepository.getEquipment(equipmentSn));
+                    employee.receiveEquipment(equipmentRepository.getEquipment(equipmentSn));
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
@@ -156,7 +156,7 @@ public class Storage {
     * @param    equipmentString
     *           设备序列号字符串，如："3,5"
     * */
-    private void restoreEmployee(Employee employee, int teamId, String equipmentString) {
+    private static void restoreEmployee(Employee employee, int teamId, String equipmentString) {
         listService.addEmployee(employee);
         receiveEquipment(equipmentString, employee);
         if (teamId != -1) {
@@ -169,7 +169,7 @@ public class Storage {
         }
     }
 
-    private void readTeams() {
+    private static void readTeams() {
         // 设置 Team类的init
         Team.setInit(Data.TEAMS_INIT);
 
@@ -214,7 +214,7 @@ public class Storage {
         }
     }
 
-    private void readEquipment() {
+    private static void readEquipment() {
         // 设置EquipmentBasic类的snInit
         EquipmentBasic.setSnInit(Data.EQUIPMENT_SN_INIT);
 
@@ -224,6 +224,9 @@ public class Storage {
             int type = Integer.parseInt(e[0]);
             int sn = Integer.parseInt(e[1]);
             String statusSring = e[2];
+            if (statusSring.equals("USING")) { // 从文件加载数据时，员工会重新领取设备，所以原来被领取的重新表示为FREE
+                statusSring = "FREE";
+            }
             EquipmentStatus status = null;
             for (EquipmentStatus eq: EquipmentStatus.values()) {
                 if (statusSring.equals(eq.toString())) {

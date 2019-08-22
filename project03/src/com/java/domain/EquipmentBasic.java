@@ -15,6 +15,7 @@ public class EquipmentBasic {
     // 实例属性
     private int sn; // 设备序列号
     private EquipmentStatus status = EquipmentStatus.FREE; // 设备的使用状态，初始状态为空闲
+    private Employee user; // 使用者
 
     // 构造器
     public EquipmentBasic() {
@@ -34,6 +35,14 @@ public class EquipmentBasic {
     private void snInitIncrement() {
         sn = snInit;
         ++snInit;
+    }
+
+    public Employee getUser() {
+        return user;
+    }
+
+    public void setUser(Employee employee) {
+        user = employee;
     }
 
     public int getSn() {

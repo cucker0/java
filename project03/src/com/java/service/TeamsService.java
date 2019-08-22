@@ -45,19 +45,46 @@ public class TeamsService {
 
     /*
     * 添加指定的team到teams
+    * @param    team
+    *           团队对象
+    * @return   true/false
+    *           本次操作状态
     * */
-    public void addTeam(Team team) {
-        teams.add(team);
+    public boolean addTeam(Team team) {
+        if (team != null) {
+            return teams.add(team);
+        }
+        return false;
     }
 
     /*
     * 从teams中删除指定的team
     * 只有无成员的team才能被删除
+    * @param    team
+    *           团队对象
+    * @return   true/false
+    *           本次操作状态
     * */
-    public void deleteTeam(Team team) {
+    public boolean deleteTeam(Team team) {
+        if (team == null) return false;
         if (team.getMembersCount() == 0) {
-            teams.remove(team);
+            return teams.remove(team);
         }
+        System.out.println("该团队还有其他成员，不能被删除");
+        return false;
+    }
+
+    /*
+     * 从teams中删除指定id的team
+     * 只有无成员的team才能被删除
+     * @param       teamId
+     *              团队id
+     * @return      true/false
+     *              本次操作状态
+     * */
+    public boolean deleteTeam(int teamId) {
+        Team team = getTeam(teamId);
+        return deleteTeam(team);
     }
 
     public LinkedList<Team> getTeams() {

@@ -164,32 +164,17 @@ public abstract class Employee { // 抽象类
      * */
     public boolean receiveEquipment(Equipment aEquipment) {
         if (aEquipment == null) return false;
-        if (aEquipment.getStatus() == EquipmentStatus.FREE) {
+        if (aEquipment.getStatus() == EquipmentStatus.FREE) { // 空闲设备，可领取
             boolean status = equipment.add(aEquipment);
             if (status) {
                 aEquipment.setStatus(EquipmentStatus.USING);
+                aEquipment.setUser(this);
             }
             return status;
         } else if (aEquipment.getStatus() == EquipmentStatus.USING) {
             System.out.println("设备已经被领用");
         } else if (aEquipment.getStatus() == EquipmentStatus.SCRAP) {
             System.out.println("设备已经作废处理了");
-        }
-        return false;
-    }
-
-    /*
-    * 为从文件读取员工领用设备的关系数据到程序
-    * @prama    aEquipment
-    *           一件设备
-    * */
-    public boolean restoreEquipment(Equipment aEquipment) {
-        if (aEquipment.getStatus() != EquipmentStatus.SCRAP) {
-            boolean status = equipment.add(aEquipment);
-            if (status) {
-                aEquipment.setStatus(EquipmentStatus.USING);
-            }
-            return status;
         }
         return false;
     }
@@ -312,9 +297,11 @@ public abstract class Employee { // 抽象类
     * */
     public boolean vocation() {
         if (status == EmployeeStatus.VOCATION) {
-            System.out.println("该员工正在休假中");
+            System.out.println("别闹，该员工正在休假中");
             return false;
         }
+        status = EmployeeStatus.VOCATION;
+        System.out.println("休假成功");
         return true;
     }
 }

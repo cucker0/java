@@ -17,4 +17,8 @@ public interface Equipment {
     void setStatus(EquipmentStatus status);
     // 获取设备的SN号
     int getSn();
+    // 设置设备使用者
+    void setUser(Employee employee);
+    // 获取设备使用者
+    Employee getUser();
 }

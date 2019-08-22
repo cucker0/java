@@ -130,5 +130,11 @@ public class Mytest {
         TeamView.main(new String[]{});
     }
 
+    @Test
+    public void test5() {
+        String str = "2 - 1";
+        int i = Integer.parseInt(str); // 解析失败
+        System.out.println(i);
+    }
 
 }

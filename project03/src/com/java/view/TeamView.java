@@ -124,7 +124,7 @@ public class TeamView {
     public void teamsMenu () {
         String menuTitle = "-----------------团队管理-----------------\n\n";
         String aItem = "a 团队人力资源调度\n";
-        listAllTeams();
+//        listAllTeams();
         String menu = menuTitle +
                 aItem +
                 "b 列出所有团队\n" +
@@ -132,7 +132,7 @@ public class TeamView {
                 "d 删除团队\n" +
                 "q 退出\n" +
                 "\n" +
-                "选择：";
+                "选择操作项(回车退出)：";
 
         while (true) {
             System.out.println(menu);
@@ -168,16 +168,20 @@ public class TeamView {
     * */
     public void addTeam() {
         String menu = "-----------------新建团队-----------------\n";
+        System.out.println(menu);
         System.out.println("团队名：");
         String name = GetInput.getName();
         Team team = new Team(name);
+        teamsService.addTeam(team);
+        System.out.println("团队创建成功");
         String tips = "\n" +
                 "a 添加岗位需求\n" +
                 "q 退出\n" +
                 "\n" +
-                "选择操作项(回车)：";
+                "选择操作项(回车退出)：";
+        System.out.print(tips);
         String ramCmd = GetInput.getRaw();
-        if (ramCmd.equals("q") || ramCmd.equals("")) {
+        if (GetInput.isExit(ramCmd)) {
             return;
         } else if (ramCmd.equals("a")) {
             addTeamPost(team);
@@ -188,7 +192,14 @@ public class TeamView {
     * 删除团队
     * */
     public void deleteTeam() {
-
+        String menu = "-----------------删除团队-----------------";
+        System.out.println(menu);
+        listAllTeams();
+        System.out.println("选择团队ID(回车退出)：");
+        String ramCmd = GetInput.getRaw();
+        if (GetInput.isExit(ramCmd)) return;
+        int num = GetInput.getNumber(ramCmd);
+        teamsService.deleteTeam(num);
     }
 
     /*
@@ -332,6 +343,7 @@ public class TeamView {
         if (checkTeamIsNull(team)) return;
         listAllEmployees();
         String menu = "选择要添加成员的id (-1或回车退出)：";
+        System.out.print(menu);
         String rawCmd = GetInput.getRaw();
         if (rawCmd.equals("")) { // 回车指令
             return;
@@ -388,12 +400,13 @@ public class TeamView {
     public void modifyTeamPostMax(Team team) {
         if (checkTeamIsNull(team)) return;
         team.showMembersStructor();
-        String menu = String.format("-----------------调整%s团队岗位成员预招人数-----------------\n" +
-                "回退不修改", team.getName());
+        String menu = String.format("-----------------调整%s团队岗位成员预编人数-----------------\n" +
+                "回车不修改", team.getName());
 //        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         for (Map.Entry<Class, HashMap> entry : team.getMembersStructor().entrySet()) {
             String[] sArr = entry.getKey().toString().split("\\.");
-            System.out.printf("岗位:%-10s, \t预招:%-4s个, \t实招:%-4s个。预招修改为(回车退出)：\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+            System.out.printf("岗位: %-12s\t预编(个): %-12s\t实编(个): %-12s。 预编修改为(回车退出)：",
+                    sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
             String rawCmd = GetInput.getRaw();
             if (!rawCmd.equals("")) {
                 int num = GetInput.getNumber(rawCmd);
@@ -410,9 +423,9 @@ public class TeamView {
         if (checkTeamIsNull(team)) return;
         String menu = String.format("-----------------%s团队增加一个岗位-----------------\n\n", team.getName());
         System.out.println("\n" +
-                "1 Programmer\n" +
-                "2 Designer\n" +
-                "3 Architect\n" +
+                "1 程序员\n" +
+                "2 设计师\n" +
+                "3 架构师\n" +
                 "\n" +
                 "选择岗位(回车退出)：");
         String rawCmd = GetInput.getRaw();
@@ -429,7 +442,7 @@ public class TeamView {
             clazz = Architect.class;
         }
         if (clazz != null) {
-            System.out.println("预招人数：");
+            System.out.println("预编人数：");
             int max = GetInput.getNumber();
             HashMap hMap = new HashMap();
             hMap.put("max", max);
@@ -449,18 +462,25 @@ public class TeamView {
         LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         Set<Class> keySet = membersStructor.keySet();
         int i = 0;
+        String menuTitle = String.format("%-8s\t%s",
+                "编号", "岗位");
+        System.out.println(menuTitle);
         for (Class clazz : keySet) {
             keyList.add(clazz);
+            System.out.printf("%-8d\t%s\n", i, clazz);
             ++i;
-            System.out.printf("%d %s\n", i, clazz);
         }
-        System.out.print("\n选择岗位(回车退出)：");
+        System.out.print("\n选择岗位编号(回车退出)：");
         String rawCmd = GetInput.getRaw();
         if (rawCmd.equals("")) {
             return;
         }
         int num = GetInput.getNumber(rawCmd);
-        team.deletePostFromMmbersStructor(keyList.get(num));
+        if (num < keyList.size() && num >= 0) {
+            team.deletePostFromMmbersStructor(keyList.get(num));
+        } else {
+            System.out.println("岗位编号输入错误");
+        }
     }
 
     /*
@@ -494,7 +514,7 @@ public class TeamView {
         System.out.println("月工资：");
         double salary = GetInput.getNumber();
         if (rawCmd.equalsIgnoreCase("a")) {
-            System.out.println("技能(回车为填)：");
+            System.out.println("技能(回车为不填)：");
             String skill = GetInput.getRaw();
             try {
                 Programmer programmer = null;
@@ -565,12 +585,11 @@ public class TeamView {
     * */
     public void vocation() {
         String menu = "-----------------员工休假-----------------\n";
+        System.out.println(menu);
         listAllEmployees();
         System.out.println("选择员工id (回车退出)：");
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("")) {
-            return;
-        }
+        if (GetInput.isExit(rawCmd)) return;
         int num = GetInput.getNumber(rawCmd);
         try {
             Employee employee = listService.getEmployee(num);
@@ -587,12 +606,17 @@ public class TeamView {
     * */
     public void listAllEquipment() {
         String menu = String.format("-----------------列出设备-----------------\n" +
-                "%-5s\t%-5s\t%-12s\t%s\n",
-                "index", "SN", "状态", "描述");
+                "%-5s\t%-12s\t%-12s\t%s\n",
+                "SN", "状态", "使用者", "描述");
         System.out.println(menu);
         ArrayList<Equipment> list = equipmentRepository.getRepository();
         for (int i= 0; i < list.size(); ++i) {
-            System.out.printf("%-5d\t%-5s\t%-12s\t%s\n", i, list.get(i).getSn(),list.get(i).getStatus(), list.get(i).getDescription());
+            System.out.printf("%-5s\t%-12s\t%-12s\t%s\n",
+                    list.get(i).getSn(),
+                    list.get(i).getStatus(),
+                    list.get(i).getUser() != null ? list.get(i).getUser().getName() : "",
+                    list.get(i).getDescription()
+            );
         }
         System.out.println();
     }
@@ -660,14 +684,18 @@ public class TeamView {
         if (employeeId < 0) {
             return;
         }
-        listAllEmployees();
-        System.out.print(equipmentSelectMenu);
-        String ramCmd2 = GetInput.getRaw();
-        if (ramCmd2.equals("")) {
-            return;
+        // 选择设备并领取
+        while (true) {
+            // 打印设备仓库中的设备
+            listAllEquipment();
+            System.out.print(equipmentSelectMenu);
+            String ramCmd2 = GetInput.getRaw();
+            if (ramCmd2.equals("")) {
+                return;
+            }
+            int equipmentId = GetInput.getNumber(ramCmd2);
+            listService.receiveEquipment(employeeId, equipmentId);
         }
-        int equipmentId = GetInput.getNumber(ramCmd2);
-        listService.receiveEquipment(employeeId, equipmentId);
     }
 
     /*
@@ -675,8 +703,7 @@ public class TeamView {
     * */
     public static void main(String[] args) {
         // 从文件加载数据
-        Storage storage = new Storage();
-        storage.read();
+        Storage.read();
 
         // 进入主菜单
         TeamView teamView = new TeamView();
