@@ -9,6 +9,7 @@ import com.java.service.EmployeeStatus;
 import com.java.service.EquipmentStatus;
 import com.java.service.Team;
 import com.java.service.TeamException;
+import com.java.utils.Magic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -246,9 +247,7 @@ public abstract class Employee { // 抽象类
     * @return   String形式的岗位名
     * */
     public String getPost() {
-        Class clazz = this.getClass();
-        String sArr[] = clazz.toString().split("\\.");
-        return sArr.length > 0 ? sArr[sArr.length -1] : "";
+        return Magic.clazzToPost(this.getClass());
     }
 
     public String getFields() {
@@ -335,4 +334,5 @@ public abstract class Employee { // 抽象类
         }
         return false;
     }
+
 }

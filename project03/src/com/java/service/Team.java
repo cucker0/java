@@ -6,6 +6,7 @@
 package com.java.service;
 
 import com.java.domain.Employee;
+import com.java.utils.Magic;
 
 import java.util.*;
 
@@ -167,8 +168,9 @@ public class Team {
             str += String.format("-----------------%s团队成员结构-----------------\n\n" +
                     "%-12s\t%-12s\t%-12s\n", name, "岗位", "预编(个)", "实编(个)");
             for (Map.Entry<Class, HashMap> entry : entrysSet) {
-                String[] sArr = entry.getKey().toString().split("\\.");
-                str += String.format("%-12s\t%-12s\t%-12s\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+//                String[] sArr = entry.getKey().toString().split("\\.");
+//                str += String.format("%-12s\t%-12s\t%-12s\n", sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+                str += String.format("%-12s\t%-12s\t%-12s\n", Magic.clazzToPost(entry.getKey()), entry.getValue().get("max"), entry.getValue().get("total"));
             }
             str += "\n";
         }

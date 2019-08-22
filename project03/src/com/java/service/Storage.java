@@ -374,8 +374,7 @@ public class Storage {
         LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         // 格式：, "Programmer,3,1", "Designer,2,1", "Architect,1,0"
         for (Map.Entry<Class, HashMap> entry : membersStructor.entrySet()) {
-            String[] clazzStringArr = entry.getKey().toString().split("\\.");
-            str += String.format(", \"%s,%s,%s\"", clazzStringArr[clazzStringArr.length - 1], entry.getValue().get("max"), entry.getValue().get("total"));
+            str += String.format(", \"%s,%s,%s\"", entry.getKey().getSimpleName(), entry.getValue().get("max"), entry.getValue().get("total"));
         }
         return str;
     }

@@ -6,6 +6,7 @@ package com.java.view;
 
 import com.java.domain.*;
 import com.java.service.*;
+import com.java.utils.Magic;
 
 import java.util.*;
 
@@ -405,11 +406,11 @@ public class TeamView {
                 "回车不修改", team.getName());
 //        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         for (Map.Entry<Class, HashMap> entry : team.getMembersStructor().entrySet()) {
-            String[] sArr = entry.getKey().toString().split("\\.");
+            // String[] sArr = entry.getKey().toString().split("\\.");
             System.out.printf("岗位: %-12s\t预编(个): %-12s\t实编(个): %-12s。 预编修改为(回车退出)：",
-                    sArr[sArr.length -1], entry.getValue().get("max"), entry.getValue().get("total"));
+                    Magic.clazzToPost(entry.getKey()), entry.getValue().get("max"), entry.getValue().get("total"));
             String rawCmd = GetInput.getRaw();
-            if (!rawCmd.equals("")) {
+            if (!GetInput.isExit(rawCmd)) {
                 int num = GetInput.getNumber(rawCmd);
                 team.modifyTeamPostMax(entry.getKey(), num);
             }
@@ -427,6 +428,7 @@ public class TeamView {
                 "1 程序员\n" +
                 "2 设计师\n" +
                 "3 架构师\n" +
+                "4 普通员工\n" +
                 "\n" +
                 "选择岗位(回车退出)：");
         String rawCmd = GetInput.getRaw();
@@ -441,10 +443,17 @@ public class TeamView {
             clazz = Designer.class;
         } else if (num == 3) {
             clazz = Architect.class;
+        }  else if (num == 4) {
+            clazz = GeneralStaff.class;
         }
         if (clazz != null) {
-            System.out.println("预编人数：");
+            if (team.getMembersStructor().keySet().contains(clazz)) {
+                System.out.println(Magic.clazzToPost(clazz) + "岗位已经存在");
+                return;
+            }
+            System.out.println("预编人数(-1退出)：");
             int max = GetInput.getNumber();
+            if (max == -1) return;
             HashMap hMap = new HashMap();
             hMap.put("max", max);
             hMap.put("total", 0);
@@ -468,7 +477,7 @@ public class TeamView {
         System.out.println(menuTitle);
         for (Class clazz : keySet) {
             keyList.add(clazz);
-            System.out.printf("%-8d\t%s\n", i, clazz);
+            System.out.printf("%-8d\t%s\n", i, Magic.clazzToPost(clazz));
             ++i;
         }
         System.out.print("\n选择岗位编号(回车退出)：");
