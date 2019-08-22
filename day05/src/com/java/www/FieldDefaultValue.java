@@ -77,6 +77,47 @@ public class FieldDefaultValue {
         FieldDefaultValue f = new FieldDefaultValue();
         f.print();
 
+        // 执行效果
+        /*
+// 静态字段默认值
+byte: 0
+short: 0
+int: 0
+long: 0
+float: 0.0
+double: 0.0
+false
+char:== ==
+
+String[][]: null
+int[]: null
+List: null
+Set: null
+Map: null
+Runnable接口: null
+Thread类: null
+
+// 非静态字段默认值
+byte: 0
+short: 0
+int: 0
+long: 0
+float: 0.0
+double: 0.0
+false
+char:== ==
+null
+
+String[][]: null
+int[]: null
+List: null
+Set: null
+Map: null
+Runnable接口: null
+Thread类: null
+
+* */
+
     }
 
     private void print() {
