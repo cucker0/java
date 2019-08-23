@@ -5,9 +5,6 @@
 
 package com.java.domain;
 
-import com.java.service.EmployeeStatus;
-import com.java.service.EquipmentStatus;
-import com.java.service.Team;
 import com.java.service.TeamException;
 import com.java.utils.Magic;
 

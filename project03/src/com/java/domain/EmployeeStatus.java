@@ -8,7 +8,7 @@
 *   VOCATION 正在休假
 * */
 
-package com.java.service;
+package com.java.domain;
 
 public enum EmployeeStatus {
     // 类实例，且是类常量

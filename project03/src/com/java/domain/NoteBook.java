@@ -5,7 +5,6 @@
 
 package com.java.domain;
 
-import com.java.service.EquipmentStatus;
 import com.java.service.TeamException;
 
 public class NoteBook extends EquipmentBasic implements Equipment {

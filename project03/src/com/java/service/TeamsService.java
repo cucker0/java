@@ -1,16 +1,14 @@
 /*
-* 关于开发团队成员的管理：添加、删除等
+* 团队管理操作
+*   1. 保存所有的团队信息
+*   2. 提供团队的相关操作
 *
 * */
 
 package com.java.service;
 
-import com.java.domain.Architect;
-import com.java.domain.Designer;
-import com.java.domain.Programmer;
+import com.java.domain.Team;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public class TeamsService {

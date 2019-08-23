@@ -5,8 +5,6 @@
 
 package com.java.domain;
 
-import com.java.service.EquipmentStatus;
-
 public interface Equipment {
     // return this equipment description
     // 列出设备信息

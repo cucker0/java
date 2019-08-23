@@ -5,7 +5,6 @@
 
 package com.java.domain;
 
-import com.java.service.EmployeeStatus;
 import com.java.service.TeamException;
 
 public class Programmer extends Employee{

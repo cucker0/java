@@ -8,11 +8,7 @@
 *
 * */
 
-package com.java.service;
-
-import java.io.ObjectInputStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package com.java.domain;
 
 public class EquipmentStatus {
     // 类常量

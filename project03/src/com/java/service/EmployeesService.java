@@ -1,6 +1,7 @@
 /*
-* 负责将Data中的数据封装到LinkedList<Employee>列表中，同时提供相关操作LinkedList<Employee>列表的方法
-*
+* 员工管理操作
+*   1. 保存所有的员工信息
+*   2. 提供员工的相关操作
 * */
 
 package com.java.service;

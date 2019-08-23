@@ -1,11 +1,13 @@
 /*
+* 团队
 * 团队属性、团队成员的管理：添加、删除等
 *
 * */
 
-package com.java.service;
+package com.java.domain;
 
-import com.java.domain.Employee;
+import com.java.service.EmployeesService;
+import com.java.service.TeamException;
 import com.java.utils.Magic;
 
 import java.util.*;
