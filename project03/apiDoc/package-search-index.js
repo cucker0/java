@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"com.java.domain"},{"l":"com.java.service"},{"l":"com.java.utils"},{"l":"com.java.view"},{"l":"test.com.java"},{"l":"所有程序包","url":"allpackages-index.html"}]

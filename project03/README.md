@@ -253,6 +253,11 @@ q 退出
 ![](images/开发团队人员调度软件.png)  
 
 ### 包和模块结构
+![](./images/包结构.png)  
+
+
+![](./images/类的分层结构.png)  
+
 * com.java.view  
 模块为主控模块，负责菜单的显示，负责员工、设备、团队操作等操作提供前端展示
     * TeamView为菜单展示模块
@@ -286,38 +291,80 @@ NameListService和TeamService类分别用各自的数组来管理公司员工和
 * test.com.java  
 Junit单元测试
 
-![](images/pro03_软件设计结构02.png)  
-* com.atguigu.team.domain模块中包含了所有实体类
-* 其中程序员(Programmer)及其子类，均会领用某种电子设备(Equipment)
 
-## 第1步--创建项目基本组件
+# 类继承和实现关系  
+![](images/类关系.png)  
+
+## 第1步--test.com.java包创建单元测试
+创建测试类Mytest
+
+## 第2步--创建项目基本组件
 1. 完成以下工作：
     * 创建TeamSchedule项目
     * 按照设计要求，创建所有包
-    * 将项目提供的几个类复制到相应的包中
-	(view包中：TSUtility.java;   service包中：Data.java)
-* 按照设计要求，在com.atguigu.team.domain包中，创建Equipment接 
-    口及其各实现子类代码
-* 按照设计要求，在com.atguigu.team.domain包中，创建Employee类
-    及其各子类代码
+    
+* 按照设计要求，在com.java.domain包中，  
+创建Equipment接口及其各实现子类代码
+* 按照设计要求，在com.atguigu.team.domain包中，  
+创建Employee类及其各子类代码
 * 检验代码的正确性
 
 ### 键盘访问的实现
-* 项目view包中提供了TSUtility.java类，可用来方便地实现键盘访问。
+* 项目utils包中提供了GetInput.java类，可用来方便地实现键盘访问。
 * 该类提供了以下静态方法
 ```text
-public static char readMenuSelection() 
-	用途：该方法读取键盘，如果用户键入’1’-’4’中的任意字符，则方法返回。返回值为用户键入字符。
-public static void readReturn() 
-	用途：该方法提示并等待，直到用户按回车键后返回。
-public static int readInt() 
-	用途：该方法从键盘读取一个长度不超过2位的整数，并将其作为方法的返回值。
-public static char readConfirmSelection() ：
-	用途：从键盘读取‘Y’或’N’，并将其作为方法的返回值。
+static int	getAge()	 
+                获取年龄
+static int	getAge​(String s)	 
+                字符串转成年龄
+static String	getEmail()	 
+                获取邮箱地址
+static String	getEmail​(String s)	 
+                字符串转成邮箱地址
+static boolean	getIsYes()	 
+                获取是否为确定命令
+static String	getName()	 
+                获取名字    
+static int	getNumber()	
+                获取数字 
+static int	getNumber​(String s)	 
+                字符串转成数字
+static String	getRaw()	 
+                获取原生输入的字符，返回的结果做了去除首尾空格处理
+static boolean	getSex()	 
+                获取性别
+static boolean	getSex​(String s)	 
+                字符串转成性别
+static boolean	isDigital​(String s)	 
+                判断指定的字符串是否为数字
+static boolean	isExit​(String s)
+                判断指定的字符串是退出指令
+
 ```
 
 ### Equipment接口及其实现子类的设计
-![](./images/pro03_Equipment接口及其实现子类的设计.png)  
+
+|\<\<interface>> |
+|:---|
+|+ getDescription():String <br>+ getSn():int <br>+ getStatus():EquipmentStatus <br>+ getUser():Employee <br>+ setStatus​(EquipmentStatus status):void <br>+ setUser​(Employee employee):void    |
+
+
+| PC |
+| :--- |
+| - model:String <br>- display:String |
+| + PC(model:String, display:String) <br>+ PC(sn:int, model:String, display:String, status:EquipmentStatus) throws TeamException |
+
+| NoteBook |
+| :--- |
+| - model:String <br>- price:double |
+| + PC(model:String, display:String) <br>+ PC(sn:int, model:String, display:String, status:EquipmentStatus) throws TeamException |
+
+| Printer |
+| :--- |
+| - name:String <br>- type:String |
+| + Printer(name:String, type:String) <br>+ Printer(sn:int, name:String, type:String, status:EquipmentStatus) throws TeamException |
+
+
 * 说明
     * model 表示机器的型号
     * display 表示显示器名称
@@ -325,25 +372,38 @@ public static char readConfirmSelection() ：
 * 根据需要提供各属性的get/set方法以及重载构造器
 * 实现类实现接口的方法，返回各自属性的信息
 
-### Status类
-* Status枚举类位于com.atguigu.team.service包中，封装员工的状态
+### EmployeeStatus类
+* EmployeeStatus类枚举类位于com.java.domain包中，封装员工的状态
 ```text
-// Status枚举类(自定义枚举类)
-package com.atguigu.team.service;
+// EmployeeStatus类(自定义枚举类)
+package com.java.domain;
 
-public class Status {
+public enum EmployeeStatus {
+    // 类实例，且是类常量
+    FREE("FREE", "正常"), // 正常，未加入团队
+    BUSY("BUSY", "已入团队"), // 已经加入团队
+    VOCATION("VOCATION", "休假中"), // 休假中
+    RESIGNED("RESIGNED", "已离职"); // 已离职
+
+    // 属性
     private final String NAME;
-    private Status(String name) {
+    private final String DISCRIPTION;
+
+    // 构造器
+    EmployeeStatus(String name, String discription) {
         this.NAME = name;
-    }
-    public static final Status FREE = new Status("FREE");
-    public static final Status VOCATION = new Status("VOCATION");
-    public static final Status BUSY = new Status("BUSY");
-    
-    public String getNAME() {
+        this.DISCRIPTION = discription;
+    };
+
+    // 方法
+    public String getName() {
         return NAME;
     }
-    
+
+    public String getDiscription() {
+        return DISCRIPTION;
+    }
+
     @Override
     public String toString() {
         return NAME;
@@ -352,109 +412,152 @@ public class Status {
 
 ```
 
-或参考 [Status类](src/com/java/domain/EmployeeStatus.java)  
+或参考 [EmployeeStatus类](src/com/java/domain/EmployeeStatus.java)  
 
 ### Employee类及其子类的设计
-![](images/Employee类.png)  
+
+| Employee (abstract类) |
+|:---  |
+| - age: int <br>- equipment: LinkedList<Equipment> <br>- id: int   <br>- static init: int  <br>- name: String  <br>- salary: double <br>- sex: boolean  <br>- status: EmployeeStatus = FREE   <br>- team: Team |
+| + Employee()	 <br>+ Employee​(id:int, name:String, sex:boolean, age:int, salary:double)	 <br>+ Employee​(name:String, sex:boolean, age:int, salary:double)	 <br>+ Employee​(name:String, age:int, salary:double) |
+| + equals​(Object o):boolean  <br> + getAge(): int  <br> + abstract getDescription(): String  <br> + getEquipment(): LinkedList<Equipment>  <br> + getEquipmentIdToString(): String  <br> + getFields(): String  <br> + getId(): int  <br> + static getInit(): int  <br> + getName(): String  <br> + getPost():String  	 <br> + getSalary(): double  	 <br> + getSex(): boolean  	 <br> + getStatus(): EmployeeStatus  	 <br> + getTeam(): Team  	 <br> + hashCode(): int  	 <br> - initIncrement(): void  	 <br> + joinTeam​(Team team): boolean  	 <br> + listEquipment(): String  	 <br> + quitTeam(): void  	 <br> + receiveEquipment​(Equipment aEquipment): boolean  <br> + recycleEquipment​(Equipment aEquipment): boolean  <br> + resignation(): boolean   <br> + resumeToWork(): boolean  <br> + setAge​(int age): void  	 <br> + static setInit​(int init): void  	 <br> + setName​(String name): void  <br> + setSalary​(double salary): void  <br> + setSex​(boolean sex): void  <br> + setStatus​(EmployeeStatus status): void  <br> + setTeam​(Team team): void  <br> + sexString(): String  <br> + toString(): String  <br> + vocation(): boolean  |  
 
 
-![](./images/Employee类的子类Programmer类.png)  
+| GeneralStaff |
+|:---  |
+| . |
+| + GeneralStaff​(int id, String name, boolean sex, int age, double salary)	 <br> + GeneralStaff​(name:String, sex:boolean, age:int, salary:double)	 <br> + GeneralStaff​(name:String, age:int, salary:double) |
+| + getDescription(): String |
+
+
+| Programmer |
+|:---  |
+| -	skill: String |
+| + Programmer​(int id, String name, boolean sex, int age, double salary, String skill)	 <br> + Programmer​(name:String, sex:boolean, age:int, salary:double)	 <br> + Programmer​(name:String, sex:boolean, age:int, salary:double, skill:String)	 <br> + Programmer​(name:String, age:int, salary:double)|
+| + getDescription(): String |
+
+| Designer |
+|:--- |
+| - bonus: double |
+| + Designer​(id:int, name:String, sex:boolean, age:int, salary:double, bonus:double)	 <br> + Designer​(name:String, sex:boolean, age:int, salary:double)	 <br> + Designer​(name:String, sex:boolean, age:int, salary:double, bonus:double)	 <br> + Designer​(name:String, age:int, salary:double) |
+| + getBonus(): double	 <br> + getDescription(): String	 <br> + setBonus​(double bonus): void	 <br> + toString(): String  |
+
+| Architect |
+|:--- |
+| - stock: int |
+| + Architect​(int id, name:String, sex:boolean, age:int, salary:double, bonus:double, stock:int)	 <br> + Architect​(name:String, sex:boolean, age:int, salary:double, bonus:double, stock:int)	 <br> + Architect​(name:String, sex:boolean, age:int, salary:double)	 <br> + Architect​(name:String, age:, salary:double) |
+| + getDescription(): String	 <br> + getStock(): int	 <br> + setStock​(int stock): void	 <br> + toString(): String |
+
+
 * 说明
-    * memberId 用来记录成员加入开发团队后在团队中的ID
-    * Status是项目service包下自定义的类，声明三个对象属性，分别表示成员的状态。
+    * EmployeeStatus是项目domain包下自定义的类，声明三个对象属性，分别表示成员的状态。
     * FREE-空闲
     * BUSY-已加入开发团队
     * VOCATION-正在休假
-    * equipment 表示该成员领用的设备
-* 可根据需要为类提供各属性的get/set方法以及重载构造器
-
-![](./images/Employee类的子类Designer类.png)  
-![](./images/Employee类的子类Architect类.png)  
-* 说明
+    * equipment 表示该成员领用的所有设备
+    * 可根据需要为类提供各属性的get/set方法以及重载构造器
     * bonus 表示奖金
     * stock 表示公司奖励的股票数量
-* 可根据需要为类提供各属性的get/set方法以及重载构造器
 
 
-## 第2步--实现service包中的类
-1. 按照设计要求编写NameListService类
-* 在NameListService类中临时添加一个main方法中，作为单元测试方法。
-* 在方法中创建NameListService对象，然后分别用模拟数据调用该对象的各个方法，以测试是否正确。
+### Team类的设计
+| Team |
+| :--- |
+| -	id: int	 <br> - static init: int	 <br> - members: LinkedList<Employee>	 <br> - membersStructor: LinkedHashMap<Class,​HashMap>	 <br> - name: String |
+| + Team()	 <br> + Team​(id:int, name:String, membersStructor:LinkedHashMap<Class,​HashMap>)	 <br> + Team​(name:String)	 <br> + Team​(name:String, membersStructor:LinkedHashMap<Class,​HashMap>) |
+| + addMember​(int memberId): boolean	 <br> + addMember​(Employee member): boolean	 <br> + addPostToMmbersStructor​(Class post, HashMap postRequirements): boolean	 <br> + deletePostFromMmbersStructor​(Class post): boolean	 <br> + equals​(Object o): boolean	 <br> + getId(): int	 <br> + static getInit(): int	 <br> + getMembers(): LinkedList<Employee>	 <br> + getMembersCount(): int	 <br> + getMembersStructor(): LinkedHashMap<Class,​HashMap>	 <br> + getName(): 	 <br> + getPostRequirements​(Class post): HashMap	 <br> + hashCode(): int	 <br> + idProcess(): void	 <br> + modifyPostMembersStructor​(Class post, HashMap postRequirements): boolean	 <br> + modifyTeamPostMax​(Class post, int num): boolean	 <br> + postCheck​(Employee member): int	 <br> + removeMember​(int memberId): boolean	 <br> + removeMember​(Employee member): boolean	 <br> + static setInit​(int init): void	 <br> + setMembersStructor​(LinkedHashMap<Class,​HashMap> membersStructor): void	 <br> + setName​(String name): void	 <br> + showMembers(): String	 <br> + showMembersStructor(): String	 <br> + toString(): String |
+
+
+## 第3步--实现service包中的类
+1. 按照设计要求编写EmployeesService类
+* 在单元测试中创建EmployeesService对象，然后分别用模拟数据调用该对象的各个方法，以测试是否正确。
 >注：测试应细化到包含了所有非正常的情况，以确保方法完全正确
-* 重复1-3步，完成TeamService类的开发
+* 重复1-3步，完成EmployeesService类的开发
 
-### NameListService类的设计
-![](./images/NameListService类的设计.png)  
+### EmployeesService类的设计
+
+| EmployeesService |
+|:--- |
+| - static employees: LinkedList\<Employee> |
+| + EmployeesService() |
+| + static addEmployee​(Employee employee): boolean	 <br> + static getAllEmployees(): LinkedList<Employee>	 <br> + static getEmployee​(int id): Employee	 <br> + static getEmployee​(String name): Employee[]	 <br> + static getEmployees(): LinkedList<Employee>	 <br> + receiveEquipment​(int employeeId, int equipmentId): void	 <br> + receiveEquipment​(Employee employee, Equipment equipment): void	 <br> + static resignation​(int employeeId): void	 <br> + static resignation​(Employee employee): void  |
+
 
 * 功能：负责将Data中的数据封装到Employee[]数组中，同时提供相关操作Employee[]的方法。
 * 说明
     * employees用来保存公司所有员工对象
-    * NameListService()构造器：
-        * 根据项目提供的Data类构建相应大小的employees数组
-        * 再根据Data类中的数据构建不同的对象，
-            >包括Employee、Programmer、Designer和Architect对象，以及相关联的Equipment子类的对象
-        * 将对象存于数组中
-        * Data类位于com.atguigu.team.service包中
-
-    * 方法
-    ```text
-    getAllEmployees ()方法：获取当前所有员工
-      返回：包含所有员工对象的数组
-  
-    getEmployee(id : int)方法：获取指定ID的员工对象
-      参数：指定员工的ID
-      返回：指定员工对象
-      异常：找不到指定的员工
-    ```
     * 在service子包下提供自定义异常类：TeamException
     * 另外，可根据需要自行添加其他方法或重载构造器
 
-### TeamService类的设计
-![](./images/TeamService类的设计.png)  
+### TeamsService类的设计
 
-* 功能：关于开发团队成员的管理：添加、删除等。
-* 说明
-```text
-counter：用来为开发团队新增成员自动生成团队中的唯一ID，即memberId为静态变量。（
-            提示：应使用增1的方式）
-            
-MAX_MEMBER：表示开发团队最大成员数
+| TeamsService |
+| :--- |
+| - static teams: LinkedList<Team> |
+| + TeamsService() |
+| + addTeam​(Team team): boolean	 <br> + deleteTeam​(int teamId): boolean	 <br> + deleteTeam​(Team team): boolean	 <br> + getTeam​(int teamId): Team	 <br> + getTeams(): LinkedList<Team>		 <br> + getTeamsCount(): int |
 
-team数组：用来保存当前团队中的各成员对象 
 
-total：记录团队成员的实际人数
-```
+* 功能：
+    * 保存所有团队信息，
+    * 提供对团队的管理操作
+
 
 * 方法
 ```text
-getTeam()方法：返回当前团队的所有对象
-    返回：包含所有成员对象的数组，数组大小与成员人数一致
+addTeam​(Team team): boolean 方法：添加指定的团队
+    返回：本次操作的状态，true/false
+    异常：当team为null是，报传入的team无效
     
-addMember(e: Employee)方法：向团队中添加成员
-    参数：待添加成员的对象
-    异常：添加失败， TeamException中包含了失败原因
+deleteTeam​(int teamId): boolean 方法：删除指定id的团队
+    参数：指定id的团队
+    异常：删除失败， TeamException中包含了失败原因
+    
+deleteTeam​(Team team): boolean 方法：删除指定团队
+    参数：指定的团队
+    异常：删除失败， TeamException中包含了失败原因
 
-removeMember(memberId: int)方法：从团队中删除成员
-    参数：待删除成员的memberId
-    异常：找不到指定memberId的员工，删除失败
-    另外，可根据需要自行添加其他方法或重载构造器
+getTeam​(int teamId): Team 方法：获取指定id的团队
+        参数：指定id的团队
+        异常：删除失败， TeamException中包含了失败原因
+
+getTeams(): LinkedList 方法：获取保存团队信息的teams
+
+getTeamsCount(): int 方法：获取teams保存的客户数量
+    
+
 ```
+
+### Storage类的设计
+* 功能
+    1. 从文件加载数据，解析文本数据。文件类型为java，数据已 String数组常量保存
+    * 从程序保存数据到文件，把程序中的数据写入到 java文件，数据已 String数组常量形式保存
+    
+| Storage |
+| :--- |
+| - static documentHead: String	 <br> - static documentTail: String	 <br> - static equipmentRepository: EquipmentRepository	 <br> - static filePath: String	 <br> - static listService: EmployeesService	 <br> - static teamsService: TeamsService |
+| Storage() |
+| - static employeeGeneralFieldToString​(Employee e): String	 <br> + static read(): void	 <br> - static readEmployees(): void	 <br> - static readEquipment(): void	 <br> - static readTeams(): void	 <br> - static receiveEquipment​(String equipmentString, Employee employee): void	 <br> - static restoreEmployee​(Employee employee, int teamId, String equipmentString, EmployeeStatus status): void	 <br> + static save(): void	 <br> - static saveEployees(): String	 <br> - static saveEquipment(): String	 <br> - static saveTeams(): String	 <br> - static teamMembersStructorToString​(Team team): String |
 
 ## 第3步--实现view包中类
 * 按照设计要求编写TeamView类，逐一实现各个方法，并编译
-* 执行main方法中，测试软件全部功能
+* 执行TeamDispatchSystem的main方法中，测试软件全部功能
 
 ### TeamView类的设计
-![](./images/TeamView类的设计.png)
 
-说明：
-listSvc和teamSvc属性：供类中的方法使用
-enterMainMenu ()方法：主界面显示及控制方法。
-以下方法仅供enterMainMenu()方法调用：
-listAllEmployees ()方法：以表格形式列出公司所有成员
-getTeam()方法：显示团队成员列表操作
-addMember ()方法：实现添加成员操作
-deleteMember ()方法：实现删除成员操作
+| TeamView |
+| :--- |
+| - static equipmentRepository: EquipmentRepository	 <br> - static listService: EmployeesService	 <br> - static teamsService: TeamsService |
+| + TeamView() |
+| + addEquipment(): void	 <br> + addMemberToTeam​(Team team): void	 <br> + addTeam(): void	 <br> + addTeamPost​(Team team): void	 <br> + checkTeamIsNull​(Team team): boolean	 <br> + deleteMemterFromTeam​(Team team): void	 <br> + deleteTeam(): void	 <br> + deleteTeamPost​(Team team): void	 <br> + enterMainMenu(): void	 <br> - listAllEmployees(): void	 <br> + listAllEquipment(): void	 <br> + listAllTeams(): void	 <br> + listAteamMembers​(Team team): void	 <br> + listTeamMembersStructor​(Team team): void	 <br> + modifyTeamPostMax​(Team team): void	 <br> + printMainMenu(): void	 <br> + printTeamMenu​(Team team): void	 <br> + receiveEquipment(): void	 <br> + recruitingStaff(): void	 <br> + resignation(): void	 <br> + resumeToWork(): void	 <br> + teamDispatch(): void	 <br> + teamsMenu(): void	 <br> + vocation(): void	 |
 
-
+* 说明：
+    * 属性listService：员工管理服务，保存了所有的员工信息
+    * 属性equipmentRepository: 设备管理服务，保存了所有的设备信息
+    * 属性teamsService: 团队管理服务，保存了所有的团队信息
+    * enterMainMenu(): void 方法：主界面显示及控制方法。
+    * listAllEmployees(): void 方法：以表格形式列出公司所有成员
+    * listAteamMembers​(Team team): void 方法：显示团队成员列表操作
+    * teamDispatch(): void 方法：团队调度操作
+    * vocation(): void 方法：员工休假
 
