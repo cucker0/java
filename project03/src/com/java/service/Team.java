@@ -244,7 +244,7 @@ public class Team {
                 int ret = postCheck(member);
                 HashMap postRequirements = getPostRequirements(member.getClass());
                 if (ret == 0) {
-                    throw new TeamException(String.format("本团队不需要%s岗位，无法添加\n", member.getPost()));
+                    throw new TeamException(String.format("本团队暂未设%s岗位，无法添加\n", member.getPost()));
                 } else if (ret == 1) {
                     throw new TeamException(String.format("%s团队%s岗位只需要%d个成员,已经满员\n", name, member.getPost(), (int) postRequirements.get("max")));
 
@@ -292,7 +292,12 @@ public class Team {
             --total;
             membersStructor.get(member.getClass()).put("total", total);
             // members中删除该成员
-            return members.remove(member);
+            boolean status = members.remove(member);
+            if (status) {
+                // 重置员工team字段中记录的team
+                member.setTeam(null);
+            }
+            return status;
         }
         throw new TeamException(String.format("%s团队中无此员工，删除失败", name));
     }

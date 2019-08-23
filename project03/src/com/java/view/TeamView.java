@@ -83,13 +83,13 @@ public class TeamView {
                 "d 员工领取设备\n" +
                 "e 员工办理离职\n" +
                 "f 员工休假\n" +
-                "g 员工结束休假/恢复上班\n" +
+                "g 员工结束休假/重新入职\n" +
                 "h 列出所有设备\n" +
                 "i 添加设备\n" +
                 "q 退       出\n" +
                 "\n" +
-                "请选择：";
-        System.out.println(menu);
+                "请选择操作项：";
+        System.out.print(menu);
     }
 
     /*
@@ -112,7 +112,7 @@ public class TeamView {
                     e.getAge(),
                     e.getSalary(),
                     e.getDescription(),
-                    e.getStatus(),
+                    e.getStatus().getDiscription(),
                     bonusString,
                     stockString,
                     e.listEquipment());
@@ -137,7 +137,7 @@ public class TeamView {
                 "选择操作项(回车退出)：";
 
         while (true) {
-            System.out.println(menu);
+            System.out.print(menu);
             String rawCmd = GetInput.getRaw();
             switch (rawCmd) {
                 case "q":
@@ -210,7 +210,7 @@ public class TeamView {
     public void listAllTeams() {
         String menu = String.format("-----------------共%d个团队-----------------\n\n" +
                 "%-6s\t%s\n", teamsService.getTeamsCount(), "ID", "团队名");
-        System.out.println(menu);
+        System.out.print(menu);
         LinkedList<Team> teams = teamsService.getTeams();
         for (int i = 0; i < teams.size(); ++i) {
             System.out.printf("%-6d\t%s\n", teams.get(i).getId(), teams.get(i).getName());
@@ -245,7 +245,7 @@ public class TeamView {
                 "q 退出\n" +
                 "\n" +
                 "选择操作项(回车退出)：", team.getName());
-        System.out.println(menu);
+        System.out.print(menu);
     }
 
     /*
@@ -260,7 +260,7 @@ public class TeamView {
         String menu = "-----------------团队调度管理-----------------\n" +
                 "\n" +
                 "选择团队id (回车退出)：";
-        System.out.println(menu);
+        System.out.print(menu);
         String ramCmd = GetInput.getRaw();
         if (ramCmd.equals("")) {
             return;
@@ -330,7 +330,7 @@ public class TeamView {
                     e.sexString(),
                     e.getAge(),
                     e.getDescription(),
-                    e.getStatus()
+                    e.getStatus().getDiscription()
             );
         }
         System.out.println();
@@ -370,8 +370,9 @@ public class TeamView {
         if (checkTeamIsNull(team)) return;
         listAteamMembers(team);
         String menu = "选择要删除成员的id (-1或回车退出)：";
+        System.out.print(menu);
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("")) { // 回车指令
+        if (GetInput.isExit(rawCmd)) {
             return;
         }
         int num = GetInput.getNumber(rawCmd);
@@ -432,7 +433,7 @@ public class TeamView {
                 "\n" +
                 "选择岗位(回车退出)：");
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("")) {
+        if (GetInput.isExit(rawCmd)) {
             return;
         }
         int num = GetInput.getNumber(rawCmd);
@@ -482,7 +483,7 @@ public class TeamView {
         }
         System.out.print("\n选择岗位编号(回车退出)：");
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("")) {
+        if (GetInput.isExit(rawCmd)) {
             return;
         }
         int num = GetInput.getNumber(rawCmd);
@@ -508,7 +509,7 @@ public class TeamView {
         System.out.println(menu);
         System.out.println(post);
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("") || rawCmd.equalsIgnoreCase("q")) {
+        if (GetInput.isExit(rawCmd)) {
             return;
         }
 
@@ -582,7 +583,7 @@ public class TeamView {
         listAllEmployees();
         String menu = "-----------------员工办理离职-----------------\n";
         System.out.println(menu);
-        System.out.println("选择员工id (回车退出)：");
+        System.out.print("选择员工id (回车退出)：");
         String rawCmd = GetInput.getRaw();
         if (GetInput.isExit(rawCmd)) return;
         int num = GetInput.getNumber(rawCmd);
@@ -614,10 +615,10 @@ public class TeamView {
     * 员工结束休假/恢复上班
     * */
     public void resumeToWork() {
-        String menu = "-----------------员工结束休假/恢复上班-----------------\n";
+        String menu = "-----------------员工结束休假/重新入职-----------------\n";
         System.out.println(menu);
         listAllEmployees();
-        System.out.println("选择员工id (回车退出)：");
+        System.out.print("选择员工id (回车退出)：");
         String rawCmd = GetInput.getRaw();
         if (GetInput.isExit(rawCmd)) return;
         int num = GetInput.getNumber(rawCmd);
@@ -633,10 +634,10 @@ public class TeamView {
     * 列出所有设备
     * */
     public void listAllEquipment() {
-        String menu = String.format("-----------------列出设备-----------------\n" +
+        String menu = String.format("-----------------列出设备-----------------\n\n" +
                 "%-5s\t%-12s\t%-12s\t%s\n",
                 "SN", "状态", "使用者", "描述");
-        System.out.println(menu);
+        System.out.print(menu);
         ArrayList<Equipment> list = equipmentRepository.getRepository();
         for (int i= 0; i < list.size(); ++i) {
             System.out.printf("%-5s\t%-12s\t%-12s\t%s\n",
@@ -660,9 +661,9 @@ public class TeamView {
                 "q 退出" +
                 "\n" +
                 "选择项(回车退出)：";
-        System.out.println(menu);
+        System.out.print(menu);
         String rawCmd = GetInput.getRaw();
-        if (rawCmd.equals("") || rawCmd.equalsIgnoreCase("q")) {
+        if (GetInput.isExit(rawCmd)) {
             return;
         }
         if (rawCmd.equalsIgnoreCase("a")) {
@@ -703,9 +704,9 @@ public class TeamView {
                 "\n" +
                 "选择员工id (回车退出)：";
         String equipmentSelectMenu = "选择设备id (回车退出)：";
-        System.out.println(menu);
+        System.out.print(menu);
         String ramCmd = GetInput.getRaw();
-        if (ramCmd.equals("")) {
+        if (GetInput.isExit(ramCmd)) {
             return;
         }
         int employeeId = GetInput.getNumber(ramCmd);

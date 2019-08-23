@@ -243,6 +243,21 @@ public abstract class Employee { // 抽象类
     }
 
     /*
+    * 员工加入指定的团队
+    * */
+    public boolean joinTeam(Team team) {
+        if (team != null) {
+            try {
+                return team.addMember(this);
+            } catch (TeamException e) {
+//                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        }
+        return false;
+    }
+
+    /*
     * 获取员工的岗位名
     * @return   String形式的岗位名
     * */
@@ -298,10 +313,12 @@ public abstract class Employee { // 抽象类
     public void resignation() {
         // 退出已经加入的团队
         quitTeam();
+        // 已加入的团队重置为空
+//        setTeam(null); // quitTeam已经执行
         // 员工状态设置为离职
         setStatus(EmployeeStatus.RESIGNED);
         // 归还所有领取的设备
-        for (Equipment eq :equipment) {
+        for (Equipment eq : equipment) {
             recycleEquipment(eq);
         }
     }
