@@ -42,7 +42,7 @@ IntelliJ_IDEA生成JavaDoc文档
     * Generate JavaDoc scope: 生成范围
     * Output directory(必填): 输出JavaDoc的目录，要求目录为空，否则生成时将卡主
     * 可以选择类权限范围、注解范围等
-    * Locae: 需要生成的 JavaDoc 以何种语言版本展示，不填写ide自动判断，如L：zh_CN
+    * Locae: 要使用的区域设置。需要生成的 JavaDoc 以何种语言版本展示，不填写ide自动判断，如L：zh_CN、en_US、en_US_WIN
     * Other command line arguments(重要): 执行javadoc时传递的参数
         * -encoding utf8 指定源码.java文档的编码
         * -link https://docs.oracle.com/en/java/javase/12/docs/api 使用超链接的短名称
