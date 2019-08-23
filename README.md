@@ -567,6 +567,7 @@ JAVA Study
     * [Java学习线路](./README/java学习线路_ok.md)
     * [廖雪峰Java教程](https://www.liaoxuefeng.com/wiki/1252599548343744)
     * [安装JDK](./README/install_JDK.md "安装JDK")  
+    * [IntelliJ_IDEA生成JavaDoc文档](./README/IntelliJ_IDEA生成JavaDoc文档.md)
     * [clone或一个新的Interlij IDE项目到本地如何正常运行](README/Intellij_IDE_open_new_clone_project.md "clone或一个新的Interlij IDE项目到本地如何正常运行")
     * [IntelliJ IDEA的安装、配置与使用](README/images/other/IntelliJ_IDEA的安装、配置与使用.pdf)
         * [IntelliJ_IDE常规设置](./README/IntelliJ_IDE设置.md)
