@@ -1,6 +1,35 @@
 IntelliJ_IDEA生成JavaDoc文档
 ==
 
+# JavaDoc文档包含注释要求
+* 使用文档注释格式，必须以 /** 开头的注释
+```text
+/**
+ * 
+ */
+ 
+ 或
+/**
+ 
+*/ 
+```
+* 单行注释 和 块注释(多行注释) 不会被添加到JavaDoc生成的文档中
+```text
+单行注释
+//
+
+
+块注释
+/*
+*
+*/
+
+块注释
+/*
+
+*/
+```
+
 # 操作步骤
 1. 点击生成JavaDoc  
 
@@ -11,7 +40,7 @@ IntelliJ_IDEA生成JavaDoc文档
 * 设置生成JavaDoc配置  
 ![](./images/Intellij_IDE/生成JavaDoc03.png)  
     * Generate JavaDoc scope: 生成范围
-    * Output directory(必填): 输出JavaDoc的目录
+    * Output directory(必填): 输出JavaDoc的目录，要求目录为空，否则生成时将卡主
     * 可以选择类权限范围、注解范围等
     * Locae: 需要生成的 JavaDoc 以何种语言版本展示，不填写ide自动判断，如L：zh_CN
     * Other command line arguments(重要): 执行javadoc时传递的参数
@@ -27,8 +56,8 @@ IntelliJ_IDEA生成JavaDoc文档
         
         第四个参数 -link 很重要，它表示你生成的 JavaDoc 中涉及到很多对其他外部 Java 类的引用,是使用全限定名称还是带有超链接的短名称
         ```
-        <details>
-        <summary>       -link 参数说明</summay>
+<details>
+<summary>       -link 参数说明</summay>
 
         ```text
             举个例子，我创建了一个方法 public void func(String arg)，这个方法在生成 JavaDoc 时如果不指定 -link 参数，
@@ -49,7 +78,7 @@ IntelliJ_IDEA生成JavaDoc文档
         
         每个 JavaDoc 都会在根目录下有一个 package-list 文件，包括我们自己生成的 JavaDoc。
         ```
-        </details> 
+</details> 
 
     * 最后点击OK开始生成JavaDoc文档
     
