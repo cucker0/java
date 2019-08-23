@@ -10,6 +10,7 @@ JAVA Study
         * [java语言特点](./day01/README.md#java语言特点)
         * [java两种核心机制](./day01/README.md#java两种核心机制)
         * [.java源文件要求](./day01/README.md#java源文件要求)
+        * [注释](./day01/README.md#注释)
         * [javadoc生成文档说明](./day01/README.md#javadoc生成文档说明)
     * [关键字](./day01/README.md#关键字)
         * [定义数据类型的关键字](./day01/README.md#定义数据类型的关键字)
