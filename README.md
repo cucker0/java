@@ -557,7 +557,9 @@ JAVA Study
         * [Bank07](./Bank07/README.md)
         * [Bank08](./Bank08/README.md)
    
-    * [开发团队调度软件](./project03/README.md)
+    * 开发团队调度软件
+        * [开发团队调度软件_参考版](./project03_sample/README.md)
+        * [开发团队调度软件_改进版](./project03/README.md)
     * 考试管理系统软件
 </details>
 
