@@ -2,7 +2,7 @@ IntelliJ_IDEA生成JavaDoc文档
 ==
 
 # JavaDoc文档包含注释要求
-* 使用文档注释格式，必须以 /** 开头的注释
+* 使用文档注释格式的注释内容才会添加到JavaDoc文档，必须以 /** 开头的注释
 ```text
 /**
  * 
@@ -56,8 +56,8 @@ IntelliJ_IDEA生成JavaDoc文档
         
         第四个参数 -link 很重要，它表示你生成的 JavaDoc 中涉及到很多对其他外部 Java 类的引用,是使用全限定名称还是带有超链接的短名称
         ```
-<details>
-<summary>       -link 参数说明</summay>
+        <details>
+        <summary>       -link 参数说明</summary>
 
         ```text
             举个例子，我创建了一个方法 public void func(String arg)，这个方法在生成 JavaDoc 时如果不指定 -link 参数，
