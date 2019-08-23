@@ -12,7 +12,7 @@ import com.java.utils.Magic;
 import java.util.*;
 
 public class TeamView {
-    private static NameListService listService = new NameListService();
+    private static EmployeesService listService = new EmployeesService();
     private static TeamsService teamsService = new TeamsService();
     private static EquipmentRepository equipmentRepository = new EquipmentRepository();
 
@@ -588,7 +588,7 @@ public class TeamView {
         String rawCmd = GetInput.getRaw();
         if (GetInput.isExit(rawCmd)) return;
         int num = GetInput.getNumber(rawCmd);
-        NameListService.resignation(num); // 等价于 listService.resignation(num);
+        EmployeesService.resignation(num); // 等价于 listService.resignation(num);
     }
 
     /*

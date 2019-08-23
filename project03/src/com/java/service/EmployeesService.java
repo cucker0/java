@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class NameListService {
+public class EmployeesService {
     private static LinkedList<Employee> employees = new LinkedList<>(); // 记录所有员工资料，使用LinkedList是因为其有较好的出入、删除效率
 
     // 构造器
-    public NameListService() {}
+    public EmployeesService() {}
 
     // 方法
     public static LinkedList<Employee> getEmployees() {

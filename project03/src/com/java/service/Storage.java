@@ -15,7 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 public class Storage {
@@ -26,7 +25,7 @@ public class Storage {
             File.separator + "java" +
             File.separator + "service" +
             File.separator + "Data.java";
-    private static NameListService listService = new NameListService();
+    private static EmployeesService listService = new EmployeesService();
     private static TeamsService teamsService = new TeamsService();
     private static EquipmentRepository equipmentRepository = new EquipmentRepository();
     // 保存数据的文档头
@@ -444,8 +443,8 @@ public class Storage {
                 "    public static final String[][] EMPLOYEES = {\n",
                 Employee.getInit());
         // 遍历员工数据
-        for (int i = 0; i < NameListService.getEmployees().size(); ++i) {
-            Employee e = NameListService.getAllEmployees().get(i);
+        for (int i = 0; i < EmployeesService.getEmployees().size(); ++i) {
+            Employee e = EmployeesService.getAllEmployees().get(i);
 //            System.out.println("1 debug===  " + e);
             // 一个员工信息数组头
             String employee = "            {";
@@ -464,7 +463,7 @@ public class Storage {
             }
 
             // 一个员工信息数组尾
-            if (i == NameListService.getEmployees().size() -1) {
+            if (i == EmployeesService.getEmployees().size() -1) {
                 employee += "}\n";
             } else {
                 employee += "},\n";

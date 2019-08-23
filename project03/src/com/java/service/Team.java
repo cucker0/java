@@ -278,7 +278,7 @@ public class Team {
      *           员工
      * */
     public boolean addMember(int memberId) throws TeamException{
-        Employee employee = NameListService.getEmployee(memberId);
+        Employee employee = EmployeesService.getEmployee(memberId);
         return addMember(employee);
     }
 
@@ -306,7 +306,7 @@ public class Team {
     * 指定id的成员退出团队
     * */
     public boolean removeMember(int memberId) throws TeamException {
-        Employee employee = NameListService.getEmployee(memberId);
+        Employee employee = EmployeesService.getEmployee(memberId);
         return removeMember(employee);
     }
 

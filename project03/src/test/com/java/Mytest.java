@@ -7,7 +7,6 @@ package test.com.java;
 
 import com.java.domain.*;
 import com.java.service.*;
-import com.java.view.TeamView;
 import org.junit.Test;
 
 import java.io.File;
@@ -72,10 +71,10 @@ public class Mytest {
         Designer d1 = new Designer("雷响", 22, 50000);
         Architect a1 = new Architect("马云", 50, 200000);
         Architect a2 = new Architect("李彦宏", 46, 200000);
-        NameListService.addEmployee(p1);
-        NameListService.addEmployee(d1);
-        NameListService.addEmployee(a1);
-        NameListService.addEmployee(a2);
+        EmployeesService.addEmployee(p1);
+        EmployeesService.addEmployee(d1);
+        EmployeesService.addEmployee(a1);
+        EmployeesService.addEmployee(a2);
 
 //        try {
 //            t1.addMember(p1);
