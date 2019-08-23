@@ -1,4 +1,4 @@
-/*
+/**
 * 魔法工具
 *
 * */
@@ -6,7 +6,7 @@
 package com.java.utils;
 
 public class Magic {
-    /*
+    /**
     * 由Class获取相应的职位名称
     * */
     public static String clazzToPost(Class clazz) {

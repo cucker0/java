@@ -1,4 +1,4 @@
-/*
+/**
 * 团队
 * 团队属性、团队成员的管理：添加、删除等
 *
@@ -76,7 +76,7 @@ public class Team {
         this.membersStructor = membersStructor;
     }
 
-    /*
+    /**
     * 添加一个岗位要求到成员结构要求membersStructor中
     * @param    post
     *           岗位名
@@ -94,7 +94,7 @@ public class Team {
         return false;
     }
 
-    /*
+    /**
     * 从成员结构要求membersStructor中删除指定的岗位需求
     * @param    post
     *           岗位名
@@ -113,7 +113,7 @@ public class Team {
         return false;
     }
 
-    /*
+    /**
     * 修改岗位需求
     * @param    post
     *           指定要修改的岗位名
@@ -134,7 +134,7 @@ public class Team {
         return false;
     }
 
-    /*
+    /**
     * 修改指定岗位的预招人数
     * @param    num
     *           新的预招人数
@@ -150,7 +150,7 @@ public class Team {
         return false;
     }
 
-    /*
+    /**
     * 查询指定岗位的需求
     * @param    post
     *           岗位名
@@ -201,7 +201,7 @@ public class Team {
     }
 
 
-    /*
+    /**
     * 指定员工岗位是否包是含在本团队岗位要求中
     * @param    member
     *           成员(员工)
@@ -233,7 +233,7 @@ public class Team {
         return 0;
     }
 
-    /*
+    /**
     * 添加指定成员到memebers 列表中
     * @param    member
     *           员工
@@ -274,9 +274,9 @@ public class Team {
         return false;
     }
 
-    /*
+    /**
      * 添加指定id的成员到memebers 列表中
-     * @param    member
+     * @param    memberId
      *           员工
      * */
     public boolean addMember(int memberId) throws TeamException{
@@ -284,7 +284,7 @@ public class Team {
         return addMember(employee);
     }
 
-    /*
+    /**
     * 指定的成员退出团队
     * */
     public boolean removeMember(Employee member) throws TeamException {
@@ -304,7 +304,7 @@ public class Team {
         throw new TeamException(String.format("%s团队中无此员工，删除失败", name));
     }
 
-    /*
+    /**
     * 指定id的成员退出团队
     * */
     public boolean removeMember(int memberId) throws TeamException {

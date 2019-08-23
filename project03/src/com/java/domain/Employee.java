@@ -1,4 +1,4 @@
-/*
+/**
 * 员工类
 *
 * */
@@ -108,7 +108,7 @@ public abstract class Employee { // 抽象类
         return sex;
     }
 
-    /*
+    /**
     * 获取String型的sex
     * */
     public String sexString() {
@@ -131,7 +131,7 @@ public abstract class Employee { // 抽象类
         }
     }
 
-    /*
+    /**
      * 获取该员工领取的所有设备
      * @return  equipment
      *          保存所有设备信息的LinkedList
@@ -140,7 +140,7 @@ public abstract class Employee { // 抽象类
         return equipment;
     }
 
-    /*
+    /**
     * 获取该员工领取的所有设备sn的Sring
     * ","分隔设备sn
     * */
@@ -155,7 +155,7 @@ public abstract class Employee { // 抽象类
         return str;
     }
 
-    /*
+    /**
     * 列出此员工领取的所有设备
     * */
     public String listEquipment() {
@@ -168,7 +168,7 @@ public abstract class Employee { // 抽象类
         return sb.toString();
     }
 
-    /*
+    /**
      * 领取设备
      * @prama   aEquipment
      *          一件设备
@@ -192,7 +192,7 @@ public abstract class Employee { // 抽象类
         return false;
     }
 
-    /*
+    /**
     * 回收(归还)指定的设备
     * @prama   aEquipment
     *          一件设备
@@ -225,7 +225,7 @@ public abstract class Employee { // 抽象类
         this.team = team;
     }
 
-    /*
+    /**
     * 员工退出团队
     * */
     public void quitTeam() {
@@ -239,7 +239,7 @@ public abstract class Employee { // 抽象类
         }
     }
 
-    /*
+    /**
     * 员工加入指定的团队
     * */
     public boolean joinTeam(Team team) {
@@ -254,7 +254,7 @@ public abstract class Employee { // 抽象类
         return false;
     }
 
-    /*
+    /**
     * 获取员工的岗位名
     * @return   String形式的岗位名
     * */
@@ -304,7 +304,7 @@ public abstract class Employee { // 抽象类
     // 列出员工基本信息。抽象方法
     public abstract String getDescription();
 
-    /*
+    /**
      * 员工离职
      * */
     public boolean resignation() {
@@ -327,7 +327,7 @@ public abstract class Employee { // 抽象类
         return false;
     }
 
-    /*
+    /**
     * 员工休假
     * */
     public boolean vocation() {
@@ -340,7 +340,7 @@ public abstract class Employee { // 抽象类
         return true;
     }
 
-    /*
+    /**
     * 员工结束休假/离职的员工重新进入公司上班
     * */
     public boolean resumeToWork() {

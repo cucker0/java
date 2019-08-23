@@ -1,4 +1,4 @@
-/*
+/**
 * 设备管理操作
 *   1. 设备仓库，保存所有设备信息
 *   2. 提供设备的相关操作
@@ -20,7 +20,7 @@ public class EquipmentRepository {
     }
 
     // 方法
-    /*
+    /**
     * 添加设备
     * @param    aEquipment
     *           要添加的设备
@@ -29,7 +29,7 @@ public class EquipmentRepository {
         repository.add(aEquipment);
     }
 
-    /*
+    /**
     * 查询指定sn的设备
     * @param    sn
     *           要查询的设备的sn

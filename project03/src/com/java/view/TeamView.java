@@ -1,7 +1,9 @@
-/*
+/**
 * 主控模块，负责菜单的显示和处理用户操作
 * */
-
+/**
+ *
+ * */
 package com.java.view;
 
 import com.java.domain.*;
@@ -20,7 +22,7 @@ public class TeamView {
     public TeamView() {}
 
     // 方法
-    /*
+    /**
     * 主菜单
     * */
     public void enterMainMenu() {
@@ -72,7 +74,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 打印主菜单
     * */
     public void printMainMenu() {
@@ -93,7 +95,7 @@ public class TeamView {
         System.out.print(menu);
     }
 
-    /*
+    /**
     * 列出公司所有员工信息
     * */
     private void listAllEmployees() {
@@ -121,7 +123,7 @@ public class TeamView {
         System.out.println();
     }
 
-    /*
+    /**
     * 团队管理菜单
     * */
     public void teamsMenu () {
@@ -166,7 +168,7 @@ public class TeamView {
 
     }
 
-    /*
+    /**
     * 新建团队
     * */
     public void addTeam() {
@@ -191,7 +193,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 删除团队
     * */
     public void deleteTeam() {
@@ -205,7 +207,7 @@ public class TeamView {
         teamsService.deleteTeam(num);
     }
 
-    /*
+    /**
     * 列出所有团队
     * */
     public void listAllTeams() {
@@ -219,7 +221,7 @@ public class TeamView {
         System.out.println();
     }
 
-    /*
+    /**
     * 检测team是否为null
     * */
     public boolean checkTeamIsNull(Team team) {
@@ -230,7 +232,7 @@ public class TeamView {
         return false;
     }
 
-    /*
+    /**
      * 打印团队调度操作菜单
      * */
     public void printTeamMenu(Team team) {
@@ -249,7 +251,7 @@ public class TeamView {
         System.out.print(menu);
     }
 
-    /*
+    /**
     * 团队调度操作
     * */
     public void teamDispatch() {
@@ -315,7 +317,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 显示指定团队的成员
      * */
     public void listAteamMembers(Team team) {
@@ -337,7 +339,7 @@ public class TeamView {
         System.out.println();
     }
 
-    /*
+    /**
     * 指定的团队添加成员
     * @param    team
     *           团队对象
@@ -364,7 +366,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
      * 指定的团队删除成员
      * */
     public void deleteMemterFromTeam(Team team) {
@@ -390,7 +392,7 @@ public class TeamView {
 
     }
 
-    /*
+    /**
     * 列出指定团队的成员架构
     * */
     public void listTeamMembersStructor(Team team) {
@@ -398,7 +400,7 @@ public class TeamView {
         System.out.println(team.showMembersStructor());
     }
 
-    /*
+    /**
     * 调整指定团队的岗位成员预招人数
     * */
     public void modifyTeamPostMax(Team team) {
@@ -420,7 +422,7 @@ public class TeamView {
 
     }
 
-    /*
+    /**
     * 指定的团队增加一个岗位
     * */
     public void addTeamPost(Team team) {
@@ -464,7 +466,7 @@ public class TeamView {
 
     }
 
-    /*
+    /**
      * 指定的团队删除一个岗位，该岗位未加入相应的职位的员工才能被删除
      * */
     public void deleteTeamPost(Team team) {
@@ -495,7 +497,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 招聘入职新员工
     * */
     public void recruitingStaff() {
@@ -577,7 +579,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 员工办理离职
     * */
     public void resignation() {
@@ -591,7 +593,7 @@ public class TeamView {
         EmployeesService.resignation(num); // 等价于 listService.resignation(num);
     }
 
-    /*
+    /**
     * 员工休假
     * */
     public void vocation() {
@@ -612,7 +614,7 @@ public class TeamView {
 
     }
 
-    /*
+    /**
     * 员工结束休假/恢复上班
     * */
     public void resumeToWork() {
@@ -631,7 +633,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 列出所有设备
     * */
     public void listAllEquipment() {
@@ -651,7 +653,7 @@ public class TeamView {
         System.out.println();
     }
 
-    /*
+    /**
     * 添加设备
     * */
     public void addEquipment() {
@@ -696,7 +698,7 @@ public class TeamView {
         }
     }
 
-    /*
+    /**
     * 员工领取设备
     * */
     public void receiveEquipment() {

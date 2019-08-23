@@ -1,4 +1,4 @@
-/*
+/**
 * 团队管理操作
 *   1. 保存所有的团队信息
 *   2. 提供团队的相关操作
@@ -20,11 +20,11 @@ public class TeamsService {
     }
 
     // 方法
-    /*
+    /**
     * 生成团队
     * */
 
-/*
+/**
     public void generateTeams() {
         LinkedHashMap<Class, HashMap> membersStructor = new LinkedHashMap<>();
         HashMap post1 = new HashMap(); // 岗位要求
@@ -44,7 +44,7 @@ public class TeamsService {
     }
 */
 
-    /*
+    /**
     * 添加指定的team到teams
     * @param    team
     *           团队对象
@@ -58,7 +58,7 @@ public class TeamsService {
         return false;
     }
 
-    /*
+    /**
     * 从teams中删除指定的team
     * 只有无成员的team才能被删除
     * @param    team
@@ -75,7 +75,7 @@ public class TeamsService {
         return false;
     }
 
-    /*
+    /**
      * 从teams中删除指定id的team
      * 只有无成员的team才能被删除
      * @param       teamId
@@ -96,7 +96,7 @@ public class TeamsService {
         return teams.size();
     }
 
-    /*
+    /**
     * 通过指定的team id查找team
     * @prama    teamId
     *           团队id

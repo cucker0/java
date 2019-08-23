@@ -1,4 +1,4 @@
-/*
+/**
 * 数据存取
 * 功能：
 *   1. 从文件加载数据，解析文本数据。文件类型为java，数据已 String数组常量保存
@@ -57,7 +57,7 @@ public class Storage {
     }
 
     // 方法
-    /*
+    /**
     * 从文件加载数据
     * 注意：加载顺序
     *   设备->团队->员工
@@ -69,7 +69,7 @@ public class Storage {
         readEmployees();
     }
 
-    /*
+    /**
     * 从程序保存数据到文件
     * 注意保存顺序：
     *   文档头 -> 其他数据 -> 文档尾
@@ -187,7 +187,7 @@ public class Storage {
 
     }
 
-    /*
+    /**
     * 领取的设备，重新领取
     * @param    equipmentString
     *           设备序列号字符串，如："3,5"
@@ -208,7 +208,7 @@ public class Storage {
         }
     }
 
-    /*
+    /**
     * 从文件中读取员工数，恢复员工数据
     * @param    employee
     *           员工对象
@@ -365,7 +365,7 @@ public class Storage {
         return str;
     }
 
-    /*
+    /**
     * 指定团队的成员结构转换成String
     * */
     private static String teamMembersStructorToString(Team team) {
@@ -477,7 +477,7 @@ public class Storage {
         return str;
     }
 
-    /*
+    /**
     * 员工通用字段转换成String
     * 通用字段：id, teamId, status, name, sex, age, salary, equipment
     * */

@@ -1,4 +1,4 @@
-/*
+/**
 * 员工管理操作
 *   1. 保存所有的员工信息
 *   2. 提供员工的相关操作
@@ -24,14 +24,14 @@ public class EmployeesService {
         return employees;
     }
 
-    /*
+    /**
     * 返回记录所有员工信息的list
     * */
     public static LinkedList<Employee> getAllEmployees() {
         return getEmployees();
     }
 
-    /*
+    /**
     * 查询指定id的员工
     *
     * @param    id
@@ -51,7 +51,7 @@ public class EmployeesService {
         throw new TeamException("找不到指定id的员工");
     }
 
-    /*
+    /**
      * 查询指定姓名的员工
      * @param    name
      *           员工姓名
@@ -70,7 +70,7 @@ public class EmployeesService {
         throw new TeamException("找不到指定姓名的员工");
     }
 
-    /*
+    /**
     * 招聘入职新员工
     * */
 
@@ -78,14 +78,14 @@ public class EmployeesService {
         return employees.add(employee);
     }
 
-    /*
+    /**
     * 员工离职
     * */
     public static void resignation(Employee employee) {
         employee.resignation();
     }
 
-    /*
+    /**
      * 指定ID的员工离职
      * */
     public static void resignation(int employeeId) {
@@ -97,14 +97,14 @@ public class EmployeesService {
         }
     }
 
-    /*
+    /**
     * 指定的员工领取指定设备
     * */
     public void receiveEquipment(Employee employee, Equipment equipment) {
         employee.receiveEquipment(equipment);
     }
 
-    /*
+    /**
     * 指定id的员工领取指定设备
     * */
     public void receiveEquipment(int employeeId, int equipmentId) {

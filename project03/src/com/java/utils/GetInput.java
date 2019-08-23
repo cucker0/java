@@ -1,4 +1,4 @@
-/*
+/**
 获取输入指令
 
 * */
@@ -153,7 +153,7 @@ public class GetInput {
         return getEmail();
     }
 
-    /*
+    /**
     * 判断指定的字符串是否为退出指令
     * */
     public static boolean isExit(String s) {

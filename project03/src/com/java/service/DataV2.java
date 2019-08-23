@@ -1,4 +1,4 @@
-/*
+/**
 * 数据源
 * 启动时，把这些数据导入到程序
 * 退出时保存数据到此文件
@@ -18,7 +18,7 @@ public class DataV2 {
     public static final int PRINTER = 23;
 
 
-    /*
+    /**
     * 员工 数组形式数据
     * */
     public static final int EMPLOYEE_INIT = 13;
@@ -42,7 +42,7 @@ public class DataV2 {
             {"12", "12", "", "FREE", "董明珠", "true", "27", "9600", "", "4800"}
     };
 
-    /*
+    /**
     * 设备 数组形式数据
     * */
     public static final int EQUIPMENT_SN_INIT = 12;
@@ -64,7 +64,7 @@ public class DataV2 {
             {"22", "11", "SCRAP", "惠普m6", "5800"}
     };
 
-    /*
+    /**
     * teams 数组形式数据
     * */
     public static final int TEAMS_INIT = 2;
