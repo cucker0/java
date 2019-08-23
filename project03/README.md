@@ -248,6 +248,9 @@ q 退出
 
 # 软件设计
 
+## API JavaDOC文档
+[API文档](./apiDoc/index.html)
+
 ## 软件设计结构
 该软件由以下几个模块组成
 ![](images/开发团队人员调度软件.png)  
