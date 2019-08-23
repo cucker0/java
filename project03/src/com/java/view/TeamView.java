@@ -408,7 +408,7 @@ public class TeamView {
 //        LinkedHashMap<Class, HashMap> membersStructor = team.getMembersStructor();
         for (Map.Entry<Class, HashMap> entry : team.getMembersStructor().entrySet()) {
             // String[] sArr = entry.getKey().toString().split("\\.");
-            System.out.printf("岗位: %-12s\t预编(个): %-12s\t实编(个): %-12s。 预编修改为(回车退出)：",
+            System.out.printf("岗位: %-12s\t预编(个): %-12s\t实编(个): %-12s\t预编修改为(回车退出)：",
                     Magic.clazzToPost(entry.getKey()), entry.getValue().get("max"), entry.getValue().get("total"));
             String rawCmd = GetInput.getRaw();
             if (!GetInput.isExit(rawCmd)) {
@@ -642,7 +642,7 @@ public class TeamView {
         for (int i= 0; i < list.size(); ++i) {
             System.out.printf("%-5s\t%-12s\t%-12s\t%s\n",
                     list.get(i).getSn(),
-                    list.get(i).getStatus(),
+                    list.get(i).getStatus().getDiscription(),
                     list.get(i).getUser() != null ? list.get(i).getUser().getName() : "",
                     list.get(i).getDescription()
             );

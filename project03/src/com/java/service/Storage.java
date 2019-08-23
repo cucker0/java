@@ -408,11 +408,11 @@ public class Storage {
                         eq.getSn(), eq.getStatus(), pc.getModel(), pc.getDisplay());
             } else if (eq.getClass() == NoteBook.class) {
                 NoteBook nb = (NoteBook) eq;
-                equipment += String.format("\"21\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                equipment += String.format("\"22\", \"%s\", \"%s\", \"%s\", \"%s\"",
                         eq.getSn(), eq.getStatus(), nb.getModel(), nb.getPrice());
             } else if (eq.getClass() == Printer.class) {
                 Printer p = (Printer) eq;
-                equipment += String.format("\"21\", \"%s\", \"%s\", \"%s\", \"%s\"",
+                equipment += String.format("\"23\", \"%s\", \"%s\", \"%s\", \"%s\"",
                         eq.getSn(), eq.getStatus(), p.getName(), p.getType());
             }
 

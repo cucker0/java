@@ -19,12 +19,12 @@ public enum EmployeeStatus {
 
     // 属性
     private final String NAME;
-    private final String discription;
+    private final String DISCRIPTION;
 
     // 构造器
     EmployeeStatus(String name, String discription) {
         this.NAME = name;
-        this.discription = discription;
+        this.DISCRIPTION = discription;
     };
 
     // 方法
@@ -33,7 +33,7 @@ public enum EmployeeStatus {
     }
 
     public String getDiscription() {
-        return discription;
+        return DISCRIPTION;
     }
 
     @Override

@@ -310,17 +310,24 @@ public abstract class Employee { // 抽象类
     /*
      * 员工离职
      * */
-    public void resignation() {
-        // 退出已经加入的团队
-        quitTeam();
-        // 已加入的团队重置为空
+    public boolean resignation() {
+        try {
+            // 退出已经加入的团队
+            quitTeam();
+            // 已加入的团队重置为空
 //        setTeam(null); // quitTeam已经执行
-        // 员工状态设置为离职
-        setStatus(EmployeeStatus.RESIGNED);
-        // 归还所有领取的设备
-        for (Equipment eq : equipment) {
-            recycleEquipment(eq);
+            // 员工状态设置为离职
+            setStatus(EmployeeStatus.RESIGNED);
+            // 归还所有领取的设备
+            for (Equipment eq : equipment) {
+                recycleEquipment(eq);
+            }
+            System.out.printf("%s 今天正式离职", name);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return false;
     }
 
     /*
