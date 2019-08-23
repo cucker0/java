@@ -3,7 +3,7 @@
 
 * */
 
-package com.java.service;
+package com.java.utils;
 
 import java.util.Scanner;
 

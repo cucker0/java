@@ -6,6 +6,7 @@ package com.java.view;
 
 import com.java.domain.*;
 import com.java.service.*;
+import com.java.utils.GetInput;
 import com.java.utils.Magic;
 
 import java.util.*;
