@@ -14,6 +14,8 @@
     * 泛型的使用
 
 
+# 题源
+
 # 需求说明
 * 仿真实现基于文本界面的考试管理系统。
 * 应提供机上考试功能，并且能够自动判分。
@@ -69,34 +71,35 @@
 * 在Exam类的main方法中调用 saveAnswer方法，测试是否正常工作。
 
 ## 第5步 — 访问键盘设备
-编写ExamView类，声明getUserAction方法：public char getUserAction()，在方法中读取键盘键入值（每次只取键入序列的第一个键值），判断键值应为a、b、c、d、n、p键（包括大小写）值之一时，将其作为方法返回值，否则忽略不计；
+* 编写ExamView类
+>声明getUserAction方法：public char getUserAction()，在方法中读取键盘键入值（每次只取键入序列的第一个键值），判断键值应为a、b、c、d、n、p键（包括大小写）值之一时，将其作为方法返回值，否则忽略不计；
 
 在Exam类的main方法中调用重复（循环）调用getUserAction方法，打印返回值，直到程序结束运行。
 
 ## 第6步--完善业务功能（一）
-在ExamView类中，声明displayItem方法：public void displayItem(int  no)，该方法显示参数no指定的考题内容，不含答案；
-在ExamView类，声明testExam方法：public void testExam()，在方法中：
-初始时，调用 displayItem显示考题第1题；
-调用 getUserAction方法，判断当用户键入n时，显示下一题；当用户键入p时，显示上一题（如果当前不是第1题时）；
-在当前为最后一题时键入n，方法结束并返回。
-在Exam类的main方法中调用 testExam方法，验证结果。
+* 在ExamView类中，声明displayItem方法：public void displayItem(int  no)，该方法显示参数no指定的考题内容，不含答案；
+*在ExamView类，声明testExam方法：public void testExam()，在方法中：
+* 初始时，调用 displayItem显示考题第1题；
+* 调用 getUserAction方法，判断当用户键入n时，显示下一题；当用户键入p时，显示上一题（如果当前不是第1题时）；
+* 在当前为最后一题时键入n，方法结束并返回。
+* 在Exam类的main方法中调用 testExam方法，验证结果。
 
 ## 第7步--完善业务功能（二）
-在ExamView类中，定义char[] answer属性，改进testExam方法，在原基础上：
-调用 getUserAction方法，判断当用户键入a、b、c、d中的任意键时，将其记为当前题目的答案（记入 answer数组中）；
-在显示最后一题时键入n，方法结束， 调用ItemService中的saveAnswer保存所有答案，并返回。
-在Exam类的main方法中调用 ExamView类的testExam方法，测试题目显示及按键操作是否正确。
+* 在ExamView类中，定义char[] answer属性，改进testExam方法，在原基础上：
+* 调用 getUserAction方法，判断当用户键入a、b、c、d中的任意键时，将其记为当前题目的答案（记入 answer数组中）；
+* 在显示最后一题时键入n，方法结束， 调用ItemService中的saveAnswer保存所有答案，并返回。
+* 在Exam类的main方法中调用 ExamView类的testExam方法，测试题目显示及按键操作是否正确。
 
 ## 第8步--高级业务功能（一）
-在ExamView类中，继续改进testExam方法，在原基础上：
-起始进入考试时，首先显示一页“帮助信息”，用来说明考试过程中的操作方法，尤其是各按键的使用。当键入n时，显示第一道题；
-在显示每题题目的同时，如果之前考生已经选择了该题目的答案，则答案也同时显示以便考生查看；
-键入f表示结束考试，程序应提示用户进行确认。如确认则自动判分，并调用ItemService中的saveAnswer保存所有答案及分数；并显示所有考题的正确答案和考生所选答案，以及考试分数，然后方法结束。如果不确认，则继续答题。
-在Exam类的main方法中调用 ExamView类的testExam方法，验证程序是否正确运行。
+* 在ExamView类中，继续改进testExam方法，在原基础上：
+    * 起始进入考试时，首先显示一页“帮助信息”，用来说明考试过程中的操作方法，尤其是各按键的使用。当键入n时，显示第一道题；
+    * 在显示每题题目的同时，如果之前考生已经选择了该题目的答案，则答案也同时显示以便考生查看；
+    * 键入f表示结束考试，程序应提示用户进行确认。如确认则自动判分，并调用ItemService中的saveAnswer保存所有答案及分数；并显示所有考题的正确答案和考生所选答案，以及考试分数，然后方法结束。如果不确认，则继续答题。
+    * 在Exam类的main方法中调用 ExamView类的testExam方法，验证程序是否正确运行。
 
 ## 第9步--高级业务功能（二）
-添加以下功能：程序启动时，显示主菜单，菜单包含以下两项：
-进入考试
-显示上次考试成绩
-当用户选择1时，进入考试过程；当用户选择2时，显示上次考试成绩，按n键后回到主菜单。
+* 添加以下功能：程序启动时，显示主菜单，菜单包含以下两项：
+    * 进入考试
+    * 显示上次考试成绩
+    * 当用户选择1时，进入考试过程；当用户选择2时，显示上次考试成绩，按n键后回到主菜单。
 
