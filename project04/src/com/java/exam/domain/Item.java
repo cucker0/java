@@ -24,8 +24,10 @@ public class Item {
         super();
     }
 
-    public Item(String question, LinkedHashMap<String, String> options, List<String> rightOptions) {
-
+    public Item(String question, LinkedHashMap<String, String> options, HashSet<String> rightOptions) {
+        setQuestion(question);
+        setOptions(options);
+        setRightOptions(rightOptions);
     }
 
     // 方法
@@ -102,6 +104,9 @@ public class Item {
      */
     public String optionsToString() {
         String str = "";
+        if (options == null) {
+            return str;
+        }
         for (Map.Entry<String, String> option : options.entrySet()) {
             // 一个选项的显示, 如：A. xxx xxx
             str += option.getKey() + "、";
@@ -118,9 +123,12 @@ public class Item {
      */
     public String rightOptionsToString() {
         String str = "";
+        if (rightOptions == null) {
+            return str;
+        }
         Iterator<String> iterator = rightOptions.iterator();
         while (iterator.hasNext()) {
-            str += iterator.next() + " ";
+            str += iterator.next();
         }
         return str;
     }

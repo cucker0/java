@@ -4,6 +4,7 @@ import com.java.exam.domain.Item;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -75,13 +76,10 @@ public class ItemService {
         if (item == null) {
             return "";
         }
-        String theStart = "N：下一题，Q：结束考试。选项： ";
-        String theEnd = "P：上一题，Q：结束考试。选项： ";
-        String theMiddle = "P：上一题，N：下一题，Q：结束考试。选项： ";
+        String theStart = "N：下一题，Q：提交试卷。";
+        String theEnd = "P：上一题，Q：提交试卷。";
+        String theMiddle = "P：上一题，N：下一题，Q：提交试卷。";
         String str = "";
-        if (item == null) {
-            return str;
-        }
         str += item.getQuestion() + "\n";
         str += item.optionsToString();
         str += "\n\n";
@@ -106,49 +104,51 @@ public class ItemService {
     public void loadItemsFromFile() {
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new StringReader(filePath));
+            bufferedReader = new BufferedReader(new FileReader(filePath));
             String question = "";
             LinkedHashMap<String, String> options = new LinkedHashMap<>();
-            List<String> rightOptions = new ArrayList<>();
+            HashSet<String> rightOptions = new HashSet<>();
 
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 // 对每行进行解析
-                String[] sArry;
-                if (line.startsWith("^题目:")) {
-                    sArry = line.split(":", 1);
-                    if (sArry.length < 2) continue;
-                    question = sArry[1].strip();
-                } else if (line.startsWith("^题目：")) {
-                    sArry = line.split("：", 1);
-                    if (sArry.length < 2) continue;
-                    question = sArry[1].strip();
-                } else if (line.startsWith("^\\w{1}\\.")) {
-                    sArry = line.split("\\.", 1);
-                    if (sArry.length < 2) continue;
-                    options.put(sArry[0].strip(), sArry[1].strip());
-                } else if (line.startsWith("^\\w{1}\\．")) {
-                    sArry = line.split("\\．", 1);
-                    if (sArry.length < 2) continue;
-                    options.put(sArry[0].strip(), sArry[1].strip());
-                } else if (line.startsWith("^\\w{1}、")) {
-                    sArry = line.split("、", 1);
-                    if (sArry.length < 2) continue;
-                    options.put(sArry[0].strip(), sArry[1].strip());
-                } else if (line.startsWith("^答案:") || line.startsWith("^答案：")) {
-                    sArry = line.startsWith("^答案:") ? line.split(":", 1) : line.split("：", 1);
-                    if (sArry.length < 2) continue;
-                    rightOptions.add(sArry[1].strip());
+                String[] sArr;
+                if (line.startsWith("题目:")) {
+                    sArr = line.split(":", 2);
+                    if (sArr.length < 2) continue;
+                    question = sArr[1].strip();
+                } else if (line.startsWith("题目：")) {
+                    sArr = line.split("：", 2);
+                    if (sArr.length < 2) continue;
+                    question = sArr[1].strip();
+                } else if (line.matches("\\w{1}\\..*$")) {
+                    sArr = line.split("\\.", 2);
+                    if (sArr.length < 2) continue;
+                    options.put(sArr[0].strip(), sArr[1].strip());
+                } else if (line.matches("^\\w{1}\\．.*$")) {
+                    sArr = line.split("\\．", 2);
+                    if (sArr.length < 2) continue;
+                    options.put(sArr[0].strip(), sArr[1].strip());
+                } else if (line.matches("^\\w{1}、.*$")) {
+                    sArr = line.split("、", 2);
+                    if (sArr.length < 2) continue;
+                    options.put(sArr[0].strip(), sArr[1].strip());
+                } else if (line.startsWith("答案:") || line.startsWith("答案：")) {
+                    sArr = line.startsWith("答案:") ? line.split(":", 2) : line.split("：", 2);
+                    if (sArr.length < 2) continue;
+                    rightOptions.add(sArr[1].strip());
 
                     // 将解析出来的题目、选项、答案生成 Item对象添加到itemsList
                     if (!question.equals("") && options.size() != 0 && rightOptions.size() != 0) {
+//                        System.out.printf("question: %s, options:%s, rightOptions:%s\n", question, options, rightOptions);
                         Item item = new Item(question, options, rightOptions);
+//                        System.out.println("debug2 == " + item);
                         addItem(item);
                     }
                     // 添加Item后重置变量
                     question = "";
                     options = new LinkedHashMap<>();
-                    rightOptions = new ArrayList<>();
+                    rightOptions = new HashSet<>();
                 }
 
             }
