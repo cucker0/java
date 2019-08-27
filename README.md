@@ -563,7 +563,7 @@ JAVA Study
     * 开发团队调度软件
         * [开发团队调度软件_参考版](./project03_sample/README.md)
         * [开发团队调度软件_改进版](./project03/README.md)
-    * 考试管理系统软件
+    * [考试管理系统软件](./project04/README.md)
 </details>
 
 * other
