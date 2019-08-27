@@ -84,6 +84,7 @@ JAVA Study
         * [if-else](./day03/README.md#if-else)
         * [switch-case](./day03/README.md#switch-case)
             * [switch-case规则](./day03/README.md#switch-case规则)
+        * [自动判断是否为闰年 示例](./day03/DateEstimationDays2.java)
     * [循环结构](./day03/README.md#循环结构)
         * [for循环](./day03/README.md#for循环)
         * [while](./day03/README.md#while)
