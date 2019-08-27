@@ -302,6 +302,7 @@ JAVA Study
         * [hashCode()方法](./day13/README.md#hashCode方法)
         * [Set实现类之二：LinkedHashSet](./day13/README.md#Set实现类之二LinkedHashSet)
         * [Set实现类之三：TreeSet](./day13/README.md#Set实现类之三TreeSet)
+        * [Set交集、并集、差集运算](./day13/README.md#Set交集并集差集运算)
     * [Map接口](./day13/README.md#Map接口)
         * [Map常用方法](./day13/README.md#Map常用方法)
         * [Map特点](./day13/README.md#Map特点)
@@ -317,6 +318,7 @@ JAVA Study
     * [其他](./day13/README.md#其他)
         * [Scanner异常处理](./day13/README.md#Scanner异常处理)
         * [List中元素为对象，通过对象中的指定属性进行排序](./day13/README.md#list中元素为对象通过对象中的指定属性进行排序)
+        * [List、Set、Map在创建对象时指定初始值](./day13/README.md#ListSetMap在创建对象时指定初始值)
 </details>
 
 

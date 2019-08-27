@@ -106,7 +106,7 @@ day13 java集合
 * boolean contains(Object obj) 判断集合中是否包含指定的元素obj，如果包含返回true，否则false。
 >判断方法：用到了类中的equals(Object o)方法。若使用了自定义类要重写equals()方法
 * boolean containsAll(Collection coll) 判断当前集合是否包含coll集合中所有的元素。即判断一个集合是否为当前集合的子集
-* boolean retainAll(Collectoin coll) 当前集合中仅保留一个集合coll与当前集合的交集给当前集合，会覆盖当前集合
+* boolean retainAll(Collectoin coll) 当前集合中仅保留一个集合,集合coll与当前集合的交集给当前集合，会覆盖当前集合
 * boolean remove(Object obj) 删除集合中的obj元素。若删除成功返回true,否则返回false
 * booeanl removeAll(Collection coll) 从当前集合中删除与另外一个集合coll的交集所有元素。即 当前集合 - coll集合的差集。
 * boolean equals(Object obj) 判断一个集合obj与当前集合两者所有的元素是否都相等。
@@ -231,7 +231,7 @@ Arrays.asList(Object...) 返回值是一个固定长度的List集合
 * 都可以删除元素，当ListIterator可以用 set(Object e) 修改元素对象，因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。
 
 # Set接口
-* Set接口是Collection的字接口，Set接口没有提供额外的方法
+* Set接口是Collection的子接口，Set接口没有提供额外的方法
 * 存储的元素是无序,不可重复的.
 * 无序性:不是随机性,是指元素在底层存储的位置是无序,按照一定的方法来确定顺序的.
 * 不可重复性:不能像Set中添加相同的元素,也添加不进去
@@ -313,6 +313,14 @@ Arrays.asList(Object...) 返回值是一个固定长度的List集合
 
 示例  
 [TreeSet Test](./src/com/java/www/TreeSetTest.java)
+
+## Set交集、并集、差集运算
+Set接口是Collection的子接口，Set接口没有提供额外的方法，  
+而[Collection](#Collection接口方法)也没有提供直接取交集、并集、差集的方法，  
+这里就用Collection原有的方法来组合出交集、并集、差集的效果
+
+示例  
+[Set交集、并集、差集运算](./src/com/java/www/IntersectionSet_UnionSet_DifferenceSet_test.java)  
 
 
 # Map接口
@@ -464,4 +472,8 @@ static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
 
 ## List中元素为对象，通过对象中的指定属性进行排序
 示例  
-[姓名、成绩保存到Map，并按成绩排序](./src/com/java/exercise/ScoreMapTest.java)
+[姓名、成绩保存到Map，并按成绩排序](./src/com/java/exercise/ScoreMapTest.java)  
+
+## List、Set、Map在创建对象时指定初始值
+示例  
+[List、Set、Map在创建对象时指定初始值 示例](./src/com/java/www/ListSetMap_SpecifyInitialValuesAtNewBuildTime.java)
