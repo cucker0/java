@@ -116,6 +116,18 @@ public class Item {
         return str;
     }
 
+    /**
+     * 判断是否为单选题
+     * @return true/false
+     *          true:单选，false:多选
+     */
+    public boolean isSingleElection() {
+        if (rightOptions.size() > 1) {
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * return the rightOptions string

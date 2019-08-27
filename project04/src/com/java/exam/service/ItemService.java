@@ -136,7 +136,18 @@ public class ItemService {
                 } else if (line.startsWith("答案:") || line.startsWith("答案：")) {
                     sArr = line.startsWith("答案:") ? line.split(":", 2) : line.split("：", 2);
                     if (sArr.length < 2) continue;
-                    rightOptions.add(sArr[1].strip());
+                    String anserOptions = sArr[1].strip().toUpperCase();
+                    if (anserOptions.length() == 1) { //  单选
+                        rightOptions.add(anserOptions);
+                    } else { // 多选
+                        String[] answersArr = anserOptions.split("");
+
+                        for (String s : answersArr) {
+                            if (s.matches("\\w")) {
+                                rightOptions.add(s);
+                            }
+                        }
+                    }
 
                     // 将解析出来的题目、选项、答案生成 Item对象添加到itemsList
                     if (!question.equals("") && options.size() != 0 && rightOptions.size() != 0) {

@@ -17,6 +17,9 @@ public class Exam {
         // test2
 //        String str = "a.xxxx";
 //        System.out.println(str.matches("^\\w{1}\\..*$"));
+//
+//        String str2 = "";
+//        System.out.println(str2.matches("\\w"));
 
         ExamView  examView = new ExamView();
         examView.enterMenu();
