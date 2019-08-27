@@ -35,7 +35,6 @@ public class ExamView {
     // 构造器
     public ExamView() {
         loadWork();
-        readTestRecordFromFile();
     }
 
     /**
@@ -115,6 +114,8 @@ public class ExamView {
         itemService.loadItemsFromFile();
         // 加载帐号信息
         accountService.loadAccountFromFile();
+        // 加载用户考试记录
+        readTestRecordFromFile();
     }
 
     /**
