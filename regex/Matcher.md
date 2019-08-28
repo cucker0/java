@@ -18,7 +18,7 @@ Matcher(Pattern parent, CharSequence text)
 ```text
 Matcher appendReplacement​(StringBuffer sb, String replacement) 
 Implements a non-terminal append-and-replace step.
-把给定人字符串追加到指定的字符缓冲sb，并返回此Matcher对象
+用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的字符缓冲sb，并返回此Matcher对象。输入的字符串不修改
 This method performs the following actions:
 
 1. It reads characters from the input sequence, starting at the append position, and appends them to the given string buffer. 
@@ -28,15 +28,16 @@ It stops after reading the last character preceding the previous match, that is,
 
 Matcher appendReplacement​(StringBuilder sb, String replacement) 
 Implements a non-terminal append-and-replace step.
-把给定人字符串追加到指定的StringBuilder sb，并返回此Matcher对象
+用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的StringBuilder sb，并返回此Matcher对象。输入的字符串不修改
 
 StringBuffer appendTail​(StringBuffer sb) 
 Implements a terminal append-and-replace step.
-从 input 字符序列的append偏移位置开始读取字符追加到指定的StringBuffer sb
+从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuffer sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuffer sb
 
 StringBuilder appendTail​(StringBuilder sb) 
 Implements a terminal append-and-replace step.
-从 input 字符序列的append偏移位置开始读取字符追加到指定的StringBuilder sb
+从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuilder sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuilder sb
+
 
 int end() 
 Returns the offset after the last character matched.

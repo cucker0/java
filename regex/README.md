@@ -60,4 +60,29 @@ boolean b = m.matches();
 
 * [Matcher类结构](./Matcher.md)  
 
+### 主要方法
+* 
 
+
+## java正则示例
+[RegexTest](./src/com/java/www/RegexTest.java)
+
+
+## PatternSyntaxException异常类的方法
+PatternSyntaxException 是一个非强制异常类，它指示一个正则表达式模式中的语法错误。  
+提供了下面的方法来帮助我们查看发生了什么错误
+
+* public String getDescription()
+>获取错误的描述。
+
+* public int getIndex() 
+>获取错误的索引。
+
+* public String getPattern() 
+>获取错误的正则表达式模式。
+
+* public String getMessage() 
+>返回多行字符串，包含语法错误及其索引的描述、错误的正则表达式模式和模式中错误索引的可视化指示。
+
+示例  
+[RegexTest test10()](./src/com/java/www/RegexTest.java)
