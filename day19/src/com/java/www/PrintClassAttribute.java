@@ -18,7 +18,7 @@ import java.lang.reflect.*;
  *
  * idea中找到File->Settings->Build,Execution,Deployment->Compiler->Java Compiler 中的
  * Additional command line parameters: 后面框中添加 -parameters
- * 
+ *
  * 注意：编译时打开这个参数也是对自己写的类有效，对于JDK内部类是不生效的
  */
 public class PrintClassAttribute {
@@ -250,23 +250,23 @@ public String name
 private int age
 
 == 构造器 ==:
-protected Person(String arg0, int arg1)
-private Person(String arg0)
+protected Person(String name, int age)
+private Person(String name)
 public Person()
 
 == 已声明方法 ==:
-public boolean equals(Object arg0)
+public boolean equals(Object o)
 public String toString()
 public int hashCode()
 public String getName()
-public int compare(Object arg0, Object arg1)
+public int compare(Object o1, Object o2)
 public static void info()
-public void setName(String arg0) throws RuntimeException
+public void setName(String name) throws RuntimeException
 public void walk()
-public void setAge(int arg0)
-public void speak(String arg0)
+public void setAge(int age)
 public int getAge()
-private String see(int arg0, String arg1)
+private String see(int time, String how)
+public void speak(String content)
 
 == 内部类 ==:
  Wallet
