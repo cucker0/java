@@ -238,6 +238,10 @@ String modifier = Modifier.toString(i);
 [Reflection2Test test14](./src/com/java/www/Reflection2Test.java)
 
 
+## 遍历指定类的成员（属性变量、构造器、方法）
+[PrintClassAttribute](./src/com/java/www/PrintClassAttribute.java)  
+
+
 # JAVA动态代理
 * 动态代理是指客户通过代理类来调用其它对象的方法，并且是在程序运行时根据需要动态创建目标类的代理对象
 * 动态代理的使用场景
