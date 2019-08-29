@@ -1,9 +1,6 @@
 java正则表达式
 ==
 
-# 参考
-* https://www.cnblogs.com/xyou/p/7427779.html
-* https://www.runoob.com/java/java-regular-expressions.html
 
 # 正则表达式概述
 正则表达式定义了字符串的模式
@@ -11,8 +8,7 @@ java正则表达式
 * 作用
 >正则表达式可以用来搜索、编辑、处理文本。
 
-
-# 正则表达式例子
+## 正则表达式例子
 * 一个字符串其实就是一个简单的正则表达式，例如：Hello World 正则匹配"Hello World"字符串
 * .(点号) 也是一个表达式，它匹配任何一个字符，如："a" 或 "1" 等
 
@@ -38,7 +34,6 @@ this\s+is\s+text | 注意字符串中的 \s+ <br> 匹配单词 "this" 后面的 
     * Exception(异常)
         * PatternSyntaxException (一个非强制异常类，它表示一个为检测的正则表达式模式中的语法错误)
 
-为什么会把Matcher、Pattern分开设计，这主要是为了同一个正则表达式使用多次时提高效率。
 
 ## Pattern类
 ```text
