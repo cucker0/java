@@ -12,6 +12,14 @@ import java.lang.reflect.*;
  *      p.print(new Person());
  *      p.print(String.class);
  *      p.print("java.lang.Integer");
+ *
+ * 得到的方法形参名称是无意义的arg0、arg1……
+ * 遗憾的是，保留参数名这一选项由编译开关javac -parameters打开，默认是关闭的。
+ *
+ * idea中找到File->Settings->Build,Execution,Deployment->Compiler->Java Compiler 中的
+ * Additional command line parameters: 后面框中添加 -parameters
+ * 
+ * 注意：编译时打开这个参数也是对自己写的类有效，对于JDK内部类是不生效的
  */
 public class PrintClassAttribute {
     private Class clazz;
@@ -205,7 +213,7 @@ public class PrintClassAttribute {
     }
 
     /**
-     * 以.分割的字符串，返回分割结果的最后一个
+     * 以.分割字符串，返回分割结果的最后一个
      * @param str
      *         字符串
      * @return 分割结果的最后一个
@@ -226,9 +234,9 @@ public class PrintClassAttribute {
     public static void main(String[] args) {
         PrintClassAttribute p = new PrintClassAttribute();
 //        p.print("com.java.www.Person");
-//        p.print(new Person());
+        p.print(new Person());
 //        p.print(String.class);
-        p.print("java.lang.Integer");
+//        p.print("java.lang.Integer");
 
 
 /*
