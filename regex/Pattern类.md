@@ -70,11 +70,13 @@ Creates a predicate that tests if this pattern is found in a given input string.
 
 static Pattern compile​(String regex) 
 Compiles the given regular expression into a pattern.
-把给定的正则表达式regex编译成pattern并返回，return new Pattern(regex, 0);
+创建给定正则表达式regex的Pattern对象
+return new Pattern(regex, 0);
 
 static Pattern compile​(String regex, int flags) 
 Compiles the given regular expression into a pattern with the given flags.
-把给定的正则表达式regex和匹配flags编译成pattern并返回，return new Pattern(regex, flags);
+创建给定正则表达式regex、指定flags为flags的Pattern对象，
+return new Pattern(regex, flags);
 举例：Pattern p = Pattern.compile​("\w+", Pattern.UNICODE_CASE);
 
 int flags() 
@@ -83,12 +85,12 @@ Returns this pattern's match flags.
 
 Matcher matcher​(CharSequence input) 
 Creates a matcher that will match the given input against this pattern.
-创建一个matcher，该matcher可根据此pattern匹配给定的字符串input。
+创建一个输入字符串为input的Matcher对象，输入字符就是要使用正则表达式来进行匹配的字符串
 这步很重要，即指定要进行匹配的字符串
 
 static boolean matches​(String regex, CharSequence input) 
 Compiles the given regular expression and attempts to match the given input against it.
-判断给定的正则表达式regex与指定的字符串input是否匹配。
+判断给定的正则表达式regex与指定的字符串input是否匹配。最终就是调用了Matcher的matches()方法
     public static boolean matches(String regex, CharSequence input) {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
@@ -106,10 +108,12 @@ Returns a literal pattern String for the specified String.
 String[] split​(CharSequence input) 
 Splits the given input sequence around matches of this pattern.
 以正则表达式为界，将指定字符串input分割成String数组,该pattern需要编译过
+其实是调用了split(input, 0);
 
 String[] split​(CharSequence input, int limit) 
 Splits the given input sequence around matches of this pattern.
-以正则表达式为界，将指定字符串input分割成String数组,该pattern需要编译过。
+以正则表达式为界，将指定字符串input分割成String数组，并指定分割结果阈值为limit,该pattern需要编译过
+limit:分割结果的阈值，分割次数为 limit -1
 * limit 控制pattern匹配的次数，limit为正数、0、负数是效果不一样。
     * If the limit is positive then the pattern will be applied at most limit - 1 times, the array's length will be no greater than limit, and the array's last entry will contain all input beyond the last matched delimiter.
     * If the limit is zero then the pattern will be applied as many times as possible, the array can have any length, and trailing empty strings will be discarded.
@@ -118,7 +122,7 @@ Splits the given input sequence around matches of this pattern.
 
 Stream<String> splitAsStream​(CharSequence input) 
 Creates a stream from the given input sequence around matches of this pattern.
-以正则表达式为界，将指定字符串input分割成Stream数组，该pattern需要编译过
+以正则表达式为界，将指定字符串input分割成Stream<String>，该pattern需要编译过
 
 String toString() 
 Returns the string representation of this pattern.

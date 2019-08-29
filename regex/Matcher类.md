@@ -18,7 +18,7 @@ Matcher(Pattern parent, CharSequence text)
 ```text
 Matcher appendReplacement​(StringBuffer sb, String replacement) 
 Implements a non-terminal append-and-replace step.
-用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的字符缓冲sb，并返回此Matcher对象。输入的字符串不修改
+用指定的字符串replacement逐次替换输入字符串中匹配到的字符串，替换后的新字符串追加到指定的字符缓冲sb，并返回此Matcher对象。输入的字符串不修改
 This method performs the following actions:
 
 1. It reads characters from the input sequence, starting at the append position, and appends them to the given string buffer. 
@@ -28,7 +28,7 @@ It stops after reading the last character preceding the previous match, that is,
 
 Matcher appendReplacement​(StringBuilder sb, String replacement) 
 Implements a non-terminal append-and-replace step.
-用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的StringBuilder sb，并返回此Matcher对象。输入的字符串不修改
+用指定的字符串replacement逐次替换输入字符串中匹配到的字符串，替换后的新字符串追加到指定的StringBuilder sb，并返回此Matcher对象。输入的字符串不修改
 
 StringBuffer appendTail​(StringBuffer sb) 
 Implements a terminal append-and-replace step.
@@ -62,11 +62,11 @@ Resets this matcher and then attempts to find the next subsequence of the input 
 
 String group() 
 Returns the input subsequence matched by the previous match.
-返回与上一匹配项匹配的输入子序列
+返回与上一匹配项匹配的输入子序列，相当于group(0)
 
 String group​(int group) 
 Returns the input subsequence captured by the given group during the previous match operation.
-返回在上一个匹配操作期间由给定组捕获的输入子序列
+返回在上一个匹配操作期间由给定组group捕获的输入子序列
 
 String group​(String name) 
 Returns the input subsequence captured by the given named-capturing group during the previous match operation.
@@ -90,8 +90,8 @@ Returns true if the end of input was hit by the search engine in the last match 
 
 boolean lookingAt() 
 Attempts to match the input sequence, starting at the beginning of the region, against the pattern.
-返回输入字符串是否已pattern的正则开头，如字符串：aabcde123, 是否与aa开头，grep "^aa" 效果类似 
-使用此Matcher的pattern从头开始匹配已输入的字符串
+返回输入字符串是否以pattern的正则开头，如字符串：aabcde123, 是否与aa开头，grep "^aa" 效果类似 
+使用此Matcher的pattern从头开始匹配输入的字符串
 
 boolean matches() 
 Attempts to match the entire region against the pattern.

@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+import java.util.stream.Stream;
 
 /**
  *
@@ -39,8 +40,8 @@ JAVA
 
 
     /**
-     * Mather.find()
-     * Mather.find(int start) 指定搜索的开始索引
+     * boolean Mather.find()
+     * boolean Mather.find(int start) 指定搜索的开始索引
      */
     @Test
     public void test2() {
@@ -84,7 +85,8 @@ JAVA
                 "Beware the Jabberwock, my son,\n" +
                 "The jaws that bite, the claws that catch.\n" +
                 "Beware the Jubjub bird, and shun\n" +
-                "The frumious Bandersnatch.";
+                "The frumious Bandersnatch.\n" +
+                "good study.";
         /*
         * ('/S+'): 任意多个连续的非空字符
         * ('/s+')：任意多个连续的空格字符
@@ -114,7 +116,7 @@ JAVA
 
 
     /**
-     * Matcher.group()
+     * String Matcher.group()
      * 给定的字符串中找到数字串
      */
     @Test
@@ -150,9 +152,9 @@ m.group(3): ! OK?
 
 
     /**
-     * Matcher.start()、Matcher.end()
-     * start(): 返回当前匹配子字符串第一个字符在被匹配字符串中的索引
-     * end(): 返回当前匹配子字符串最后个字符在被匹配字符串中的索引 + 1
+     * int Matcher.start()、int Matcher.end()
+     * start(): 返回当前匹配子字符串第一个字符在输入字符串中的索引
+     * end(): 返回当前匹配子字符串最后个字符在输入字符串中的索引 + 1
      */
     @Test
     public void test5() {
@@ -191,7 +193,8 @@ end(): 18
 
 
     /**
-     * Matcher.lookingAt()、Matcher.matches()
+     * 头部匹配、完全匹配
+     * boolean Matcher.lookingAt()、boolean Matcher.matches()
      *
      * lookingAt()：输入的字符串是否以pattern开头
      * matches()：输入的字符串是否完全与pattern匹配
@@ -232,7 +235,8 @@ input2 Matcher.lookingAt(): false
 
 
     /**
-     * Matcher.replaceFirst(String replacement)、Matcher.replaceAll(String replacement)
+     * 替换
+     * String Matcher.replaceFirst(String replacement)、String Matcher.replaceAll(String replacement)
      *
      * Matcher.replaceFirst(String replacement)：用指定的字符串replacement替换输入字符串中匹配到的第一个子字符串，返回被替换后的新字符串，不修改原输入字符串
      * Matcher.replaceAll(String replacement)：用指定的字符串replacement替换输入字符串中匹配到的所有子字符串，返回被替换后的新字符串，不修改原输入字符串
@@ -262,16 +266,17 @@ Matcher.replaceFirst(String replacement)：The cat says meow. All dogs say meow.
     }
 
     /**
-     * Matcher.appendReplacement(StringBuilder sb, String replacement)、Matcher.appendReplacement(StringBuilder sb)、
-     * Matcher.appendReplacement(StringBuffer sb, String replacement)、Matcher.appendReplacement(StringBuffer sb)
+     * 追加替换、追加尾部子串
+     * Matcher Matcher.appendReplacement(StringBuilder sb, String replacement)、StringBuilder Matcher.appendTail(StringBuilder sb)、
+     * Matcher Matcher.appendReplacement(StringBuffer sb, String replacement)、StringBuffer Matcher.appendTail(StringBuffer sb)
      *
      * Matcher.appendReplacement(StringBuilder sb, String replacement)：
-     *              用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的StringBuilder sb，并返回此Matcher对象。输入的字符串不修改
-     * Matcher.appendReplacement(StringBuilder sb)：从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuilder sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuilder sb
+     *              用指定的字符串replacement逐次替换输入字符串中匹配到的字符串，替换后的新字符串追加到指定的StringBuilder sb，并返回此Matcher对象。输入的字符串不修改
+     * Matcher.appendTail(StringBuilder sb)：从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuilder sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuilder sb
      * Matcher.appendReplacement(StringBuffer sb, String replacement)：
-     *              用指定的字符串replacement替换输入字符串中匹配到的所有字符串，替换后的新字符串追加到指定的StringBuffer sb，并返回此Matcher对象。输入的字符串不修改
+     *              用指定的字符串replacement逐次替换输入字符串中匹配到的字符串，替换后的新字符串追加到指定的StringBuffer sb，并返回此Matcher对象。输入的字符串不修改
      *
-     * Matcher.appendReplacement(StringBuffer sb)：从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuffer sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuffer sb
+     * Matcher.appendTail(StringBuffer sb)：从 输入字符序列的append偏移位置开始读取字符追加到指定的StringBuffer sb，相当于把输入字符串中匹配的最后一个字符串的最后一个字符位置之后的字符都追加到StringBuffer sb
      */
     @Test
     public void test8() {
@@ -355,7 +360,7 @@ true
      *      返回多行字符串，包含语法错误及其索引的描述、错误的正则表达式模式和模式中错误索引的可视化指示
      */
     @Test
-    public void test10() {
+    public void test20() {
         String regex = "$dog";
         String input = "The dog says meow. " +
                 "All dogs say meow.";
@@ -372,6 +377,90 @@ true
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /**
+     * Pattern类中的字符串分割
+     * String[] Pattern.split​(CharSequence input) 、String[] Pattern.split​(CharSequence input, int limit)、Stream<String> Pattern.splitAsStream​(CharSequence input)
+     *
+     * String[] split​(CharSequence input)：
+     *      以正则表达式为界，将指定字符串input分割成String数组,该pattern需要编译过。相当于调用了String[] split​(input, 0)
+     * String[] split​(CharSequence input, int limit)：
+     * Stream<String> splitAsStream​(CharSequence input)：
+     */
+    @Test
+    public void test31() {
+        String input = "This!!unusual use!!of exclamation!!points";
+        Pattern pattern = Pattern.compile("!!");
+
+        // split(input)
+        String[] sArr = pattern.split(input);
+        System.out.println("pattern.split(input) 结果：");
+        for (String s : sArr) {
+            System.out.println(s);
+        }
+        System.out.println();
+
+        // split(input, 3)
+        String[] sArr2 = pattern.split(input, 3);
+        System.out.println("pattern.split(input, 3) 结果：");
+        for (int i = 0; i < sArr2.length; ++i) {
+            System.out.println(sArr[i]);
+        }
+        System.out.println();
+
+        // splitAsStream(input)
+        Stream<String> stream = pattern.splitAsStream(input);
+//        System.out.println(stream.count());
+        Object[] arr = stream.toArray();
+        System.out.println("splitAsStream(input) 结果：");
+        for (Object o : arr) {
+            System.out.println(o);
+        }
+/*
+// 运行结果
+pattern.split(input) 结果：
+This
+unusual use
+of exclamation
+points
+
+pattern.split(input, 3) 结果：
+This
+unusual use
+of exclamation
+
+splitAsStream(input) 结果：
+This
+unusual use
+of exclamation
+points
+
+* */
+    }
+
+    /**
+     * Pattern类中的完全匹配
+     * static boolean Pattern.matches​(String regex, CharSequence input)
+     *
+     * 其实最终就是调用了Matcher.matches​()方法
+     */
+    @Test
+    public void test32() {
+        String input = "dock5621";
+        String regex = "\\w+\\d+";
+
+        System.out.println("input: " + input);
+        System.out.println("regex: " + regex);
+        System.out.println("Pattern.matches(regex, input): " + Pattern.matches(regex, input));
+
+/*
+// 运行结果
+input: dock5621
+regex: \w+\d+
+Pattern.matches(regex, input): true
+
+* */
     }
 
 }
