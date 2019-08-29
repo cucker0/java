@@ -230,5 +230,39 @@ public class PrintClassAttribute {
 //        p.print(String.class);
         p.print("java.lang.Integer");
 
+
+/*
+// 运行 p.print(new Person()) 打印结果
+
+== Person 类所在的包 ==:
+package com.java.www
+
+== 已声明属性变量 ==:
+public String name
+private int age
+
+== 构造器 ==:
+protected Person(String arg0, int arg1)
+private Person(String arg0)
+public Person()
+
+== 已声明方法 ==:
+public boolean equals(Object arg0)
+public String toString()
+public int hashCode()
+public String getName()
+public int compare(Object arg0, Object arg1)
+public static void info()
+public void setName(String arg0) throws RuntimeException
+public void walk()
+public void setAge(int arg0)
+public void speak(String arg0)
+public int getAge()
+private String see(int arg0, String arg1)
+
+== 内部类 ==:
+ Wallet
+
+* */
     }
 }
