@@ -13,11 +13,12 @@ import java.lang.reflect.*;
  *      p.print(String.class);
  *      p.print("java.lang.Integer");
  *
- * 得到的方法形参名称是无意义的arg0、arg1……
+ * 得到的方法形参名称是无意义的arg0、arg1 ... ...
  * 遗憾的是，保留参数名这一选项由编译开关javac -parameters打开，默认是关闭的。
  *
  * idea中找到File->Settings->Build,Execution,Deployment->Compiler->Java Compiler 中的
- * Additional command line parameters: 后面框中添加 -parameters
+ * Additional command line parameters: 后面框中添加-parameters
+ * Project bytecode version:选择最新的版本(>=8)
  *
  * 注意：编译时打开这个参数也是对自己写的类有效，对于JDK内部类是不生效的
  */
@@ -53,23 +54,20 @@ public class PrintClassAttribute {
     }
 
     /**
-     * 打印前面指定类的属性、构造器、方法等信息
+     * 获取类所在的包
      */
-    public void showClassStructor() {
-        if (clazz == null) {
-            return;
-        }
-
-        /*
-        * 获取类所在的包
-        * */
+    public void showPackage() {
+        if (clazz == null) return;
         System.out.printf("\n== %s 类所在的包 ==:\n", dotFilter(clazz.getName()));
         Package pack = clazz.getPackage();
         System.out.println(pack);
+    }
 
-        /*
-        * 获取属性字段
-        * */
+    /**
+     * 获取属性字段
+     */
+    public void showFields() {
+        if (clazz == null) return;
         System.out.println("\n== 已声明属性变量 ==:");
         Field[] fields = clazz.getDeclaredFields();
         for (Field f : fields) {
@@ -86,10 +84,13 @@ public class PrintClassAttribute {
 
             System.out.printf("%s %s %s\n", modifier, typeStr, fieldName);
         }
+    }
 
-        /*
-        * 获取构造器
-        * */
+    /**
+     * 获取构造器
+     */
+    public void showConstructors() {
+        if (clazz == null) return;
         System.out.println("\n== 构造器 ==:");
         Constructor[] constructors = clazz.getDeclaredConstructors();
         for (Constructor constructor : constructors) {
@@ -100,27 +101,24 @@ public class PrintClassAttribute {
             Parameter[] parameters =  constructor.getParameters();
             String parametersToString = "";
             String oneParameter;
-            if (parameters.length == 1) {
-                oneParameter= String.format("%s %s", dotFilter(parameters[0].getType().toString()), parameters[0].getName());
-                parametersToString += oneParameter;
-            } else if (parameters.length > 1) {
-                for (int j = 0; j < parameters.length; ++j) {
-                    Parameter p = parameters[j];
-                    if (j == 0) {
-                        oneParameter= String.format("%s %s", dotFilter(p.getType().toString()), p.getName());
-                    } else {
-                        oneParameter= String.format(", %s %s", dotFilter(p.getType().toString()), p.getName());
-                    }
-                    parametersToString += oneParameter;
+            for (int j = 0; j < parameters.length; ++j) {
+                Parameter p = parameters[j];
+                if (j == 0) {
+                    oneParameter= String.format("%s %s", dotFilter(p.getType().toString()), p.getName());
+                } else {
+                    oneParameter= String.format(", %s %s", dotFilter(p.getType().toString()), p.getName());
                 }
+                parametersToString += oneParameter;
             }
-
             System.out.printf("%s %s(%s)\n", modifier, dotFilter(name), parametersToString);
         }
+    }
 
-        /*
-        * 获取方法
-        * */
+    /**
+     * 获取方法
+     */
+    public void showMethods() {
+        if (clazz == null) return;
         System.out.println("\n== 已声明方法 ==:");
         Method[] methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
@@ -130,19 +128,14 @@ public class PrintClassAttribute {
             Parameter[] parameters =  m.getParameters();
             String parametersToString = "";
             String oneParameter;
-            if (parameters.length == 1) {
-                oneParameter= String.format("%s %s", dotFilter(parameters[0].getType().toString()), parameters[0].getName());
-                parametersToString += oneParameter;
-            } else if (parameters.length > 1) {
-                for (int j = 0; j < parameters.length; ++j) {
-                    Parameter p = parameters[j];
-                    if (j == 0) {
-                        oneParameter= String.format("%s %s", dotFilter(p.getType().toString()), p.getName());
-                    } else {
-                        oneParameter= String.format(", %s %s", dotFilter(p.getType().toString()), p.getName());
-                    }
-                    parametersToString += oneParameter;
+            for (int j = 0; j < parameters.length; ++j) {
+                Parameter p = parameters[j];
+                if (j == 0) {
+                    oneParameter= String.format("%s %s", dotFilter(p.getType().toString()), p.getName());
+                } else {
+                    oneParameter= String.format(", %s %s", dotFilter(p.getType().toString()), p.getName());
                 }
+                parametersToString += oneParameter;
             }
 
             // 抛出的异常类型列表，并拼接成字符串
@@ -159,21 +152,22 @@ public class PrintClassAttribute {
 
             }
             System.out.printf("%s %s %s(%s)%s\n", modifier, dotFilter(m.getReturnType().toString()), dotFilter(name), parametersToString, throwsString);
-
-
         }
+    }
 
-        /*
-         * 获取内部类
-         * */
+    /**
+     * 获取内部类
+     */
+    public void showInnerClass() {
+        if (clazz == null) return;
         Class[] innerClazz = clazz.getDeclaredClasses();
         if (innerClazz.length > 0) {
             System.out.println("\n== 内部类 ==:");
             for (Class c : innerClazz) {
                 String innerClass = "";
-                int i2 = c.getModifiers();
-                String modifier2 = Modifier.toString(i2);
-                String name2 = c.getSimpleName();
+                int i = c.getModifiers();
+                String modifier = Modifier.toString(i);
+                String name = c.getSimpleName();
                 Class[] interfaces = c.getInterfaces();
                 String interfacesString = "";
                 for (int x = 0; x < interfaces.length; ++x) {
@@ -184,9 +178,24 @@ public class PrintClassAttribute {
                         interfacesString += String.format(", %s", inter.getSimpleName());
                     }
                 }
-                System.out.printf("%s %s%s\n", modifier2, name2, interfacesString);
+                System.out.printf("%s %s%s\n", modifier, name, interfacesString);
             }
         }
+    }
+
+    /**
+     * 打印前面指定类的属性、构造器、方法等信息
+     */
+    public void showClassStructor() {
+        if (clazz == null) {
+            return;
+        }
+
+        showPackage();
+        showFields();
+        showConstructors();
+        showMethods();
+        showInnerClass();
     }
 
     /**
