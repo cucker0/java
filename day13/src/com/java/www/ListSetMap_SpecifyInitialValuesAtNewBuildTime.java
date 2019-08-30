@@ -1,7 +1,9 @@
 /*
 * List、Set、Map在创建对象时指定初始值
 * 格式: new List/Set/Map实现类() {{}};
-* 外面的这个 {} 为匿名类，里面的{}为代码块。
+ * 外面的这个 {} 为匿名类，里面的{}为代码块。
+ * 这种方式只有jdk >= 9 才支持
+ * 
 * 注意： 慎用， 非静态内部类/ 匿名内部类包含了外围实例的引用， 如果拥有比外部类更长的生命周期，有内存泄露隐患。
 * 另外这种方式生成的对象没有被序列化，正常方式是已经序列化的
 * */
@@ -18,7 +20,7 @@ public class ListSetMap_SpecifyInitialValuesAtNewBuildTime {
      */
     @Test
     public void test1() {
-        List<String> list = new ArrayList<>() { // 匿名类
+        List<String> list = new ArrayList<>() { // 创建一个继承于ArrayList 匿名子类对象
             {   // 代码块
                 add("我的楼兰--云朵"); // this.add("我的楼兰--云朵");
                 add("你还是从前的你吗--天籁天");
