@@ -154,7 +154,7 @@ public class PrintClassAttribute {
         /*
         * 获取由父类继承来的属性，私有属性除外
         * */
-        LinkedHashSet<Field> set = new LinkedHashSet<>(); // 用于存放从父中继承来的属性
+        LinkedHashSet<Field> set = new LinkedHashSet<>(); // 用于存放从父类中继承来的属性
 
         for (Class c : superClasses) {
             if (c == Object.class) {
@@ -162,9 +162,13 @@ public class PrintClassAttribute {
             }
             for (Field f : c.getDeclaredFields()) {
                 int i = f.getModifiers();
-                String modifier = Modifier.toString(i);
-                if (modifier.startsWith("private")) {
+                String modifiers = Modifier.toString(i);
+                if (modifiers.startsWith("private")) { // 去掉private修饰的属性
                     continue;
+                } else if (!(modifiers.startsWith("public") || modifiers.startsWith("protected"))) { // 此属性对应的类与clazz对应的类不在同一个包下，则此属性对应默认修饰的属性去掉
+                    if (!c.getPackage().equals(clazz.getPackage())) {
+                        continue;
+                    }
                 }
                 set.add(f);
             }
@@ -252,16 +256,20 @@ public class PrintClassAttribute {
         * 获取由父类继承来的方法，私有方法除外
         * */
         System.out.println("\n== 继承于父类的方法 ==:");
-        LinkedHashSet<Method> set = new LinkedHashSet<>(); // 用于存放从父中继承来的方法，私有方法除外
+        LinkedHashSet<Method> set = new LinkedHashSet<>(); // 用于存放从父类中继承来的方法，私有方法除外
         for (Class c : superClasses) {
             if (c == Object.class) {
                 break;
             }
             for (Method m : c.getDeclaredMethods()) {
                 int i = m.getModifiers();
-                String modifier = Modifier.toString(i);
-                if (modifier.startsWith("private")) {
+                String modifiers = Modifier.toString(i);
+                if (modifiers.startsWith("private")) {
                     continue;
+                } else if (!(modifiers.startsWith("public") || modifiers.startsWith("protected"))) { // 此属性对应的类与clazz对应的类不在同一个包下，则此属性对应默认修饰的方法去掉
+                    if (!c.getPackage().equals(clazz.getPackage())) {
+                        continue;
+                    }
                 }
                 set.add(m);
             }
