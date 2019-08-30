@@ -329,8 +329,8 @@ public class PrintClassAttribute {
                 String name = c.getSimpleName();
                 Class[] interfaces = c.getInterfaces();
 
-                // 格式：修饰符 类名 implements 接口列表
-                System.out.printf("%s %s%s\n", modifier, name, interfacesToString(interfaces));
+                // 格式：修饰符 类名 extends 父类 implements 接口列表
+                System.out.printf("%s %s%s%s\n", modifier, name, extendsString(c), interfacesToString(interfaces));
             }
         }
     }
@@ -425,15 +425,14 @@ public class PrintClassAttribute {
      */
     public static void main(String[] args) {
         PrintClassAttribute p = new PrintClassAttribute();
-//        p.print("com.java.www.Person");
+        p.print("com.java.www.Person");
 //        p.print(new Person());
 //        p.print(String.class);
-        p.print("java.lang.Integer");
+//        p.print("java.lang.Integer");
 
 
 /*
 // 运行 p.print(new Person()) 打印结果
-
 == Person 类所在的包 ==:
 包：com.java.www
 public Person extends Biology implements MyInterface, Comparator
@@ -463,18 +462,16 @@ public int compare(Object o1, Object o2)
 public static void info()
 public void setName(String name) throws RuntimeException
 public void walk()
-private String see(int time, String how)
-public void speak(String content)
-public void setAge(int age)
 public int getAge()
+public void speak(String content)
+private String see(int time, String how)
+public void setAge(int age)
 
 == 继承于父类的方法 ==:
 public void sleaping()
 
 == 内部类 ==:
- Wallet
-
-
+ Wallet extends Pack implements Serializable
 * */
     }
 }
