@@ -1,5 +1,6 @@
 package com.java.www;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 @MyAnnotation(value = "setp 1")
@@ -114,9 +115,28 @@ public class Person extends Biology<String> implements MyInterface, Comparator {
     }
 
     // 内部类
-    class Wallet {
+    class Wallet extends Pack implements Serializable {
         double balance;
     }
 
 
+}
+
+class Pack {
+    private String material = "牛皮";
+
+    public Pack() {
+    }
+
+    public Pack(String material) {
+        this.material = material;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
 }
