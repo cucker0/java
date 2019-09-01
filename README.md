@@ -564,7 +564,7 @@ JAVA Study
 
 
 <details>
-<summary>java正则表达式</summary>
+<summary>新版本java新特性</summary>
 
 * 新版本java新特性
     * [java 8新特性](./java8_new_features/README.md)
