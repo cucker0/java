@@ -66,7 +66,7 @@ JAVA Study
             * [位运算应用例子](./day02/README.md#位运算应用例子)
         * [三元运算符](./day02/README.md#三元运算符)
         * [运算符的优先级](./day02/README.md#运算符的优先级)
-    * [10进制数转以16进制格式打印出来](./day02/README.md#10进制数转以16进制格式打印出来)
+    * [10进制数转成以16进制格式打印出来](./day02/README.md#10进制数转成以16进制格式打印出来)
 
 </details>
 
@@ -410,7 +410,7 @@ JAVA Study
 
 * [day17_多线程](./day17/README.md "多线程")
     * [程序、进程、线程概念](./day17/README.md#程序进程线程概念)
-    * 多线程使用场景(./day17/README.md)
+    * [多线程使用场景](./day17/README.md#多线程使用场景)
         * 多线程的创建和启动
     * [Thread类](./day17/README.md#Thread类)
         * [创建线程(类)的两种方法](./day17/README.md#创建线程类的两种方法)
