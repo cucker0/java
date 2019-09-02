@@ -450,6 +450,7 @@ JAVA Study
         * 字符串的特性
         * String类的构造器
         * String方法
+            * [String的hashCode()方法](./day18/README.md#String的hashCode方法)
         * 字符串与基本数据类型、包装类之间转换
         * 字符串与字节数组的相互转换
         * 字符串与字符数组的相互转换

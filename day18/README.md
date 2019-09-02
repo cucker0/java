@@ -131,6 +131,33 @@ static String valueOf(Object obj)
 示例  
 [String Test](./src/com/java/www/StringTest.java)
 
+### String的hashCode()方法
+```text
+S = s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+n: 字符串长度
+s[x]: 在< java 8中，表示一个字符
+
+// StringLatin1类（用一个字节来表示一个拉丁字符）
+    public static int hashCode(byte[] value) {
+        int h = 0;
+        for (byte v : value) {
+            h = 31 * h + (v & 0xff);
+        }
+        return h;
+    }
+    
+// StringUTF16类（用两个字节来表示一个非拉丁的字符）
+    public static int hashCode(byte[] value) {
+        int h = 0;
+        int length = value.length >> 1; // 左位移移位，等价除以2。这步是计算字符个数
+        for (int i = 0; i < length; i++) {
+            h = 31 * h + getChar(value, i);
+        }
+        return h;
+    }
+
+```
+
 ## 字符串与基本数据类型、包装类之间转换
 * 字符串 -> 基本数据类型、包装类：调用 相应包装类.parseXxx(String str)   其中Xxx为相应的基本数据类型
 * 基本数据类型、包装类 -> 字符串：调用String.valueOf(T obj)  // T 为int、boolean、byte等基本数据类型
