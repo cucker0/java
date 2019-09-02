@@ -135,7 +135,7 @@ static String valueOf(Object obj)
 ```text
 S = s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
 n: 字符串长度
-s[x]: 在< java 8中，表示一个字符
+s[x]: 表示一个字符
 
 // StringLatin1类（用一个字节来表示一个拉丁字符）
     public static int hashCode(byte[] value) {
@@ -149,7 +149,7 @@ s[x]: 在< java 8中，表示一个字符
 // StringUTF16类（用两个字节来表示一个非拉丁的字符）
     public static int hashCode(byte[] value) {
         int h = 0;
-        int length = value.length >> 1; // 左位移移位，等价除以2。这步是计算字符个数
+        int length = value.length >> 1; // 左位移一位，等价除以2。这步是计算字符的个数
         for (int i = 0; i < length; i++) {
             h = 31 * h + getChar(value, i);
         }
