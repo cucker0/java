@@ -2,6 +2,7 @@ package com.java.ref;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -11,7 +12,8 @@ import java.util.function.Supplier;
  *      与方法引用类似，函数式接口中抽象方法的参数列表 与 构造器的参数列表一致
  *      抽象方法的返回值为构造器所属类的类型
  *
- * 二、数组引用
+ * 二、数组引用（只适用于一维数组）
+ *      把数组看成时一个特殊的类，则写法与构造器引用一致
  */
 public class ConstructorRefTest {
     /**
@@ -91,22 +93,31 @@ public class ConstructorRefTest {
     @Test
     public void test4(){
         int[] iArr = new int[4];
-        System.out.println(iArr);
+        System.out.println(iArr.toString());
         System.out.println("\n// --------------------\n");
 
         // lambda写法
-        Function<Integer, int[]> func2 = i -> new int[i];
+        Function<Integer, int[]> func2 = length -> new int[length];
         int[] i2= func2.apply(4);
-        for (int i : i2) {
-            System.out.println(i);
-        }
+        System.out.println(Arrays.toString(i2));
         System.out.println("\n// --------------------\n");
 
-        // 数组引用写法
+        // 数组引用写法，使用于一维数组
         Function<Integer, int[]> func3 = int[]::new;
         int[] i3 = func3.apply(4);
-        for (int i : i3) {
-            System.out.println(i);
+        System.out.println(Arrays.toString(i3));
+
+        // String[][]
+        String[][] ss = new String[2][3];
+        BiFunction<Integer, Integer, String[][]> biFunction = (length1, length2) -> new String[length1][length2];
+        String[][] ss1 = biFunction.apply(2, 3);
+        System.out.print("[ ");
+        for (String[] sArr : ss1) {
+            System.out.print(Arrays.toString(sArr) + ", ");
         }
-	}
+        System.out.print(" ]");
+
+        // 二维数组的引用不适用了
+//        BiFunction<Integer, Integer, String[][]> biFunction2 = String[][]::new;
+    }
 }
