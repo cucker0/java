@@ -31,7 +31,7 @@ public class Employee {
 		this.name = name;
 		this.age = age;
 		this.salary = salary;
-		System.out.println("Employee(int id, String name, int age, double salary) ...");
+//		System.out.println("Employee(int id, String name, int age, double salary) ...");
 	}
 
 	// 方法
