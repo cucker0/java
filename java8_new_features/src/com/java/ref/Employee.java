@@ -4,12 +4,37 @@ package com.java.ref;
  * @author shkstart 邮箱：shkstart@126.com
  */
 public class Employee {
-
+	// Field字段
 	private int id;
 	private String name;
 	private int age;
 	private double salary;
 
+	// 构造器
+	public Employee() {
+		System.out.println("Employee() ...");
+	}
+
+	public Employee(int id) {
+		this.id = id;
+		System.out.println("Employee(int id) ...");
+	}
+
+	public Employee(int id, String name) {
+		this.id = id;
+		this.name = name;
+		System.out.println("Employee(int id, String name) ...");
+	}
+
+	public Employee(int id, String name, int age, double salary) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		System.out.println("Employee(int id, String name, int age, double salary) ...");
+	}
+
+	// 方法
 	public int getId() {
 		return id;
 	}
@@ -39,28 +64,6 @@ public class Employee {
 	}
 
 	public void setSalary(double salary) {
-		this.salary = salary;
-	}
-
-	public Employee() {
-
-	}
-
-	public Employee(int id) {
-
-		this.id = id;
-	}
-
-	public Employee(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	public Employee(int id, String name, int age, double salary) {
-
-		this.id = id;
-		this.name = name;
-		this.age = age;
 		this.salary = salary;
 	}
 

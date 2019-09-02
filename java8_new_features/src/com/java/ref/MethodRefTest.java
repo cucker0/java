@@ -2,14 +2,12 @@ package com.java.ref;
 
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Comparator;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.regex.Matcher;
 
 /**
  * 方法引用的使用（Method References）
