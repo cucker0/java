@@ -396,7 +396,7 @@ JAVA Study
         * [对象流使用注意，读取时报java.io.EOFException异常](./day15/README.md#对象流使用注意读取时报javaioEOFException异常)
         * 对象的序列化
         * 使用对象流序列化对象
-    * [RandomAccessFile类](./day15/README.md#RandomAccessFile类)
+    * [RandomAccessFile类,可控制可任意位置读写文件](./day15/README.md#RandomAccessFile类)
     * [流的基本应用小总结](./day15/README.md#流的基本应用小总结)
     
 </details>
