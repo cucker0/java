@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Stream
+ * Stream接口
  *
  * Stream与集合区别
  *      Stream关注的是对数据的运算，与CPU打交道
@@ -36,7 +36,7 @@ import java.util.stream.Stream;
  *
  *
  */
-public class StreamAPITest {
+public class StreamApiTest {
     List<Employee> employeeList = EmployeeData.getEmployees();
 
     /**
