@@ -46,7 +46,7 @@ IntelliJ IDE
 Settings ->Keymap ->Other ->Fix doc comment ->右键 ->选择 Add Keyboard Shortcut， 然后输入自定义的快捷键Alt + M、
 默认Fix doc comment是没有设置快捷键的
 
-把光标停在类名或者方法名上(光标点一下，或选中它)，然后Alt + Enter，出现几个选项，选择Add Javadoc就OK了
+把光标停在类名或者方法名上这行上，然后Alt + Enter，出现几个选项，选择Add Javadoc就OK了
 ```
 
 ![](./images/Intellij_IDE/addJavaDoc02.png)  
