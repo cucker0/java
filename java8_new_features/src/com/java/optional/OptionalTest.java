@@ -7,6 +7,7 @@ import java.util.Optional;
 
 /**
  * Optional类
+ * 最多只能存放一个值的容器
  *
  *      public static <T> Optional<T> of(T value)
  *          创建指定值为value的Optional类对象
