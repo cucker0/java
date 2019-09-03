@@ -161,6 +161,7 @@ public class StreamApiTest2 {
      *
      * Stream<T> sorted(Comparator<? super T> comparator);
      *      定制排序
+     *      只对顺序流有效，对于parallelStream并行流无效
      *
      */
     @Test
