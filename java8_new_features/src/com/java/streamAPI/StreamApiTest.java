@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 /**
  * Stream接口
  *
- * Stream与集合区别
+ * Stream与Collection集合区别
  *      Stream关注的是对数据的运算，与CPU打交道
  *      集合关注的是数据的存储，与内存打交道
  *
@@ -34,6 +34,11 @@ import java.util.stream.Stream;
  *
  * Stream的实例化
  *
+ * 顺序流 与 并行流的互转
+ *      parallel()
+ *          把此Stream流转成并行流
+ *      sequential()
+ *          把此Stream流转成顺序流
  *
  */
 public class StreamApiTest {
@@ -109,6 +114,20 @@ public class StreamApiTest {
 //        stream1.forEach(System.out::println); // 不停遍历下去
         stream1.limit(5).forEach(System.out::println);
 
+    }
+
+    /**
+     * 顺序流 与 并行流的互转
+     *
+     * parallel()
+     *      把此Stream流转成并行流
+     * sequential()
+     *      把此Stream流转成顺序流
+     */
+    @Test
+    public void test5() {
+        Stream<Employee> parallel = employeeList.stream().parallel();
+        Stream<Employee> sequential = employeeList.parallelStream().sequential();
     }
 
 }

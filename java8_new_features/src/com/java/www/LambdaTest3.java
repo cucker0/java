@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * java 内置的函数式接口
+ * java内置的函数式接口
  *
  *      函数接口                     抽象方法                   备注
  *      消费型接口:Consumer<T>       void accept(T t)
@@ -32,13 +32,13 @@ import java.util.function.Predicate;
 
 
 public class LambdaTest3 {
+    /**
+     * Consumer<T>
+     */
     public void happyTime(double money, Consumer<Double> consumer) {
         consumer.accept(money);
     }
 
-    /**
-     * Consumer<T>
-     */
     @Test
     public void test1() {
         happyTime(600, new Consumer<Double>() {

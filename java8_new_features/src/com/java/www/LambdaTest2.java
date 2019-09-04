@@ -167,8 +167,7 @@ public class LambdaTest2 {
         System.out.println(com1.compare(33, 44));
         System.out.println("\n// --------------------\n");
 
-        // Lambda 写法
-
+        // Lambda 简略写法
         Comparator<Integer> com2 = (o1, o2) -> o1.compareTo(o2);
         System.out.println(com2.compare(33, 44));
 

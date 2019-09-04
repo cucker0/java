@@ -4,10 +4,9 @@ import com.java.ref.Employee;
 import com.java.ref.EmployeeData;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -160,6 +159,13 @@ public class StreamApiTest3 {
      *      Collector接口实现实例的方法决定了如何对流执行收集操作（如收集到List、Set、Map）
      *      另外，Collectors实现类提供了很多静态方法，可以方便地创建常见收集器实例
      *
+     *      例如：把list中的员工信息转换成以id为key，Employee对象为值的Map中
+     *      Function<Employee, Integer> keyMapper = Employee::getId;
+     *      Function<Employee, Employee> valueMapper = e -> e;
+     *      Map<Integer, Employee> employeeMap = employeeList.stream().collect(Collectors.toMap(keyMapper, valueMapper));
+     *      employeeMap.forEach((k, v) -> System.out.println(String.format("key:%s, value:%s", k, v)));
+     *
+     *
      *  <R> R collect(Supplier<R> supplier,
      *                   BiConsumer<R, ? super T> accumulator,
      *                   BiConsumer<R, R> combiner);
@@ -174,5 +180,16 @@ public class StreamApiTest3 {
 
         Set<Employee> collectSet = employeeList.parallelStream().filter(e -> e.getSalary() > 6000).collect(Collectors.toSet());
         System.out.println(collectSet);
+        System.out.println();
+
+        // 把list中的员工信息转换成以id为key，Employee对象为值的Map中
+        Function<Employee, Integer> keyMapper = Employee::getId;
+        Function<Employee, Employee> valueMapper = e -> e;
+        Map<Integer, Employee> employeeMap = employeeList.stream().collect(Collectors.toMap(keyMapper, valueMapper));
+        employeeMap.forEach((k, v) -> System.out.println(String.format("key:%s, value:%s", k, v)));
+        System.out.println();
+        for (Map.Entry entry : employeeMap.entrySet()) {
+            System.out.println(entry);
+        }
     }
 }

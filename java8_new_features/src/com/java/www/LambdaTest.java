@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 public class LambdaTest {
     /**
-     * 匿名内部类，之前的方式
+     * 实现接口的匿名内部类实例，之前的方式
      */
     @Test
     public void test1() {

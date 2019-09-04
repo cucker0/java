@@ -23,6 +23,7 @@ static <T,​K,​U>
 Collector<T,​?,​Map<K,​U>> toMap​(Function<? super T,​? extends K> keyMapper, Function<? super T,​? extends U> valueMapper) 
 Returns a Collector that accumulates elements into a Map whose keys and values are the result of applying the provided mapping functions to the input elements.
 
+
 static <T> Collector<T,​?,​Double> averagingDouble​(ToDoubleFunction<? super T> mapper) 
 Returns a Collector that produces the arithmetic mean of a double-valued function applied to the input elements.
 
