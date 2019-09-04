@@ -1,6 +1,9 @@
 Stream接口
 ==
 
+# 基本情况
+位于 java.util.stream包下
+
 # 抽象方法
 ```text
 boolean allMatch​(Predicate<? super T> predicate) 
