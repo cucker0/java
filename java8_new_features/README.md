@@ -500,6 +500,22 @@ Fcuntion的返回值为构造器所属类的类型
 >一旦执行终止操作，就执行中间操作链，并产生结果。之后，这个Stream对象不能再被使用
 
 
+### 绘制流程图 Flowchart
+
+```flow
+st=>start: 用户登陆
+op=>operation: 登陆操作
+cond=>condition: 登陆成功 Yes or No?
+e=>end: 进入后台
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+[========]
+
+### 绘制序列图 Sequence Diagram
+
 ```seq
 Andrew->China: Says Hello
 Note right of China: China thinks\nabout it
