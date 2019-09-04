@@ -26,6 +26,10 @@ public class Employee {
 		System.out.println("Employee(int id, String name) ...");
 	}
 
+	public Employee(String name) {
+		this.name = name;
+	}
+
 	public Employee(int id, String name, int age, double salary) {
 		this.id = id;
 		this.name = name;
