@@ -739,6 +739,7 @@ public static <T> Optional<T> ofNullable(T value)
 创建指定值为value的Optional类对象
     value可以为null，此时Optional对象为空的Optional，不能使用get()取里面的值
 
+
 * 获取Optional容器中的对象
 public T orElse(T other)
     获取此Optional容器获取value值。如果此Optional容器的value属性(元素)不为null，则直接返回value，否则返回指定的对象other
@@ -755,6 +756,7 @@ public T orElseGet(Supplier<? extends T> supplier)
 public T orElseThrow()
     获取此Optional容器获取value值。如果此Optional容器的value属性值不为null，则直接返回value，否则抛出异常NoSuchElementException
     与 get()等价
+
 
 * 判断Optional容器中是否包含对象
 public boolean isPresent()
