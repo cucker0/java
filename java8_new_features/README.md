@@ -500,13 +500,9 @@ Fcuntion的返回值为构造器所属类的类型
 >一旦执行终止操作，就执行中间操作链，并产生结果。之后，这个Stream对象不能再被使用
 
 
-```mermaid
-    graph LR
-    id2((数据源)) --> op1[获取Stream流]
-    op1 --> op2[filter]
-    op2 --> op3[map]
-    op3 --> op4[...]
-    op1 -- 中间操作 --> op4
-    op4 --> stop[终止操作]
-    
+```seq
+Andrew->China: Says Hello
+Note right of China: China thinks\nabout it
+China-->Andrew: How are you?
+Andrew->>China: I am good thanks!
 ```
