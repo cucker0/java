@@ -501,7 +501,7 @@ Fcuntion的返回值为构造器所属类的类型
 
 
 ```mermaid
-graph LR
+    graph LR
     id2((数据源)) --> op1[获取Stream流]
     op1 --> op2[filter]
     op2 --> op3[map]
