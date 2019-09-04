@@ -482,6 +482,8 @@ Fcuntion的返回值为构造器所属类的类型
 
 * 作用：主要是对集合的计算操作，如查找、过滤、映射、归约等
 
+[Stream接口详情](./Stream接口.md)  
+
 ## Stream与Collection集合区别
 * Stream关注的是对数据的运算，与CPU打交道
 * Collection集合关注的是数据的存储，与内存打交道。Collection集合是静态的内存数据
@@ -499,26 +501,219 @@ Fcuntion的返回值为构造器所属类的类型
 3. 终止操作
 >一旦执行终止操作，就执行中间操作链，并产生结果。之后，这个Stream对象不能再被使用
 
-
-### 绘制流程图 Flowchart
-
-```flow
-st=>start: 用户登陆
-op=>operation: 登陆操作
-cond=>condition: 登陆成功 Yes or No?
-e=>end: 进入后台
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
+## Stream实例化的几种方式
+* 方式1：通过集合的默认方法
+```text
+    Stream<Employee> stream = employeeList.stream();
 ```
-[========]
 
-### 绘制序列图 Sequence Diagram
+* 方式2：通过数组Arrays类的默认方法(只适用于顺序流)
+```text
+    int[] arr = new int[]{3, 1, 4, 7};
 
-```seq
-Andrew->China: Says Hello
-Note right of China: China thinks\nabout it
-China-->Andrew: How are you?
-Andrew->>China: I am good thanks!
+    // 调用Arrays类的public static <T> Stream<T> stream(T[] array): 返回一个流
+    IntStream intStream = Arrays.stream(arr);
+    
+    // default Stream<E> parallelStream(): 返回一个并行流
+    Stream<Employee> parallelStream = employeeList.parallelStream();
 ```
+
+* 方式3：通过Stream接口的of()方法
+```text
+/**
+ * 创建Stream对象方式3：通过Stream接口的of()方法
+ *
+ * public static<T> Stream<T> of(T t)
+ */
+@Test
+public void test3() {
+    Stream<Integer> stream = Stream.of(13, 13, 1, 3, 5);
+
+}
+```
+
+* 方式4：创建无限流
+```text
+/**
+ * 创建Stream对象方式4：创建无限流
+ *
+ * public static<T> Stream<T> iterate(final T seed, final UnaryOperator<T> f)
+ * public static<T> Stream<T> iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)
+ * public static<T> Stream<T> generate(Supplier<? extends T> s)
+ */
+@Test
+public void test4() {
+    // 迭代
+    Stream<Integer> stream = Stream.iterate(0, t -> t + 2);
+//        iterate.forEach(System.out::println); // 无限打印下去
+
+    // 遍历前10个元素
+    stream.limit(10).forEach(System.out::println);
+    System.out.println();
+
+
+    // 生成
+    Stream<Double> stream1 = Stream.generate(Math::random);
+//        stream1.forEach(System.out::println); // 不停遍历下去
+    stream1.limit(5).forEach(System.out::println);
+
+}
+```
+
+## 顺序流与并行流的互转
+* parallel()
+```
+把此Stream流转成并行流
+```
+
+* sequential()
+```text
+把此Stream流转成顺序流
+```
+
+### Stream实例化示例
+[StreamApiTest](./src/com/java/streamAPI/StreamApiTest.java)  
+
+
+## Stream接口的中间操作
+* 筛选与切片
+```text
+Stream<T> filter(Predicate<? super T> predicate);
+     接收一个判定型的lambda表达式，从流中筛选出符合条件的元素。
+     
+Stream<T> limit(long maxSize);
+     截断流，截断流后的长度不超过maxSize（包含等于），相当于返回取流中的前maxSize个元素组成的流，元素不够不报错
+
+Stream<T> skip(long n);
+     跳过流前面的n个元素，返回由剩下的元素组成的流。如果元素个数<=n，则返回一个空元素Stream对象
+     与Stream<T> limit(long maxSize)互为把相反操作
+
+Stream<T> distinct();
+     去重，返回去除了重复元素之后组成的流
+```
+
+* 映射
+```text
+<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+    接收一个函数作为参数，将元素转换成其他形式或提取信息。map方法会自动遍历所有的元素，该函数会被应用到每个元素上，并将其映射成一个新的元素，一一对应
+    类似于test3()中的list1.add(list2);
+
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+    接收一个函数作为参数，将流中的每个值都换成另外一个流，然后把所有流连接成一个流
+    类似于下面 test4()中的list1.addAll(list2);
+     
+IntStream mapToInt(ToIntFunction<? super T> mapper)
+    接收一个函数作为参数，函数mapper应用到每个元素上，产生一个新的IntStream流
+    
+LongStream mapToLong(ToLongFunction<? super T> mapper)
+    接收一个函数作为参数，函数mapper应用到每个元素上，产生一个新的LongStream流
+    
+DoubleStream mapToDouble(ToDoubleFunction<? super T> mapper)
+    接收一个函数作为参数，函数mapper应用到每个元素上，产生一个新的DoubleStream流
+
+```
+
+* 排序
+```text
+Stream<T> sorted();
+     自然排序。
+     只对顺序流有效，对于parallelStream并行流无效
+
+Stream<T> sorted(Comparator<? super T> comparator);
+     定制排序
+     只对顺序流有效，对于parallelStream并行流无效
+```
+
+### Stream接口的中间操作示例
+[StreamApiTest2](./src/com/java/streamAPI/StreamApiTest2.java)
+
+## Stream接口的终止操作
+* 匹配与查找
+```text
+boolean allMatch(Predicate<? super T> predicate);
+    检查是否匹配所有的元素
+
+boolean anyMatch(Predicate<? super T> predicate);
+    检查是否至少匹配一个元素
+
+boolean noneMatch(Predicate<? super T> predicate);
+    检查是否没有匹配所有的元素
+
+Optional<T> findFirst();
+    返回第一个元素，若没有元素则返回一个空的Optional对象
+
+Optional<T> findAny();
+    返回当前流中的任意元素，若没有元素则返回一个空的Optional对象
+    顺序流中查找的为第一个元素，
+    并行流中查找的则不一定为第一个元素。对于同一个集合，基本上每次查找的都是同一个
+
+long count();
+    返回流中元素的个数
+
+Optional<T> max(Comparator<? super T> comparator);
+    返回流中排序后的最大值元素
+
+Optional<T> min(Comparator<? super T> comparator);
+    返回流中排序后的最小值元素
+
+void forEach(Consumer<? super T> action);
+    内部迭代。(使用Collection接口的forEach，需要用户去做迭代，称为外部迭代)    
+```
+
+* 归约
+```text
+T reduce(T identity, BinaryOperator<T> accumulator);
+     可以将流中的元素反复结合起来，得到一个值。返回T
+     identity: 初始值
+     sum、min、max、average和string连接都是归约的特殊情况
+
+Optional<T> reduce(BinaryOperator<T> accumulator);
+     可以将流中的元素反复结合起来，得到一个值。返回Optinal<T>
+
+<U> U reduce(U identity,
+                 BiFunction<U, ? super T, U> accumulator,
+                 BinaryOperator<U> combiner);
+```
+
+* 收集
+```text
+<R, A> R collect(Collector<? super T, A, R> collector);
+    将流转换为其他形式。接收一个Collector接口的实现实例，用于给Stream中元素做收集的方法
+    Collector接口实现实例的方法决定了如何对流执行收集操作（如收集到List、Set、Map）
+    另外，Collectors实现类提供了很多静态方法，可以方便地创建常见收集器实例
+
+    例如：把list中的员工信息转换成以id为key，Employee对象为值的Map中
+    Function<Employee, Integer> keyMapper = Employee::getId;
+    Function<Employee, Employee> valueMapper = e -> e;
+    Map<Integer, Employee> employeeMap = employeeList.stream().collect(Collectors.toMap(keyMapper, valueMapper));
+    employeeMap.forEach((k, v) -> System.out.println(String.format("key:%s, value:%s", k, v)));
+
+
+<R> R collect(Supplier<R> supplier,
+                 BiConsumer<R, ? super T> accumulator,
+                 BiConsumer<R, R> combiner);
+```
+
+### Stream接口的终止操作示例
+* 匹配与查找  
+[StreamApiTest3 test1()](./src/com/java/streamAPI/StreamApiTest3.java)
+
+* 归约  
+[StreamApiTest3 test2()](./src/com/java/streamAPI/StreamApiTest3.java)
+
+* 收集  
+[StreamApiTest3 test3()](./src/com/java/streamAPI/StreamApiTest3.java)
+
+
+## Collectors类
+Collectors实用类提供了很多静态方法，可以方便地创建常见收集器实例
+
+
+[Collectors类详情](./Collectors类.md)  
+
+### Collectors常用方法
+* static <T> Collector<T,​?,​List<T>> toList() 
+>把流中的元素收集到List中，返回一个Collector
+* static <T> Collector<T,​?,​Set<T>> toSet() 
+
+# Optional类

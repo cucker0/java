@@ -60,6 +60,7 @@ public class StreamApiTest {
 
     /**
      * 创建Stream对象方式2：通过数组Arrays类的默认方法
+     * 只适用于顺序流
      */
     @Test
     public void test2() {
