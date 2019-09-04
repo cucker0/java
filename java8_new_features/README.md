@@ -499,14 +499,14 @@ Fcuntion的返回值为构造器所属类的类型
 3. 终止操作
 >一旦执行终止操作，就执行中间操作链，并产生结果。之后，这个Stream对象不能再被使用
 
-```flow
-st=>start: 数据源
-op1=>operation: 获取Stream流
-op2=>operation: filter
-op3=>operation: map
-op4=>operation: ...
-e=>end: 终止操作
 
-st(right)->op1(right)-->op2(right)->op3(right)->op4(right)->e
-op1(bottom)->op4(top)
+```mermaid
+graph LR
+    id2((数据源)) --> op1[获取Stream流]
+    op1 --> op2[filter]
+    op2 --> op3[map]
+    op3 --> op4[...]
+    op1 -- 中间操作 --> op4
+    op4 --> stop[终止操作]
+    
 ```
