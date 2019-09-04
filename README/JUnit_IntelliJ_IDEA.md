@@ -164,7 +164,8 @@ import org.junit.Test;
 ```
 ## 注意事项
 * 测试方法上面必须使用@Test注解进行修饰
-* 测试方法必须使用public void修饰，不能带有任何参数
+* 测试方法必须使用public void修饰，不能带有任何参数，即没有返回值。
+* 可以声明抛出异常，如：public void test() throws Exception { }
 * 新建一个源代码目录用来存放测试代码  
 ![](./images/JUnit/Directory_structure.png)
 * 测试类的包应该与被测试类的在同一个包中
