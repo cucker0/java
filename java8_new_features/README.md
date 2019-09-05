@@ -718,6 +718,12 @@ Collectors实用类提供了很多静态方法，可以方便地创建常见收�
 * static <T> Collector<T,​?,​Set<T>> toSet() 
 >把流中的元素收集到Set中，返回一个Collector
 
+* static <T,​K,​U> Collector<T,​?,​Map<K,​U>> toMap​(  
+                                                Function<? super T,​? extends K> keyMapper,   
+                                                Function<? super T,​? extends U> valueMapper  
+                                                ) 
+>把流中的元素收集到Map中，返回一个Collector
+
 
 # Optional类
 只能存放一个元素的容器
