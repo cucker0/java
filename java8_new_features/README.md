@@ -901,3 +901,52 @@ class TypeDefine2<U> {
 [可用于类型的注解](./src/com/java/annotation/MyAnnotation2.java)  
 [解能写在使用类型的任何语句中](./src/com/java/annotation/MyAnnotation3.java)  
 [AnnotationJava8Test](./src/com/java/annotation/AnnotationJava8Test.java)   
+
+
+# java8接口的改进
+从java8开始，接口可以添加默认方法、静态方法
+* 默认方法
+```text
+默认方法使用default关键字修饰。可以通过实现类对象来调用。
+不管写不写public修饰，都是public，修饰的
+我们在已有的接口中提供新方法的同时，还保持了与旧版本代码的兼容性。
+比如java 8 API中对Collection、List、Comparator等接口提供了丰富的默认方法
+```
+
+* 静态方法
+```text
+使用static关键字修饰。可以通过接口直接调用静态方法。
+不管写不写public修饰，都是public，修饰的
+我们经常在相互一起使用的类中使用静态方法。
+你可以在标准库中找到像Collection、Collections、Path、Paths这样成对的接口和类
+```
+* 注意
+```text
+@interface 修饰的接口，不是声明了一个interface，它是注解，继承了java.lang.annotation.Annotation 接口
+
+interface 修改的接口才是声明了一个interface
+
+```
+
+** 接口默认方法与静态方法示例 **
+[MyInterface](./src/com/java/interfaceFeatures/MyInterface.java)
+[MyInterfaceTest](./src/com/java/interfaceFeatures/MyInterfaceTest.java)
+
+## 接口中默认方法的"类优先"原则
+若一个接口中定义了一个默认方法，而另外一个父类或接口中又定义了一个同名的方法时
+
+1. 选择父类中的方法
+```text
+果一个父类提供了具体的实现，那么接口中具有相同名称和参数的默认方法会被忽略
+```
+2. 接口冲突
+```text
+如果一个父接口提供一个默认方法，
+而另一个接口也提供了一个具有相同名称和参数列表的方法（不管方法是否是默认方法），
+那么必须覆盖该方法来解决冲突
+```
+
+** 示例 **
+[接口冲突示例](./src/com/java/interfaceFeatures/MyClass.java)
+
+

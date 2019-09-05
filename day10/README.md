@@ -744,3 +744,5 @@ class Duck implements runner, swimer, flier {
 * 通过接口可以指明类需要实现的多个方法，一般用于定义对象的扩张功能
 * 接口主要用来定义规范。解除耦合关系
 
+## java8接口的改进
+[java8接口的改进](../java8_new_features/README.md#java8接口的改进)

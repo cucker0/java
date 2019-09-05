@@ -10,6 +10,7 @@ JAVA Study
         * [java语言特点](./day01/README.md#java语言特点)
         * [java两种核心机制](./day01/README.md#java两种核心机制)
         * [.java源文件要求](./day01/README.md#java源文件要求)
+        * [JDK、JRE、JVM的关系](./day01/README.md#JDKJREJVM的关系)
         * [注释](./day01/README.md#注释)
         * [javadoc生成文档说明](./day01/README.md#javadoc生成文档说明)
     * [关键字](./day01/README.md#关键字)
@@ -229,6 +230,7 @@ JAVA Study
     * [模板方法设计模式(TemplateMethod)](./day10/README.md#模板方法设计模式TemplateMethod)
     * [interfacer接口](./day10/README.md#interfacer接口)
         * [接口用法总结](./day10/README.md#接口用法总结)
+        * [java8接口的改进](./day10/README.md#java8接口的改进)
 </details>
 
 
