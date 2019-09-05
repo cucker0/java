@@ -793,3 +793,111 @@ public boolean isEmpty()
         return e.getName();
     }
 ```
+
+# java8注解新特性
+* 可重复的注解
+* 可用于类型的注解
+* 元注解@Target的参数类型ElementType枚举值多了两个：TYPE_PARAMETER,TYPE_USE
+    * ElementType.TYPE_PARAMETER
+        >表示该注解能写在类型变量的声明语句中（如：泛型声明）
+    * ElementType.TYPE_USE
+        >表示该注解能写在使用类型的任何语句中
+* 在java 8之前，注解只能是在声明的地方使用，java 8 开始，@Target为ElementType.TYPE_USE注解可以用在任何地方
+
+** 可重复的注解 **
+```text
+@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, MODULE})
+@Retention(RetentionPolicy.RUNTIME)
+@interface Annotations {
+    MyAnnotation[] value();
+}
+
+/**
+ * 可重复的注解
+ */
+@Repeatable(Annotations.class) // 修饰class可重复
+@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, MODULE, TYPE_PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyAnnotation {
+//    String[] value();
+
+    // 也可以定义带默认值的
+    String[] value() default {"hehe"};
+}
+
+
+// 重复的注解
+@MyAnnotation("Hello")
+@MyAnnotation("World")
+class AnnotationTest {
+    // 数据类型的注解
+    public void show(@MyAnnotation("abc") String string) {
+        System.out.println("show 方法...");
+    }
+}
+```
+
+** 可以用于注解类型 **
+```text
+@Target(ElementType.TYPE_PARAMETER)
+public @interface MyAnnotation2 {
+
+}
+
+
+// 注解类型
+class TypeDefine<@MyAnnotation2() U> {
+    // 字段属性
+    private U u;
+
+    // 方法
+    public <@MyAnnotation2() T> void test(T t) {
+        System.out.println("test method..." + u);
+        System.out.println(t);
+    }
+}
+```
+
+**  **
+```text
+@Target(ElementType.TYPE_USE)
+public @interface MyAnnotation3 {
+
+}
+
+
+// 注解放任何地方
+@MyAnnotation3
+class TypeDefine2<U> {
+    @MyAnnotation3 private String name;
+
+    // 构造器
+    public @MyAnnotation3 TypeDefine2() {
+        super();
+    }
+
+    @MyAnnotation3 public TypeDefine2(String name) {
+        this.name = name;
+    }
+
+    // 方法
+    public static void getDesc() {
+        TypeDefine2<@MyAnnotation3 String> t = null;
+        int a = (@MyAnnotation3 int) 2L;
+        int b = 10;
+    }
+
+    public static <@MyAnnotation3 T> void run(T t) {
+        System.out.println(t);
+    }
+
+    public void speak(@MyAnnotation3 String str) throws @MyAnnotation3 Exception{
+        System.out.printf("%s: %s", name, str);
+    }
+```
+
+## java8注解新特性示例
+[可重复的注解](./src/com/java/annotation/MyAnnotation.java)  
+[可用于类型的注解](./src/com/java/annotation/MyAnnotation2.java)  
+[解能写在使用类型的任何语句中](./src/com/java/annotation/MyAnnotation3.java)  
+[AnnotationJava8Test](./src/com/java/annotation/AnnotationJava8Test.java)   
