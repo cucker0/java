@@ -30,16 +30,6 @@ Java 8新特性
     * 新编译工具：jjs、jdeps
     * JVM中Metaspace取代PermGen空间
 
-
-# 新的时间和日期API
-* LocalDate
-* LocalTime
-* LocalDateTime
-* Instant
-* DateTimeFormatter
-* 其他类
-
-
 # Java 8新特性简介
 Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本，  
 Java 8 是oracle公司于2014年3月发布
@@ -970,6 +960,12 @@ java 8之前的日期时间API存在的问题：
 * java.time.zone
 >包含时区支持的类
 
+* LocalDate
+* LocalTime
+* LocalDateTime
+* Instant
+* DateTimeFormatter
+* 其他类
 
 ## LocalDate、LocalTime、LocalDateTime
 * 这几个类是其中较重要的几个类，它们的实例是不可变的对象，  
