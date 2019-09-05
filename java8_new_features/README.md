@@ -13,7 +13,7 @@ Java 8新特性
     * 接口的静态方法
     * 接口的默认方法
 * Optional类
-* 新的时间和日期API
+* 新的Time和Date API
 * 其他新特性
     * 重复注解
     * 类型注解
@@ -949,4 +949,6 @@ interface 修改的接口才是声明了一个interface
 ** 示例 **
 [接口冲突示例](./src/com/java/interfaceFeatures/MyClass.java)
 
+
+# 新的Time和Date API
 

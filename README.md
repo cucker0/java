@@ -467,6 +467,7 @@ JAVA Study
         * System.currentTimeMillis();
         * Date：java.util.Date、java.sql.Date
         * SimpleDateFormat
+            * [SimpleDateForma的pattern字母定义](./day18/README.md#SimpleDateForma的pattern字母定义)
         * Calendar
     * [主要时间标准](./day18/README.md#主要时间标准)
     * [System类的System.currentTimeMillis()方法](./day18/README.md#system类的systemcurrenttimemillis方法)
