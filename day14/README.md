@@ -121,5 +121,3 @@ public class DAO {
 * 不能向声明为通配符的集合中添加、修改元素(当元素为null除外)，但可以获取、删除元素
 ```
 
-# java8注解新特性
-[java8注解新特性](../java8_new_features/README.md#java8注解新特性)  
