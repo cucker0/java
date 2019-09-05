@@ -24,11 +24,16 @@ day01_JAVA语言概述与基本语法
 * 一个源文件中只能有一个声明为public的类，同时要求此类的类名与源文件名一致
 * 每个语句都要以;结尾
 * 执行过程 
-> 1>编译:javac {-encoding utf8} 源文件名，生效多个.class字节码文件，
-> 2>运行:java 类名
+> 1>编译:javac {-encoding utf8} 源文件名，生效多个.class字节码文件，  
+2>运行:java 类名
+
+### 从java源码到运行过程
+![](./images/java源码文件到运行过程.png)
 
 ## JDK、JRE、JVM的关系
 ![JDK、JRE、JVM的关系](./images/JDK,JRE,JVM关系.png)  
+![JDK、JRE、JVM的包含关系](./images/JDK,JRE,JVM关系2.png)    
+
 
 ## 注释
 * 单行注释：//
