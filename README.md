@@ -572,7 +572,8 @@ JAVA Study
 <summary>新版本java新特性</summary>
 
 * 新版本java新特性
-    * [java 8新特性](./java8_new_features/README.md)
+    * [java 8新特性](./java8_features/README.md)
+    * [java 9新特性](./java9_features/README.md)
     
 </details>
 
