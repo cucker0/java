@@ -367,6 +367,7 @@ JAVA Study
     * [元注解](./README/注解.md#元注解)
     * [提取Annotation信息](./README/注解.md#提取Annotation信息)
     * [内置注解源码](./README/注解.md#内置注解源码)
+    * [java8注解新特性](./README/注解.md#java8注解新特性)
 
 </details>
 
