@@ -27,6 +27,9 @@ day01_JAVA语言概述与基本语法
 > 1>编译:javac {-encoding utf8} 源文件名，生效多个.class字节码文件，
 > 2>运行:java 类名
 
+## JDK、JRE、JVM的关系
+![JDK、JRE、JVM的关系](./images/JDK,JRE,JVM关系.png)  
+
 ## 注释
 * 单行注释：//
 * 多行注释(块注释)：/* 注释文本 */  
