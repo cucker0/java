@@ -286,9 +286,21 @@ System类提供的public static long currentTimeMillis() 用来返回当前时�
 System.currentTimeMillis() 方法适用于计算时间差
 
 ## 主要时间标准
-* UTC(Universal Time Coordinated)
-* GMT(Greenwich Mean Time)
-* CST(Central Standard Time)
+* UTC(Universal Time Coordinated)世界标准时间
+* GMT(Greenwich Mean Time)格林威治时间
+* CST
+```text
+有4中表示：
+Central Standard Time (USA) UTC-6:00 美国时间
+
+Central Standard Time (Australia) UTC+9:30 澳大利亚 
+
+China Standard Time UTC+8:00 北京时间（中国时间）
+
+Cuba Standard Time UTC-4:00 古巴时间
+
+Linux系统中用表示北京时间
+```
 
 
 # Date类
@@ -302,7 +314,10 @@ Date() 获取本地当前时间构建一个Date
 Date(int year, int month, int date) // Deprecated
 Date(int year, int month, int date, int hrs, int min) // Deprecated
 Date(int year, int month, int date, int hrs, int min, int sec) // Deprecated
-以上三个构造器以1900-01-01 00:00:00 GMT为基准时间
+以上三个构造器以1900-01-01 00:00:00 GMT为基准时间。年为相对于1900年的差值，即偏移量。
+月份从0开始，即month为0表示1月
+如创建 2019-1-2
+Date date = new Date(2019- 1900, 1 - 1, 2);
 
 Date(long date) 以1970-01-01 00:00:00 GMT为基准的，毫秒差值
 Date(String s) // Deprecated

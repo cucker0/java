@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.*;
+import java.util.Date;
 
 /**
  * LocalDateTime类
@@ -12,6 +14,86 @@ import java.time.temporal.*;
  *
  */
 public class LocalDateTimeTest {
+    /**
+     * Date 创建指定年、月、日的Date对象
+     */
+    @Test
+    public void testDate() {
+        // 偏移量
+
+        // 如向创建一个日期为 2025-3-10
+        Date date = new Date(2025, 3, 10);
+        Date date1 = new Date(2025 - 1900, 3 - 1, 10);
+        System.out.println("new Date(2025, 3, 10): " + date); // new Date(2025, 3, 10): Fri Apr 10 00:00:00 CST 3925
+        System.out.println("new Date(2025 - 1900, 3 - 1, 10): " + date1); // new Date(2025 - 1900, 3 - 1, 10): Mon Mar 10 00:00:00 CST 2025
+    }
+
+    /**
+     * LocalDate、LocalTime、LocalDateTime测试
+     *
+     * LocalDateTime测试的使用频率最高
+     */
+    @Test
+    public void test0() {
+        // now(): 获取当前日期/当前时间/当前日期时间
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        System.out.println("LocalDate.now(): " + localDate);
+        System.out.println("LocalTime.now(): " + localTime);
+        System.out.println("LocalDateTime.now(): " + localDateTime);
+        System.out.println();
+
+
+        // of(): 按指定的年、月、日、时、分、秒创建LocalDateTime对象，没有偏移量
+        LocalDateTime localDateTime1 = LocalDateTime.of(2025, 10, 1, 20, 8, 8);
+        System.out.println("LocalDateTime.of(2025, 10, 1, 20, 8, 8): " + localDateTime1);
+        System.out.println();
+
+        // getXxx(): 获取相应的字段属性
+        System.out.println("getYear(): " + localDateTime.getYear());
+        System.out.println("getDayOfMonth(): " + localDateTime.getDayOfMonth());
+        System.out.println("getDayOfYear(): " + localDateTime.getDayOfYear());
+        System.out.println("getMonth(): " + localDateTime.getMonth());
+        System.out.println("getMonthValue(): " + localDateTime.getMonthValue());
+        System.out.println("getDayOfWeek(): " + localDateTime.getDayOfWeek());
+        System.out.println();
+
+        // withXxx(int t): 复制此LocalDateTime对象，设置复制的对象字段Xxx为t，最后返回复制后LocalDateTime对象
+        // 不修改当前的LocalDateTime对象。体现出不变性
+        LocalDateTime localDateTime2 = localDateTime.withDayOfMonth(10);
+        System.out.println("localDateTime.withDayOfMonth(10): " + localDateTime2);
+        System.out.println("localDateTime: " + localDateTime);
+        System.out.println();
+
+        // plusXxx(int t): 增加时间t，向前拨时间t，返回调整好后的LocalDateTime对象，不修改当前的LocalDateTime对象
+        System.out.println("localDateTime1: " + localDateTime1);
+        LocalDateTime localDateTime3 = localDateTime1.plusDays(7);
+        System.out.println("localDateTime1.plusDays(7): " + localDateTime3);
+        System.out.println("localDateTime1: " + localDateTime1);
+        System.out.println();
+
+        // minusXxx(int t): 减少时间t，向后拨时间t，返回调整好后的LocalDateTime对象，不修改当前的LocalDateTime对象
+        LocalDateTime localDateTime4 = localDateTime1.plusDays(7);
+        System.out.println("localDateTime1.plusDays(7): " + localDateTime4);
+        System.out.println("localDateTime1: " + localDateTime1);
+
+
+        // 获取日期部分、获取时间部分
+        LocalDate localDate1 = localDateTime1.toLocalDate();
+        LocalTime localTime1 = localDateTime1.toLocalTime();
+        System.out.printf("%s的日期部分: %s\n", localDateTime1, localDate1);
+        System.out.printf("%s的时间部分: %s\n", localDateTime1, localTime1);
+        System.out.println();
+
+        // LocalDate + LocalTime 组合转LocalDateTime
+        LocalDate localDate2 = LocalDate.now();
+        LocalTime localTime2 = LocalTime.of(00, 00, 00);
+        LocalDateTime localDateTime5 = LocalDateTime.of(localDate2, localTime2);
+        System.out.println(localDateTime5);
+    }
+
     /**
      * now()
      */
@@ -114,25 +196,59 @@ public class LocalDateTimeTest {
         System.out.println(second);
 
         //  获取纪元毫秒，时间戳
+        // 先把LocalDateTime对象转Instant瞬时对象
         Long milliSecond = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
         System.out.println(milliSecond);
     }
 
     /**
-     * LocalDateTime与String互转
+     * 格式化与解析时间
      */
     @Test
     public void test8() {
-        // 时间转字符串格式化
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
-        String dateTime = LocalDateTime.now(ZoneId.of("+8")).format(formatter);
+        /* 自定义的格式 */
+        // 时间格式化为字符串
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String dateTime = LocalDateTime.now(ZoneId.of("+8")).format(formatter1);
         System.out.println(dateTime);
 
 
-        // 字符串串时间
+        // 字符串解析成时间
         String dateTimeStr = "2019-09-06 11:11:28";
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime1 = LocalDateTime.parse(dateTimeStr, df);
         System.out.println(dateTime1);
+
+
+         /*
+         预定义的标准格式
+         ISO_LOCAL_DATE_TIME;
+         ISO_LOCAL_DATE;
+         ISO_LOCAL_TIME
+         */
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        System.out.println(formatter.format(localDateTime));
+        System.out.println();
+
+
+        /*
+        * 本地化相关的格式
+        *
+        * 如：ofLocalizedDateTime(FormatStyle.LONG)
+        * */
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+        System.out.println(formatter2.format(localDateTime));
+        System.out.println();
+    }
+
+    @Test
+    public void test9() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of("UTC+6"));
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Temporal temporal = localDateTime.adjustInto(zonedDateTime);
+        System.out.println(temporal);
+        System.out.println(localDateTime);
     }
 }

@@ -23,7 +23,7 @@ The minimum supported LocalDateTime, '-999999999-01-01T00:00:00'.
 ```text
 adjustInto​(Temporal temporal) 
 Adjusts the specified temporal object to have the same date and time as this object.
-
+把此LocalDateTime对象调整为指定时区器的时间
 
 OffsetDateTime atOffset​(ZoneOffset offset) 
 Combines this date-time with an offset to create an OffsetDateTime.
@@ -33,6 +33,7 @@ Combines this date-time with a time-zone to create a ZonedDateTime.
 
 String format​(DateTimeFormatter formatter) 
 Formats this date-time using the specified formatter.
+根据日期时间格式formatter把此对象装成String
 
 static LocalDateTime from​(TemporalAccessor temporal) 
 Obtains an instance of LocalDateTime from a temporal object.
@@ -192,6 +193,8 @@ static LocalDateTime parse​(CharSequence text, DateTimeFormatter formatter)
 Obtains an instance of LocalDateTime from a text string using a specific formatter.
 按时间格式formatter，解析字符串text为LocalDateTime对象
 
+
+// 增加时间，向前拨
 LocalDateTime plus​(long amountToAdd, TemporalUnit unit) 
 Returns a copy of this date-time with the specified amount added.
 
@@ -258,40 +261,40 @@ Returns a copy of this date-time with the specified field set to a new value.
 
 LocalDateTime withDayOfMonth​(int dayOfMonth) 
 Returns a copy of this LocalDateTime with the day-of-month altered.
-复制此LocalDateTime对象，将复制对象的天修改为指定的dayOfMonth，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的天设置为指定的dayOfMonth，返回复制并做修改后的新对象
 
 LocalDateTime withDayOfYear​(int dayOfYear) 
 Returns a copy of this LocalDateTime with the day-of-year altered.
-复制此LocalDateTime对象，将复制对象的天数修改为指定为年份天数的dayOfYear，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的天数设置为指定为年份天数的dayOfYear，返回复制并做修改后的新对象
 
 LocalDateTime withHour​(int hour) 
 Returns a copy of this LocalDateTime with the hour-of-day altered.
-复制此LocalDateTime对象，将复制对象的小时修改为指定的hour，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的小时设置为指定的hour，返回复制并做修改后的新对象
 
 
 LocalDateTime withMinute​(int minute) 
 Returns a copy of this LocalDateTime with the minute-of-hour altered.
-复制此LocalDateTime对象，将复制对象的分钟修改为指定的minute，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的分钟设置为指定的minute，返回复制并做修改后的新对象
 
 
 LocalDateTime withMonth​(int month) 
 Returns a copy of this LocalDateTime with the month-of-year altered.
-复制此LocalDateTime对象，将复制对象的月份修改为指定的month，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的月份设置为指定的month，返回复制并做修改后的新对象
 
 
 LocalDateTime withNano​(int nanoOfSecond) 
 Returns a copy of this LocalDateTime with the nano-of-second altered.
-复制此LocalDateTime对象，将复制对象的的小时修改为指定的hour，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的的小时设置为指定的hour，返回复制并做修改后的新对象
 
 
 LocalDateTime withSecond​(int second) 
 Returns a copy of this LocalDateTime with the second-of-minute altered.
-复制此LocalDateTime对象，将复制对象的的分钟修改为指定的second，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的的分钟设置为指定的second，返回复制并做修改后的新对象
 
 
 LocalDateTime withYear​(int year) 
 Returns a copy of this LocalDateTime with the year altered.
-复制此LocalDateTime对象，将复制对象的的年份修改为指定的year，返回复制并做修改后的新对象
+复制此LocalDateTime对象，将复制对象的的年份设置为指定的year，返回复制并做修改后的新对象
 
 
 int compareTo​(ChronoLocalDateTime<?> other) 
