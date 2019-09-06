@@ -33,3 +33,25 @@ Java 公共 API 和私有代码，
 * java的动态编译器
 
 
+# jdk9目录结构
+[JDK9目录结构](images/JDK9目录结构.png)
+
+```text
+没有jre子目录了
+bin: 包含所有命令。在windows平台上，它继续包含了系统的运行时动态链接库
+conf: 包含用户可编辑的配置文件，例如以前位于jre/lib目录中的.properties和.policy文件
+include: 包含编译本地代码使用的C/C+=头文件。它只存在于JDK中
+jmods: 包含JMOD格式的平台模块。创建自定义运行时映像时需要它。它只存在于JDK中
+legal: 包含法律声明
+lib: 包含非windows平台上的动态链接本地库。其子目录和文件不应由开发员直接编辑或使用
+
+```
+
+# 模块化系统
+Jigsaw项目后改名为Modularity，目的让java模块独立、化繁为简
+
+* 模块(module)，本质就是在package外在包一层
+
+
+
+
