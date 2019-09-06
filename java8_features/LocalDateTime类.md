@@ -24,17 +24,12 @@ The minimum supported LocalDateTime, '-999999999-01-01T00:00:00'.
 adjustInto​(Temporal temporal) 
 Adjusts the specified temporal object to have the same date and time as this object.
 
+
 OffsetDateTime atOffset​(ZoneOffset offset) 
 Combines this date-time with an offset to create an OffsetDateTime.
 
 ZonedDateTime atZone​(ZoneId zone) 
 Combines this date-time with a time-zone to create a ZonedDateTime.
-
-int compareTo​(ChronoLocalDateTime<?> other) 
-Compares this date-time to another date-time.
-
-boolean equals​(Object obj) 
-Checks if this date-time is equal to another date-time.
 
 String format​(DateTimeFormatter formatter) 
 Formats this date-time using the specified formatter.
@@ -87,9 +82,6 @@ Gets the second-of-minute field.
 int getYear() 
 Gets the year field.
 获取年份值
-
-int hashCode() 
-A hash code for this date-time.
 
 boolean isAfter​(ChronoLocalDateTime<?> other) 
 Checks if this date-time is after the specified date-time.
@@ -151,44 +143,54 @@ Obtains the current date-time from the system clock in the default time-zone.
 
 static LocalDateTime now​(Clock clock) 
 Obtains the current date-time from the specified clock.
-根据当前日期时间创建对象，指定时钟为clock
+根据当前日期时间创建对象，转成指定时钟clock的时间。即获取指定时钟的现在时间
 
 static LocalDateTime now​(ZoneId zone) 
 Obtains the current date-time from the system clock in the specified time-zone.
-根据当前日期时间创建对象，并指定时区为对象zone
+根据当前日期时间创建对象，转成指定时区为对象zone。即获取指定时区的现在时间
 
 static LocalDateTime of​(int year, int month, int dayOfMonth, int hour, int minute) 
 Obtains an instance of LocalDateTime from year, month, day, hour and minute, setting the second and nanosecond to zero.
+根据指定的年、月、日(dayOfMonth)、时、分创建LocalDateTime实例
 
 static LocalDateTime of​(int year, int month, int dayOfMonth, int hour, int minute, int second) 
 Obtains an instance of LocalDateTime from year, month, day, hour, minute and second, setting the nanosecond to zero.
+根据指定的年、月、日(dayOfMonth)、时、分、秒创建LocalDateTime实例
 
 static LocalDateTime of​(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond) 
 Obtains an instance of LocalDateTime from year, month, day, hour, minute, second and nanosecond.
+根据指定的年、月、日(dayOfMonth)、时、分、秒、纳秒创建LocalDateTime实例
 
 static LocalDateTime of​(int year, Month month, int dayOfMonth, int hour, int minute) 
 Obtains an instance of LocalDateTime from year, month, day, hour and minute, setting the second and nanosecond to zero.
+根据指定的年、月对象、日(dayOfMonth)、时、分创建LocalDateTime实例
 
 static LocalDateTime of​(int year, Month month, int dayOfMonth, int hour, int minute, int second) 
 Obtains an instance of LocalDateTime from year, month, day, hour, minute and second, setting the nanosecond to zero.
+根据指定的年、月对象、日(dayOfMonth)、时、分、秒创建LocalDateTime实例
 
 static LocalDateTime of​(int year, Month month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond) 
 Obtains an instance of LocalDateTime from year, month, day, hour, minute, second and nanosecond.
+根据指定的年、月对象、日(dayOfMonth)、时、分、秒、纳秒创建LocalDateTime实例
 
 static LocalDateTime of​(LocalDate date, LocalTime time) 
 Obtains an instance of LocalDateTime from a date and time.
+根据指定的LocalDate对象date、LocalTime对象time创建LocalDateTime实例
 
 static LocalDateTime ofEpochSecond​(long epochSecond, int nanoOfSecond, ZoneOffset offset) 
 Obtains an instance of LocalDateTime using seconds from the epoch of 1970-01-01T00:00:00Z.
+根据指定的纪元秒epochSecond、纳秒、时区偏移量offset创建LocalDateTime实例
 
 static LocalDateTime ofInstant​(Instant instant, ZoneId zone) 
 Obtains an instance of LocalDateTime from an Instant and zone ID.
 
 static LocalDateTime parse​(CharSequence text) 
 Obtains an instance of LocalDateTime from a text string such as 2007-12-03T10:15:30.
+解析字符串text为LocalDateTime对象。如2007-12-03T10:15:30
 
 static LocalDateTime parse​(CharSequence text, DateTimeFormatter formatter) 
 Obtains an instance of LocalDateTime from a text string using a specific formatter.
+按时间格式formatter，解析字符串text为LocalDateTime对象
 
 LocalDateTime plus​(long amountToAdd, TemporalUnit unit) 
 Returns a copy of this date-time with the specified amount added.
@@ -236,12 +238,11 @@ Gets the range of valid values for the specified field.
 
 LocalDate toLocalDate() 
 Gets the LocalDate part of this date-time.
+获取日期部分，LocalDate
 
 LocalTime toLocalTime() 
 Gets the LocalTime part of this date-time.
-
-String toString() 
-Outputs this date-time as a String, such as 2007-12-03T10:15:30.
+获取时间部分，LocalTime
 
 LocalDateTime truncatedTo​(TemporalUnit unit) 
 Returns a copy of this LocalDateTime with the time truncated.
@@ -292,4 +293,17 @@ LocalDateTime withYear​(int year)
 Returns a copy of this LocalDateTime with the year altered.
 复制此LocalDateTime对象，将复制对象的的年份修改为指定的year，返回复制并做修改后的新对象
 
+
+int compareTo​(ChronoLocalDateTime<?> other) 
+Compares this date-time to another date-time.
+
+boolean equals​(Object obj) 
+Checks if this date-time is equal to another date-time.
+
+int hashCode() 
+A hash code for this date-time.
+
+
+String toString() 
+Outputs this date-time as a String, such as 2007-12-03T10:15:30.
 ```
