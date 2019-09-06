@@ -498,7 +498,11 @@ public static final int AM = 0;
 public static final int PM = 1;
 
 ```
-    
+
+## Calendar类使用注意
+获取月份时：1月是0, 2月是1， 依次类推，12月是11
+获取星期时：周日是1、周一是2、周二是3、周三是4、周四是5、周五是6、周六是7
+
  
 # Math类
 位于java.lang.Math
