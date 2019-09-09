@@ -57,6 +57,9 @@ Jigsaw项目后改名为Modularity，目的让java模块独立、化繁为简
 * 模块(module)，本质就是在package外在包一层
 
 ## 模块使用示例
+<details>
+<summary>模块使用示例</summary>
+
 * 需求
 ```text
 如下图：模块结构
@@ -109,6 +112,7 @@ module pages {
 * 注意:本模块中的包名不能与导入的包名不能相同
 * 测试
 [ModuleTest](./pages/src/com/java/ui/ModuleTest.java)
+</details>
 
 ## 在模块中导入JKD内部的模块
 ![](./images/导入JDK内部模块1.png)  
@@ -127,7 +131,7 @@ module pages {
 ![](./images/add_jUnit模块5.png)  
 ![](./images/add_jUnit模块6.png)  
 
-<details>
+</details>
 
 # REPL工具:jShell
 REPL：read-evaluate-print-loop.
@@ -176,7 +180,7 @@ jShell在命令行下就可以执行java命令和程序了
 * /edit使用pad文本编辑器
 ![](./images/jshell12.png)  
 
-<details>
+</details>
 
 
 
