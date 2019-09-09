@@ -259,7 +259,7 @@ jar --create --main-class=Application--filemultijar.jar -C build . --release 9 -
 * 同
 >都不能实例化，以多态的方式使用
 
-** 示例 **
+**示例**  
 [MyInterface](./main/src/com/java/www/MyInterface.java)  
 [MyInterfaceTest](./main/src/com/java/www/MyInterfaceTest.java)  
 
@@ -284,14 +284,14 @@ jar --create --main-class=Application--filemultijar.jar -C build . --release 9 -
         set.forEach(System.out::println);
     }
 ```
-示例
-[DiamondOperator](./main/src/com/java/www/DiamondOperator.java)
+**示例**
+[DiamondOperator](./main/src/com/java/www/DiamondOperator.java)  
 
 
 # try语句的改进
 主要是资源关闭的自动管理语法改进
 
-** 示例 **  
-[TryTest](./main/src/com/java/www/TryTest.java)
+**示例**  
+[TryTest](./main/src/com/java/www/TryTest.java)  
 
 
