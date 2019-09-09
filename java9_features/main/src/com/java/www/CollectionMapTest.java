@@ -9,6 +9,8 @@ public class CollectionMapTest  {
      * 创建一个只读的集合
      *
      * Collections.unmodifiableXxx(T t)
+     *
+     * java 9写法：List.of(), Set.of(), Map.of(), Map.ofEntries(Map.entry ... )
      */
     @Test
     public void test1() {
@@ -47,7 +49,7 @@ public class CollectionMapTest  {
 
     /**
      * java 9中创建只读集合
-     * Xxx.of()
+     * List.of(), Set.of(), Map.of()
      * Map.ofEntries()
      */
     @Test
