@@ -180,7 +180,118 @@ jShell在命令行下就可以执行java命令和程序了
 * /edit使用pad文本编辑器
 ![](./images/jshell12.png)  
 
+* /exit退出jShell
+
 </details>
 
+
+# 多版本兼容jar包
+
+1. 提供必要的类
+```text
+// 在指定目录(E:\teach\01_Java9\multijar\src\main\java\com\atguigu)下提供如下的类：
+
+// Generator.java类
+packagecom.atguigu;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Generator {
+    // 构造器
+    public Generator() {}
+
+    // 方法
+    public Set<String> createStrings() {
+        Set<String> set = new HashSet<>();
+        set.add("java");
+        set.add("8");
+        return set;
+    }
+}
+```
+
+```text
+// 在如下目录(E:\teach\01_Java9\multijar\src\main\java-9\com\atguigu)下提供同名的类：
+
+packagecom.atguigu;
+
+import java.util.Set;
+
+public class Generator {
+    // 构造器
+    public Generator() {}
+
+    // 方法
+    public Set<String> createStrings() {
+        Set<String> set = Set.of("java", "9");
+        return set;
+    }
+}
+```
+
+2. 打包
+```text
+javac -d build --release 8 src/main/java/com/atguigu/*.java
+
+javac -d build9 --release 9 src/main/java-9/com/atguigu/*.java
+
+jar --create --main-class=Application--filemultijar.jar -C build . --release 9 -C build9 .
+```
+
+3. 在java9及之前版本的环境下进行测试即可
+
+
+# 接口的改进
+可以声明私有方法
+
+## 抽象类、接口异同
+* 异
+    * 二者的定义
+    * 声明的方式
+    * 内部的结构（java 7, java 8, java 9分别说明）
+        ```
+        java 7 接口只能定义常量、抽象方法
+        java 8 接口中除了java 7特性外，还能定义default和static方法
+        java 9 接口中除了 java7、java8特性外，还等定义private放啊
+        ```
+    * 抽象类单重继承，接口可以多重继续
+* 同
+>都不能实例化，以多态的方式使用
+
+** 示例 **
+[MyInterface](./main/src/com/java/www/MyInterface.java)  
+[MyInterfaceTest](./main/src/com/java/www/MyInterfaceTest.java)  
+
+# 钻石操作符升级
+```text
+<>为钻石操作符
+
+```
+
+举例
+```text
+    public void test2() {
+        Set<String> set = new HashSet<>(){ // 创建一个继续于HashSet的匿名内部类
+            { // 这对{}为静态代码块
+                add("GG");
+                add("JJ");
+                add("MM");
+                add("DD");
+            }
+        };
+
+        set.forEach(System.out::println);
+    }
+```
+示例
+[DiamondOperator](./main/src/com/java/www/DiamondOperator.java)
+
+
+# try语句的改进
+主要是资源关闭的自动管理语法改进
+
+** 示例 **  
+[TryTest](./main/src/com/java/www/TryTest.java)
 
 
