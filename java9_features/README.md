@@ -3,6 +3,7 @@ java 9新特性
 
 # 新特性概览
 ```text
+java 9 发布于2017-9-21
 java 9 提供了超过150项新功能特性，
 包括备受期待的模块化系统、
 可交互的 REPL 工具：jshell，
@@ -32,8 +33,10 @@ Java 公共 API 和私有代码，
 * javascript引擎升级:Nashorn
 * java的动态编译器
 
+# JDK和JRE的改变
+![](./images/JDK,JRE改变.png)  
 
-# jdk9目录结构
+## jdk9目录结构
 [JDK9目录结构](images/JDK9目录结构.png)
 
 ```text
@@ -49,9 +52,131 @@ lib: 包含非windows平台上的动态链接本地库。其子目录和文件�
 
 # 模块化系统
 Jigsaw项目后改名为Modularity，目的让java模块独立、化繁为简
+模块化，使代码组织上更安全，因为它可以指定哪些部分可以暴露，其他部分隐藏
 
 * 模块(module)，本质就是在package外在包一层
 
+## 模块使用示例
+* 需求
+```text
+如下图：模块结构
+module有：core、main、pages
+把core模块下的包com.java.www 暴露给外部调用，
+测试，模块pages中能访问到core模块下的包com.java.www下的Person类
+```
+![](./images/模块结构.png)  
+
+* 新建多个不同的模块  
+** 默认情况下，每个模块都只能访问到本模块下的类、接口等，无法跨模块去访问 **
+![](./images/新建module.png)  
+
+* 在每个模块下创建module-info.java文件
+![](images/新建module-info.java.png)  
+
+* 设置模块core下的com.java.www包导出
+```text
+编辑模块core的src目录下的module-info.java文件，添加如下内容：
+    exports com.java.www;
+具体如下
+```
+
+```text
+module core {
+    // 导出包
+    exports com.java.www;
+}
+```
+
+* 设置模块pages中导入需要的模块
+```text
+编辑模块pages的src目录下的module-info.java文件，添加如下内容：
+    requires core;
+具体如下
+```
+
+```text
+module pages {
+    // 导入模块
+    requires core; // 光标放这在这行，Alt + Enter键，选择Add dependency on module 'xxx'
+}
+```
+注意添加了这行内容后，要执行添加依赖模块操作，执行后的变化
+![](./images/添加依赖的module.png)  
+
+![](./images/添加依赖的module2.png)  
+
+
+* 注意:本模块中的包名不能与导入的包名不能相同
+* 测试
+[ModuleTest](./pages/src/com/java/ui/ModuleTest.java)
+
+## 在模块中导入JKD内部的模块
+![](./images/导入JDK内部模块1.png)  
+
+此时在相应的module-info.java文件中自动添加了配置
+![](./images/导入JDK内部模块2.png)  
+
+## 模块中导入jUnit模块
+<details>
+<summary>模块中导入jUnit模块</summary>
+
+![](./images/add_jUnit模块.png)  
+![](./images/add_jUnit模块2.png)  
+![](./images/add_jUnit模块3.png)  
+![](./images/add_jUnit模块4.png)  
+![](./images/add_jUnit模块5.png)  
+![](./images/add_jUnit模块6.png)  
+
+<details>
+
+# REPL工具:jShell
+REPL：read-evaluate-print-loop.
+jShell在命令行下就可以执行java命令和程序了
+
+* tab自动补齐
+* 自定添加分号
+
+##  jShell使用示例
+<details>
+<summary>jShell使用示例</summary>
+
+* 调出jShell
+在cmd窗口执行 jshell
+![](./images/jshell01.png)  
+
+* /help 帮助
+![](./images/jshell02.png)  
+
+* 基本使用
+![](./images/jshell03.png)  
+
+![](./images/jshell04.png)  
+
+* 导入指定的包
+![](./images/jshell05.png)  
+
+* /imports查看已导入的包
+![](./images/jshell06.png)  
+
+* tab补齐代码
+![](./images/jshell07.png)  
+
+* 列出当前会话里有效的代码片段
+![](./images/jshell08.png)  
+
+* /var列出当前会话里创建了的变量
+![](./images/jshell09.png)  
+
+* /methods查看已创建的方法
+![](./images/jshell10.png)  
+
+* 加载并执行外部的源代码文件
+![](./images/jshell11.png)  
+
+* /edit使用pad文本编辑器
+![](./images/jshell12.png)  
+
+<details>
 
 
 
