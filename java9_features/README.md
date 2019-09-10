@@ -1,19 +1,8 @@
 java 9新特性
 ==
 
-# 新特性概览
-```text
-java 9 发布于2017-9-21
-java 9 提供了超过150项新功能特性，
-包括备受期待的模块化系统、
-可交互的 REPL 工具：jshell，
-JDK 编译工具，
-Java 公共 API 和私有代码，
-以及安全增强、扩展提升、性能管理改善等。
-可以说 Java 9 是一个庞大的系统工程，完全做了一个整体改变
-```
 
-## 本章内容
+# 本章内容
 * 模块华系统
 * jShell命令
 * 多版本兼容jar包
@@ -32,6 +21,18 @@ Java 公共 API 和私有代码，
 * javadoc的HTML5支持
 * javascript引擎升级:Nashorn
 * java的动态编译器
+
+# 新特性概览
+```text
+java 9 发布于2017-9-21
+java 9 提供了超过150项新功能特性，
+包括备受期待的模块化系统、
+可交互的 REPL 工具：jshell，
+JDK 编译工具，
+Java 公共 API 和私有代码，
+以及安全增强、扩展提升、性能管理改善等。
+可以说 Java 9 是一个庞大的系统工程，完全做了一个整体改变
+```
 
 # JDK和JRE的改变
 ![](./images/JDK,JRE改变.png)  
@@ -140,7 +141,7 @@ jShell在命令行下就可以执行java命令和程序了
 * tab自动补齐
 * 自定添加分号
 
-##  jShell使用示例
+## jShell使用示例
 <details>
 <summary>jShell使用示例</summary>
 
@@ -303,7 +304,7 @@ jar --create --main-class=Application--filemultijar.jar -C build . --release 9 -
 # String,StringBuffer,StringBuild存储结构变化
 * java 9开始，String,StringBuffer,StringBuild再也不用 char[] 来存储啦，改成了byte[]加上编码标记，节约了一些空间
 
-# 集合工厂方法：快速创建只读集合
+# 集合工厂方法:快速创建只读集合
 * java 8及之前版本的写法
 ```text
     public void test1() {
