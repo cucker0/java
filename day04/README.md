@@ -128,6 +128,8 @@ int y[][];
 ```
 
 # Arrays数组操作类
+[Arrays类详情](./Arrays类.md)  
+
 常用方法
 * public static boolean equals(int[] a, int[] a2)
 >比较两个数组是否相等
@@ -143,3 +145,6 @@ int y[][];
 
 * public static int binarySearch(int[] a, int key)
 >二分查找指定的值的索引位置。要求数组已经排序好。返回值为负数时，表示没有找到
+
+**示例**  
+[ArraysTest](./src/com/atguigu/java/ArraysTest.java)
