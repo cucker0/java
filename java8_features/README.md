@@ -1013,3 +1013,115 @@ Instant表示时间线上的一点，而不需要任何上下文信息，例如�
 * 1秒 = 1000毫秒 = 10^6微秒 = 10^9纳秒
 >1s = 1000ms = 10^6μs = 10^9ns
 
+### Instant方法
+* now(): 获取0时区的瞬时点(时间戳)
+* atOffset(ZoneOffset offset)：添加时间偏移量
+* toEpochMilli(long epochMilli)：获取纪元秒，即自1970-1-1 00:00:00 UTC开始的毫秒
+* ofEpochSecond(long epochSecond)：根据指定纪元秒创建Instant实例
+**Instant方法使用示例**  
+[InstantTest](./src/com/java/time/InstantTest.java)
+
+### Instant 与 LocalDateTime互转
+```text
+    public void test2() {
+        // Instant 转 LocalDateTime
+        Instant instant = Instant.now();
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.of("UTC+8"));
+
+        System.out.println(instant);
+        System.out.println(localDateTime);
+        System.out.println();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // LocalDateTime 转 Instant
+        LocalDateTime localDateTime1 = LocalDateTime.now();
+        Instant instant1 = localDateTime1.toInstant(ZoneOffset.ofHours(+8));
+        System.out.println("localDateTime1: " + localDateTime1);
+        System.out.println("instant1: " + instant1);
+    }
+```
+
+
+# ArrayList在java7和java8上的异同
+* java 7中，ArrayList像饿汉式，直接创建一个初始容量为10的数组，存满了时再扩容，扩容为原来的1.5倍
+* java 8中，ArrayList像懒汉式，一开始创建一个长度为0的数组，当添加第一元素时创建一个容量为10的数组,存满了再扩容，扩容为原来的1.5倍
+
+
+# HashMap在java7和java8的实现原理
+* HashMap在java7的实现原理
+```text
+HashMap map = new HashMap();
+* 在实例化后，底层创建了一个长度为16的一维数组Entry[] table.
+* map.put(key1, value1)
+    * 首先调用key1所在类的hash(hashCode())计算key1哈希值，此哈希值通过某种算法(&(数组长度-1)运算)，得到Entry在数组中的存放位置。
+    情况1：如果此位置上的数据为空，此时的key1-value1对添加成功
+            如果此益上的数据不为空(即此位置上存在一个或多个数据[以链表形式存储])，
+            此时key1和已经存在的一个或多个数据的哈希值进行比较：
+    情况2：如果key1的哈希值与已经存在数据所哈希值都不相同，此时key1-value1添加成功
+            如果key1的哈希值与已经存在数据(如key2-value2)的哈希值相同，继续比较：
+            调用 key1.equals(key2)方法，
+    情况3：如果比较结果为false，此时key1-value1添加成功
+            如果比较结果为true，使用value1替换value2。即更新
+    * 关于情况2、情况3，此时key1-value1和原来的数据以链表的方式存储
+* 在不断添加元素的过程中，当超过临界值(且存放位置不为空，临界值为数组长度的0.75)，会涉及到扩容问题，默认的扩容方式：扩容为原来容量的2倍，并将原来的元素一个一个重新计算添加进来
+
+```
+
+* HashMap在java8的实现原理
+```text
+HashMap map = new HashMap();
+
+* 执行new HashMap(), 底层没有创建一个长度为16的数组
+* 首次调用public V put(K key, V value)方法时，底层以创建一个长度为16的Node[]数组，而非Entry[]数组
+* 底层结构
+    * java 7底层结构只有：数组 + 链表
+    * java 8底层结构有：数组 + 链表 + 红黑树。
+    * java 8在数组的某一个索引位置上的元素以链表形式存在的数据个数 > 8，且当前数组的长度 > 64时，
+    此时此索引位置上的所有数据改为使用红黑树存储
+* 在不断添加元素的过程中，当超过临界值(且存放位置不为空，临界值为数组长度的0.75)，会涉及到扩容问题，默认的扩容方式：扩容为原来容量的2倍，并将原来的元素一个一个重新计算添加进来   
+
+HashMap源码中的重要常量
+DEFAULT_INITIAL_CAPACITY : HashMap的默认容量，16
+MAXIMUM_CAPACITY ： HashMap的最大支持容量，2^30
+DEFAULT_LOAD_FACTOR：HashMap的默认加载因子
+TREEIFY_THRESHOLD：Bucket中链表长度大于该默认值，转化为红黑树：8
+UNTREEIFY_THRESHOLD：Bucket中红黑树存储的Node小于该默认值，转化为链表
+MIN_TREEIFY_CAPACITY：桶中的Node被树化时最小的hash表容量。（当桶中Node的
+数量大到需要变红黑树时，若hash表容量小于MIN_TREEIFY_CAPACITY时，此时应执行
+resize扩容操作这个MIN_TREEIFY_CAPACITY的值至少是TREEIFY_THRESHOLD的4倍，即64）
+table：存储元素的数组，总是2的n次幂
+entrySet：存储具体元素的集
+size：HashMap中存储的键值对的数量
+modCount：HashMap扩容和结构改变的次数。
+threshold：扩容的临界值，=容量*填充因子
+loadFactor：填充因子
+```
+
+HashMap中的内部类：Node
+```text
+static class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next; 
+}
+```
+
+LinkedHashMap中的内部类：Entry
+```text
+static class Entry<K,V> extends HashMap.Node<K,V> {
+    Entry<K,V> before, after; // 记录了前一个和后一个Entry
+    Entry(int hash, K key, V value, Node<K,V> next) {
+        super(hash, key, value, next);
+    } 
+}
+```
+
+# Set结构
+HashSet底层使用 HashMap 来保存所有元素，元素为key，值为HashSet类常量PRESENT,是一个Object常量
+
