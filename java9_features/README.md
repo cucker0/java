@@ -426,7 +426,9 @@ I将不同分辨率的图像封装到一张（多分辨率的）图像中，作�
 [HttpClientTest](./main/src/com/java/www/HttpClientTest.java)
 
 
-# Deprecated的相关API
+# 其他特性
+
+* Deprecated的相关API
 ```text
 Java 9 废弃或者移除了几个不常用的功能。其中最主要的是
 Applet API，现在是标记为废弃的。随着对安全要求的提高，主流浏
@@ -436,7 +438,7 @@ Applet API，现在是标记为废弃的。随着对安全要求的提高，主�
 同时，appletviewer 工具也被标记为废弃。
 ```
 
-# 智能Java编译工具
+* 智能Java编译工具
 ```text
 智能 java 编译工具( sjavac )的第一个阶段始于 JEP139 这个项目，
 用于在多核处理器情况下提升 JDK 的编译速度。如今，这个项目已经
@@ -448,13 +450,13 @@ JDK 9 还更新了 javac 编译器以便能够将 java 9 代码编译运行
 
 ```
 
-# 统一的JVM日志系统
+* 统一的JVM日志系统
 
-#  javadoc的HTML 5支持
+* javadoc的HTML 5支持
 
-# Javascript引擎升级为Nashorn
+* Javascript引擎升级为Nashorn
 
-#  java的动态编译器
+* java的动态编译器
 ```text
 JIT（Just-in-time）编译器可以在运行时将热点编译成本地代码，
 速度很快。但是 Java 项目现在变得很大很复杂，因此 JIT 编译器需
