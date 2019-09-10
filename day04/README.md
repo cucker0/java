@@ -126,3 +126,20 @@ int y[][];
         System.out.print(" }");
 
 ```
+
+# Arrays数组操作类
+常用方法
+* public static boolean equals(int[] a, int[] a2)
+>比较两个数组是否相等
+
+* public static String toString(int[] a)
+>数组转成字符串
+
+* public static void fill(int[] a, int val)
+>数组中所有的元素填充为指定的值val
+
+* public static void sort(int[] a)
+>数组排序
+
+* public static int binarySearch(int[] a, int key)
+>二分查找指定的值的索引位置。要求数组已经排序好。返回值为负数时，表示没有找到

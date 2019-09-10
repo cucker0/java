@@ -110,7 +110,7 @@ JAVA Study
     * [多维数组](./day04/README.md#多维数组)
         * [数组的不同书写格式](./day04/README.md#数组的不同书写格式)
         * [混合数据类型数组](./day04/README.md#混合数据类型数组)
-        
+    * [Arrays数组操作类](./day04/README.md#Arrays数组操作类)
     
 </details>
 
