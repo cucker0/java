@@ -580,7 +580,7 @@ JAVA Study
 </details>
 
 <details>
-<span>    </span><summary>java 9新特性</summary>
+<summary style="left:40px">java 9新特性</summary>
 
 * [java 9新特性](./java9_features/README.md)
     * [本章内容](./java9_features/README.md#本章内容)
