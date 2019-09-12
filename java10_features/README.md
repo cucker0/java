@@ -1,6 +1,9 @@
 java 10新特性
 ==
 
+# 官网新特性介绍
+http://openjdk.java.net/projects/jdk/
+
 # 局部变量类型推断
 ## 适用情况
 * 局部变量的初始化
