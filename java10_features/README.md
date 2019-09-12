@@ -52,8 +52,10 @@ public void test1() {
 * 字段属性
 * catch块中的异常类型
 
+**示例**  
+[LocalVariableInferenceTest](./src/com/java/www/LocalVariableInferenceTest.java)
 
-# 局部变量类型推断原理
+## 局部变量类型推断原理
 ```text
 编译器在处理var标识时，先看表达式右边部分，并根据右边变量值的类型进行推断，
 作为左边变量的类型，然后将该类型写入字节码中
@@ -78,3 +80,6 @@ var并不会改变Java是一门静态类型语言的事实。编译器负责推�
 如果coll为只读集合，则直接返回coll
 如果coll可读写集合，则根据coll元素调用of(T t)方法创建一个新的只读集合，不改变原来的coll
 ```
+
+**示例**  
+[CollectionsMapTest](./src/com/java/www/CollectionsMapTest.java)  

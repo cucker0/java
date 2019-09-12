@@ -38,6 +38,6 @@ public class CollectionsMapTest {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("k1", 55);
         var map2 = Map.copyOf(map);
-        System.out.println(map == map2); // true
+        System.out.println(map == map2); // false
     }
 }

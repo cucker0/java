@@ -613,8 +613,30 @@ JAVA Study
 
 </details>
     
-    
-    
+<details>
+<summary>java 10新特性</summary>
+
+* [java 10新特性](./java10_features/README.md)
+    * [局部变量类型推断](./java10_features/README.md#局部变量类型推断)
+        * [适用情况](./java10_features/README.md#适用情况)
+            * 局部变量的初始化
+            * forEach增添循环
+            * for遍历
+        * [不适用情况](./java10_features/README.md#)
+            * 变量初始值为null
+            * lambda表达式
+            * 方法引用中
+            * 为数组静态初始化
+            * 没有初始化的局部变量声明
+            * 方法的返回类型
+            * 方法的参数类型
+            * 构造器的参数类型
+            * 字段属性
+            * catch块中的异常类型
+        * [局部变量类型推断原理](./java10_features/README.md#局部变量类型推断原理)
+    * [集合新增创建不可变集合的方法](./java10_features/README.md#集合新增创建不可变集合的方法)
+</details>
+   
 </details>
 
 
