@@ -30,7 +30,7 @@ Java 8新特性
     * 新编译工具：jjs、jdeps
     * JVM中Metaspace取代PermGen空间
 
-# Java 8新特性简介
+# Java8新特性简介
 Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本，  
 Java 8 是oracle公司于2014年3月发布
 
@@ -41,7 +41,7 @@ Java 8 是oracle公司于2014年3月发布
 * 最大化减少空指针异常:Optional类
 * Nashorn引擎，允许在JVM上运行JavaScript应用
 
-## Stream的并行流与串行流
+# Stream的并行流与串行流
     并行流就是把一个内容分成多个数据块，并用不同的线程分别处理每个数据块的流。
     相比串行流，并行流可以很大程度上提高程序的执行效率。
     
@@ -483,7 +483,7 @@ Fcuntion的返回值为构造器所属类的类型
 * Stream不会改变源对象。相反的，它们会返回一个包含结果的新Stream
 * Stream 操作是延迟的。即它们会等到需要结果的时候才会执行
 
-## Stream 执行流程
+## Stream执行流程
 1. Stream的实例化
 >通过一个数据源对象(集合、数组等)，获取一个流，以及其他方式
 2. 中间操作
@@ -918,7 +918,8 @@ interface 修改的接口才是声明了一个interface
 
 ```
 
-** 接口默认方法与静态方法示例 **
+**接口默认方法与静态方法示例**
+
 [MyInterface](./src/com/java/interfaceFeatures/MyInterface.java)
 [MyInterfaceTest](./src/com/java/interfaceFeatures/MyInterfaceTest.java)
 
