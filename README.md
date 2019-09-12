@@ -636,6 +636,19 @@ JAVA Study
         * [局部变量类型推断原理](./java10_features/README.md#局部变量类型推断原理)
     * [集合新增创建不可变集合的方法](./java10_features/README.md#集合新增创建不可变集合的方法)
 </details>
+ 
+<details>
+<summary>java 11新特性</summary>
+
+* [java 11新特性](./java11_features/README.md)
+    * [String类新增方法](./java11_features/README.md#String类新增方法)
+        * [String类新增方法示例](./java11_features/README.md#String类新增方法示例)
+    * [Optional类新增方法](./java11_features/README.md#Optional类新增方法)
+    * [局部变量类型推断升级](./java11_features/README.md#局部变量类型推断升级)
+    * [HttpClient增强](./java11_features/README.md#HttpClient增强)
+    * [更简单的编译运行程序](./java11_features/README.md#更简单的编译运行程序)
+    * [其他特性](./java11_features/README.md#其他特性)  
+</details>
    
 </details>
 
