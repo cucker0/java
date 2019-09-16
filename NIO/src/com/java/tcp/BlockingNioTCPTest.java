@@ -21,16 +21,20 @@ public class BlockingNioTCPTest {
     @Test
     public void server() {
         Path path = Paths.get("./ph3.png");
-        try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-        FileChannel fileChannel = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.WRITE);) {
+        try ( // 在此括号中的流会自动关闭
+                // 打开server-socket channel
+                ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+                // 获取文件通道，这里要指定打开的选项
+                FileChannel fileChannel = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+        ) {
             InetSocketAddress inetSocketAddress = new InetSocketAddress(8080);
             serverSocketChannel.bind(inetSocketAddress); // 绑定inetSocketAddress
             SocketChannel socketChannel = serverSocketChannel.accept();// 获取socketChannel，开始侦听
 
+            // 使用ByteBuffer从通道中读/写
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-
             while (socketChannel.read(byteBuffer) != -1) {
-                byteBuffer.flip();
+                byteBuffer.flip(); // 翻转此buffer，将limit设置为当前偏移位置position ，position 重置为0,mark设置为-1
                 fileChannel.write(byteBuffer);
                 byteBuffer.clear();
             }
@@ -45,8 +49,12 @@ public class BlockingNioTCPTest {
         Path path = Paths.get("./ph.png");
         InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 8080);
 
-        try (SocketChannel socketChannel = SocketChannel.open(inetSocketAddress);
-             FileChannel fileChannel = FileChannel.open(path, StandardOpenOption.READ);) {
+        try (
+                // 获取socketChannel
+                SocketChannel socketChannel = SocketChannel.open(inetSocketAddress);
+                // 获取文件Channel
+                FileChannel fileChannel = FileChannel.open(path, StandardOpenOption.READ);
+        ) {
 
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             while (fileChannel.read(byteBuffer) != -1) {
