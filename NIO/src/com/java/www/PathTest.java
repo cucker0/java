@@ -3,19 +3,21 @@ package com.java.www;
 import org.junit.Test;
 
 import java.io.File;
+import java.net.URI;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
  * Path接口
- *
+ * Path可以看成是File类的升级
  *
  */
 public class PathTest {
     @Test
     public void test1() {
         // String toString() ： 返回调用 Path 对象的字符串表示形式
-        Path path = Paths.get("./log", "server.log");
+        Path path = Path.of("./log", "server.log");
         System.out.println("path: " + path.toString()); // .\log\server.log
 
         // boolean startsWith(String path) : 判断是否以 path 路径开始
@@ -67,5 +69,13 @@ public class PathTest {
         // File toFile(): 将Path转化为File类的对象
         File file = path.toFile();
         System.out.println("path.toFile(): " + file); // .\log\server.log
+
+        // FileSystem getFileSystem()
+        FileSystem fileSystem = path1.getFileSystem();
+        System.out.println("path1.getFileSystem(): " + fileSystem); // sun.nio.fs.WindowsFileSystem@43a25848
+
+        // of(URI uri)
+        Path path2 = Path.of(URI.create("file:///C:/Windows/System32/drivers/etc/hosts"));
+        System.out.println(path2);
     }
 }
