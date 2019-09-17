@@ -607,7 +607,7 @@ JAVA Study
         * [Optional示例](./java8_features/README.md#Optional示例)
     * [java8注解新特性](./java8_features/README.md#java8注解新特性)
         * [java8注解新特性示例](./java8_features/README.md#java8注解新特性示例)
-    * [java8接口的改进,新增默认方法、静态方法](./java8_features/README.md#java8接口的改进)
+    * [java8接口的改进，新增默认方法、静态方法](./java8_features/README.md#java8接口的改进)
         * [接口中默认方法的"类优先"原则](./java8_features/README.md#接口中默认方法的类优先原则)
     * [新的时间API](./java8_features/README.md#新的时间API)
         * [新的时间类包结构](./java8_features/README.md#新的时间类包结构)
