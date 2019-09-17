@@ -7,6 +7,7 @@ Java NIO(New IO, Non-blocking IO)是从java 1.4开始加入。可以替代原来
 IO是面向流，NIO是面向缓冲区，基于通道的IO操作。NIO效率更高。
 ```
 
+
 ```text
 java.nio.channels.Channel
     |--FileChannel  处理本地文件

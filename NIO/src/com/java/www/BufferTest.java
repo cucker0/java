@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 /**
  * Buffer缓冲区
- * 在java NIO中负责数据的存取。缓冲区就是数组，用于存取不同类型的数据
+ * 在java NIO中负责数据的存取。缓冲区本质是数组，用于存取不同类型的数据
  *
  * 不同数据类型的缓冲区(队boolean类型外)
  * ByteBuffer
@@ -19,12 +19,23 @@ import java.util.Arrays;
  * FloatBuffer
  * DoubleBuffer
  *
+ * Buffuer必修重要属性
+ * capacity: 缓冲区的容量，final修改，声明后不可更改
+ * limit: 界限，表示缓冲区中可以操作数据(读或写)的大小。
+ * position: 偏移位置，表示缓冲区中正在操作数据的偏移位置
+ * mark: 用于标记当前偏移位置的变量，-1表示还未标记过
+ *
  * 不变式: mark <= position <= limit <= capacity
  *
  *
  * mark(): 记录当前的position位置，即mark = position
  * reset(): position恢复到mark记录的位置，可用于再重读等需求。当 mark >= 0，则position = mark
+ * hasRemaining(): 从目前的position到limit是否有元素
+ * remaining(): 从目前的position到limit的元素个数
  *
+ * 非直接缓冲区 与 直接缓冲区
+ * 非直接缓冲区：通过allocate(int capacity)创建，将缓冲区建立在JVM的堆内存中。HeapByteBufferd对象
+ * 直接缓冲区：通过allocateDirect(int capacity)创建，将缓冲区建立在物理内存中，可提高效率。但无法被JVM的GC管理了。DirectByteBufferd对象
  */
 public class BufferTest {
     @Test
@@ -118,6 +129,10 @@ public class BufferTest {
         System.out.printf("position:%s, limit:%s, capacity:%s\n", charBuffer.position(), charBuffer.limit(), charBuffer.capacity()); // position:2, limit:35, capacity:1024
         charBuffer.get(c);
         System.out.println(new String(c)); // " m"
+
+        if (charBuffer.hasRemaining()) { // 从目前的position到limit是否有元素
+            System.out.println(charBuffer.remaining()); // 从目前的position到limit的元素个数
+        }
     }
 
     /**
