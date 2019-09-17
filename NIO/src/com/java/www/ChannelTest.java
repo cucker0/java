@@ -16,6 +16,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 
 /**
  * 获取通道方法
@@ -43,6 +44,10 @@ import java.nio.file.StandardOpenOption;
  * long transferTo(long position, long count, WritableByteChannel target)
  * long transferFrom(ReadableByteChannel src, long position, long count)
  *
+ *
+ * 分散读取 与 聚集写入
+ * 分散读取：把通道中的数据分段写到多个缓冲区，写满一个再换下一个
+ * 聚集写入：把多缓冲区中的数据逐个缓冲区数据写到通道，读取一个缓冲区再读下一个
  */
 public class ChannelTest {
     /**
@@ -254,6 +259,60 @@ public class ChannelTest {
                 }
             }
         }
+    }
+
+    /**
+     * 分散读取、聚集写入
+     *
+     */
+    @Test
+    public void test7() {
+        FileChannel inChannel = null;
+        FileChannel outChannel = null;
+        try {
+            RandomAccessFile randomAccessFile = new RandomAccessFile("./sige.txt", "rw");
+            inChannel = randomAccessFile.getChannel();
+
+            ByteBuffer buffer = ByteBuffer.allocate(20);
+            ByteBuffer buffer1 = ByteBuffer.allocate(100);
+            ByteBuffer buffer2 = ByteBuffer.allocate(1024);
+            ByteBuffer[] buffers = new ByteBuffer[]{buffer, buffer1, buffer2};
+
+            // 分散读取
+            inChannel.read(buffers);
+
+            for (ByteBuffer byteBuffer : buffers) {
+                byteBuffer.flip();
+                System.out.println(new String(byteBuffer.array()));
+                System.out.println("==========================");
+                System.out.printf("position:%s, limit:%s\n", byteBuffer.position(), byteBuffer.limit());
+
+            }
+
+            // 聚集写入
+            outChannel = FileChannel.open(Paths.get("./sige2.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+            outChannel.write(buffers);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (outChannel != null) {
+                try {
+                    outChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (inChannel != null) {
+                try {
+                    inChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
 
     }
 }
