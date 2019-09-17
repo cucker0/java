@@ -7,6 +7,8 @@ import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ServerSocketChannel;
@@ -27,13 +29,20 @@ import java.nio.file.StandardOpenOption;
  *          ServerSocket
  *          DatagramSocket
  *
- * NIO中通道主要实现类
+ * NIO中通道主要实现类，java 1.7开始，NIO2 针对各个通道类提供了静态的open方法
  * open(Path path, OpenOption... options) 方法
  *  java.nio.channels.Channel接口，以下是其实现类
  *      |--FileChannel
  *      |--SocketChannel
  *      |--ServerSocketChannel
  *      |--DatagramChannel
+ *
+ * 另外java 1.7开始，NIO2的Files工具类提供了newByteChannel
+ *
+ * 通道之间的数据传输
+ * long transferTo(long position, long count, WritableByteChannel target)
+ * long transferFrom(ReadableByteChannel src, long position, long count)
+ *
  */
 public class ChannelTest {
     /**
@@ -103,4 +112,148 @@ public class ChannelTest {
 
     }
 
+    /**
+     * 利用通道完成文件的复制
+     *
+     */
+    @Test
+    public void test4() {
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        FileChannel inChannel = null;
+        FileChannel outChannel = null;
+        try {
+            fis = new FileInputStream("./ph.png");
+            fos = new FileOutputStream("./ph11.png");
+            // 1. 获取通道
+            inChannel = fis.getChannel();
+            outChannel = fos.getChannel();
+
+            // 2. 分配一个指定大小的缓冲区
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+
+            // 3. 将in通道中的数据写入缓冲区
+            while ((inChannel.read(byteBuffer)) != -1) {
+                // 4. 读取缓冲区中数据写入out通道
+                // 需要先将缓冲区切换到 数据读取模式
+                byteBuffer.flip();
+                outChannel.write(byteBuffer);
+                // 每次读取完缓冲区数据后，做清空处理
+                byteBuffer.clear();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if ( outChannel != null ) {
+                try {
+                    outChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if ( inChannel != null ) {
+                try {
+                    inChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if ( fos != null ) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if ( fis != null ) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 使用直接缓冲区复制文件，利用内存映射文件
+     *
+     */
+    @Test
+    public void test5() {
+        FileChannel inChannel = null;
+        FileChannel outChannel = null;
+        try {
+            inChannel = FileChannel.open(Path.of("./ph.png"));
+            outChannel = FileChannel.open(Paths.get("./ph12.png"), StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+
+            // 内存映射文件
+            MappedByteBuffer inMappedByteBuffer = inChannel.map(FileChannel.MapMode.READ_ONLY, 0, inChannel.size());
+            MappedByteBuffer outMappedByteBuffer = outChannel.map(FileChannel.MapMode.READ_WRITE, 0, inChannel.size());
+
+            // 直接对缓冲区进行数据的读写操作
+            byte[] b = new byte[inMappedByteBuffer.limit()];
+            inMappedByteBuffer.get(b); // 从inMappedByteBuffer缓冲区中读取数据到数组b中
+            outMappedByteBuffer.put(b); // 把数组b中的数据写入到outMappedByteBuffer缓冲区中
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (outChannel != null) {
+                try {
+                    outChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (inChannel != null) {
+                try {
+                    inChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    /**
+     * 通道之间的数据传输
+     * long transferTo(long position, long count, WritableByteChannel target)
+     * long transferFrom(ReadableByteChannel src, long position, long count)
+     */
+    @Test
+    public void test6() {
+        FileChannel inChannel = null;
+        FileChannel outChannel = null;
+        try {
+            inChannel = FileChannel.open(Path.of("./ph.png"));
+            outChannel = FileChannel.open(Paths.get("./ph13.png"), StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+
+            // 通道之间传输数据
+//            inChannel.transferTo(0, inChannel.size(), outChannel);
+            // 或
+            outChannel.transferFrom(inChannel, 0, inChannel.size());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // 闭关资源
+            if (outChannel != null) {
+                try {
+                    outChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (inChannel != null) {
+                try {
+                    inChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
 }
