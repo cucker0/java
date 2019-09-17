@@ -8,15 +8,22 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CharsetEncoder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
 
 /**
  * 获取通道方法
@@ -50,6 +57,9 @@ import java.util.Arrays;
  * 聚集写入：把多缓冲区中的数据逐个缓冲区数据写到通道，读取一个缓冲区再读下一个
  */
 public class ChannelTest {
+
+    private CharBuffer buffer;
+
     /**
      * 本地文件IO对象获取channel方法
      * FileChannel 流对象.getChannel()
@@ -313,6 +323,36 @@ public class ChannelTest {
             }
         }
 
+
+    }
+
+    /**
+     * 字符集
+     */
+    @Test
+    public  void test() {
+        SortedMap<String, Charset> map = Charset.availableCharsets();
+        Set<Map.Entry<String, Charset>> entries = map.entrySet();
+        System.out.println("数量: " + entries.size());
+        entries.forEach(System.out::println);
+    }
+
+    @Test
+    public void test8() {
+        // 返回指定字符集名的字符集
+        Charset charset = Charset.forName("GBK");
+
+        // 获取编码器
+        CharsetEncoder encoder = charset.newEncoder();
+
+        // 获取解码器
+        CharsetDecoder decoder = charset.newDecoder();
+
+        buffer = CharBuffer.allocate(1024);
+        buffer.put("我信你个鬼，你个槽老头，坏得很！！！");
+        buffer.flip();
+
+        // 编码
 
     }
 }
