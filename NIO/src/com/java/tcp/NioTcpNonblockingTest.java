@@ -7,7 +7,10 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * NIO TCP 非阻塞socket网络编程
@@ -17,7 +20,11 @@ import java.util.Iterator;
  * sel: 选择器，
  * ops: 事件，这里是用int类型来表示，多个事件之间用|位或运算，electionKey.OP_ACCEPT|SelectionKey.OP_CONNECT。SelectionKey该类已定义好常用事件
  *
- *
+ * SelectionKey事件类型：
+ * OP_READ
+ * OP_WRITE
+ * OP_CONNECT
+ * OP_ACCEPT
  */
 public class NioTcpNonblockingTest {
     @Test
@@ -61,7 +68,7 @@ public class NioTcpNonblockingTest {
                         // 14. 读取数据
                         ByteBuffer buffer = ByteBuffer.allocate(1024 * 8);
                         int len;
-                        while ((len = readChannel.read(buffer)) != -1) {
+                        while ((len = readChannel.read(buffer)) > 0) { // 如果用(len = readChannel.read(buffer)) != -1 会无限打印第一条数据
                             buffer.flip();
                             System.out.println(new String(buffer.array()));
                             buffer.clear();
@@ -101,10 +108,19 @@ public class NioTcpNonblockingTest {
             ByteBuffer buffer = ByteBuffer.allocate(1024 * 8);
 
             // 4. 发送数据到服务端
-            buffer.put(LocalDateTime.now().toString().getBytes());
-            buffer.flip();
-            socketChannel.write(buffer);
-            buffer.clear();
+            Scanner sc = new Scanner(System.in);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+
+            while (true) {
+                String str = sc.next();
+//                buffer.put((LocalDateTime.now().toString()).getBytes());
+                String dateTime = LocalDateTime.now(ZoneId.of("+8")).format(formatter);
+                String msg = String.format("%s: %s\n", dateTime, str);
+                buffer.put(msg.getBytes());
+                buffer.flip();
+                socketChannel.write(buffer);
+                buffer.clear();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
