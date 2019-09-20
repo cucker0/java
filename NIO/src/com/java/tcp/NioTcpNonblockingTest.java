@@ -115,7 +115,7 @@ public class NioTcpNonblockingTest {
                 String str = sc.next();
 //                buffer.put((LocalDateTime.now().toString()).getBytes());
                 String dateTime = LocalDateTime.now(ZoneId.of("+8")).format(formatter);
-                String msg = String.format("%s: %s\n", dateTime, str);
+                String msg = String.format("%s: %s", dateTime, str);
                 buffer.put(msg.getBytes());
                 buffer.flip();
                 socketChannel.write(buffer);
