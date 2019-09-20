@@ -27,7 +27,7 @@ import java.nio.file.StandardOpenOption;
  * Selector选择器: 是SelectableChannel的多路复用器。用于监控SelectableChannel的IO状况
  *
  *
- *
+ * NIO TCP socket网络编程
  * NIO TCP socket编程需求：客户端发送文件，服务端接受并保存文件
  */
 public class NioTcpBlockingTest {

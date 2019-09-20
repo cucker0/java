@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 /**
+ * NIO TCP 阻塞socket网络编程
+ *
  * NIO TCP socket编程需求：客户端发送文件，服务端接受并保存文件，服务端接受完文件后，恢复客户端：接受文件成功
  */
 public class NioTcpBlockingTest2 {
