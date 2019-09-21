@@ -2,6 +2,8 @@ java 13 新特性
 ==
 
 # 新特性官方说明
+2019-09-17 发布
+
 https://openjdk.java.net/projects/jdk/13/
 
 ```text
