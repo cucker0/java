@@ -26,10 +26,12 @@ java.nio.channels.Channel
     |--SocketChannel  TCP网络编程中客户端的Channel
     |--ServerSocketChannel  TCP网络编程中服务器的Channel
     |--DatagramChannel  UDP网络编程中发送端和接受端的Channel
+    
+    |--Pipe 管道
 
 ```
 
-# java NIO与IO的区别
+# NIO与IO的区别
 内容 |IO |NIO 
 :--- |:--- |:---
 面向的对象 |面向流 Stream Oriented |面向缓冲区 Buffer Oriented
@@ -232,5 +234,345 @@ public Buffer rewind() {
 ```
 
 # Channel通道
+```text
+由 java.nio.channels 包定义的。
+Channel 表示 IO 源与目标打开的连接。
+Channel 类似于传统的“流”。
+只不过 Channel 本身不能直接访问数据，
+Channel 只能与Buffer 进行交互。
+```
+
+![通道示意图](./images/channel.png)  
 
 
+## Channel接口的主要实现类
+* FileChannel
+>用于读取、写入、映射和操作文件的通道。
+* DatagramChannel
+>通过 UDP 读写网络中的数据通道。
+* SocketChannel
+>通过 TCP 读写网络中的数据。
+* ServerSocketChannel
+>可以监听新进来的 TCP 连接，对每一个新进来的连接都会创建一个 SocketChannel。
+
+
+## 获取通道
+### 方式1
+>对支持通道的对象调用getChannel()方法
+* FileInputStream
+* FileOutputStream
+* RandomAccessFile
+* DatagramSocket
+* Socket
+* ServerSocket
+
+### 方式2
+```text
+使用 Files 类的静态方法 newByteChannel() 获取字节通道
+```
+
+### 方式3
+```text
+通过通道的静态方法 open() 打开并返回指定通道
+```
+[获取通道方式](./src/com/java/www/ChannelTest.java)
+
+## 通道的数据传输
+* 从Channel中读取数据写到Buffer中
+```text
+ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+inChannel.read(byteBuffer)
+```
+
+* 读取Buffer中数据写到Channel中
+```text
+byteBuffer.flip();
+outChannel.write(byteBuffer);
+// 每次读取完缓冲区数据后，做清空处理
+byteBuffer.clear();
+```
+
+**利用通道完成文件的复制示例**  
+[ChannelTest test4](./src/com/java/www/ChannelTest.java)
+
+
+## 分散读取Scatter和聚集写入Gather
+分散读取：把通道中的数据分段写到多个缓冲区，写满一个再换下一个
+聚集写入：把多个缓冲区中的数据逐个缓冲区数据写到通道，读取完一个缓冲区再读下一个
+[ChannelTest test7](./src/com/java/www/ChannelTest.java)
+
+## 通道之间的数据传输
+* long transferTo(long position, long count, WritableByteChannel target)
+>将此通道的数据从position位置开始，count个字节传输到target通道
+* long transferFrom(ReadableByteChannel src, long position, long count)
+>将通道ReadableByteChannel数据从position位置开始，count个字节传输到此通道
+
+**通道之间的数据传输**  
+[ChannelTest test6](./src/com/java/www/ChannelTest.java)
+
+
+# FileChannel常用方法
+* int read(ByteBuffer dst)
+>从 Channel 中读取数据到 ByteBuffer
+* long read(ByteBuffer[] dsts)
+>将 Channel 中的数据“分散”到 ByteBuffer[]
+* int write(ByteBuffer src) 
+>将 ByteBuffer 中的数据写入到 Channel
+* long write(ByteBuffer[] srcs) 
+>将 ByteBuffer[] 中的数据“聚集”到 Channel
+* long position() 
+>返回此通道的文件位置
+* FileChannel position(long p) 
+>设置此通道的文件位置
+* long size() 
+>返回此通道的文件的当前大小
+* FileChannel truncate(long s) 
+>将此通道的文件截取为给定大小
+* void force(boolean metaData) 
+>强制将所有对此通道的文件更新写入到存储设备中
+
+# 非阻塞式NIO、阻塞式NIO、与阻塞式IO
+
+* IO流都是阻塞式的
+```text
+当一个线程调用 read() 或 write() 时，该线程被阻塞，
+直到有一些数据被读取或写入，该线程在此期间不能执行其他任务。
+因此，在完成网络通信进行 IO 操作时，由于线程会阻塞，
+所以服务器端必须为每个客户端都提供一个独立的线程进行处理，
+当服务器端需要处理大量客户端时，性能急剧下降。
+```
+
+* NIO可配置为非阻塞模式
+```text
+当线程从某通道进行读写数据时，若没有数据可用时，该线程可以进行其他任务。
+线程通常将非阻塞 IO 的空闲时间用于在其他通道上执行 IO 操作，
+所以单独的线程可以管理多个输入和输出通道。
+因此，NIO 可以让服务器端使用一个或有限几个线程来同时处理连接到服务器端的所有客户端
+```
+## NIO TCP socket编程
+[NioTcpBlockingTest](./src/com/java/tcp/NioTcpBlockingTest.java)
+[NioTcpBlockingTest2](./src/com/java/tcp/NioTcpBlockingTest2.java)
+[NioTcpNonblockingTest 非阻塞](./src/com/java/tcp/NioTcpNonblockingTest.java)
+
+## NIO UDP socket编程
+[NIO UDP传输文件](./src/com/java/udp/NioUdpBlockingTest.java)
+[NioUdpNonBlockingTest 非阻塞](./src/com/java/udp/NioUdpNonBlockingTest.java)
+
+## 选择器Selector
+```text
+选择器（Selector） 是 SelectableChannle 对象的多路复用器，
+Selector 可以同时监控多个 SelectableChannel 的 IO 状况，
+也就是说，利用 Selector 可使一个单独的线程管理多个 Channel。
+Selector 是非阻塞 IO 的核心。
+```
+
+**示例**  
+[NioTcpNonblockingTest server](./src/com/java/tcp/NioTcpNonblockingTest.java)
+
+### 选择器Selector的应用
+* 当调用 register(Selector sel, int ops) 将通道注册选择器时，
+选择器对通道的监听事件，需要通过第二个参数 ops 指定。
+* 可以监听的事件类型（可使用 SelectionKey 的四个常量表示）：
+    * 读 : SelectionKey.OP_READ （1 << 0, 即1） 
+    * 写 : SelectionKey.OP_WRITE （1<<2, 即4）
+    * 连接 : SelectionKey.OP_CONNECT （1<<3, 即8）
+    * 接收 : SelectionKey.OP_ACCEPT （1<<4, 即16）
+
+* 若注册时不止监听一个事件，则可以使用“位或”操作符连接
+```text
+// 注册"监听事件类型"
+serverSocketChannel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE)
+
+```
+
+## SelectionKey
+```text
+表示 SelectableChannel 和 Selector 之间的注册关系。
+每次向选择器注册通道时就会选择一个事件(选择键)。
+选择键包含两个表示为整数值的操作集。
+操作集的每一位都表示该键的通道所支持的一类可选择操作。
+```
+
+### SelectionKey常用方法
+* int interestOps()
+>获取感兴趣事件集合
+
+* int readyOps()
+>获取通道已经准备就绪的操作的集合
+
+* SelectableChannel channel()
+>获取注册通道
+
+* Selector selector()
+>返回选择器
+
+* boolean isReadable()
+>检测 Channal 中读事件是否就绪
+
+* boolean isWritable()
+>检测 Channal 中写事件是否就绪
+
+* boolean isConnectable()
+>检测 Channel 中连接是否就绪
+
+* boolean isAcceptable()
+>检测 Channel 中接收是否就绪
+
+
+### Selector常用方法
+* Set<SelectionKey> keys()
+>所有的 SelectionKey 集合。代表注册在该Selector上的Channel
+
+* selectedKeys()
+>被选择的 SelectionKey 集合。返回此Selector的已选择键集
+* int select()
+```text
+监控所有注册的Channel，当它们中间有需要处理的 IO 操作时，该方法返回，
+并将对应得的 SelectionKey 加入被选择的SelectionKey 集合中，
+该方法返回这些 Channel 的数量。
+```
+* int select(long timeout)
+>可以设置超时时长的 select() 操作
+
+* int selectNow()
+>执行一个立即返回的 select() 操作，该方法不会阻塞线程
+
+* Selector wakeup()
+>使一个还未返回的 select() 方法立即返回
+
+* void close()
+>关闭该选择器
+
+## 网络编程常用Channel
+* SocketChannel
+```text
+Java NIO中的SocketChannel是一个连接到TCP网络套接字的通道
+
+操作步骤：
+* 打开 SocketChannel
+* 读写数据
+* 关闭 SocketChannel
+```
+* ServerSocketChannel
+> Java NIO中的 ServerSocketChannel 是一个可以监听新进来的TCP连接的通道，就像标准IO中 的ServerSocket一样
+
+* DatagramChannel
+```text
+Java NIO中的DatagramChannel是一个能收发UDP包的通道
+
+操作步骤：
+* 打开 DatagramChannel
+* 接收/发送数据
+* 关闭通道
+
+```
+
+# 字符集编码与解码
+Charset 字符集
+编码：字符数组 -> 字节数组
+解码：字节数组 -> 字符数组
+
+* 返回指定字符集名的字符集
+ ```text
+Charset charset = Charset.forName("GBK");
+```
+* 获取编码器
+```text
+CharsetEncoder encoder = charset.newEncoder();
+```
+
+* 获取解码器
+```text
+CharsetDecoder decoder = charset.newDecoder();
+```
+
+* encoder.encode()编码
+
+* decoder.decode()解码
+
+[字符集编码、解码示例](./src/com/java/www/CharsetTest.java)  
+
+
+# Pipe管道
+```text
+Java NIO 管道是2个线程之间的单向数据连接。
+Pipe有一个source通道和一个sink通道。
+数据会被写到sink通道，从source通道读取
+```
+![](./images/pipe.png "Pipe管道读写示意图")
+
+**Pipe管道示例**  
+[PipeTest](./src/com/java/www/PipeTest.java)
+
+
+# NIO2 Path、Paths、Files
+java 7对原来的NIO进一步加强
+
+
+```text
+java.nio.file.Path 接口代表一个平台无关的平台路径，
+描述了目录结构中文件的位置
+```
+
+## Path接口
+Path可以看成是File类的升级  
+
+Path接口详情  
+[Path接口](./Path接口.md)
+
+**Path接口方法测试示例**  
+[PathTest](./src/com/java/www/PathTest.java)
+
+
+## Paths类
+* 只有一个私有的构造器，private Paths() { }
+
+* 只有两个静态方法
+    * public static Path get(String first, String... more)
+        >根据给定的一个或多个字符串创建Path对象，最终是调用了Path.of(first, more)
+    * public static Path get(URI uri)
+        ```text
+        解析根据给定的uri并创建Path对象，最终是调用了Path.of(uri)。
+        只能解析file文件系统资源，无法解析URL资源
+        ```
+
+## Files类
+java.nio.file.Files 用于操作文件或目录的工具类
+
+[Files类方法使用示例](./src/com/java/www/FilesTest.java)  
+
+[Files类方法详情](./Files类.md)
+
+# 自动资源管理
+```text
+Java 7 增加了自动资源管理((Automatic Resource Management, ARM),
+该特性以 try 语句的扩展版为基础。
+自动资源管理主要用于，
+当不再需要文件（或其他资源）时，
+可以防止无意中忘记释放它们
+```
+
+* 自动资源管理基于 try 语句的扩展形式
+```text
+try (需要关闭的资源声明) {
+    //可能发生异常的语句
+} catch(异常类型 变量名) {
+    //异常的处理语句
+}
+……
+finally {
+    //一定执行的语句
+}
+```
+
+```text
+当 try 代码块结束时，自动释放资源。
+因此不需要显示的调用 close() 方法。
+该形式也称为“带资源的 try 语句”
+
+注意：
+①try 语句中声明的资源被隐式声明为 final ，资源的作用局限于带资源的 try 语句
+②可以在一条 try 语句中管理多个资源，每个资源以“;” 隔开即可。
+③需要关闭的资源，必须实现了 AutoCloseable 接口或其自接口 Closeable
+
+```

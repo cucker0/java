@@ -55,7 +55,7 @@ import java.util.SortedMap;
  *
  * 分散读取 与 聚集写入
  * 分散读取：把通道中的数据分段写到多个缓冲区，写满一个再换下一个
- * 聚集写入：把多缓冲区中的数据逐个缓冲区数据写到通道，读取一个缓冲区再读下一个
+ * 聚集写入：把多个缓冲区中的数据逐个缓冲区数据写到通道，读取完一个缓冲区再读下一个
  */
 public class ChannelTest {
     /**
@@ -145,7 +145,7 @@ public class ChannelTest {
             // 2. 分配一个指定大小的缓冲区
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
-            // 3. 将in通道中的数据写入缓冲区
+            // 3. 读取in通道中的数据写入缓冲区
             while ((inChannel.read(byteBuffer)) != -1) {
                 // 4. 读取缓冲区中数据写入out通道
                 // 需要先将缓冲区切换到 数据读取模式
