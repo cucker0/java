@@ -405,6 +405,40 @@ JAVA Study
 </details>
 
 
+<details>
+<summary>NIO流</summary>
+
+* [NIO流](./NIO/README.md)
+    * [NIO概述](./NIO/README.md#NIO概述)
+    * [NIO与IO的区别](./NIO/README.md#[NIO与IO的区别])
+    * [Channel通道与Buffer缓冲区](./NIO/README.md#Channel通道与Buffer缓冲区)
+    * [Buffer缓冲区](./NIO/README.md#Buffer缓冲区)
+        * [缓冲区的基本属性](./NIO/README.md#缓冲区的基本属性)
+        * [Buffer常用方法](./NIO/README.md#Buffer常用方法)
+        * [Buffer数据操作方法](./NIO/README.md#Buffer数据操作方法)
+        * [直接缓冲区与非直接缓冲区](./NIO/README.md#直接缓冲区与非直接缓冲区)
+        * [HeapByteBuffer与DirectByteBuffer](./NIO/README.md#HeapByteBuffer与DirectByteBuffer)
+    * [Channel通道](./NIO/README.md#Channel通道)
+        * [Channel接口的主要实现类](./NIO/README.md#Channel接口的主要实现类)
+        * [获取通道](./NIO/README.md#获取通道)
+        * [分散读取Scatter和聚集写入Gather](./NIO/README.md#分散读取Scatter和聚集写入Gather)
+        * [通道之间的数据传输](./NIO/README.md#通道之间的数据传输)
+    * [FileChannel常用方法](./NIO/README.md#FileChannel常用方法)
+    * [非阻塞式NIO、阻塞式NIO、与阻塞式IO](./NIO/README.md#非阻塞式NIO阻塞式NIO与阻塞式IO)
+        * [NIO TCP socket编程](./NIO/README.md#NIOTCPsocket编程)
+        * [NIO UDP socket编程](./NIO/README.md#NIOUDPsocket编程)
+        * [选择器Selector](./NIO/README.md#选择器Selector)
+        * [SelectionKey](./NIO/README.md#SelectionKey)
+        * [网络编程常用Channel](./NIO/README.md#网络编程常用Channel)
+    * [字符集编码与解码](./NIO/README.md#字符集编码与解码)
+    * [Pipe管道](./NIO/README.md#Pipe管道)
+    * [NIO2 Path、Paths、Files](./NIO/README.md#NIO2PathPathsFiles)
+        * [Path接口](./NIO/README.md#Path接口)
+        * [Paths类](./NIO/README.md#Paths类)
+        * [Files类](./NIO/README.md#Files类)
+    * [自动资源管理](./NIO/README.md#自动资源管理)
+</details>
+
 * [day16_多线程练习](./day16/README.md "")
 
 
