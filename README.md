@@ -408,7 +408,7 @@ JAVA Study
 <details>
 <summary>NIO流</summary>
 
-* [NIO流](./NIO/README.md)
+* [NIO](./NIO/README.md)
     * [NIO概述](./NIO/README.md#NIO概述)
     * [NIO与IO的区别](./NIO/README.md#[NIO与IO的区别])
     * [Channel通道与Buffer缓冲区](./NIO/README.md#Channel通道与Buffer缓冲区)
