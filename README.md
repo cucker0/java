@@ -724,6 +724,23 @@ JAVA Study
     * [更简单的编译运行程序](./java11_features/README.md#更简单的编译运行程序)
     * [其他特性](./java11_features/README.md#其他特性)  
 </details>
+
+<details>
+<summary>java 12新特性</summary>
+
+* [java 12新特性](./java12_features/README.md)
+    * [新特性官方介绍](./java12_features/README.md)
+    * 新增Shenandoah低暂停时间垃圾回收器算法(实验性功能)
+    * 添加一个基本的microbenchmark套件
+    * 增强switch表达式(预览功能)
+    * 引入JVM常量API
+    * 只保留一个64位AARCH64端口
+    * 64位平台上使用默认CDS存档
+    * 增强G1垃圾回收器，可中止混合集合
+    * 增强G1垃圾回收器，使其能自动返回未用堆内存给操作系统
+    * 添加一个基本的microbenchmark套件  
+</details>
+
    
 </details>
 

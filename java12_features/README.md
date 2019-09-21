@@ -32,11 +32,13 @@ JVM常量API
 ```
 
 
-# Shenandoah新的低暂停时间垃圾回收器算法
+# 新增Shenandoah低暂停时间垃圾回收器算法(实验性功能)
 ```text
 添加一个新的垃圾收集（GC）算法名为Shenandoah，通过与运行的Java线程同时进行疏散工作，减少GC暂停时间。
 shenandoah的暂停时间与堆大小无关，这意味着无论堆大小是200mb还是200gb，暂停时间都是相同的。
 ```
+
+# 添加一个基本的microbenchmark套件
 
 # 增强switch表达式(预览功能)
 ```text
