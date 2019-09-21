@@ -19,7 +19,7 @@ import java.util.Arrays;
  * FloatBuffer
  * DoubleBuffer
  *
- * Buffuer必修重要属性
+ * Buffuer重要属性
  * capacity: 缓冲区的容量，final修改，声明后不可更改
  * limit: 界限，表示缓冲区中可以操作数据(读或写)的大小。
  * position: 偏移位置，表示缓冲区中正在操作数据的偏移位置
@@ -30,8 +30,8 @@ import java.util.Arrays;
  *
  * mark(): 记录当前的position位置，即mark = position
  * reset(): position恢复到mark记录的位置，可用于再重读等需求。当 mark >= 0，则position = mark
- * hasRemaining(): 从目前的position到limit是否有元素
- * remaining(): 从目前的position到limit的元素个数
+ * boolean hasRemaining(): 从目前的position到limit是否有元素
+ * int remaining(): 从目前的position到limit的元素个数
  *
  * 非直接缓冲区 与 直接缓冲区
  * 非直接缓冲区：通过allocate(int capacity)创建，将缓冲区建立在JVM的堆内存中。HeapByteBufferd对象
