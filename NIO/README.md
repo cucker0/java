@@ -27,7 +27,9 @@ java.nio.channels.Channel
     |--ServerSocketChannel  TCP网络编程中服务器的Channel
     |--DatagramChannel  UDP网络编程中发送端和接受端的Channel
     
-    |--Pipe 管道
+    |--Pipe管道
+        |--SinkChannel 
+        |--SourceChannel
 
 ```
 
