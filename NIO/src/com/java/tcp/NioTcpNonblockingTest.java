@@ -47,6 +47,7 @@ public class NioTcpNonblockingTest {
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
             // 6. 轮询获取选择器上 已经准备就绪的事件
+            SocketChannel socketChannel = null;
             while (selector.select() > 0) { // selector.select(): 表示就绪的事件数量
                 // 7. 获取当前选择器中所有注册的 就绪监听事件(选择键)
                 Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
@@ -56,7 +57,7 @@ public class NioTcpNonblockingTest {
                     // 9. 判断事件类型
                     if (key.isAcceptable()) {
                         // 10. 接收事件就绪了，获取与客户端的通道
-                        SocketChannel socketChannel = serverSocketChannel.accept();
+                        socketChannel = serverSocketChannel.accept();
                         // 11. 把与客户端连接的通道配置为非阻塞的
                         socketChannel.configureBlocking(false);
                         // 12. 将此通道的下一个事件read注册到选择器上
