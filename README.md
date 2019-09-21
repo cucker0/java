@@ -741,7 +741,18 @@ JAVA Study
     * 添加一个基本的microbenchmark套件  
 </details>
 
-   
+
+<details>
+<summary>java 13新特性</summary>
+
+* [java 13新特性](./java13_features/README.md)
+    * 新特性官方说明
+    * 动态CDS归档
+    * 增强ZGC垃圾回收器，不提交未使用的内存
+    * 重新实现Socket API
+    * 增强switch表达式(预览功能)
+    * 文本块(预览功能)
+</details> 
 </details>
 
 
