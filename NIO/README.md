@@ -343,6 +343,9 @@ byteBuffer.clear();
 所以服务器端必须为每个客户端都提供一个独立的线程进行处理，
 当服务器端需要处理大量客户端时，性能急剧下降。
 ```
+![](./images/IO单线程阻塞式访问网络Server.png)  
+![](./images/IO多线程阻塞式访问网络Server.png)  
+
 
 * NIO可配置为非阻塞模式
 ```text
@@ -351,6 +354,9 @@ byteBuffer.clear();
 所以单独的线程可以管理多个输入和输出通道。
 因此，NIO 可以让服务器端使用一个或有限几个线程来同时处理连接到服务器端的所有客户端
 ```
+![](./images/NIO非阻塞式访问网络Server.png)  
+
+
 ## NIO TCP socket编程
 [NioTcpBlockingTest](./src/com/java/tcp/NioTcpBlockingTest.java)  
 [NioTcpBlockingTest2](./src/com/java/tcp/NioTcpBlockingTest2.java)  
