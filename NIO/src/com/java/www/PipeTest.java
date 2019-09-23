@@ -88,6 +88,7 @@ public class PipeTest {
             try {
                 Pipe.SourceChannel sourceChannel = mypipe.source();
                 ByteBuffer byteBuffer1 = ByteBuffer.allocate(1024);
+                // 这步入发生阻塞，直到有数据读出
                 int len = sourceChannel.read(byteBuffer1);
                 byteBuffer1.flip();
                 System.out.println(new String(byteBuffer1.array(), 0, len));
