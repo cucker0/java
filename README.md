@@ -653,6 +653,9 @@ JAVA Study
         * [DateTimeFormatter格式化或解析日期、日间](./java8_features/README.md#DateTimeFormatter格式化或解析日期日间)
         * [Instant瞬时](./java8_features/README.md#Instant瞬时)
         * [其他时间API](./java8_features/README.md#其他时间API)
+            * ChronoUnit计算两LocalDateTime、LocalDate、LocalTime差值(时分秒日月年等任选)
+            * Duration计算两LocalDateTime、LocalTime的差值(秒、纳秒)
+            * ...
     * [ArrayList在java7和java8上的异同](./java8_features/README.md#ArrayList在java7和java8上的异同)
     * [HashMap在java7和java8的实现原理](./java8_features/README.md#HashMap在java7和java8的实现原理)
     * [Set结构](./java8_features/README.md#Set结构)
