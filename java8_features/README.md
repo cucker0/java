@@ -1050,6 +1050,21 @@ Instant表示时间线上的一点，而不需要任何上下文信息，例如�
     }
 ```
 
+## 其他时间API
+* ZoneId
+* ZoneDateTime
+* Clock
+* Duration持续时间
+    ```text
+    用于计算两个"时间"间隔
+    ```
+* Period一段时间
+    ```text
+    用于计算两个"日期"间隔
+    ```
+* TemporalAdjuster
+* TemporalAdjusters
+ 
 
 # ArrayList在java7和java8上的异同
 * java 7中，ArrayList像饿汉式，直接创建一个初始容量为10的数组，存满了时再扩容，扩容为原来的1.5倍
