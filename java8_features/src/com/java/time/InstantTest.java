@@ -2,7 +2,11 @@ package com.java.time;
 
 import org.junit.Test;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.Temporal;
 
 /**
@@ -28,7 +32,7 @@ public class InstantTest {
         System.out.println();
 
 
-        // 添加时间偏移量
+        // 添加时间偏移量，默认取的是0时区瞬时
         OffsetDateTime offsetDateTime = instant.atOffset(ZoneOffset.ofHours(8));
         System.out.println(offsetDateTime);
         System.out.println();
@@ -73,26 +77,6 @@ public class InstantTest {
         Instant instant1 = localDateTime1.toInstant(ZoneOffset.ofHours(+8));
         System.out.println("localDateTime1: " + localDateTime1);
         System.out.println("instant1: " + instant1);
-    }
-
-    /**
-     * 格式化与解析时间
-     *
-     */
-    @Test
-    public void test3() {
-        // 预定义的标准格式
-        // ISO_LOCAL_DATE_TIME;
-        // ISO_LOCAL_DATE;
-        // ISO_LOCAL_TIME
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        // 本地化相关的格式
-        // 如：ofLocalizedDateTime(FormatStyle.LONG)
-
-
-        // 自定义的格式
-        // 如：ofPattern("yyyy-MM-ddhh:mm:ss")
     }
 
 }

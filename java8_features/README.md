@@ -985,7 +985,10 @@ java 8之前的日期时间API存在的问题：
 [LocalDateTime类详细介绍](./LocalDateTime类.md)  
 
 ### LocalDateTime方法使用示例
-[LocalDateTimeTest](./src/com/java/time/LocalDateTimeTest.java)
+[LocalDateTimeTest、时间格式化与解析](./src/com/java/time/LocalDateTimeTest.java)
+
+## DateTimeFormatter格式化或解析日期、日间
+[DateTimeFormatterTest](./src/com/java/time/DateTimeFormatterTest.java)
 
 ## Instant瞬时
 时间线上的一个瞬时点。  
