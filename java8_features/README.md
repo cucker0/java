@@ -1054,17 +1054,19 @@ Instant表示时间线上的一点，而不需要任何上下文信息，例如�
 * ZoneId
 * ZoneDateTime
 * Clock
-* Duration持续时间
+* ChronoUnit计算两LocalDateTime、LocalDate、LocalTime差值(时分秒日月年等任选)
+* Duration计算两LocalDateTime、LocalTime的差值(秒、纳秒)
     ```text
     用于计算两个"时间"间隔
     ```
-* Period一段时间
+* Period计算两LocalDate的差值(年月日)
     ```text
     用于计算两个"日期"间隔
     ```
 * TemporalAdjuster
 * TemporalAdjusters
  
+[OtherTimeApiTest](./src/com/java/time/OtherTimeApiTest.java)  
 
 # ArrayList在java7和java8上的异同
 * java 7中，ArrayList像饿汉式，直接创建一个初始容量为10的数组，存满了时再扩容，扩容为原来的1.5倍
