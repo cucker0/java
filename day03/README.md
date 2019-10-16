@@ -265,6 +265,6 @@ do {
 ## break, continue, return特殊流程控制说明
 * return 返回值，结束当前整个方法
 * break 终止本层循环，只能用于 switch-case语句和for、while、do-while循环语句中
-* continue 终止本次循环，只能用于循环语句（for、while、do-while）
+* continue 终止本次循环，本次循环到此终止，继续下一次循环，只能用于循环语句（for、while、do-while）
 * break、continue之后不能有其他的语句，因为程序永远不会执行其后的语句，编译也会报错
 * 标号语句必须紧接在循环的头部。标号语句不能用在非循环语句的前面。
