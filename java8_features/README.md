@@ -794,7 +794,7 @@ public boolean isEmpty()
         >表示该注解能写在使用类型的任何语句中
 * 在java 8之前，注解只能是在声明的地方使用，java 8 开始，@Target为ElementType.TYPE_USE注解可以用在任何地方
 
-** 可重复的注解 **
+**可重复的注解**  
 ```text
 @Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, MODULE})
 @Retention(RetentionPolicy.RUNTIME)
