@@ -79,9 +79,9 @@ PriorityQueue
             q.offer(u1);
             q.offer(u2);
             q.offer(u3);
-            q.offer(u4);
     
             System.out.println(q.poll()); // Boss/V1
+            q.offer(u4); // 插入的顺序没有影响取出的顺序
             System.out.println(q.poll()); // Alice/A2
             System.out.println(q.poll()); // Cucker/A3
             System.out.println(q.poll()); // Bob/A10

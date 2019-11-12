@@ -19,7 +19,7 @@ Stack栈
 ```text
 为什么Java的集合类没有单独的Stack接口呢？
 因为有个遗留类名字就叫Stack，出于兼容性考虑，
-Stack也可以使用，它继承了Vector
+Stack也可以使用，它继承了Vector类
 
 建议不要使用遗留类Stack
 所以没办法创建Stack接口，只能用Deque接口来“模拟”一个Stack了.
