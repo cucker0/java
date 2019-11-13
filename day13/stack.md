@@ -1,8 +1,15 @@
 Stack栈
 ==
 
+# Table Of Contents
+* [Stack概念](#Stack概念)
+* [Stack类方法](#Stack类方法)
+* [Deque代替Stack方法](#Deque代替Stack方法)
+* [Stack示例](#Stack示例)
 
-## 概念
+
+
+## Stack概念
 ```text
 栈(Stack)是一种后进先出（LIFO：Last In First Out）的数据结构,
 像弹匣，后进的子弹先出。
@@ -10,11 +17,12 @@ Stack栈
 ```
 ![](images/弹匣.png)  
 
-## Stack只有入栈和出栈的操作
+## Stack类方法
 * 把元素压栈：push(E e)
 * 把栈顶的元素"弹出"：E pop()
 * 取栈顶元素但不弹出：E peek()
-
+* 判断栈是否为空：boolean empty()
+* 搜索指定元素在栈中的索引：int search(Object o)
 
 ```text
 为什么Java的集合类没有单独的Stack接口呢？
@@ -28,12 +36,15 @@ Stack也可以使用，它继承了Vector类
 不要调用addFirst()/removeFirst()/peekFirst()方法，这样代码更加清晰
 ```
 
-### 在Java中，我们用Deque可以实现Stack的功能
+## Deque代替Stack方法
+```test
+用Deque可以实现Stack的功能
+```
 * 把元素压栈：push(E e) /addFirst(E e)
 * 把栈顶的元素"弹出"：E pop() /E removeFirst()
 * 取栈顶元素但不弹出：E peek() /E peekFirst()
 
-### Stack的作用
+## Stack示例
 * 示例1
 ```text
 Stack在计算机中使用非常广泛，

@@ -1,7 +1,7 @@
 PriorityQueue
 ==
 
-## 概念
+## PriorityQueue概念
 ```text
 我们知道，Queue是一个先进先出（FIFO）的队列。
 
