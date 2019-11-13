@@ -2,7 +2,7 @@ Queue列队
 ==
 
 
-## 概念
+## Queue概念
 ```text
 队列(Queue)是一种经常使用的集合。
 Queue实际上是实现了一个先进先出（FIFO：First In First Out）的有序表。

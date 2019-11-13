@@ -1,6 +1,13 @@
 Deque
 ==
 
+# Table Of Contents
+* [Deque概念](#Deque概念)
+* [Deque特点](#Deque特点)
+* [Queue和Deque出队和入队方法比较](#Queue和Deque出队和入队方法比较)
+* [Deque示例](#Deque示例)
+
+
 
 ## Deque概念
 ```text
