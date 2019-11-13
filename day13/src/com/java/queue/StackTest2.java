@@ -16,6 +16,9 @@ public class StackTest2 {
 
     static SuffixExpression compile(String exp) {
         // todo:
+        // 去掉表达式中空格
+        exp = exp.replaceAll(" ", "");
+        String reg = "\\([-]{0,1}\\d+([+-\\\\*\\/]{1}\\d+)*\\)";
         Stack<Integer> sNum = new Stack<>();
         Stack<String> sOperational = new Stack<>();
 
