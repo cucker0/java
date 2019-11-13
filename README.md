@@ -341,6 +341,7 @@ JAVA Study
         * [Stack类方法](./day13/stack.md#Stack类方法)
         * [Deque代替Stack方法](./day13/stack.md#Deque代替Stack方法)
         * [Stack示例](./day13/stack.md#Stack示例)
+    * [Stack、Queue遍历](./day13/src/com/java/queue/StackQueueBianli.java)
 </details>
 
 
