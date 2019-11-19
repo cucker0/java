@@ -88,7 +88,7 @@ try {
 * finally中的语句一定会被执行。不管try、catch中是否仍有异常未被处理，以及是否有return语句，除了是明确指定退出程序外，如System.exit(1)
 * try-catch可以嵌套
 * 一个catch抓取多个异常时，多个异常类型之间用 "|" 分隔
-
+* Exception1 - Exception5:异常对应的类
 
 # 异常处理方式二：声明抛出异常
 在方法的声明处，显式的抛出该异常对象的类型
@@ -163,7 +163,7 @@ class MyException extends Exception {
 
 ## 异常处理5个关键字
 抓
-* try - catch - finally
+* try-catch-finally
 * throws 异常类型列表  （方法声明处声明异常）
 
 抛
