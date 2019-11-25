@@ -110,7 +110,7 @@ module pages {
 ![](./images/添加依赖的module2.png)  
 
 
-* 注意:本模块中的包名不能与导入的包名不能相同
+* 注意:本模块中的包名不能与导入的包名不能相同，否则发生冲突
 * 测试
 [ModuleTest](./pages/src/com/java/ui/ModuleTest.java)
 </details>
