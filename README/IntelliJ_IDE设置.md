@@ -30,7 +30,7 @@ IntelliJ IDE
 ```
 ![](./images/Intellij_IDE/TortoiseGit设置不自动转换换行符.png)
 
-# IDEA设置JavaDOC注释的快捷键
+## IDEA设置JavaDOC注释的快捷键
 * 方法1:Alt + Enter
 ```text
 这时默认的
@@ -51,3 +51,7 @@ Settings ->Keymap ->Other ->Fix doc comment ->右键 ->选择 Add Keyboard Short
 
 ![](./images/Intellij_IDE/addJavaDoc02.png)  
 
+## 查看类、接口的关系图，或查看modules模块关系图
+```text
+Ctrl + Alt + U
+```
