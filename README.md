@@ -3,7 +3,7 @@ JAVA Study
 
 # Table Of Contents
 <details>
-<summary>day01_JAVA语言概述与基本语法.标识符、变量也变量分类、源码_反码_补码、进制转换、编码与字符集</summary>
+<summary>day01_JAVA语言概述与基本语法：标识符、变量也变量分类、源码_反码_补码、进制转换、编码与字符集</summary>
 
 * [day01_JAVA语言概述与基本语法](./day01/README.md "day01")
     * [JAVA语言概述](./day01/README.md#JAVA语言概述)
@@ -48,7 +48,7 @@ JAVA Study
 </details>
 
 <details>
-<summary>day02_基本语法.运算符:算术运算符、赋值运算符、比较运算符、逻辑运算符、位运算符、三元运算符、运算符优先级</summary>
+<summary>day02_基本语法.运算符：算术运算符、赋值运算符、比较运算符、逻辑运算符、位运算符、三元运算符、运算符优先级</summary>
 
 * [day02_基本语法](./day02/README.md "day02")
     * [运算符](./day02/README.md#运算符)
@@ -73,7 +73,7 @@ JAVA Study
 
 
 <details>
-<summary>day03_基本语法.程序流程控制:顺序结构、分支结构、循环结构</summary>
+<summary>day03_基本语法.程序流程控制：顺序结构、分支结构、循环结构</summary>
 
 * [day03_基本语法.程序流程控制.循环结构](./day03/README.md "day03")
     * [程序流程控制](./day03/README.md#程序流程控制)
@@ -116,7 +116,7 @@ JAVA Study
 
 
 <details>
-<summary>day05_面向对象编程.类结构、属性、方法</summary>
+<summary>day05_面向对象编程：类结构、属性、方法</summary>
 
 * [day05_面向对象编程](./day05/README.md "day05")
     * [学习面向对象内容的三条主线](./day05/README.md#学习面向对象内容的三条主线)
@@ -144,7 +144,7 @@ JAVA Study
 </details>
 
 <details>
-<summary>day06_面向对象编程</summary>
+<summary>day06_面向对象编程：构造器</summary>
 
 * [day06_面向对象编程.构造器](./day06/README.md "day06")
     * [类的成员之三：构造器(构造方法)](./day06/README.md#类的成员之三构造器构造方法)
@@ -157,7 +157,7 @@ JAVA Study
 </details>
 
 <details>
-<summary>day07_高级类特性1:封装、继承特性、方法重写与方法重载区别、this关键字</summary>
+<summary>day07_高级类特性1：封装、继承特性、方法重写与方法重载区别、this关键字</summary>
 
 * [day07_高级类特性1](./day07/README.md "day07")
     * [关键字--this](./day07/README.md#关键字--this)
@@ -182,7 +182,7 @@ JAVA Study
 
 
 <details>
-<summary>day08_高级类特性1:多态特性、4中访问权限修饰符、this与super区别、==与equals方法区别、instanceof操作符</summary>
+<summary>day08_高级类特性1：多态特性、4中访问权限修饰符、this与super区别、==与equals方法区别、instanceof操作符</summary>
 
 * [day08_高级类特性1](./day08/README.md "day08")
     * [四种访问权限修饰符](./day08/README.md#四种访问权限修饰符)
@@ -204,7 +204,7 @@ JAVA Study
 
 
 <details>
-<summary>day09_高级类特性1:toString(方法)、包装类、static关键字</summary>
+<summary>day09_高级类特性1：toString(方法)、包装类、static关键字</summary>
 
 * [day09_高级类特性1](./day09/README.md "day09")
     * [toString()方法](./day09/README.md#toString方法)
@@ -217,7 +217,7 @@ JAVA Study
 
 
 <details>
-<summary>day10_高级类特性2:初始化块、抽象类、interface接口、main方法、单例模式、模板方法设计模式</summary>
+<summary>day10_高级类特性2：初始化块、抽象类、interface接口、main方法、单例模式、模板方法设计模式</summary>
 
 * [day10_高级类特性2](./day10/README.md "day10")
     * [单例设计模式(Singleton)](./day10/README.md#单例设计模式Singleton)
@@ -235,7 +235,7 @@ JAVA Study
 
 
 <details>
-<summary>day11_高级类特性2:内部类、接口与抽象类的对比、工厂模式、代理模式</summary>
+<summary>day11_高级类特性2：内部类、接口与抽象类的对比、工厂模式、代理模式</summary>
 
 * [day11_高级类特性2](./day11/README.md "day11")
     * [工厂方法设计模式(factory method)](./day11/README.md#工厂方法设计模式factory-method)
@@ -283,7 +283,7 @@ JAVA Study
 
 
 <details>
-<summary>day13_java 集合:List、Set、Map接口、队列、Stack栈</summary>
+<summary>day13_java 集合：List、Set、Map接口、队列、Stack栈</summary>
 
 * [day13_java 集合](./day13/README.md "day13")
     * [java集合概述](./day13/README.md#java集合概述)
@@ -395,7 +395,7 @@ JAVA Study
 
 
 <details>
-<summary>day15_IO流:File类、InputStream、OutputStream、Reader、Writer、缓冲流、转换流、标准输入输出流、打印流、数据流、对象流</summary>
+<summary>day15_IO流：File类、InputStream、OutputStream、Reader、Writer、缓冲流、转换流、标准输入输出流、打印流、数据流、对象流</summary>
 
 * [day15_IO流](./day15/README.md "IO流")
     * [File类](./day15/README.md#File类)
@@ -426,7 +426,7 @@ JAVA Study
 
 
 <details>
-<summary>NIO:Buffer缓冲区、Channel通道、FileChannel、字符集编码与解码、Pipe管道、NIO2Path、Paths、Files</summary>
+<summary>NIO：Buffer缓冲区、Channel通道、FileChannel、字符集编码与解码、Pipe管道、NIO2Path、Paths、Files</summary>
 
 * [NIO](./NIO/README.md)
     * [NIO概述](./NIO/README.md#NIO概述)
@@ -500,7 +500,7 @@ JAVA Study
 
 
 <details>
-<summary>day18_java常用类:String类、StringBuffer类、StringBuilder类、与时间相关类、Math类、BigInteger类、BigDecimal类、Scanner类</summary>
+<summary>day18_java常用类：String类、StringBuffer类、StringBuilder类、与时间相关类、Math类、BigInteger类、BigDecimal类、Scanner类</summary>
 
 * [day18_java常用类](./day18/README.md "java常用类")
     * [String类](./day18/README.md#String类)
@@ -540,7 +540,7 @@ JAVA Study
 
 
 <details>
-<summary>day19_java反射机制:通过反射获取类的完整结构、方法、属性、构造器,java动态代理</summary>
+<summary>day19_java反射机制：通过反射获取类的完整结构、方法、属性、构造器,java动态代理</summary>
 
 * [day19_java反射机制](./day19/README.md "java反射机制")
     * [java reflection](./day19/README.md#java-reflection)
@@ -581,7 +581,7 @@ JAVA Study
 
 
 <details>
-<summary>day20_网络编程:TCP socket、UDP socket、URL socket编程</summary>
+<summary>day20_网络编程：TCP socket、UDP socket、URL socket编程</summary>
 
 * [day20_网络编程](./day20/README.md "网络编程")
     * [网络编程概述](./day20/README.md#网络编程概述)
