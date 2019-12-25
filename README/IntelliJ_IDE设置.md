@@ -55,3 +55,19 @@ Settings ->Keymap ->Other ->Fix doc comment ->右键 ->选择 Add Keyboard Short
 ```text
 Ctrl + Alt + U
 ```
+
+## 快速搜索
+```text
+双击 shift
+```
+
+## 常见异常与错误
+### Error:java: 错误: 不支持发行版本 12
+```text
+多半是Project与Modules的jdk版本不一致导致的，如下的示例就会导致这种错误
+
+值需要把Project与Modules的jdk版本设置为一致就可以
+```
+![](./images/Intellij_IDE/异常1.png)  
+
+![](./images/Intellij_IDE/异常2.png)  
