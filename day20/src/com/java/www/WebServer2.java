@@ -58,9 +58,9 @@ class Server2 implements Runnable{
         try {
             while ((s = bufferedReader.readLine()) != null) {
                 data += s + "\n";
-                if (s.equals("")) {
-                    break;
-                }
+//                if (s.equals("")) { // 不读取post的数据
+//                    break;
+//                }
             }
         } catch (IOException e) {
             e.printStackTrace();

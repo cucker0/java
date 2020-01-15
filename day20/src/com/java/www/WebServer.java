@@ -36,7 +36,7 @@ public class WebServer {
             String s = "";
             while ((s = in.readLine()) != null) { // 这里获取到的数据，没有换行符
                 data = data + s + "\n";
-                if (s.equals("")){
+                if (s.equals("")){ // 不读取post的数据
                     break;
                 }
             }
