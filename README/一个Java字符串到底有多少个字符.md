@@ -1,4 +1,4 @@
-一个Java字符串到底有多少个字符.md
+一个Java字符串到底有多少个字符
 ==
 
 ## java字符
@@ -150,3 +150,31 @@ public int codePointCount(int beginIndex, int endIndex)
 
 注意这些方法中的index使用的是code unit值。
 ```
+
+
+## 参考文档<sup>[1]</sup>
+https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Character.html
+
+http://www.oracle.com/us/technologies/java/supplementary-142654.html
+
+https://stackoverflow.com/questions/2533097/java-unicode-encoding
+
+https://docs.oracle.com/javase/specs/jls/se7/html/jls-3.html
+
+https://zh.wikipedia.org/wiki/Unicode
+
+https://codeahoy.com/2016/05/08/the-char-type-in-java-is-broken/
+
+https://zh.wikipedia.org/wiki/UTF-16
+
+https://wiki.sei.cmu.edu/confluence/display/java/STR50-J.+Use+the+appropriate+method+for+counting+characters+in+a+string
+
+http://stn.audible.com/abcs-of-unicode/#common-unicode-mistakes-in-java-apps
+
+
+<!--
+定义URL变量
+-->
+[1]:http://www.sohu.com/a/340992079_733133 "一个Java字符串到底有多少个字符"
