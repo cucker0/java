@@ -582,8 +582,8 @@ static long incrementExact(long a) 加1，返回 a + 1
 static double expm1(double x) 返回欧拉数 e^x - 1
 static double ceil(double a) 天花整，上取整(返回double型的整数)
 static double floor(double a) 地板整，下取整(返回double型的整数)
-static int floorDiv(int x, int y) 返回两数相除的商下去整
-static long floorDiv(long x, long y) 返回两数相除的商下去整
+static int floorDiv(int x, int y) 返回两数相除的商下取整
+static long floorDiv(long x, long y) 返回两数相除的商下取整
 
 static double copySign(double magnitude, double sign)
 static float copySign(float magnitude, float sign)
