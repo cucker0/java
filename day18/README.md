@@ -524,15 +524,15 @@ public static final int PM = 1;
 
 提供了一系列用于科学计算的方法。
 
-##  特点
+## 特点
 * 不能再继承，final修饰的类
 * 不需要实例化，方法都为static静态的
  
- ## 常量
- public static final double E = 2.7182818284590452354
- public static final double PI = 3.14159265358979323846
+## 常量
+public static final double E = 2.7182818284590452354;  
+public static final double PI = 3.14159265358979323846;
  
- ## Math方法
+## Math方法
 ```text
 static T abs(T a) 求绝对值，T为double、float、int、long
 static int addExact(int x, int y) 返回传入的两个数的和
@@ -828,4 +828,4 @@ static BigDecimal valueOf(long unscaledVal, int scale)
     * 只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。
     * next()不能得到带有空格的字符串。
 * nextLine()
-    * 以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
+    * 以Enter(\n)为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
