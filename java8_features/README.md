@@ -990,6 +990,55 @@ java 8之前的日期时间API存在的问题：
 ## DateTimeFormatter格式化或解析日期、日间
 [DateTimeFormatterTest](./src/com/java/time/DateTimeFormatterTest.java)
 
+## Date与LocalDateTime互转
+* Date转LocalDateTime
+    ```java
+    Date todayDate = new Date();
+    
+    LocalDateTime ldt = todayDate.toInstant()
+            .atZone( ZoneId.systemDefault() )
+            .toLocalDateTime();
+    
+    System.out.println(ldt);
+    //2020-03-16T21:20:12.773
+    ```
+* LocalDateTime转Date
+    ```java
+    LocalDateTime localDateTime = LocalDateTime.now();
+    
+    Date date = Date.from( localDateTime.atZone(ZoneId.systemDefault()).toInstant() );
+    
+    System.out.println(date);
+    //Thu May 16 19:22:37 CST 2019
+    ```
+* DateUtils
+    ```java
+    import java.time.Instant;
+    import java.time.LocalDate;
+    import java.time.LocalDateTime;
+    import java.time.ZoneId;
+    import java.util.Date;
+     
+    public class DateUtils {
+     
+        public static Date asDate(LocalDate localDate) {
+            return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        }
+     
+        public static Date asDate(LocalDateTime localDateTime) {
+            return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        }
+     
+        public static LocalDate asLocalDate(Date date) {
+            return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+     
+        public static LocalDateTime asLocalDateTime(Date date) {
+            return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+        }
+    }
+```
+
 ## Instant瞬时
 时间线上的一个瞬时点。  
 这可被用来记录应用程序中的事件时间戳
