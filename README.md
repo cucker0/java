@@ -322,6 +322,8 @@ JAVA Study
         * [Scanner异常处理](./day13/README.md#Scanner异常处理)
         * [List中元素为对象，通过对象中的指定属性进行排序](./day13/README.md#list中元素为对象通过对象中的指定属性进行排序)
         * [List、Set、Map在创建对象时指定初始值](./day13/README.md#ListSetMap在创建对象时指定初始值)
+        * [List与Set互转](./day13/README.md#List与Set互转)
+        * [Array与Set互转](./day13/README.md#Array与Set互转)
     * [Queue队列](./day13/queue.md)
         * [Queue概念](./day13/queue.md#Queue概念)
         * [Queue特点](./day13/queue.md#Queue特点)

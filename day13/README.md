@@ -477,3 +477,33 @@ static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
 ## List、Set、Map在创建对象时指定初始值
 示例  
 [List、Set、Map在创建对象时指定初始值 示例](./src/com/java/www/ListSetMap_SpecifyInitialValuesAtNewBuildTime.java)
+
+## List与Set互转
+```text
+因为List和Set都实现了Collection接口，且addAll(Collection<? extends E> c);方法，
+因此可以采用addAll()方法将List和Set互相转换；
+
+另外，List和Set也提供了Collection<? extends E> c作为参数的构造函数，
+因此通常采用构造函数的形式完成互相转化。
+```
+
+```java
+//List转Set
+Set<String> set = new HashSet<>(list);
+
+//Set转List
+List<String> list1 = new ArrayList<>(set);
+```
+
+## Array与Set互转
+```java
+//array转set
+String[] s = new String[]{"A", "B", "C", "D","E"};
+Set<String> set = new HashSet<>(Arrays.asList(s));
+System.out.println("set: " + set);
+
+//set转array
+String[] sArr = set.toArray();
+```
+
+上述列出的互相转换离不开Arrays.asList()和Collection.toArray()两个重要的方法
