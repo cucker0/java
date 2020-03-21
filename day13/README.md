@@ -106,7 +106,8 @@ day13 java集合
 * boolean contains(Object obj) 判断集合中是否包含指定的元素obj，如果包含返回true，否则false。
 >判断方法：用到了类中的equals(Object o)方法。若使用了自定义类要重写equals()方法
 * boolean containsAll(Collection coll) 判断当前集合是否包含coll集合中所有的元素。即判断一个集合是否为当前集合的子集
-* boolean retainAll(Collectoin coll) 当前集合中仅保留一个集合,集合coll与当前集合的交集给当前集合，会覆盖当前集合
+* boolean retainAll(Collectoin coll) 先求集合coll与当前集合的交集，再清空当前集合所有元素，最后把交集集合添加到当前集合中
+    >即 当前集合 = 当前集合 ∩ coll集合
 * boolean remove(Object obj) 删除集合中的obj元素。若删除成功返回true,否则返回false
 * booeanl removeAll(Collection coll) 从当前集合中删除与另外一个集合coll的交集所有元素。即 当前集合 - coll集合的差集。
 * boolean equals(Object obj) 判断一个集合obj与当前集合两者所有的元素是否都相等。
