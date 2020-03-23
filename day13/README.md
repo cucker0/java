@@ -167,7 +167,7 @@ void remove() |从集合中移除迭代器返回的最后一个元素（可选�
 
 ## List接口实现类之一：ArrayList
 * ArrayList时List接口的典型实现类
-* ArrayList本质上是对象引用的一个边长数组
+* ArrayList本质上是对象引用的一个变长数组
 * ArrayList时线程不安全的，Vector时线程安全的（不推荐使用，效率低）
 * Arrays.asList(Object...) 方法返回的List集合既不是ArrayList实例也不是Vector实例。  
 Arrays.asList(Object...) 返回值是一个固定长度的List集合
