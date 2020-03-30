@@ -16,6 +16,7 @@ IntelliJ IDE
 ## 字体、字体大小、行距设置
 ![](images/Intellij_IDE/字体、字体大小、行距设置.png)
 
+
 ## Tab键缩进大小设置
 ![](./images/Intellij_IDE/Tab键缩进大小设置.png)
 
@@ -74,3 +75,24 @@ Ctrl + Alt + U
 ![](./images/Intellij_IDE/异常1.png)  
 
 ![](./images/Intellij_IDE/异常2.png)  
+
+
+## 编程建议字体
+```
+优点：L1l0oO"'等字符的辨识度高
+Droid Sans Mono Slashed, 
+Droid Sans Mono Dotted,
+Source Code Pro,
+```
+
+* Droid Sans Mono Slashed
+
+    ![](./images/Intellij_IDE/font_DroidSansMonoSlashed.png)
+
+* Droid Sans Mono Dotted
+
+    ![](./images/Intellij_IDE/font_DroidSansMonoDotted.png)
+    
+* Source Code Pro
+
+    ![](./images/Intellij_IDE/font_SourceCodePro.png)
