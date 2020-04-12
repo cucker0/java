@@ -316,7 +316,7 @@ JAVA Study
         * [Map接口实现类之三：TreeMap](./day13/README.md#Map接口实现类之三TreeMap)
         * [Map接口实现类之四：Hashtable](./day13/README.md#Map接口实现类之四Hashtable)
         * [Map接口实现类之五：Properties](./day13/README.md#Map接口实现类之五Properties)
-    * [操作集合的工具类：Collections](./day13/README.md#操作集合的工具类Collections)
+    * [操作集合的工具类：Collections, 可控制List,Set,Map等的线程安全](./day13/README.md#操作集合的工具类Collections)
     * Enumeration迭代器
     * [其他](./day13/README.md#其他)
         * [Scanner异常处理](./day13/README.md#Scanner异常处理)

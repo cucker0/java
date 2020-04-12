@@ -447,12 +447,12 @@ void copy(List dest, List src) 将List src中的元素复制到 List dest中，d
 boolean replaceAll(List l, Object oldVal, Object newVal) 使用新值newVal替换List l中所旧值oldVal
 
 ## 同步控制，可以解决多线程并发访问集合时的线程安全问题
-static<T> Collection<> synchronizedList(Collection<T> c)
+static<T> Collection<> synchronizedCollection(Collection<T> c)
 static<T> List<> synchronizedList(List<T> l)
-static<T> Map<K,V> synchronizedList(Map<K,V> m)
-static<T> Set<T> synchronizedList(Set<T> s)
-static<T> SortedMap<K,V> synchronizedList(SortedMap<K,V> m)
-static<T> SortedSet<T> synchronizedList(SortedSet<T> s)
+static<T> Map<K,V> synchronizedMap(Map<K,V> m)
+static<T> Set<T> synchronizedSet(Set<T> s)
+static<T> SortedMap<K,V> synchronizedSortedMap(SortedMap<K,V> m)
+static<T> SortedSet<T> synchronizedSortedSet(SortedSet<T> s)
 
 ```
 
