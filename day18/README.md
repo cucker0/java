@@ -726,13 +726,13 @@ BigDecimal(char[] in)
 BigDecimal(char[] in, int offset, int len)
 BigDecimal(char[] in, int offset, int len, MathContext mc)
 BigDecimal(char[] in, MathContext mc)
-BigDecimal(double val)
+BigDecimal(double val) // 会出现丢失进度的问题
 BigDecimal(double val, MathContext mc)
 BigDecimal(int val)
 BigDecimal(int val, MathContext mc)
 BigDecimal(long val)
 BigDecimal(long val, MathContext mc)
-BigDecimal(String val)
+BigDecimal(String val)  // 不会丢失精度，适用于float, double类型的数据，建议使用 new BigDecimal(String val) 新建对象
 BigDecimal(String val, MathContext mc)
 
 ```
