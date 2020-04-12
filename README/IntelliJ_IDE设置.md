@@ -26,6 +26,10 @@ IntelliJ IDE
 ## 打开常见视图
 ![](./images/Intellij_IDE/常规视图.png)
 
+## 自动注释的缩进
+按如下设置
+![](./images/Intellij_IDE/自动注释的缩进.png)  
+
 ## TortoiseGit设置不自动转换换行符
 建议安装的git也不自动转换换行符，主要目的是换行符使用LF(\n)
 ```text
