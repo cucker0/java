@@ -713,8 +713,11 @@ static BigInteger valueOf(long val)
 
 
 # BigDecimal类
+```text
 一般的Float类和Double类可以用来做科学计算或工程计算，但在商业计算中，  
 要求数字精度比较高，故用到java.math.BigDecimal类。BigDecimal类支持任何精度的定点数
+遇到和钱有关的数据，对精度有要求的，必须使用BigDecimal类
+```
 
 ## BigDecimal类构造器
 ```text
@@ -739,9 +742,9 @@ BigDecimal(String val, MathContext mc)
 
 ## BigDecimal类常量
 ```text
-static BigDecimal ONE
-static BigDecimal TEN
-static BigDecimal ZERO
+static BigDecimal ONE  // 1
+static BigDecimal TEN  // 10
+static BigDecimal ZERO  // 0
 static int ROUND_CEILING
 static int ROUND_DOWN
 static int ROUND_FLOOR
@@ -811,14 +814,22 @@ String toPlainString()
 String toString()
 BigDecimal  ulp()
 BigInteger unscaledValue()
-static BigDecimal valueOf(double val)
+static BigDecimal valueOf(double val)  // double类型的数据转成BigDecimal，不会丢失精度，实际调用了new BigDecimal(Double.toString(val));方法
 static BigDecimal valueOf(long val)
 static BigDecimal valueOf(long unscaledVal, int scale)
 
 ```
-
 示例  
 [BigDecimal Test](./src/com/java/www/BigDecimalTest.java)
+
+## float、double类型数据计算时精度丢失避免方法
+* 方法1
+    >new BigDecimal(String val);
+* 方法2
+    >BigDecimal.valueOf(double val);
+
+**示例**
+[BigDecimalTest test2 \ test3](../day18/src/com/java/www/BigDecimalTest.java)
 
 # Scanner类
 ## next()与nextLine()区别

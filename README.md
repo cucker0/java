@@ -536,6 +536,7 @@ JAVA Study
     * [Math类](./day18/README.md#Math类)
     * [BigInteger类](./day18/README.md#BigInteger类)
     * [BigDecimal类](./day18/README.md#BigDecimal类)
+        * [float、double类型数据计算时精度丢失避免方法](./day18/README.md#floatdouble类型数据计算时精度丢失避免方法)
     * [Scanner类](./day18/README.md#Scanner类)
         * [Scanner类](./day18/README.md#next与nextLine区别)
 </details>
