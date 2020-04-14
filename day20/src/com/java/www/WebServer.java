@@ -36,7 +36,7 @@ public class WebServer {
             String s = "";
             while ((s = in.readLine()) != null) { // 这里获取到的数据，没有换行符
                 data = data + s + "\n";
-                if (s.equals("")){ // 不读取post的数据
+                if (s.equals("")){ // 不读取request body信息
                     break;
                 }
             }
@@ -46,11 +46,18 @@ public class WebServer {
             System.err.println("响应");
             out.write("HTTP/1.0 200 OK\r\n");
             out.write("Server: Java/12.0.1\r\n");
-            out.write("Content-Type: text/html\r\n");
+            out.write("Content-Type: text/html; charset=utf-8\r\n");
             out.write("\r\n");
-            out.write("<title>Exemple</title>");
-            out.write("<h1>Java Web Server</h1>");
-            out.write("<p>timeStamp: " + System.currentTimeMillis() + "</p>");
+            out.write("<!DOCTYPE HTML>");
+            out.write("<html>");
+            out.write("<head>");
+            out.write("    <title>Exemple</title>");
+            out.write("</head>");
+            out.write("<body>");
+            out.write("    <h1>Java Web Server</h1>");
+            out.write("    <p>timeStamp: " + System.currentTimeMillis() + "</p>");
+            out.write("</body>");
+            out.write("</html>");
             out.flush();
 
             System.err.println("结束");
