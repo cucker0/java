@@ -63,5 +63,13 @@ public class LinkedHashMapReverse {
         LinkedHashMap<String, Integer> reverse1 = reverse(map, true);
         System.out.println("reverse1: " + reverse1);
         System.out.println("原map: " + map);
+        /*
+测试结果：
+reverse: {k5=50, k4=40, k3=30, k2=20, k1=10}
+原map: {k1=10, k2=20, k3=30, k4=40, k5=50}
+=================
+reverse1: {k5=50, k4=40, k3=30, k2=20, k1=10}
+原map: {k5=50, k4=40, k3=30, k2=20, k1=10}
+        */
     }
 }
