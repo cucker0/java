@@ -12,7 +12,7 @@ public class LinkedHashMapReverse {
      * 反转LinkedHashMap对象的元素排序
      *
      * @param map LinkedHashMap对象
-     * @param reverseSelf 返回新map对象还是新map对象
+     * @param reverseSelf 返回原map对象还是新map对象
      *                    true: 反转原LinkedHashMap对象并返回
      *                    false: 返回新map对象
      * @param <K> map的key泛型
