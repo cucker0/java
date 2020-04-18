@@ -395,8 +395,10 @@ HashMap hmap = new HashMap() {
 * LinkedHashMap 是 HashMap 的子类
 * 与LinkedHashSet类似，LinkedHashMap 可以维护 Map 的迭代顺序（使用链表）：迭代顺序与 Key-Value 对的插入顺序一致
 
-示例  
-[LinkedHashMap Test](./src/com/java/www/LinkedHashMapTest.java)
+**示例**  
+* [LinkedHashMap Test](./src/com/java/www/LinkedHashMapTest.java)
+
+* [LinkedHashMap reverse反转排序](./src/com/java/www/LinkedHashMapReverse.java)
 
 ## Map接口实现类之三：TreeMap
 * TreeMap存储 Key-Value 对时，需要根据 key-value 对进行排序。TreeMap 可以保证所有的 Key-Value 对处于有序状态
