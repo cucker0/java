@@ -9,7 +9,7 @@ import java.util.Map;
 public class LinkedHashMapReverse {
 
     /**
-     * 反转LinkedHashMap对象
+     * 反转LinkedHashMap对象的元素排序
      *
      * @param map LinkedHashMap对象
      * @param reverseSelf 返回新map对象还是新map对象
