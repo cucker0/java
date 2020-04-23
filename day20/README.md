@@ -356,6 +356,9 @@ String toString()
 
 * Web server:先启动一个线程来等待用户的请求连接，当有一个客户请求连接进来时，新开启一个线程等待下一个客户端请求连接。  
 线程响应完客户请求后，关闭当前socket及相关的IO流，当前线程就退出了。  
+
+[http request请求 /response响应数据格式](https://github.com/cucker0/JavaWeb/blob/master/readme/servlet.md#http%E5%8D%8F%E8%AE%AE)
+
 [WebServer2](./src/com/java/www/WebServer2.java)  
 [WebServer3](./src/com/java/www/WebServer3.java)  
 [WebServer4](./src/com/java/www/WebServer4.java)  
