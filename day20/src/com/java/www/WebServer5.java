@@ -49,7 +49,7 @@ public class WebServer5 {
                                     s = "";
                             while ((s = br.readLine()) != null) {
                                 data = data + s + "\n";
-//                                if (s.equals("")) { // 不读取post的数据
+//                                if (s.equals("")) { // 不读取body数据
 //                                    break;
 //                                }
                             }

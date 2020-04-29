@@ -49,7 +49,7 @@ public class WebServer3 implements Runnable{
         try {
             while ((s = bufferedReader.readLine()) != null) {
                 data += s + "\n";
-//                if (s.equals("")) { // 不读取post的数据
+//                if (s.equals("")) { // 不读取body的数据
 //                    break;
 //                }
             }
