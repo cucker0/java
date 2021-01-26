@@ -54,7 +54,7 @@ ln -s /usr/local/java/jdk-12.0.1 /usr/local/java/jdk
 PATH变量中增加:$JAVA_HOME/bin  
 ```text
 ... ...
-## JAVA_HOME
+## JAVA
 export JAVA_HOME=/usr/local/java/jdk
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
