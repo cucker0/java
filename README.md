@@ -182,7 +182,7 @@ JAVA Study
 
 
 <details>
-<summary>day08_高级类特性1：多态特性、4中访问权限修饰符、this与super区别、==与equals方法区别、instanceof操作符</summary>
+<summary>day08_高级类特性1：多态特性、4种访问权限修饰符、this与super区别、==与equals方法区别、instanceof操作符</summary>
 
 * [day08_高级类特性1](./day08/README.md "day08")
     * [四种访问权限修饰符](./day08/README.md#四种访问权限修饰符)
