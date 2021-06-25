@@ -1,6 +1,8 @@
 IntelliJ IDE
 ==
 
+## 说明
+* 以下设置建议，打开 File -> Other Settings -> Settings For New Projects 来设置，这样对于所有新建项目都生效
 
 ## 字符集设置
 建议选择UTF-8  
