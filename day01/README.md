@@ -245,7 +245,7 @@ Object obj2 = "2323";//定义一个字符串
 |byte |1字节(byte)=8bit |[-2<sup>7</sup>, 2<sup>7</sup>-1] | | 0 | ||
 |short |2字节(16位) |[-2<sup>15</sup>, 2<sup>15</sup>-1]| | 0 | ||
 |int |4字节(32位) |[-2<sup>31</sup>, 2<sup>31</sup>-1] |默认 |0 | ||
-|long |8字节(64位)|[-2<sup>63</sup>, 2<sup>63</sup>-1] | |L 或 l |long lonng1 = 9999999999L
+|long |8字节(64位)|[-2<sup>63</sup>, 2<sup>63</sup>-1] | |0 |L 或 l |long lonng1 = 9999999999L
 
 ### 浮点型
 * 与整型类似，java浮点型也有固定的表数范围和字段长度，不受具体OS的影响。
