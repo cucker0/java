@@ -93,7 +93,7 @@ JAVA Study
         * [do-while](./day03/README.md#do-while)
         * [特殊流程控制break](./day03/README.md#特殊流程控制break)
             * break语句用于终止某个语句块的执行
-            * [break语句出现在多层，嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块](./day03/README.md#break语句出现在多层嵌套的语句块中时可以通过标签指明要终止的是哪一层语句块)
+            * [break语句出现在多层，嵌套的语句块中时，可以通过 lable 标签指明要终止的是哪一层语句块](./day03/README.md#break语句出现在多层嵌套的语句块中时可以通过标签指明要终止的是哪一层语句块)
         * [continue特殊控制](./day03/README.md#continue特殊控制)
         * [return](./day03/README.md#return)
         * [break, continue, return特殊流程控制说明](./day03/README.md#break-continue-return特殊流程控制说明)
