@@ -16,6 +16,7 @@ day06面向对象编程
 * 一旦显式的定义了类的构造器，默认的构造器就不再提供
 
 ## 构造器的作用
+构造器是在创建创建对象的时候调用。
 ```text
 * 创建对象
 * 给对象进行初始化
@@ -28,11 +29,11 @@ Person p = new Person(Peter, 15);
 ```python
 # python class
 class Student(Object):
-	__init__(self): # 构造器（构造函数）
+	__init__(self):  # 构造器（构造函数）
 		name = self.name
 		age = self.age
 		
-	__del__(self): # 析构器（析构函数，在销毁该实例时执行，可用del 实例对象来手动销毁）
+	__del__(self):  # 析构器（析构函数，在销毁该实例时执行，可用del 实例对象来手动销毁）
 		print("del this instance")
 	
 
