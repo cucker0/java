@@ -26,7 +26,7 @@ public class ImplementsRunnable {
         Thread th1 = new Thread(p1);
         Thread th2 = new Thread(p1);
 
-        // 启动线程；执行Thread对象生成是的构造器形参对象的run()方法
+        // 启动线程；执行Thread对象生成器的构造器形参对象的run()方法
         th1.start();
         th2.start();
 
