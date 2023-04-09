@@ -13,7 +13,7 @@
 
     选择版本  
     ![选择版本](./images/jdk/selectJDKedit01.png)  
-    ![选择版本](./images/jdk/selectJDKedit02ss.png)  
+    ![选择版本](./images/jdk/selectJDKedit02.png)  
 
     下载指定版本，这里下载zip版  
     ![下载指定版本](./images/jdk/downJDK.png)
