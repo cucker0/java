@@ -36,13 +36,18 @@
 
     修改Path，添加 `%JAVA_HOME%\bin` 并移至最前面  
     ![](./images/jdk/modifyPath.png)
-
+    
+* 测试
+    ```bash
+    java --version
+    ```
 
 # Linux安装JDK
 * 下载相应的JDK包
 * 解压JDK包到自定义目录  
-    例如：/usr/local/java 专门存放JDK，jdk-17.0.6 解压到/usr/local/java/jdk-17.0.6
+    例如：/usr/local/java 专门存放JDK，jdk-17.0.6 解压到 /usr/local/java/jdk-17.0.6
     ```bash
+    mkdir /usr/local/java
     tar -xvf jdk-17_linux-x64_bin.tar.gz -C /usr/local/java/  
     ln -s /usr/local/java/jdk-17.0.6 /usr/local/java/jdk 
     ```
@@ -55,7 +60,7 @@
 
     设置环境变量，编辑文件 `/etc/profile`  
     新增变量 `JAVA_HOME`、`CLASSPATH`   
-    PATH变量中追加`:$JAVA_HOME/bin`  
+    PATH变量中追加 `:$JAVA_HOME/bin`  
 
     ```bash
     ... ...
@@ -72,4 +77,9 @@
     重载环境变量
     ```bash
     . /etc/profile
+    ```
+    
+* 测试
+    ```bash
+    java --version
     ```
