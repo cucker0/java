@@ -44,6 +44,10 @@
 
 # Linux安装JDK
 * 下载相应的JDK包
+
+    下载Linux tar.gz版的jdk  
+    ![](./images/jdk/jdk_linux_edit.png)
+    
 * 解压JDK包到自定义目录  
     例如：/usr/local/java 专门存放JDK，jdk-17.0.6 解压到 /usr/local/java/jdk-17.0.6
     ```bash
@@ -53,10 +57,6 @@
     ```
 
 * 设置系统环境变量
-
-
-    下载Linux tar.gz版的jdk  
-    ![](./images/jdk/jdk_linux_edit.png)
 
     设置环境变量，编辑文件 `/etc/profile`  
     新增变量 `JAVA_HOME`、`CLASSPATH`   
