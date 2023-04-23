@@ -73,7 +73,9 @@ switch (day) {
 建议引入一种新形式的开关标签，写着“case l->”，以表示只有标签右边的代码在标签匹配的情况下才能执行
 int day = 1;
 switch (day) {
-    case MONDAY, FRIDAY, SUNDAY -> System.out.println(6);
+    case MONDAY, FRIDAY, SUNDAY -> {
+        System.out.println(6);
+    }
     case TUESDAY                -> System.out.println(7);
     case THURSDAY, SATURDAY     -> System.out.println(8);
     case WEDNESDAY              -> System.out.println(9);
