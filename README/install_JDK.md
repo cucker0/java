@@ -31,7 +31,7 @@
     ![](./images/jdk/JAVA_HOME.png)
 
     变量名：CLASSPATH  
-    变量值：`.;%Java_Home%\bin;%Java_Home%\lib\dt.jar;%Java_Home%\lib\tools.jar`  
+    变量值：`.;%JAVA_HOME%\bin;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar`  
     ![](./images/jdk/CLASSPATH.png)
 
     修改Path，添加 `%JAVA_HOME%\bin` 并移至最前面  
