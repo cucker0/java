@@ -832,7 +832,7 @@ JAVA Study
     * [JDK API在线文档](./README/java_resources.md)
     * [java方法区以及static的内存分配图](./README/java方法区以及static的内存分配图.md)
     * [URI、URL、URN联系与区别](./README/URI_URL_URN.md)
-    * [double数据的内存存储方式](./README/double数据的内存存储方式.md)
+    * [float、double数据的内存存储方式](./README/double数据的内存存储方式.md)
     * [Java常用工具类](./README/Java常用工具类.md)
     * java中调用shell脚本
         * [java中调用shell脚本](./README/java中调用shell脚本/java中调用shell脚本.md)
