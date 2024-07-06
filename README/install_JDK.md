@@ -2,7 +2,7 @@
 ==
 
 # Windows 安装JDK
-* 下载相应的JDK包
+* 下载相应的JDK包（x64 Compressed Archive）
 * 解压JDK包到自定义目录
 >例如：D:\development_tools\ 专门存放JDK，jdk-17.0.6 的解压到 `D:\development_tools\jdk-17.0.6`
 * 设置系统环境变量
